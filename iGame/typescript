@@ -1,0 +1,8 @@
+Script started on Mon 04 Jun 2007 11:50:55 PM CEST
+root@jarek:/opt/prj/iGame# make
+g++ -c screen.cpp -o screen.o -I/usr/local/include -L/usr/local/lib -lSDL -pthread
+screen.cpp: In constructor `CScreen::CScreen(int, int, int, bool)':
+screen.cpp:15: error: `bFullscreen' was not declared in this scope
+make: *** [screen.o] Error 1
+root@jarek:/opt/prj/iGame# exit
+Script done on Mon 04 Jun 2007 11:51:00 PM CEST

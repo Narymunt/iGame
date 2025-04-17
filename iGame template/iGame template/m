@@ -1,0 +1,10 @@
+
+echo '-> OUTPUT';
+g++ -I /Library/Frameworks/SDL.framework/Headers \
+-I /iGame main.cpp SDLmain.m /iGame/iGame.a \
+-o main.exe -framework SDL -framework Cocoa
+
+echo '->main.app';
+cp main.exe main.app/
+
+echo '--- koniec';
