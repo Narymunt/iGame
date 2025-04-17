@@ -1,0 +1,34 @@
+Number of files in klocki.fox = 32
+Index: 
+Name: a.bmp        Lokation: 4398     Len: 3520     OLen: 12344    Compr: 2 
+Name: ai.bmp       Lokation: 8144     Len: 3746     OLen: 12344    Compr: 2 
+Name: b.bmp        Lokation: 11652    Len: 3508     OLen: 12344    Compr: 2 
+Name: c.bmp        Lokation: 15161    Len: 3509     OLen: 12344    Compr: 2 
+Name: ci.bmp       Lokation: 18743    Len: 3582     OLen: 12344    Compr: 2 
+Name: d.bmp        Lokation: 22171    Len: 3428     OLen: 12344    Compr: 2 
+Name: e.bmp        Lokation: 25595    Len: 3424     OLen: 12344    Compr: 2 
+Name: ei.bmp       Lokation: 29071    Len: 3476     OLen: 12344    Compr: 2 
+Name: f.bmp        Lokation: 32422    Len: 3351     OLen: 12344    Compr: 2 
+Name: g.bmp        Lokation: 35975    Len: 3553     OLen: 12344    Compr: 2 
+Name: h.bmp        Lokation: 39345    Len: 3370     OLen: 12344    Compr: 2 
+Name: i.bmp        Lokation: 42474    Len: 3129     OLen: 12344    Compr: 2 
+Name: j.bmp        Lokation: 45697    Len: 3223     OLen: 12344    Compr: 2 
+Name: k.bmp        Lokation: 49258    Len: 3561     OLen: 12344    Compr: 2 
+Name: l.bmp        Lokation: 52467    Len: 3209     OLen: 12344    Compr: 2 
+Name: li.bmp       Lokation: 55879    Len: 3412     OLen: 12344    Compr: 2 
+Name: m.bmp        Lokation: 59618    Len: 3739     OLen: 12344    Compr: 2 
+Name: n.bmp        Lokation: 63313    Len: 3695     OLen: 12344    Compr: 2 
+Name: ni.bmp       Lokation: 67072    Len: 3759     OLen: 12344    Compr: 2 
+Name: o.bmp        Lokation: 70570    Len: 3498     OLen: 12344    Compr: 2 
+Name: oi.bmp       Lokation: 74144    Len: 3574     OLen: 12344    Compr: 2 
+Name: p.bmp        Lokation: 77465    Len: 3321     OLen: 12344    Compr: 2 
+Name: r.bmp        Lokation: 81708    Len: 4243     OLen: 12344    Compr: 2 
+Name: s.bmp        Lokation: 86003    Len: 4295     OLen: 12344    Compr: 2 
+Name: si.bmp       Lokation: 90341    Len: 4338     OLen: 12344    Compr: 2 
+Name: t.bmp        Lokation: 94520    Len: 4179     OLen: 12344    Compr: 2 
+Name: u.bmp        Lokation: 97940    Len: 3420     OLen: 12344    Compr: 2 
+Name: w.bmp        Lokation: 102617   Len: 4677     OLen: 12344    Compr: 2 
+Name: y.bmp        Lokation: 106103   Len: 3486     OLen: 12344    Compr: 2 
+Name: z.bmp        Lokation: 110380   Len: 4277     OLen: 12344    Compr: 2 
+Name: ze.bmp       Lokation: 114696   Len: 4316     OLen: 12344    Compr: 2 
+Name: zi.bmp       Lokation: 119022   Len: 4326     OLen: 12344    Compr: 2 

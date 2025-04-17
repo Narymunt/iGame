@@ -1,0 +1,15 @@
+Number of files in plansze.fox = 13
+Index: 
+Name: lok01.bmp    Lokation: 995271   Len: 994906   OLen: 3145784  Compr: 2 
+Name: lok02.bmp    Lokation: 1966158  Len: 970887   OLen: 3145784  Compr: 2 
+Name: lok03.bmp    Lokation: 2951645  Len: 985487   OLen: 3145784  Compr: 2 
+Name: lok04.bmp    Lokation: 3877957  Len: 926312   OLen: 3145784  Compr: 2 
+Name: lok05.bmp    Lokation: 4392442  Len: 514485   OLen: 3145784  Compr: 2 
+Name: lok06.bmp    Lokation: 4737050  Len: 344608   OLen: 3145784  Compr: 2 
+Name: lok07.bmp    Lokation: 5576649  Len: 839599   OLen: 3145784  Compr: 2 
+Name: lok08.bmp    Lokation: 6437651  Len: 861002   OLen: 3145784  Compr: 2 
+Name: lok09.bmp    Lokation: 7395008  Len: 957357   OLen: 3145784  Compr: 2 
+Name: rot001.bmp   Lokation: 7850303  Len: 455295   OLen: 3145784  Compr: 2 
+Name: duzemale.bmp Lokation: 8131124  Len: 280821   OLen: 3145784  Compr: 2 
+Name: quiz001.bmp  Lokation: 8697237  Len: 566113   OLen: 3145782  Compr: 2 
+Name: lok045.bmp   Lokation: 9590915  Len: 893678   OLen: 3145784  Compr: 2 
