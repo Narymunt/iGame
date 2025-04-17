@@ -12,6 +12,11 @@
 
 #include <Fox.h>
 
+#include "Resource.h"
+
+#include "Ball.h"
+#include "Player.h"
+
 //=== zmienne dla directx
 
 IDirect3D8			*pDirect3D;		// handler
@@ -73,47 +78,12 @@ long				h1,h2,h3,h4;	// do petli
 
 float				f1,f2,f3;
 
-//=== zawodnik #1
-
-CSprite				*pPlayer1;	// jego wyglad
-
-float				fPlayer1X;	// x na ekranie
-float				fPlayer1Y;	// y na ekranie
-
-float				fPlayer1AddX;	// in/de krementator
-float				fPlayer1AddY;	// in/de krementator
-
-float				fPlayer1LastAddX;	// jaki byl ostatni ? potrzebne do stwierdzenia w ktora
-float				fPlayer1LastAddY;	// strone ma kopac pilke
-
-float				fPlayer1Angle;	// kat obrotu
-
-float				fPlayer1Kick;		// si³a uderzenia
-
-//=== zawodnik #2
-
-CSprite				*pPlayer2;	// jego wygl¹d
-
-float				fPlayer2X;	// x na ekranie
-float				fPlayer2Y;	// y na ekranie
-
-float				fPlayer2AddX;	// inkrementator
-float				fPlayer2AddY;
-
-float				fPlayer2LastAddX;
-float				fPlayer2LastAddY;
-
-float				fPlayer2Angle;
-
-float				fPlayer2Kick;	// si³a uderzenia
+Player				*pGracz1;
+Player				*pGracz2;
 
 //=== pilka
 
-CSprite				*pBall;
-
-float				fBallX, fBallY, fBallZ;
-float				fBallAddX, fBallAddY, fBallAddZ;
-
+Ball				*pPilka;
 
 
 //=== pomocnicza, inicjalizuje direct3d i ustawia rozne dodatki
@@ -247,33 +217,64 @@ bool Direct3DInit()
 
 	// wczytaj obiekt graczy
 
-	pPlayer1 = new CSprite(255,255,255,255);
-	pMouseFile->Load("player1.tga");
-	pPlayer1->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
-		pMouseFile->Search("player1.tga"),pDevice);
+	pGracz1 = new Player(368+100,268);
 
-	fPlayer1X=368+100; fPlayer1Y=268;
-	fPlayer1AddX=0; fPlayer1AddY=0;
-	fPlayer1Angle=0;
+	pMouseFile->Load("a1.tga");
+	pGracz1->m_pFrames[0]->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("a1.tga"),pDevice);
 
-	pPlayer2 = new CSprite(255,255,255,255);
-	pMouseFile->Load("player2.tga");
-	pPlayer2->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
-		pMouseFile->Search("player2.tga"),pDevice);
+	pMouseFile->Load("a2.tga");
+	pGracz1->m_pFrames[1]->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("a2.tga"),pDevice);
 
-	fPlayer2X=368-100; fPlayer2Y=268;
-	fPlayer2AddX=0; fPlayer2AddY=0;
-	fPlayer2Angle=0;
+	pMouseFile->Load("a3.tga");
+	pGracz1->m_pFrames[2]->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("a3.tga"),pDevice);
+
+	pMouseFile->Load("a4.tga");
+	pGracz1->m_pFrames[3]->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("a4.tga"),pDevice);
+
+	// drugi gracz
+
+	pGracz2 = new Player(368-100,268);
+
+	pMouseFile->Load("b1.tga");
+	pGracz2->m_pFrames[0]->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("b1.tga"),pDevice);
+
+	pMouseFile->Load("b2.tga");
+	pGracz2->m_pFrames[1]->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("b2.tga"),pDevice);
+
+	pMouseFile->Load("b3.tga");
+	pGracz2->m_pFrames[2]->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("b3.tga"),pDevice);
+
+	pMouseFile->Load("b4.tga");
+	pGracz2->m_pFrames[3]->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("b4.tga"),pDevice);
+
 
 	// wczytaj obiekt pi³ki
 
-	pBall = new CSprite(255,255,255,255);
-	pMouseFile->Load("ball.tga");
-	pBall->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
-		pMouseFile->Search("ball.tga"),pDevice);
+	pPilka = new Ball();
 
-	fBallX=368; fBallY=268;
-	fBallAddX=0; fBallAddY=0;
+	pMouseFile->Load("pilka1.tga");
+	pPilka->m_pFrames[0]->InitializeTGAinMemory((unsigned int*) pMouseFile->pDataBuffer,
+		pMouseFile->Search("pilka1.tga"),pDevice);
+
+	pMouseFile->Load("pilka2.tga");
+	pPilka->m_pFrames[1]->InitializeTGAinMemory((unsigned int*) pMouseFile->pDataBuffer,
+		pMouseFile->Search("pilka2.tga"), pDevice);
+
+	pMouseFile->Load("pilka3.tga");
+	pPilka->m_pFrames[2]->InitializeTGAinMemory((unsigned int*) pMouseFile->pDataBuffer,
+		pMouseFile->Search("pilka3.tga"), pDevice);
+
+	pMouseFile->Load("pilka4.tga");
+	pPilka->m_pFrames[3]->InitializeTGAinMemory((unsigned int*) pMouseFile->pDataBuffer,
+		pMouseFile->Search("pilka4.tga"), pDevice);
 
 
 	return true;
@@ -290,318 +291,251 @@ void UpdateScene()
 
 	// player 1 biegnie
 
+	pGracz1->m_ucCurrentFrame=(pGracz1->m_fX+pGracz1->m_fY)/2;
+	pGracz1->m_ucCurrentFrame%=3;
+
 	// nie za szybko ? 
 
-	if (fPlayer1AddX>2.0f)
+	if (pGracz1->m_fAddX>2.0f)
 	{
-		fPlayer1AddX=2.0f;
+		pGracz1->m_fAddX=2.0f;
 	}
 
-	if (fPlayer1AddX<-2.0f)
+	if (pGracz1->m_fAddX<-2.0f)
 	{
-		fPlayer1AddX=-2.0f;
+		pGracz1->m_fAddX=-2.0f;
 	}
 
-	if (fPlayer1AddY>2.0f)
+	if (pGracz1->m_fAddY>2.0f)
 	{
-		fPlayer1AddY=2.0f;
+		pGracz1->m_fAddY=2.0f;
 	}
 
-	if (fPlayer1AddY<-2.0f)
+	if (pGracz1->m_fAddY<-2.0f)
 	{
-		fPlayer1AddY=-2.0f;
+		pGracz1->m_fAddY=-2.0f;
 	}
 
-		fPlayer1X+=fPlayer1AddX;
-		fPlayer1Y+=fPlayer1AddY;
+	pGracz1->m_fX+=pGracz1->m_fAddX;
+	pGracz1->m_fY+=pGracz1->m_fAddY;
+
 
 	// odbicia od scian
 
-	if (fPlayer1X>736 && fPlayer1AddX>0)	// prawa
+	if (pGracz1->m_fX>736 && pGracz1->m_fAddX>0)	// prawa
 	{
-		fPlayer1AddX = -fPlayer1AddX+(fPlayer1AddX*0.3f);
+		pGracz1->m_fAddX = -pGracz1->m_fAddX+(pGracz1->m_fAddX*0.3f);
 	}
 	
-	if (fPlayer1X<0&&fPlayer1AddX<0 )		// lewa
+	if (pGracz1->m_fX<0 && pGracz1->m_fAddX<0 )		// lewa
 	{
-		fPlayer1AddX = -fPlayer1AddX+(fPlayer1AddX*0.3f);
+		pGracz1->m_fAddX = -pGracz1->m_fAddX+(pGracz1->m_fAddX*0.3f);
 	}
 
-	if (fPlayer1Y<0 && fPlayer1AddY<0)		// gora
+	if (pGracz1->m_fY<0 && pGracz1->m_fAddY<0)		// gora
 	{
-		fPlayer1AddY = -fPlayer1AddY+(fPlayer1AddY*0.3f);
+		pGracz1->m_fAddY = -pGracz1->m_fAddY+(pGracz1->m_fAddY*0.3f);
 	}
 
-	if (fPlayer1Y>536 && fPlayer1AddY>0)
+	if (pGracz1->m_fY>536 && pGracz1->m_fAddY>0)
 	{
-		fPlayer1AddY = - fPlayer1AddY+(fPlayer1AddY*0.3f);
+		pGracz1->m_fAddY = -pGracz1->m_fAddY+(pGracz1->m_fAddY*0.3f);
 	}
 
-	// odbicia wzajemne poziome
-
-//	for (h1=0;h1<ILE_KULEK;h1++)
-//	{
-//		if (
-//			(fKabzdelX[iLicznik]>fKabzdelX[h1])&&
-//			(fKabzdelX[iLicznik]<fKabzdelX[h1]+64)&&
-//			fKabzdelAddX[iLicznik]<0)	// prawa
-//		{
-//			fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik]-fKabzdelAddX[h1];
-//			fKabzdelAddX[h1] = -fKabzdelAddX[h1]-fKabzdelAddX[iLicznik];
-//
-//			pBounce->Play(pAudio,0,0,0);
-
-			//fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik]*0.7f;
-//		}
-//
-//		if (
-//			(fKabzdelX[iLicznik]<fKabzdelX[h1])&&
-//			(fKabzdelX[iLicznik]>fKabzdelX[h1]-64)&&
-//			fKabzdelAddX[iLicznik]>0)	// lewa
-//		{
-//			fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik]-fKabzdelAddX[h1];
-//			fKabzdelAddX[h1] = -fKabzdelAddX[h1]-fKabzdelAddX[iLicznik];
-
-//			pBounce->Play(pAudio,0,0,0);
-
-//		}
-			
-
-//		if (fKabzdelX[iLicznik]>fKabzdelX[h1]&&fKabzdelX[iLicznik]-64<fKabzdelX[h1])	// lewa
-//		{
-			//fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik];
-//		}
-
-//	}
 
 	// tarcie poziome i pionowe (biegnie pod gorke, albo z gorki)
 
-	if (fPlayer1AddX>0) fPlayer1AddX-=0.1f;
-	if (fPlayer1AddX<0) fPlayer1AddX+=0.1f;
-	
-	if (fPlayer1AddY>0)	fPlayer1AddY-=0.1f;
-	if (fPlayer1AddY<0) fPlayer1AddY+=0.1f;
+	if (pGracz1->m_fAddY>0)	pGracz1->m_fAddY-=0.1f;
+	if (pGracz1->m_fAddY<0) pGracz1->m_fAddY+=0.1f;
+	if (pGracz1->m_fAddX>0)	pGracz1->m_fAddX-=0.1f;
+	if (pGracz1->m_fAddX<0) pGracz1->m_fAddX+=0.1f;
 
 	// przesuniecie na ekranie
 
-	pPlayer1->SetTranslation(fPlayer1X, fPlayer1Y);
+	pGracz1->m_pFrames[pGracz1->m_ucCurrentFrame]->SetTranslation(pGracz1->m_fX, pGracz1->m_fY);
 	
 	// obrot
 
-	pPlayer1->SetRotationCenter(32,32);
-	pPlayer1->SetRotation(fPlayer1Angle);	
+	pGracz1->m_pFrames[pGracz1->m_ucCurrentFrame]->SetRotationCenter(36,84);
+	pGracz1->m_pFrames[pGracz1->m_ucCurrentFrame]->SetRotation(pGracz1->m_fAngle);
 
 	// player 2 biegnie
 
 	// nie za szybko ? 
 
-	if (fPlayer2AddX>2.0f)
+	if (pGracz2->m_fAddX>2.0f)
 	{
-		fPlayer2AddX=2.0f;
+		pGracz2->m_fAddX=2.0f;
 	}
 
-	if (fPlayer2AddX<-2.0f)
+	if (pGracz2->m_fAddX<-2.0f)
 	{
-		fPlayer2AddX=-2.0f;
+		pGracz2->m_fAddX=-2.0f;
 	}
 
-	if (fPlayer2AddY>2.0f)
+	if (pGracz2->m_fAddY>2.0f)
 	{
-		fPlayer2AddY=2.0f;
+		pGracz2->m_fAddY=2.0f;
 	}
 
-	if (fPlayer2AddY<-2.0f)
+	if (pGracz2->m_fAddY<-2.0f)
 	{
-		fPlayer2AddY=-2.0f;
+		pGracz2->m_fAddY=-2.0f;
 	}
 
-	fPlayer2X+=fPlayer2AddX;
-	fPlayer2Y+=fPlayer2AddY;
+	pGracz2->m_fX+=pGracz2->m_fAddX;
+	pGracz2->m_fY+=pGracz2->m_fAddY;
 
 	// odbicia od scian
 
-	if (fPlayer2X>736 && fPlayer2AddX>0)	// prawa
+	if (pGracz2->m_fX>736 && pGracz2->m_fAddX>0)	// prawa
 	{
-		fPlayer2AddX = -fPlayer2AddX+(fPlayer2AddX*0.3f);
+		pGracz2->m_fAddX = -pGracz2->m_fAddX+(pGracz2->m_fAddX*0.3f);
 	}
 	
-	if (fPlayer2X<0&&fPlayer2AddX<0 )		// lewa
+	if (pGracz2->m_fX<0&&pGracz2->m_fAddX<0 )		// lewa
 	{
-		fPlayer2AddX = -fPlayer2AddX+(fPlayer2AddX*0.3f);
+		pGracz2->m_fAddX = -pGracz2->m_fAddX+(pGracz2->m_fAddX*0.3f);
 	}
 
-	if (fPlayer2Y<0 && fPlayer2AddY<0)		// gora
+	if (pGracz2->m_fY<0 && pGracz2->m_fAddY<0)		// gora
 	{
-		fPlayer2AddY = -fPlayer2AddY+(fPlayer2AddY*0.3f);
+		pGracz2->m_fAddY = -pGracz2->m_fAddY+(pGracz2->m_fAddY*0.3f);
 	}
 
-	if (fPlayer2Y>536 && fPlayer2AddY>0)
+	if (pGracz2->m_fY>536 && pGracz2->m_fAddY>0)
 	{
-		fPlayer2AddY = - fPlayer2AddY+(fPlayer2AddY*0.3f);
+		pGracz2->m_fAddY = - pGracz2->m_fAddY+(pGracz2->m_fAddY*0.3f);
 	}
-
-	// odbicia wzajemne poziome
-
-//	for (h1=0;h1<ILE_KULEK;h1++)
-//	{
-//		if (
-//			(fKabzdelX[iLicznik]>fKabzdelX[h1])&&
-//			(fKabzdelX[iLicznik]<fKabzdelX[h1]+64)&&
-//			fKabzdelAddX[iLicznik]<0)	// prawa
-//		{
-//			fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik]-fKabzdelAddX[h1];
-//			fKabzdelAddX[h1] = -fKabzdelAddX[h1]-fKabzdelAddX[iLicznik];
-//
-//			pBounce->Play(pAudio,0,0,0);
-
-			//fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik]*0.7f;
-//		}
-//
-//		if (
-//			(fKabzdelX[iLicznik]<fKabzdelX[h1])&&
-//			(fKabzdelX[iLicznik]>fKabzdelX[h1]-64)&&
-//			fKabzdelAddX[iLicznik]>0)	// lewa
-//		{
-//			fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik]-fKabzdelAddX[h1];
-//			fKabzdelAddX[h1] = -fKabzdelAddX[h1]-fKabzdelAddX[iLicznik];
-
-//			pBounce->Play(pAudio,0,0,0);
-
-//		}
-			
-
-//		if (fKabzdelX[iLicznik]>fKabzdelX[h1]&&fKabzdelX[iLicznik]-64<fKabzdelX[h1])	// lewa
-//		{
-			//fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik];
-//		}
-
-//	}
 
 	// tarcie poziome i pionowe (biegnie pod gorke, albo z gorki)
 
-	if (fPlayer2AddX>0) fPlayer2AddX-=0.1f;
-	if (fPlayer2AddX<0) fPlayer2AddX+=0.1f;
+	if (pGracz2->m_fAddX>0) pGracz2->m_fAddX-=0.1f;
+	if (pGracz2->m_fAddX<0) pGracz2->m_fAddX+=0.1f;
 	
-	if (fPlayer2AddY>0)	fPlayer2AddY-=0.1f;
-	if (fPlayer2AddY<0) fPlayer2AddY+=0.1f;
+	if (pGracz2->m_fAddY>0)	pGracz2->m_fAddY-=0.1f;
+	if (pGracz2->m_fAddY<0) pGracz2->m_fAddY+=0.1f;
 
 	// przesuniecie na ekranie
 
-	pPlayer2->SetTranslation(fPlayer2X, fPlayer2Y);
+	pGracz2->m_pFrames[pGracz2->m_ucCurrentFrame]->SetTranslation(pGracz2->m_fX, pGracz2->m_fY);
 	
 	// obrot
 
-	pPlayer2->SetRotationCenter(32,32);
-	pPlayer2->SetRotation(fPlayer2Angle);	
+	pGracz2->m_pFrames[pGracz2->m_ucCurrentFrame]->SetRotationCenter(36,84);
+	pGracz2->m_pFrames[pGracz2->m_ucCurrentFrame]->SetRotation(pGracz2->m_fAngle);
 
 	//=== pilka, nie ma ograniczen predkosci dla pilki
 
-	fBallX+=fBallAddX;
-	fBallY+=fBallAddY;
+	pPilka->m_ucCurrentFrame=((int)((pPilka->m_fBallAddX+pPilka->m_fBallAddY)));
+	pPilka->m_ucCurrentFrame%=3;
+
+	pPilka->m_fBallX+=pPilka->m_fBallAddX;
+	pPilka->m_fBallY+=pPilka->m_fBallAddY;
 
 	// odbicia od scian
 
-	if (fBallX>736 && fBallAddX>0)	// prawa
+	if (pPilka->m_fBallX>736 && pPilka->m_fBallAddX>0)	// prawa
 	{
-		fBallAddX = -fBallAddX+(fBallAddX*0.3f);
+		pPilka->m_fBallAddX = -pPilka->m_fBallAddX+(pPilka->m_fBallAddX*0.3f);
 	}
 	
-	if (fBallX<0&&fBallAddX<0 )		// lewa
+	if (pPilka->m_fBallX<0&&pPilka->m_fBallAddX<0 )		// lewa
 	{
-		fBallAddX = -fBallAddX+(fBallAddX*0.3f);
+		pPilka->m_fBallAddX = -pPilka->m_fBallAddX+(pPilka->m_fBallAddX*0.3f);
 	}
 
-	if (fBallY<0 && fBallAddY<0)		// gora
+	if (pPilka->m_fBallY<36 && pPilka->m_fBallAddY<0)		// gora
 	{
-		fBallAddY = -fBallAddY+(fBallAddY*0.3f);
+		pPilka->m_fBallAddY = -pPilka->m_fBallAddY+(pPilka->m_fBallAddY*0.3f);
 	}
 
-	if (fBallY>536 && fBallAddY>0)
+	if (pPilka->m_fBallY>536 && pPilka->m_fBallAddY>0)
 	{
-		fBallAddY = -fBallAddY+(fBallAddY*0.3f);
+		pPilka->m_fBallAddY = -pPilka->m_fBallAddY+(pPilka->m_fBallAddY*0.3f);
 	}
 
 	// odbicia od graczy (jeden kopnal w drugiego)
 
-	if ( (fBallX-fPlayer1X)<64 && (fBallX-fPlayer1X)>-64 &&
-		 (fBallY-fPlayer1Y)<64 && (fBallY-fPlayer1Y)>-64 )
+	if ( (pPilka->m_fBallX-pGracz1->m_fX-36)<48 && (pPilka->m_fBallX-pGracz1->m_fX-36)>-48 &&
+		 (pPilka->m_fBallY-pGracz1->m_fY-84)<48 && (pPilka->m_fBallY-pGracz1->m_fY-84)>-48 )
 	{
 		if (GetAsyncKeyState(VK_RSHIFT)!=0)
 		{
-			fBallAddX = 5*fPlayer1AddX+(fBallAddX*0.3f);
-			fBallAddY = 5*fPlayer1AddY+(fBallAddY*0.3f);
+			pPilka->m_fBallAddX = 5*pGracz1->m_fAddX+(pPilka->m_fBallAddX*0.3f);
+			pPilka->m_fBallAddY = 5*pGracz1->m_fAddY+(pPilka->m_fBallAddY*0.3f);
 		}
 		else
 		{
-			fBallAddX = fPlayer1AddX+(fBallAddX*0.3f);
-			fBallAddY = fPlayer1AddY+(fBallAddY*0.3f);
+			pPilka->m_fBallAddX = pGracz1->m_fAddX+(pPilka->m_fBallAddX*0.3f);
+			pPilka->m_fBallAddY = pGracz1->m_fAddY+(pPilka->m_fBallAddY*0.3f);
 		}
 	}
 
 
-	if ( (fBallX-fPlayer2X)<64 && (fBallX-fPlayer2X)>-64 &&
-		 (fBallY-fPlayer2Y)<64 && (fBallY-fPlayer2Y)>-64 )
+	if ( (pPilka->m_fBallX-pGracz2->m_fX)<64 && (pPilka->m_fBallX-pGracz2->m_fX)>-64 &&
+		 (pPilka->m_fBallY-pGracz2->m_fY)<64 && (pPilka->m_fBallY-pGracz2->m_fY)>-64 )
 	{
 		if (GetAsyncKeyState(VK_LSHIFT)!=0)
 		{
-			fBallAddX = 5*fPlayer2AddX+(fBallAddX*0.3f);
-			fBallAddY = 5*fPlayer2AddY+(fBallAddY*0.3f);
+			pPilka->m_fBallAddX = 5*pGracz2->m_fAddX+(pPilka->m_fBallAddX*0.3f);
+			pPilka->m_fBallAddY = 5*pGracz2->m_fAddY+(pPilka->m_fBallAddY*0.3f);
 		}
 		else
 		{
-			fBallAddX = fPlayer2AddX+(fBallAddX*0.3f);
-			fBallAddY = fPlayer2AddY+(fBallAddY*0.3f);
+			pPilka->m_fBallAddX = pGracz2->m_fAddX+(pPilka->m_fBallAddX*0.3f);
+			pPilka->m_fBallAddY = pGracz2->m_fAddY+(pPilka->m_fBallAddY*0.3f);
 		}
 	}
 
 	// zderzyli sie ? - odbicie albo ciagniecie
-
-	if ( (fPlayer1X-fPlayer2X)<64 && (fPlayer1X-fPlayer2X)>-64 &&
-		 (fPlayer1Y-fPlayer2Y)<64 && (fPlayer1Y-fPlayer2Y)>-64 )
+/*
+	if ( (pGracz1->m_fX-pGracz2->m_fX)<64 && (pGracz1->m_fX-pGracz2->m_fX)>-64 &&
+		 (pGracz1->m_fY-pGracz2->m_fY)<64 && (pGracz1->m_fY-pGracz2->m_fY)>-64 )
 	{
 		if (GetAsyncKeyState(VK_LSHIFT)!=0)
 		{
-			fPlayer1AddX = 2.5*fPlayer2AddX+(fPlayer1AddX*0.3f);
-			fPlayer1AddY = 2.5*fPlayer2AddY+(fPlayer1AddY*0.3f);
+			pGracz1->m_fAddY = 2.5*pGracz2->m_fAddX+(pGracz1->m_fAddY*0.3f);
+			pGracz1->m_fAddY = 2.5*pGracz2->m_fAddY+(pGracz1->m_fAddY*0.3f);
 		}
 		else //if (GetAsyncKeyState(VK_RSHIFT)==0)
 		{
-			fPlayer1AddX = fPlayer2AddX+(fPlayer1AddX*0.3f);
-			fPlayer1AddY = fPlayer2AddY+(fPlayer1AddY*0.3f);
+			pGracz1->m_fAddY = pGracz2->m_fAddX+(pGracz1->m_fAddY*0.3f);
+			pGracz1->m_fAddY = pGracz2->m_fAddY+(pGracz1->m_fAddY*0.3f);
 		}
 
 
 		if (GetAsyncKeyState(VK_RSHIFT)!=0)
 		{
-			fPlayer2AddX = 2.5*fPlayer1AddX+(fPlayer2AddX*0.3f);
-			fPlayer2AddY = 2.5*fPlayer1AddY+(fPlayer2AddY*0.3f);
+			pGracz2->m_fAddX = 2.5*pGracz1->m_fAddY+(pGracz2->m_fAddX*0.3f);
+			pGracz2->m_fAddY = 2.5*pGracz1->m_fAddY+(pGracz2->m_fAddY*0.3f);
 		}
 		else //if (GetAsyncKeyState(VK_LSHIFT)==0)
 		{
-			fPlayer2AddX = fPlayer1AddX+(fPlayer1AddX*0.3f);
-			fPlayer2AddY = fPlayer1AddY+(fPlayer1AddY*0.3f);
+			pGracz2->m_fAddX = pGracz1->m_fAddY+(pGracz1->m_fAddY*0.3f);
+			pGracz2->m_fAddY = pGracz1->m_fAddY+(pGracz1->m_fAddY*0.3f);
 		}
 
 
 	}
 
-
+*/
 
 	// tarcie poziome i pionowe, pilka leci pod gorke, albo toczy sie z gorki
 
-	if (fBallAddX>0) fBallAddX-=0.01f;
-	if (fBallAddX<0) fBallAddX+=0.01f;
+	if (pPilka->m_fBallAddX>0) pPilka->m_fBallAddX-=0.01f;
+	if (pPilka->m_fBallAddX<0) pPilka->m_fBallAddX+=0.01f;
 	
-	if (fBallAddY>0) fBallAddY-=0.01f;
-	if (fBallAddY<0) fBallAddY+=0.01f;
+	if (pPilka->m_fBallAddY>0) pPilka->m_fBallAddY-=0.01f;
+	if (pPilka->m_fBallAddY<0) pPilka->m_fBallAddY+=0.01f;
 
 	// przesuniecie na ekranie
 
-	pBall->SetTranslation(fBallX, fBallY);
+	pPilka->m_pFrames[pPilka->m_ucCurrentFrame]->SetTranslation(pPilka->m_fBallX, pPilka->m_fBallY);
 	
 	// obrot
 
-	f1=1+(fBallAddX+fBallAddY)/10;
+	f1=1+(pPilka->m_fBallAddX+pPilka->m_fBallAddY)/10;
 
 	if (f1<0)
 	{
@@ -619,8 +553,8 @@ void UpdateScene()
 	}
 
 //	pBall->SetRotationCenter((64*f1)/2,(64*f1)/2);
-	pBall->SetRotationCenter(32,32);
-	pBall->SetRotation(fBallAddX*fBallAddY*4);	
+	pPilka->m_pFrames[pPilka->m_ucCurrentFrame]->SetRotationCenter(12,13);
+	pPilka->m_pFrames[pPilka->m_ucCurrentFrame]->SetRotation(pPilka->m_fBallAddX*pPilka->m_fBallAddY*4);	
 
 	// skala
 	
@@ -629,9 +563,9 @@ void UpdateScene()
 
 	// rysuj
 
-	pBall->Render();
-	pPlayer1->Render();
-	pPlayer2->Render();
+	pPilka->m_pFrames[pPilka->m_ucCurrentFrame]->Render();
+	pGracz1->m_pFrames[pGracz1->m_ucCurrentFrame]->Render();
+	pGracz2->m_pFrames[pGracz2->m_ucCurrentFrame]->Render();
 
 	//=== koniec pilka, teraz asynchroniczne sprawdzenie klawiatury
 
@@ -641,59 +575,59 @@ void UpdateScene()
 	{
 							// zapamietaj (bedzie potrzebne przy kopnieciu pilki)
 
-					fPlayer1LastAddX = fPlayer1AddX;
-					fPlayer1LastAddY = fPlayer1AddY;
+					pGracz1->m_fLastAddX = pGracz1->m_fAddX;
+					pGracz1->m_fLastAddY = pGracz1->m_fAddY;
 
 					// lewo 
 
-					if (fPlayer1Angle>=0 && fPlayer1Angle<1.5f)
+					if (pGracz1->m_fAngle>=0 && pGracz1->m_fAngle<1.5f)
 					{
-						fPlayer1AddX-=fPlayer1Angle;
-						fPlayer1AddY-=(1.5f-fPlayer1Angle);
+						pGracz1->m_fAddX-=pGracz1->m_fAngle;
+						pGracz1->m_fAddY-=(1.5f-pGracz1->m_fAngle);
 					}
 
-					if (fPlayer1Angle>=1.5f && fPlayer1Angle<3.0f)
+					if (pGracz1->m_fAngle>=1.5f && pGracz1->m_fAngle<3.0f)
 					{
-						fPlayer1AddX-=(3.0f-fPlayer1Angle);
-						fPlayer1AddY+=fPlayer1Angle-1.5f;
+						pGracz1->m_fAddX-=(3.0f-pGracz1->m_fAngle);
+						pGracz1->m_fAddY+=pGracz1->m_fAngle-1.5f;
 					}
 
-					if (fPlayer1Angle>=3.0f && fPlayer1Angle<4.7f)
+					if (pGracz1->m_fAngle>=3.0f && pGracz1->m_fAngle<4.7f)
 					{
-						fPlayer1AddX+=fPlayer1Angle-3.0f;
-						fPlayer1AddY+=4.5f-fPlayer1Angle;
+						pGracz1->m_fAddX+=pGracz1->m_fAngle-3.0f;
+						pGracz1->m_fAddY+=4.5f-pGracz1->m_fAngle;
 					}
 
-					if (fPlayer1Angle>=4.7)
+					if (pGracz1->m_fAngle>=4.7)
 					{
-						fPlayer1AddX+=6.3f-fPlayer1Angle;
-						fPlayer1AddY-=6.3f-fPlayer1Angle;
+						pGracz1->m_fAddX+=6.3f-pGracz1->m_fAngle;
+						pGracz1->m_fAddY-=6.3f-pGracz1->m_fAngle;
 					}
 
 					// prawo
 
-					if (fPlayer1Angle<0 && fPlayer1Angle>-1.6f)
+					if (pGracz1->m_fAngle<0 && pGracz1->m_fAngle>-1.6f)
 					{
-						fPlayer1AddX-=fPlayer1Angle;
-						fPlayer1AddY-=(1.5f-fPlayer1Angle);
+						pGracz1->m_fAddX-=pGracz1->m_fAngle;
+						pGracz1->m_fAddY-=(1.5f-pGracz1->m_fAngle);
 					}
 
-					if (fPlayer1Angle<=-1.6f && fPlayer1Angle>-3.1f)
+					if (pGracz1->m_fAngle<=-1.6f && pGracz1->m_fAngle>-3.1f)
 					{
-						fPlayer1AddX+=(3.1f+fPlayer1Angle);
-						fPlayer1AddY-=fPlayer1Angle+1.6f;
+						pGracz1->m_fAddX+=(3.1f+pGracz1->m_fAngle);
+						pGracz1->m_fAddY-=pGracz1->m_fAngle+1.6f;
 					}
 
-					if (fPlayer1Angle<=-3.1f && fPlayer1Angle>-4.7f)
+					if (pGracz1->m_fAngle<=-3.1f && pGracz1->m_fAngle>-4.7f)
 					{
-						fPlayer1AddX+=fPlayer1Angle+3.0f;
-						fPlayer1AddY+=4.5f-fPlayer1Angle;
+						pGracz1->m_fAddX+=pGracz1->m_fAngle+3.0f;
+						pGracz1->m_fAddY+=4.5f-pGracz1->m_fAngle;
 					}
 
-					if (fPlayer1Angle<=-4.7)
+					if (pGracz1->m_fAngle<=-4.7)
 					{
-						fPlayer1AddX-=6.3f-fPlayer1Angle;
-						fPlayer1AddY-=6.3f-fPlayer1Angle;
+						pGracz1->m_fAddX-=6.3f-pGracz1->m_fAngle;
+						pGracz1->m_fAddY-=6.3f-pGracz1->m_fAngle;
 					}
 					
 	}
@@ -702,75 +636,75 @@ void UpdateScene()
 	{
 					// lewo 
 
-					if (fPlayer1Angle>=0 && fPlayer1Angle<1.5f)
+					if (pGracz1->m_fAngle>=0 && pGracz1->m_fAngle<1.5f)
 					{
-						fPlayer1AddX+=fPlayer1Angle;
-						fPlayer1AddY+=(1.5f-fPlayer1Angle);
+						pGracz1->m_fAddX+=pGracz1->m_fAngle;
+						pGracz1->m_fAddY+=(1.5f-pGracz1->m_fAngle);
 					}
 
-					if (fPlayer1Angle>=1.5f && fPlayer1Angle<3.0f)
+					if (pGracz1->m_fAngle>=1.5f && pGracz1->m_fAngle<3.0f)
 					{
-						fPlayer1AddX+=(3.0f-fPlayer1Angle);
-						fPlayer1AddY-=fPlayer1Angle-1.5f;
+						pGracz1->m_fAddX+=(3.0f-pGracz1->m_fAngle);
+						pGracz1->m_fAddY-=pGracz1->m_fAngle-1.5f;
 					}
 
-					if (fPlayer1Angle>=3.0f && fPlayer1Angle<4.7f)
+					if (pGracz1->m_fAngle>=3.0f && pGracz1->m_fAngle<4.7f)
 					{
-						fPlayer1AddX-=fPlayer1Angle-3.0f;
-						fPlayer1AddY-=4.5f-fPlayer1Angle;
+						pGracz1->m_fAddX-=pGracz1->m_fAngle-3.0f;
+						pGracz1->m_fAddY-=4.5f-pGracz1->m_fAngle;
 					}
 
-					if (fPlayer1Angle>=4.7)
+					if (pGracz1->m_fAngle>=4.7)
 					{
-						fPlayer1AddX-=6.3f-fPlayer1Angle;
-						fPlayer1AddY+=6.3f-fPlayer1Angle;
+						pGracz1->m_fAddX-=6.3f-pGracz1->m_fAngle;
+						pGracz1->m_fAddY+=6.3f-pGracz1->m_fAngle;
 					}
 
 					// prawo
 
-					if (fPlayer1Angle<0 && fPlayer1Angle>-1.6f)
+					if (pGracz1->m_fAngle<0 && pGracz1->m_fAngle>-1.6f)
 					{
-						fPlayer1AddX+=fPlayer1Angle;
-						fPlayer1AddY+=(1.5f-fPlayer1Angle);
+						pGracz1->m_fAddX+=pGracz1->m_fAngle;
+						pGracz1->m_fAddY+=(1.5f-pGracz1->m_fAngle);
 					}
 
-					if (fPlayer1Angle<=-1.6f && fPlayer1Angle>-3.1f)
+					if (pGracz1->m_fAngle<=-1.6f && pGracz1->m_fAngle>-3.1f)
 					{
-						fPlayer1AddX-=(3.1f+fPlayer1Angle);
-						fPlayer1AddY+=fPlayer1Angle+1.6f;
+						pGracz1->m_fAddX-=(3.1f+pGracz1->m_fAngle);
+						pGracz1->m_fAddY+=pGracz1->m_fAngle+1.6f;
 					}
 
-					if (fPlayer1Angle<=-3.1f && fPlayer1Angle>-4.7f)
+					if (pGracz1->m_fAngle<=-3.1f && pGracz1->m_fAngle>-4.7f)
 					{
-						fPlayer1AddX-=fPlayer1Angle+3.0f;
-						fPlayer1AddY-=4.7f-fPlayer1Angle;
+						pGracz1->m_fAddX-=pGracz1->m_fAngle+3.0f;
+						pGracz1->m_fAddY-=4.7f-pGracz1->m_fAngle;
 					}
 
-					if (fPlayer1Angle<=-4.7)
+					if (pGracz1->m_fAngle<=-4.7)
 					{
-						fPlayer1AddX+=6.3f-fPlayer1Angle;
-						fPlayer1AddY+=6.3f-fPlayer1Angle;
+						pGracz1->m_fAddX+=6.3f-pGracz1->m_fAngle;
+						pGracz1->m_fAddY+=6.3f-pGracz1->m_fAngle;
 					}
 	}
 
 	if (GetAsyncKeyState(VK_LEFT)!=0)	// player1 odwraca sie w lewo
 	{
-					fPlayer1Angle+=0.1f;
+					pGracz1->m_fAngle+=0.1f;
 					
-					if (fPlayer1Angle>6.2)
+					if (pGracz1->m_fAngle>6.2)
 					{
-						fPlayer1Angle=0;
+						pGracz1->m_fAngle=0;
 					}
 	}
 
 	
 	if (GetAsyncKeyState(VK_RIGHT)!=0)	// player1 odwraca sie w prawo
 	{
-					fPlayer1Angle-=0.1f;
+					pGracz1->m_fAngle-=0.1f;
 
-					if (fPlayer1Angle<-6.2)
+					if (pGracz1->m_fAngle<-6.2)
 					{
-						fPlayer1Angle=0;
+						pGracz1->m_fAngle=0;
 					}
 	}
 
@@ -780,59 +714,59 @@ void UpdateScene()
 
 					// zapamietaj (bedzie potrzebne przy kopnieciu pilki)
 
-					fPlayer2LastAddX = fPlayer2AddX;
-					fPlayer2LastAddY = fPlayer2AddY;
+					pGracz2->m_fLastAddX = pGracz2->m_fAddX;
+					pGracz2->m_fLastAddY = pGracz2->m_fAddY;
 
 					// lewo 
 
-					if (fPlayer2Angle>=0 && fPlayer2Angle<1.5f)
+					if (pGracz2->m_fAngle>=0 && pGracz2->m_fAngle<1.5f)
 					{
-						fPlayer2AddX-=fPlayer2Angle;
-						fPlayer2AddY-=(1.5f-fPlayer2Angle);
+						pGracz2->m_fAddX-=pGracz2->m_fAngle;
+						pGracz2->m_fAddY-=(1.5f-pGracz2->m_fAngle);
 					}
 
-					if (fPlayer2Angle>=1.5f && fPlayer2Angle<3.0f)
+					if (pGracz2->m_fAngle>=1.5f && pGracz2->m_fAngle<3.0f)
 					{
-						fPlayer2AddX-=(3.0f-fPlayer2Angle);
-						fPlayer2AddY+=fPlayer2Angle-1.5f;
+						pGracz2->m_fAddX-=(3.0f-pGracz2->m_fAngle);
+						pGracz2->m_fAddY+=pGracz2->m_fAngle-1.5f;
 					}
 
-					if (fPlayer2Angle>=3.0f && fPlayer2Angle<4.7f)
+					if (pGracz2->m_fAngle>=3.0f && pGracz2->m_fAngle<4.7f)
 					{
-						fPlayer2AddX+=fPlayer2Angle-3.0f;
-						fPlayer2AddY+=4.5f-fPlayer2Angle;
+						pGracz2->m_fAddX+=pGracz2->m_fAngle-3.0f;
+						pGracz2->m_fAddY+=4.5f-pGracz2->m_fAngle;
 					}
 
-					if (fPlayer2Angle>=4.7)
+					if (pGracz2->m_fAngle>=4.7)
 					{
-						fPlayer2AddX+=6.3f-fPlayer2Angle;
-						fPlayer2AddY-=6.3f-fPlayer2Angle;
+						pGracz2->m_fAddX+=6.3f-pGracz2->m_fAngle;
+						pGracz2->m_fAddY-=6.3f-pGracz2->m_fAngle;
 					}
 
 					// prawo
 
-					if (fPlayer2Angle<0 && fPlayer2Angle>-1.6f)
+					if (pGracz2->m_fAngle<0 && pGracz2->m_fAngle>-1.6f)
 					{
-						fPlayer2AddX-=fPlayer2Angle;
-						fPlayer2AddY-=(1.5f-fPlayer2Angle);
+						pGracz2->m_fAddX-=pGracz2->m_fAngle;
+						pGracz2->m_fAddY-=(1.5f-pGracz2->m_fAngle);
 					}
 
-					if (fPlayer2Angle<=-1.6f && fPlayer2Angle>-3.1f)
+					if (pGracz2->m_fAngle<=-1.6f && pGracz2->m_fAngle>-3.1f)
 					{
-						fPlayer2AddX+=(3.1f+fPlayer2Angle);
-						fPlayer2AddY-=fPlayer2Angle+1.6f;
+						pGracz2->m_fAddX+=(3.1f+pGracz2->m_fAngle);
+						pGracz2->m_fAddY-=pGracz2->m_fAngle+1.6f;
 					}
 
-					if (fPlayer2Angle<=-3.1f && fPlayer2Angle>-4.7f)
+					if (pGracz2->m_fAngle<=-3.1f && pGracz2->m_fAngle>-4.7f)
 					{
-						fPlayer2AddX+=fPlayer2Angle+3.0f;
-						fPlayer2AddY+=4.5f-fPlayer2Angle;
+						pGracz2->m_fAddX+=pGracz2->m_fAngle+3.0f;
+						pGracz2->m_fAddY+=4.5f-pGracz2->m_fAngle;
 					}
 
-					if (fPlayer2Angle<=-4.7)
+					if (pGracz2->m_fAngle<=-4.7)
 					{
-						fPlayer2AddX-=6.3f-fPlayer2Angle;
-						fPlayer2AddY-=6.3f-fPlayer2Angle;
+						pGracz2->m_fAddX-=6.3f-pGracz2->m_fAngle;
+						pGracz2->m_fAddY-=6.3f-pGracz2->m_fAngle;
 					}
 					
 	}					
@@ -841,54 +775,54 @@ void UpdateScene()
 	{
 					// lewo 
 
-					if (fPlayer2Angle>=0 && fPlayer2Angle<1.5f)
+					if (pGracz2->m_fAngle>=0 && pGracz2->m_fAngle<1.5f)
 					{
-						fPlayer2AddX+=fPlayer2Angle;
-						fPlayer2AddY+=(1.5f-fPlayer2Angle);
+						pGracz2->m_fAddX+=pGracz2->m_fAngle;
+						pGracz2->m_fAddY+=(1.5f-pGracz2->m_fAngle);
 					}
 
-					if (fPlayer2Angle>=1.5f && fPlayer2Angle<3.0f)
+					if (pGracz2->m_fAngle>=1.5f && pGracz2->m_fAngle<3.0f)
 					{
-						fPlayer2AddX+=(3.0f-fPlayer2Angle);
-						fPlayer2AddY-=fPlayer2Angle-1.5f;
+						pGracz2->m_fAddX+=(3.0f-pGracz2->m_fAngle);
+						pGracz2->m_fAddY-=pGracz2->m_fAngle-1.5f;
 					}
 
-					if (fPlayer2Angle>=3.0f && fPlayer2Angle<4.7f)
+					if (pGracz2->m_fAngle>=3.0f && pGracz2->m_fAngle<4.7f)
 					{
-						fPlayer2AddX-=fPlayer2Angle-3.0f;
-						fPlayer2AddY-=4.5f-fPlayer2Angle;
+						pGracz2->m_fAddX-=pGracz2->m_fAngle-3.0f;
+						pGracz2->m_fAddY-=4.5f-pGracz2->m_fAngle;
 					}
 
-					if (fPlayer2Angle>=4.7)
+					if (pGracz2->m_fAngle>=4.7)
 					{
-						fPlayer2AddX-=6.3f-fPlayer2Angle;
-						fPlayer2AddY+=6.3f-fPlayer2Angle;
+						pGracz2->m_fAddX-=6.3f-pGracz2->m_fAngle;
+						pGracz2->m_fAddY+=6.3f-pGracz2->m_fAngle;
 					}
 
 					// prawo
 
-					if (fPlayer2Angle<0 && fPlayer2Angle>-1.6f)
+					if (pGracz2->m_fAngle<0 && pGracz2->m_fAngle>-1.6f)
 					{
-						fPlayer2AddX+=fPlayer2Angle;
-						fPlayer2AddY+=(1.5f-fPlayer2Angle);
+						pGracz2->m_fAddX+=pGracz2->m_fAngle;
+						pGracz2->m_fAddY+=(1.5f-pGracz2->m_fAngle);
 					}
 
-					if (fPlayer2Angle<=-1.6f && fPlayer2Angle>-3.1f)
+					if (pGracz2->m_fAngle<=-1.6f && pGracz2->m_fAngle>-3.1f)
 					{
-						fPlayer2AddX-=(3.1f+fPlayer2Angle);
-						fPlayer2AddY+=fPlayer2Angle+1.6f;
+						pGracz2->m_fAddX-=(3.1f+pGracz2->m_fAngle);
+						pGracz2->m_fAddY+=pGracz2->m_fAngle+1.6f;
 					}
 
-					if (fPlayer2Angle<=-3.1f && fPlayer2Angle>-4.7f)
+					if (pGracz2->m_fAngle<=-3.1f && pGracz2->m_fAngle>-4.7f)
 					{
-						fPlayer2AddX-=fPlayer2Angle+3.0f;
-						fPlayer2AddY-=4.7f-fPlayer2Angle;
+						pGracz2->m_fAddX-=pGracz2->m_fAngle+3.0f;
+						pGracz2->m_fAddY-=4.7f-pGracz2->m_fAngle;
 					}
 
-					if (fPlayer2Angle<=-4.7)
+					if (pGracz2->m_fAngle<=-4.7)
 					{
-						fPlayer2AddX+=6.3f-fPlayer2Angle;
-						fPlayer2AddY+=6.3f-fPlayer2Angle;
+						pGracz2->m_fAddX+=6.3f-pGracz2->m_fAngle;
+						pGracz2->m_fAddY+=6.3f-pGracz2->m_fAngle;
 					}
 					
 	}
@@ -896,11 +830,11 @@ void UpdateScene()
 	if (GetAsyncKeyState('A')!=0)	// odwraca sie w lewo
 	{
 					
-					fPlayer2Angle+=0.1f;
+					pGracz2->m_fAngle+=0.1f;
 					
-					if (fPlayer2Angle>6.2)
+					if (pGracz2->m_fAngle>6.2)
 					{
-						fPlayer2Angle=0;
+						pGracz2->m_fAngle=0;
 					}
 
 	}					
@@ -908,11 +842,11 @@ void UpdateScene()
 	if (GetAsyncKeyState('D')!=0)
 	{				
 		
-					fPlayer2Angle-=0.1f;
+					pGracz2->m_fAngle-=0.1f;
 
-					if (fPlayer2Angle<-6.2)
+					if (pGracz2->m_fAngle<-6.2)
 					{
-						fPlayer2Angle=0;
+						pGracz2->m_fAngle=0;
 					}
 	}
 
@@ -936,46 +870,46 @@ void UpdateScene()
 	pFont->OutputText(str,50,10);
 
 	pFont->OutputText("Player1 Angle: ",10,30);
-	_itoa(fPlayer1Angle*10,str,10);
+	_itoa(pGracz1->m_fAngle*10,str,10);
 	pFont->OutputText(str,120,30);
 
 	pFont->OutputText("Player1 X: ",10,50);
-	_itoa(fPlayer1X,str,10);
+	_itoa(pGracz1->m_fX,str,10);
 	pFont->OutputText(str,100,50);
 
 	pFont->OutputText("Y: ",140,50);
-	_itoa(fPlayer1Y,str,10);
+	_itoa(pGracz1->m_fY,str,10);
 	pFont->OutputText(str,160,50);
 
 	pFont->OutputText("LX: ", 190,50);
-	_itoa(fPlayer1LastAddX*100,str,10);
+	_itoa(pGracz1->m_fLastAddX*100,str,10);
 	pFont->OutputText(str,220,50);
 
 	pFont->OutputText("LY: ",250,50);
-	_itoa(fPlayer1LastAddY*100,str,10);
+	_itoa(pGracz1->m_fLastAddY*100,str,10);
 	pFont->OutputText(str,280,50);
 
 	_itoa(GetAsyncKeyState(VK_RSHIFT),str,10);
 	pFont->OutputText(str,10,170);
 
 	pFont->OutputText("Player2 Angle: ",10,130);
-	_itoa(fPlayer2Angle*10,str,10);
+	_itoa(pGracz2->m_fAngle*10,str,10);
 	pFont->OutputText(str,120,130);
 
 	pFont->OutputText("Player2 X: ",10,150);
-	_itoa(fPlayer2X,str,10);
+	_itoa(pGracz2->m_fX,str,10);
 	pFont->OutputText(str,100,150);
 
 	pFont->OutputText("Y: ",140,150);
-	_itoa(fPlayer2Y,str,10);
+	_itoa(pGracz2->m_fY,str,10);
 	pFont->OutputText(str,160,150);
 
 	pFont->OutputText("LX: ", 190,150);
-	_itoa(fPlayer2LastAddX*100,str,10);
+	_itoa(pGracz2->m_fLastAddX*100,str,10);
 	pFont->OutputText(str,220,150);
 
 	pFont->OutputText("LY: ",250,150);
-	_itoa(fPlayer2LastAddY*100,str,10);
+	_itoa(pGracz2->m_fLastAddY*100,str,10);
 	pFont->OutputText(str,280,150);
 
 	_itoa(GetAsyncKeyState(VK_LSHIFT),str,10);
@@ -1101,12 +1035,12 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	winClass.cbClsExtra		= 0;
 	winClass.cbWndExtra		= 0; 
 	winClass.hInstance		= hInstance; 
-	winClass.hIcon			= LoadIcon(NULL, IDI_APPLICATION);	// NULL zamiast icon
+	winClass.hIcon			= ::LoadIcon(hInstance, MAKEINTRESOURCE(KOZA_ICON));	// NULL zamiast icon
 	winClass.hCursor		= LoadCursor(NULL, IDC_ARROW); 
 	winClass.hbrBackground	= (HBRUSH)GetStockObject(BLACK_BRUSH); 
 	winClass.lpszMenuName	= NULL; 
 	winClass.lpszClassName	= "Kozio³ek Mato³ek";	//szClassName; 
-	winClass.hIconSm        = LoadIcon(NULL, IDI_APPLICATION);
+	winClass.hIconSm        = ::LoadIcon(hInstance, MAKEINTRESOURCE(KOZA_ICON));	// NULL zamiast icon
 	
 	if (!RegisterClassEx(&winClass)) return -1;
 
@@ -1166,7 +1100,7 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		DrawScene();	// rysuj klatke 
 	} 
 
-	free(pPlayer1);
+	free(pGracz1);
 
 
 	free (pBubble);
