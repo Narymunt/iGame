@@ -111,6 +111,10 @@ SOURCE=.\Sound.cpp
 
 SOURCE=.\Sprite.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=.\Sprite2.cpp
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
@@ -130,6 +134,10 @@ SOURCE=.\Sound.h
 # Begin Source File
 
 SOURCE=.\Sprite.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Sprite2.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"

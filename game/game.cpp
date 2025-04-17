@@ -15,31 +15,37 @@
 #include "Audio.h"			// system audio
 #include "Sound.h"			// dzwiek
 
+#include "Sprite2.h"		// drugi
+
 #define		ILE_OBIEKTOW	20
 
 //=== dla dx
 
-IDirect3D8			*pDirect3D;
-IDirect3DDevice8	*pDevice;
-HRESULT				hr;
-HWND				hWnd;
+IDirect3D8			*pDirect3D;		// direct
+IDirect3DDevice8	*pDevice;		// urzadzenie
+
+HRESULT				hr;				// wynik operacji
+
+HWND				hWnd;			// dla okna
 HINSTANCE			hInstance;
 
-bool bFullScreen;	// czy pelny ekran ? 
+bool				bFullScreen;	// czy pelny ekran ? 
 
-bool			leftButton;		// przyciski myszki
-bool			rightButton;
-bool			centerButton;
+//=== to dla myszki ===
 
-float			mouseX;
-float			mouseY;
+bool				leftButton;		// przyciski myszki
+bool				rightButton;
+bool				centerButton;
+
+float				mouseX;			// wspolrzedne myszy
+float				mouseY;
 
 
 //=== aktualny katalog
 
 char CurrentDirectory[200]		= {0,};	
 
-//=== liczniki
+//=== liczniki pomocnicze
 
 long	h1,h2,h3;
 
@@ -51,22 +57,24 @@ DWORD					g_StartTime			= timeGetTime();
 DWORD					g_EndTime			= g_StartTime;
 int						g_FrameRate			= 0;
 
-//=== glowne dla gry
+//=== glowne dla gry === 
 
 CFont		*pFont;			// jakas czcionka
 CAudio		*pAudio;		// audio 
 
-//=== obiekty graficzne
+//=== obiekty graficzne === 
 
 CSprite		**obiekty;
 CSprite		*back;
 CSprite		*kursor_myszy;
 
-//=== dzwieki
+CSprite2	*drugi;
+
+//=== dzwieki === 
 
 CSound		*pik;
 
-//=== pomocnicza
+//=== pomocnicza, inicjalizuje direct3d i ustawia rozne duperele ===
 
 bool Direct3DInit()
 {
@@ -75,7 +83,7 @@ bool Direct3DInit()
 
 	if (pDirect3D==NULL) 
 	{
-		MessageBox(0,"B³¹d inicjalizacji DirectX","B³¹d!",MB_OK);
+		MessageBox(0,"B³¹d inicjalizacji DirectX 8.1 !","B³¹d!",MB_OK);
 		return false;
 	}
 
@@ -88,7 +96,8 @@ bool Direct3DInit()
 	{
 		hr = pDirect3D->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, &displayMode);
 		
-		MessageBox(0,"Nie mo¿na pobraæ informacji o trybie DirectX","B³¹d!",MB_OK);
+		MessageBox(0,"Nie mo¿na pobraæ informacji o aktualnym trybie DirectX","B³¹d!",MB_OK);
+		
 		if (FAILED(hr)) return false;
 	}
 	else
@@ -96,10 +105,10 @@ bool Direct3DInit()
 		displayMode.Width = 800; //iWidth;
 		displayMode.Height = 600; //iHeight;
 		displayMode.RefreshRate = 0; 
-		displayMode.Format = D3DFMT_R5G6B5;		// dlaczego wlasnie tak ? 
+		displayMode.Format = D3DFMT_R5G6B5;		// dlaczego wlasnie tak ? ;>
 	}
 
-	// ustaw/zapamietaj parametry wyswietlania
+	// ustaw/zapamietaj aktualne parametry wyswietlania
 
 	D3DPRESENT_PARAMETERS presentParameters;
 
@@ -127,7 +136,7 @@ bool Direct3DInit()
 
 	if (FAILED(hr))	
 	{
-		MessageBox(0,"Nie mo¿na stworzyæ urz¹dzenia DirectX","B³¹d!",MB_OK);		
+		MessageBox(0,"Nie mo¿na stworzyæ urz¹dzenia DirectX!","B³¹d!",MB_OK);		
 		return false;
 	}
 
@@ -150,14 +159,13 @@ bool Direct3DInit()
 
 	D3DXMatrixIdentity(&mat);
 
+	// ustaw transformacje
+
 	pDevice->SetTransform(D3DTS_WORLD, &(D3DMATRIX)mat);
 	pDevice->SetTransform(D3DTS_VIEW, &(D3DMATRIX)mat);
 
-
-//	font.Initialize((HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(255,255,0));
-
-    pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE ); // backface culling 
-	pDevice->SetRenderState( D3DRS_LIGHTING, FALSE );	// swiatlo
+    pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );	// backface culling off
+	pDevice->SetRenderState( D3DRS_LIGHTING, FALSE );			// swiatlo
 	
 	// blending
 	
@@ -171,13 +179,12 @@ bool Direct3DInit()
 
 	// macierz widoku
 
-//	D3DXMATRIX mat;
 	D3DXMatrixTranslation(&mat, 0, 0, 5);
 	pDevice->SetTransform(D3DTS_VIEW, &(D3DMATRIX)mat);
 
 	// dodatkowe obiekty 
 	
-	obiekty = new CSprite* [50];
+	obiekty = new CSprite* [ILE_OBIEKTOW];
 
 	for (h1=0; h1<ILE_OBIEKTOW; h1++)	
 	{
@@ -199,21 +206,26 @@ bool Direct3DInit()
 	pFont = new CFont();
 	pFont->Initialize(pDevice,(HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(255,255,0));
 
-	kursor_myszy = new CSprite(128,255,255,255);
+	kursor_myszy = new CSprite(255,255,255,255);
 	kursor_myszy->Initialize(pDevice,"mouse.tga");
+
+	drugi = new CSprite2(255,255,255,255);
+	drugi->Initialize(pDevice,"mouse.tga");
 
 	return true;
 }
 
-// aktualizuj scenke
+//=== aktualizuj scenke ===
 
 void UpdateScene()
 {
 	char	str[20];
 	float	fIleRotacja;
 	
-	back->Render();	
+//	back->Render();	
 	
+	drugi->Render();
+
 	kursor_myszy->m_Translation.x=mouseX;
 	kursor_myszy->m_Translation.y=mouseY;
 	kursor_myszy->Render();
@@ -225,15 +237,15 @@ void UpdateScene()
 	obiekty[h1]->Render();
 	obiekty[h1]->m_Rotation+=fIleRotacja;
 
-	obiekty[h1]->m_RotCenter.x=-100;//h1<<4;
+	obiekty[h1]->m_RotCenter.x=0;//h1<<4;
 	obiekty[h1]->m_RotCenter.y=0;//h1<<4;
 
 	obiekty[h1]->m_Translation.x=400;
 	obiekty[h1]->m_Translation.y=300;
 
 
-	obiekty[h1]->m_Scaling.x=h1>>1;
-	obiekty[h1]->m_Scaling.y=-h1>>1;
+	obiekty[h1]->m_Scaling.x=1.0; //h1>>1;
+	obiekty[h1]->m_Scaling.y=1.0; //-h1>>1;
 	}
 
 	pFont->OutputText("FPS: ",10,10);
@@ -249,9 +261,9 @@ void DrawScene()
 {
 	
 	pDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0 );
-	//pDirect3D->Clear(D3DCOLOR_XRGB(0, 0, 0));
+	
 	pDevice->BeginScene();
-	//pDirect3D->BeginScene();
+	
 	
 	UpdateScene();	// to zamienic na game,background itepe
 	
@@ -288,6 +300,10 @@ LRESULT CALLBACK BasicWindowProc(HWND wpHWnd, UINT msg, WPARAM wParam, LPARAM lP
 			{
 				case VK_ESCAPE:
 					PostQuitMessage( 0 );
+					break;
+		
+				case VK_F1:
+					pik->Play(pAudio,0,0,0);
 					break;
 			}
 			break;
