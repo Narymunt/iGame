@@ -6,31 +6,29 @@
 --------------------Configuration: game - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.FRE\USTAWI~1\Temp\RSP2D1.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1.FRE\USTAWI~1\Temp\RSP25.tmp" with contents
 [
 /nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/game.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
 "C:\projects\game\game.cpp"
-"C:\projects\game\Sound.cpp"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.FRE\USTAWI~1\Temp\RSP2D1.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.FRE\USTAWI~1\Temp\RSP2D2.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.FRE\USTAWI~1\Temp\RSP25.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.FRE\USTAWI~1\Temp\RSP26.tmp" with contents
 [
 winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3d8.lib d3dx8.lib strmiids.lib dxguid.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/game.pdb" /machine:I386 /out:"Release/game.exe" 
 .\Release\Audio.obj
 .\Release\Direct3d.obj
 .\Release\Font.obj
 .\Release\game.obj
+.\Release\Sound.obj
 .\Release\Sprite.obj
 .\Release\Window.obj
-.\Release\Sound.obj
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.FRE\USTAWI~1\Temp\RSP2D2.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.FRE\USTAWI~1\Temp\RSP26.tmp"
 <h3>Output Window</h3>
 Compiling...
 game.cpp
 C:\projects\game\game.cpp(131) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
 C:\projects\game\game.cpp(132) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-Sound.cpp
 Linking...
 
 

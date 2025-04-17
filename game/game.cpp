@@ -164,6 +164,48 @@ void DrawScene()
 	pDirect3D->Present();
 }
 
+//=== obsluga zdarzen
+
+long FAR PASCAL 
+WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    switch (message)
+    {
+        case WM_ACTIVATEAPP:
+            // Pause if minimized or not the top window
+            //g_bActive = (wParam == WA_ACTIVE) || (wParam == WA_CLICKACTIVE);
+            return 0L;
+
+        case WM_DESTROY:
+            // Clean up and close the app
+            PostQuitMessage(0);
+            return 0L;
+
+        case WM_KEYDOWN:
+            // Handle any non-accelerated key commands
+            switch (wParam)
+            {
+				case VK_F1:
+					pik->Play(pAudio,0,0,0);				
+					return 0L;
+               
+				case VK_ESCAPE:
+					PostQuitMessage(0); // escape ? 
+					return 0L;
+            }
+            break;
+
+        case WM_SETCURSOR:
+            // Turn off the cursor since this is a full-screen app
+            SetCursor(NULL);
+            return TRUE;
+
+    }
+    return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
+
+
 //### start programu ###
 
 int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance, 
@@ -206,6 +248,20 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	
 	// petla glowna 
 
+	MSG msg;
+    ZeroMemory( &msg, sizeof(msg) );
+
+    while( msg.message != WM_QUIT )
+	     {
+           if( PeekMessage( &msg, NULL, 0U, 0U, PM_REMOVE ) )
+               {
+                   TranslateMessage( &msg );
+                   DispatchMessage( &msg );
+               }
+		   else
+			   DrawScene();				  
+		  }
+/*
 	while(1)
 	{
 		if (pWindow->CheckMessages()==-1)	break; // koniec ? 
@@ -215,7 +271,7 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 		DrawScene();	// rysuj klatke 
 	} 
-
+*/
 	delete pDirect3D;
 
 	return 0;
