@@ -19,7 +19,7 @@ CMapa::CMapa()
 	m_pBackground = NULL;	// zerujemy wskazniki
 	m_pFile = NULL;
 	m_pExitButton = NULL;
-
+	m_pMysticLogo = NULL;
 }
 
 //=== destruktor 
@@ -27,6 +27,12 @@ CMapa::CMapa()
 CMapa::~CMapa()
 {
 	
+	if (m_pMysticLogo!=NULL)
+	{
+		delete m_pMysticLogo;
+		m_pMysticLogo=NULL;
+	}
+
 	// zwolnij tlo jezeli uzywane
 	
 	if (m_pBackground!=NULL)
@@ -75,6 +81,14 @@ bool CMapa::GetActive(void)
 void CMapa::Initialize(IDirect3DDevice8 *pDevice)
 {
 	
+	m_pFile = new CFileSystem("Resource\\klocki.fox");
+	m_pFile->Load("mystic.tga");
+	m_pMysticLogo = new CSprite(255,255,255,255);
+	m_pMysticLogo->InitializeTGAinMemory((unsigned int*)m_pFile->pDataBuffer,
+		m_pFile->Search("mystic.tga"), pDevice);
+	delete m_pFile;
+	m_pFile = NULL;
+
 	m_pFile = new CFileSystem("Resource\\plansze.fox");	// otworz archiwum
 	m_pFile->Load("lok01.bmp");	// wczytujemy tlo
 
@@ -103,6 +117,12 @@ void CMapa::Initialize(IDirect3DDevice8 *pDevice)
 void CMapa::DeInitialize(void)
 {
 
+	if (m_pMysticLogo!=NULL)
+	{
+		delete m_pMysticLogo;
+		m_pMysticLogo=NULL;
+	}
+
 	// zwolnij tlo jezeli uzywane
 	
 	if (m_pBackground!=NULL)
@@ -128,10 +148,13 @@ int CMapa::DrawScene(long lTimer,float fMouseX, float fMouseY,
 {
 	m_pBackground->Render();	// rysuj tlo
 
+	m_pMysticLogo->SetTranslation(32,32);
+	m_pMysticLogo->Render();
 	
-	m_pExitButton->SetPosition(732,532);	// prawy dolny rog
+	m_pExitButton->SetPosition(0,472);	// lewy dolny rog
 	
-	return m_pExitButton->Draw(fMouseX,fMouseY,bLeftButton,bRightButton,bCenterButton); // przycisk
+	if (bLeftButton) return 2;
+	return 0;//m_pExitButton->Draw(fMouseX,fMouseY,bLeftButton,bRightButton,bCenterButton); // przycisk
 
 }
 //end

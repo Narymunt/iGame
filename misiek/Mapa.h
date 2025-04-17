@@ -39,7 +39,9 @@ private:
 	CButton	*m_pExitButton;	// przycisk wyjscia 
 
 	CSprite	*m_pBackground;	// tlo modulu
-	
+
+	CSprite *m_pMysticLogo;	// logo
+
 	CFileSystem	*m_pFile;	// od razu bedziemy zamykac
 
 };

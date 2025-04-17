@@ -16,6 +16,8 @@
 
 #include "Mapa.h"
 #include "Rotation.h"
+#include "Intro.h"
+#include "Quiz.h"
 
 // zasoby
 
@@ -82,6 +84,7 @@ enum STAN_GRY		{
 						MAPA,
 						START,
 						ROTATION,
+						ROTATION_PUZZLE,
 						DUZE_MALE,
 						DOTS2DOTS,
 						QUIZ,
@@ -97,6 +100,9 @@ enum STAN_GRY		{
 
 CMapa		*pMapa;		// modul mapy (labirynt 3d)
 CRotation	*pRotation;	// ukladanka
+CRotation	*pRotationPuzzle;	// ukladanka puzzle
+CIntro		*pIntro;	// intro - animacja 
+CQuiz		*pQuiz;		// quiz
 
 //=== dodatkowe
 
@@ -139,8 +145,8 @@ bool Direct3DInit()
 	{
 		displayMode.Width = 800;				//iWidth;
 		displayMode.Height = 600;				//iHeight;
-		displayMode.RefreshRate = 0; 
-		displayMode.Format = D3DFMT_A8R8G8B8;	//R5G6B5;		// tu mozna zmienic
+//		displayMode.RefreshRate = 0; 
+		displayMode.Format = D3DFMT_A8R8G8B8;		// tu mozna zmienic
 	}
 
 	// ustaw/zapamietaj aktualne parametry wyswietlania
@@ -160,7 +166,7 @@ bool Direct3DInit()
 		presentParameters.BackBufferHeight = displayMode.Height;
 	}
 
-	presentParameters.SwapEffect = D3DSWAPEFFECT_FLIP;	//DISCARD;
+	presentParameters.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	presentParameters.BackBufferFormat = displayMode.Format;
 
 	// stworz urzadzenie
@@ -227,13 +233,15 @@ bool Direct3DInit()
 
 	pMapa = new CMapa();
 	pRotation = new CRotation();
+	pIntro = new CIntro();
+	pRotationPuzzle = new CRotation();
+	pQuiz = new CQuiz();
 
 	//=== myszka 
 
 	pMouse = new CMouse();
 	pMouse->Initialize(pDevice,"Resource\\myszka.fox");
-
-
+	pMouse->AddCustomPoint(pDevice,0,"myszka.tga","Resource\\myszka.fox");
 
 	return true;
 }
@@ -253,7 +261,30 @@ void DrawScene()
 	{
 		
 	case	INTRO:
-					// tutaj leci intro
+				if (!pIntro->GetActive()) // nie zawiera danych
+				{
+					pIntro->Initialize(pDevice,CurrentDirectory,pAudio);
+				}
+
+				if (pIntro->GetActive())	// tutaj leci intro
+				{
+					
+					//pDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0 );
+					
+					// przelaczyc ? 
+					
+					if (pIntro->DrawScene(g_FrameCount,
+						pMouse->GetMouseX(), pMouse->GetMouseY(),
+						pMouse->GetLeftButtonState(),
+						pMouse->GetCenterButtonState(),
+						pMouse->GetRightButtonState(),pAudio,pDevice)==109
+						)
+					{
+						pIntro->DeInitialize();
+						eStanGry=MAPA;
+					}
+				}
+				
 
 			break;
 
@@ -291,26 +322,116 @@ void DrawScene()
 	case	ROTATION:
 				if (!pRotation->GetActive())	// nie zawiera danych
 				{
-					pRotation->Initialize(pDevice);	// wczytaj dane
+					pAudio->StopMusic(5);		// zmiana muzyki
+
+					if( FAILED( pAudio->Init(CurrentDirectory,"Resource\\Music") ) )
+					{
+						MessageBox(0, "Nie mo¿na zainicjalizowaæ Direct Audio!", "B³¹d!", MB_OK);
+					}
+
+					pAudio->PlayMusic(L"001.wav");
+
+					pRotation->Initialize(pDevice,CurrentDirectory,pAudio );	// wczytaj dane
+
 				}
 	
 				if (pRotation->GetActive())
 				{
-					pRotation->DrawScene(g_FrameCount,
+					switch (
+						pRotation->DrawScene(g_FrameCount,
 						pMouse->GetMouseX(), pMouse->GetMouseY(),
 						pMouse->GetLeftButtonState(),
 						pMouse->GetCenterButtonState(),
-						pMouse->GetRightButtonState());		// rysuje jezeli aktywne
+						pMouse->GetRightButtonState(),pAudio)		// rysuje jezeli aktywne
+						)
+					{
+						// lewy przycisk, button exit
+	
+					case 2:
+								pRotation->DeInitialize();
+								eStanGry = ROTATION_PUZZLE;
+								break;
+					}
 				}
 				break;
 
+	case	ROTATION_PUZZLE:
+				if (!pRotationPuzzle->GetActive())	// nie zawiera danych
+				{
+					pAudio->StopMusic(5);		// zmiana muzyki
+
+					if( FAILED( pAudio->Init(CurrentDirectory,"Resource\\Music") ) )
+					{
+						MessageBox(0, "Nie mo¿na zainicjalizowaæ Direct Audio!", "B³¹d!", MB_OK);
+					}
+
+					pAudio->PlayMusic(L"003.wav");
+
+					pRotationPuzzle->Initialize_Puzzle(pDevice,CurrentDirectory,pAudio );	// wczytaj dane
+
+				}
 	
+				if (pRotationPuzzle->GetActive())
+				{
+					switch (
+						pRotationPuzzle->DrawScene(g_FrameCount,
+						pMouse->GetMouseX(), pMouse->GetMouseY(),
+						pMouse->GetLeftButtonState(),
+						pMouse->GetCenterButtonState(),
+						pMouse->GetRightButtonState(),pAudio)		// rysuje jezeli aktywne
+						)
+					{
+						// lewy przycisk myszy, button exit
+					case 4: 
+							pRotationPuzzle->DeInitialize();
+							eStanGry = QUIZ;
+							break;
+					}
+				}
+				break;
+
+	case	QUIZ:
+				if (!pQuiz->GetActive())	// nie zawiera danych
+				{
+					pAudio->StopMusic(5);		// zmiana muzyki
+
+					if( FAILED( pAudio->Init(CurrentDirectory,"Resource\\Music") ) )
+					{
+						MessageBox(0, "Nie mo¿na zainicjalizowaæ Direct Audio!", "B³¹d!", MB_OK);
+					}
+
+					pAudio->PlayMusic(L"004.wav");
+
+					pQuiz->Initialize(pDevice,CurrentDirectory,pAudio );	// wczytaj dane
+
+				}
+	
+				if (pQuiz->GetActive())
+				{
+					switch (
+						pQuiz->DrawScene(g_FrameCount,
+						pMouse->GetMouseX(), pMouse->GetMouseY(),
+						pMouse->GetLeftButtonState(),
+						pMouse->GetCenterButtonState(),
+						pMouse->GetRightButtonState(),pAudio)		// rysuje jezeli aktywne
+						)
+					{
+						// lewy przycisk myszy, button exit
+					case 2: 
+							pRotationPuzzle->DeInitialize();
+							eStanGry = QUIZ;
+							break;
+					}
+				}
+				break;
+
+				
 	}
 	
 
 	// tutaj kursor myszy
 
-	pMouse->Render();
+	pMouse->Render(0);
 
 	// wypisz fps
 
@@ -404,7 +525,7 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	
 	// tak wyglada na poczatku
 
-	eStanGry = MAPA;
+	eStanGry = INTRO;
 
 	// pobierz aktualny katalog
 	
@@ -467,7 +588,7 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		return 0;
 	}
 
-	pAudio->PlayMusic(L"001.wav");
+	pAudio->PlayMusic(L"002.wav");
 
 	// petla przechwytywania komunikatow
 
@@ -488,6 +609,9 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	delete pMapa;
 	delete pRotation;
+	delete pRotationPuzzle;
+	delete pIntro;
+	delete pQuiz;
 
 	// zwolnij myszke
 
