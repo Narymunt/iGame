@@ -15,7 +15,7 @@
 
 //=== glowne dla gry
 
-CWindow		Window;		// glowne okno
+CWindow		*Window;		// glowne okno
 CDirect3D	*Direct3D;	// handler
 
 //=== pomocnicza
@@ -23,7 +23,7 @@ CDirect3D	*Direct3D;	// handler
 bool Direct3DInit()
 {
 
-	Direct3D = new CDirect3D(&Window);
+	Direct3D = new CDirect3D(Window);
 	
 
 //	font.Initialize((HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(255,255,0));
@@ -89,7 +89,7 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	else 
 		bFullScreen=false;
 
-	Window.MakeWindow(hInstance, "Kozio³ek Mato³ek idzie do szko³y", "Kozio³ek Mato³ek", 
+	Window = new CWindow(hInstance, "Kozio³ek Mato³ek idzie do szko³y", "Kozio³ek Mato³ek", 
 					  0, 0, 800, 600, bFullScreen);
 
 	Direct3DInit();		// usunac, bez funkcji pomocniczej
@@ -98,7 +98,7 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	while(1)
 	{
-		if (Window.CheckMessages()==-1)	break; // koniec ? 
+		if (Window->CheckMessages()==-1)	break; // koniec ? 
 		
 		if (GetAsyncKeyState(VK_ESCAPE)) PostQuitMessage(0); // escape ? 
 		
