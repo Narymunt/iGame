@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE SEQUENCE version="1.0">
+<sequence>
+
+    <name="wyskok" type="SIMPLE" file="bobul.evt" event="skacze" sound="benc.snd" event="spadlem"/>
+
+    <name="radosc" type="RANDOM" file="bobul.evt" sound="radosc.snd"/>
+
+    <name="dobrze" type="PLAY">
+	<file="bobul.evt" event="sprawdzam" sound="sprawdzam.snd"/>
+	<file="bobul.evt" event="doskonale" sound="doskonale.snd"/>
+    </name>
+
+    <name="zle" type="PLAY">
+	<file="wilk.evt" event="sprawdzam" sound="sprawdzam.snd"/>
+	<file="wilk.evt" event="zle" sound="zle.snd"/>
+	<file="wilk.evt" event="sproboj_jeszcze_raz" sound="jeszczeraz.snd"/>
+    </name>
+
+    <name="intro" type="SPEAK">
+	<start="bobul.evt" event="wlatuje" sound="benc.snd"/>
+	<loop="bobul.evt" event="mumla_morda" sound="wprowadzenie.snd"/>
+	<end="bobul.evt" event="wypad" sound="szast_prast.snd"/>
+    </name>
+
+</sequence>
+
+
+

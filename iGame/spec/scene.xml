@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE SCENE version="1.0">
+<scene>
+    <background="tlo.img"/>
+    <play seq="dzieciol.seq" event="dziobie" type="loop"/>
+    <play seq="domek.seq" event="zamyka_drzwi" type="single"/>
+    <play seq="ludek.seq" event="nikt_cie_tu_niechce" type="single"/>
+</scene>
+
+
+ 

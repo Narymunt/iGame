@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ANIMATION version="1.0">
+<animation>
+    <!- komentarz tutaj moge napisac co chce-!>
+    <!- tak wyglada przykladowa animacja -> 
+    <event="gada">
+	<frame x=0 y=0 file="gada1.bmp"/>
+	<frame x=10 y=10 file="gada2.bmp"/>
+	<frame x=10 y=20 file="gada1.bmp"/>
+    </event>
+
+    <event="gada2">
+	<frame x=0 y=0 file="gada01.bmp"/>
+	<frame x=0 y=0 file="gada02.bmp"/>
+	<frame x=0 y=0 file="gada03.bmp"/>
+	<frame x=0 y=0 file="gada04.bmp"/>
+	<frame x=0 y=0 file="gada05.bmp"/>
+	<frame x=0 y=0 file="gada06.bmp"/>
+	<frame x=0 y=0 file="gada07.bmp"/>
+	<frame x=0 y=0 file="gada08.bmp"/>
+	<frame x=0 y=0 file="gada09.bmp"/>
+	<frame x=0 y=0 file="gada08.bmp"/>
+	<frame x=0 y=0 file="gada07.bmp"/>
+	<frame x=0 y=0 file="gada06.bmp"/>
+	<frame x=0 y=0 file="gada05.bmp"/>
+	<frame x=0 y=0 file="gada04.bmp"/>
+	<frame x=0 y=0 file="gada03.bmp"/>
+	<frame x=0 y=0 file="gada02.bmp"/>
+	<frame x=0 y=0 file="gada01.bmp"/>
+    </event>
+
+</animation>
