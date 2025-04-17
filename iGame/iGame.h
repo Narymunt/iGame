@@ -6,7 +6,8 @@
 #include "sintable.h"		// tablice przeliczen
 #include "filesys.h"		// pliki formatu .exedat
 #include "banksfx.h"		// bank zdarzen dzwiekowych
-#include "eventevt.h"
+#include "event.h"		// zdarzenie
+#include "eventevt.h"		// zdarzenie animacyjne
 #include "pinch.h"		// tunele x/y
 //#include <nn_matrix.h>	// operacja na macierzach
 
