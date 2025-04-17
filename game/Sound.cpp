@@ -29,9 +29,9 @@ CSound::CSound(CAudio *currentAudio, WCHAR wstrFilename[MAX_PATH])
                                                  1, TRUE, &pDirectAudioPath );
 
 
-	pDirectAudioPath->GetObjectInPath( DMUS_PCHANNEL_ALL, DMUS_PATH_BUFFER, 0, 
-                                       GUID_NULL, 0, IID_IDirectSound3DBuffer, 
-                                       (LPVOID*) &pDirectSoundBuffer );
+//	pDirectAudioPath->GetObjectInPath( DMUS_PCHANNEL_ALL, DMUS_PATH_BUFFER, 0, 
+//                                       GUID_NULL, 0, IID_IDirectSound3DBuffer, 
+//                                       (LPVOID*) &pDirectSoundBuffer );
 
 }
 
@@ -53,7 +53,7 @@ CSound::~CSound()
 CSound::Play(CAudio *currentAudio,float x_sound, float y_sound, float z_sound)
 {
 
-	pDirectSoundBuffer->SetPosition( x_sound, y_sound, z_sound, DS3D_IMMEDIATE );
+//	pDirectSoundBuffer->SetPosition( x_sound, y_sound, z_sound, DS3D_IMMEDIATE );
 
 	currentAudio->g_pPerformance_Audio->PlaySegmentEx( g_pMusicSegmentData, NULL, NULL, DMUS_SEGF_SECONDARY, 
 								    0,  NULL, NULL, pDirectAudioPath );

@@ -14,8 +14,16 @@
 #include "Window.h"			// obsluga okna
 #include "Sprite.h"			// sprite 
 #include "Font.h"			// czcionka
+#include "Audio.h"			// system audio
+#include "Sound.h"			// dzwiek
 
 #define		ILE_OBIEKTOW	20
+
+//=== aktualny katalog
+
+char CurrentDirectory[200]		= {0,};	
+
+//=== liczniki
 
 long	h1,h2,h3;
 
@@ -31,11 +39,17 @@ int						g_FrameRate			= 0;
 
 CWindow		*pWindow;		// glowne okno
 CDirect3D	*pDirect3D;		// handler
-CFont		*pFont;			//	
+CFont		*pFont;			// jakas czcionka
+CAudio		*pAudio;		// audio 
+
 //=== obiekty graficzne
 
 CSprite		**obiekty;
 CSprite		*back;
+
+//=== dzwieki
+
+CSound		*pik;
 
 //=== pomocnicza
 
@@ -158,6 +172,10 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	bool bFullScreen;	// czy pelny ekran ? 
 
+	// aktualny katalog
+	
+	GetCurrentDirectory( sizeof(CurrentDirectory), CurrentDirectory);
+
 	// pelny ekran ? 
 
 	if (MessageBox(NULL, "Fullscreen?", "Fullscreen?", MB_YESNO)==IDYES)
@@ -168,8 +186,24 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	pWindow = new CWindow(hInstance, "Kozio³ek Mato³ek idzie do szko³y", "Kozio³ek Mato³ek", 
 					  0, 0, 800, 600, bFullScreen);
 
+	CoInitialize(NULL);	// nie tylko jeden watek
+
 	Direct3DInit();		// usunac, bez funkcji pomocniczej
 
+	// inicjalizacja systemu audio
+
+	pAudio = new CAudio();
+
+	if( FAILED( pAudio->Init(CurrentDirectory) ) )
+	{
+		MessageBox(0, "Nie mo¿na zainicjalizowaæ Direct Audio!", "B³¹d!", MB_OK);
+		return 0;
+	}
+
+	pAudio->PlayMusic(L"smok1.wav");
+
+	pik = new CSound(pAudio,L"pik.wav");
+	
 	// petla glowna 
 
 	while(1)
@@ -177,7 +211,8 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		if (pWindow->CheckMessages()==-1)	break; // koniec ? 
 		
 		if (GetAsyncKeyState(VK_ESCAPE)) PostQuitMessage(0); // escape ? 
-		
+		if (GetAsyncKeyState(VK_F1)) pik->Play(pAudio,0,0,0);
+
 		DrawScene();	// rysuj klatke 
 	} 
 
