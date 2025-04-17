@@ -32,8 +32,6 @@ public:
 	float	m_fAngle;		// kat obrotu
 	float	m_fKick;		// si³a uderzenia
 
-	unsigned char	m_ucPunkty;	// ile bramek trafil
-
 	unsigned char m_ucCurrentFrame;	// aktualna klatka
 };
 

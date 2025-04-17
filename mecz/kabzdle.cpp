@@ -74,8 +74,6 @@ CSprite				*pBackground;	// tlo
 CSprite				*pLewaBramka;		// bramki
 CSprite				*pPrawaBramka;
 
-CSprite				*pGoll;
-
 int					iLicznik;
 
 long				h1,h2,h3,h4;	// do petli
@@ -84,9 +82,6 @@ float				f1,f2,f3;
 
 Player				*pGracz1;
 Player				*pGracz2;
-
-bool				bJestBramka;	// czy pilka w bramce
-int					iIleWBramce;	// ile czasu lezy w pilka w bramce
 
 //=== pilka
 
@@ -206,7 +201,7 @@ bool Direct3DInit()
 	// dodatkowe obiekty - powinno byc jak najmniej
 
 	pFont = new CFont();
-	pFont->Initialize(pDevice,(HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(255,255,255));
+	pFont->Initialize(pDevice,(HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(0,255,255));
 
 	pMouseFile = new CFileSystem("mouse.fox");
 	pMouseFile->Load("myszka.tga");
@@ -231,11 +226,7 @@ bool Direct3DInit()
 	pMouseFile->Load("prawa.tga");
 	pPrawaBramka->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
 		pMouseFile->Search("prawa.tga"),pDevice);
-
-	pGoll = new CSprite(255,255,255,255);
-	pMouseFile->Load("goll.tga");
-	pGoll->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
-		pMouseFile->Search("goll.tga"),pDevice);
+	
 
 	// wczytaj obiekt graczy
 
@@ -372,6 +363,15 @@ void UpdateScene()
 	if (pGracz1->m_fAddX>0)	pGracz1->m_fAddX-=0.1f;
 	if (pGracz1->m_fAddX<0) pGracz1->m_fAddX+=0.1f;
 
+	// przesuniecie na ekranie
+
+	pGracz1->m_pFrames[(pGracz1->m_ucCurrentFrame>>2)%4]->SetTranslation(pGracz1->m_fX, pGracz1->m_fY);
+	
+	// obrot
+
+	pGracz1->m_pFrames[(pGracz1->m_ucCurrentFrame>>2)%4]->SetRotationCenter(36,84);
+	pGracz1->m_pFrames[(pGracz1->m_ucCurrentFrame>>2)%4]->SetRotation(pGracz1->m_fAngle);
+
 	// player 2 biegnie
 
 	// nie za szybko ? 
@@ -429,6 +429,14 @@ void UpdateScene()
 	if (pGracz2->m_fAddY>0)	pGracz2->m_fAddY-=0.1f;
 	if (pGracz2->m_fAddY<0) pGracz2->m_fAddY+=0.1f;
 
+	// przesuniecie na ekranie
+
+	pGracz2->m_pFrames[(pGracz2->m_ucCurrentFrame>>2)%4]->SetTranslation(pGracz2->m_fX, pGracz2->m_fY);
+	
+	// obrot
+
+	pGracz2->m_pFrames[(pGracz2->m_ucCurrentFrame>>2)%4]->SetRotationCenter(36,84);
+	pGracz2->m_pFrames[(pGracz2->m_ucCurrentFrame>>2)%4]->SetRotation(pGracz2->m_fAngle);
 
 	//=== pilka, nie ma ograniczen predkosci dla pilki
 
@@ -470,7 +478,7 @@ void UpdateScene()
 		if (pPilka->m_fBallX<66 || pPilka->m_fBallX>710)
 		{
 
-			// wolniej x2 + golll!
+			// wolniej x2
 
 			pPilka->m_fBallAddX=pPilka->m_fBallAddX*0.9f;
 			pPilka->m_fBallAddY=pPilka->m_fBallAddY*0.9f;
@@ -484,19 +492,6 @@ void UpdateScene()
 				{
 					pPilka->m_fBallAddY = -pPilka->m_fBallAddY+(pPilka->m_fBallAddY*0.3f);
 				}
-
-			if (pPilka->m_fBallX<66 && bJestBramka==false)
-			{
-				pGracz2->m_ucPunkty++;
-				bJestBramka=true;
-			}
-
-			if (pPilka->m_fBallX>710 && bJestBramka==false)
-			{
-				pGracz1->m_ucPunkty++;
-				bJestBramka=true;
-			}
-
 		}
 
 	}
@@ -621,34 +616,6 @@ void UpdateScene()
 	
 
 	//pBall->SetScale(f1,f1);
-
-	// jeszcze raz sprawdzenie zderzenia graczy
-
-	if ( (pGracz1->m_fX-pGracz2->m_fX)<32 && (pGracz1->m_fX-pGracz2->m_fX)>-32 &&
-		 (pGracz1->m_fY-pGracz2->m_fY)<32 && (pGracz1->m_fY-pGracz2->m_fY)>-32 )
-	{
-
-		pGracz1->m_fAddX=0; pGracz1->m_fAddY=0;
-		pGracz2->m_fAddX=0; pGracz2->m_fAddY=0;
-	}
-
-	// przesuniecie na ekranie
-
-	pGracz2->m_pFrames[(pGracz2->m_ucCurrentFrame>>2)%4]->SetTranslation(pGracz2->m_fX, pGracz2->m_fY);
-	
-	// obrot
-
-	pGracz2->m_pFrames[(pGracz2->m_ucCurrentFrame>>2)%4]->SetRotationCenter(36,84);
-	pGracz2->m_pFrames[(pGracz2->m_ucCurrentFrame>>2)%4]->SetRotation(pGracz2->m_fAngle);
-
-	// przesuniecie na ekranie
-
-	pGracz1->m_pFrames[(pGracz1->m_ucCurrentFrame>>2)%4]->SetTranslation(pGracz1->m_fX, pGracz1->m_fY);
-	
-	// obrot
-
-	pGracz1->m_pFrames[(pGracz1->m_ucCurrentFrame>>2)%4]->SetRotationCenter(36,84);
-	pGracz1->m_pFrames[(pGracz1->m_ucCurrentFrame>>2)%4]->SetRotation(pGracz1->m_fAngle);
 
 	// rysuj
 
@@ -972,29 +939,9 @@ void UpdateScene()
 //	pBubble->SetTranslation(mouseX,mouseY) ? !leftButton : leftButton;
 
 	//pBubble->SetTranslation(mouseX,mouseY);
-//	pBubble->Render();
+	pBubble->Render();
 
-	
-	// jezeli gol to napisz
 
-	if (bJestBramka)
-	{
-		pGoll->SetScale(2,2);
-		pGoll->SetTranslation(400-256,300-256);
-		pGoll->Render();
-	}
-
-	_itoa(pGracz1->m_ucPunkty,str,10);
-	pFont->OutputText(str,368,10);
-
-	pFont->OutputText(":",400,10);
-
-	_itoa(pGracz2->m_ucPunkty,str,10);
-	pFont->OutputText(str,432,10);
-
-	// debug
-
-/*
 	pFont->OutputText("FPS: ",10,10);
 	_itoa(g_FrameRate,str,10);		// fps
 	pFont->OutputText(str,50,10);
@@ -1044,7 +991,7 @@ void UpdateScene()
 
 	_itoa(GetAsyncKeyState(VK_LSHIFT),str,10);
 	pFont->OutputText(str,10,190);
-*/
+
 
 }
 
@@ -1093,26 +1040,6 @@ LRESULT CALLBACK BasicWindowProc(HWND wpHWnd, UINT msg, WPARAM wParam, LPARAM lP
 			{
 				case VK_ESCAPE:
 					PostQuitMessage( 0 );
-					break;
-				
-				case VK_SPACE:
-					bJestBramka=false;
-
-					pGracz1->m_fX=368+100; pGracz1->m_fY=268;
-					pGracz2->m_fX=368-100; pGracz2->m_fY=268;
-					
-					pGracz1->m_fAngle=0;
-					pGracz2->m_fAngle=0;
-
-					pGracz1->m_fAddX=0; pGracz1->m_fAddY=0;
-					pGracz2->m_fAddX=0; pGracz2->m_fAddY=0;
-						
-					pPilka->m_fBallX=400-32; 
-					pPilka->m_fBallY=300-32;
-					
-					pPilka->m_fBallAddX=0;
-					pPilka->m_fBallAddY=0;
-
 					break;
 			}
 			break;
@@ -1195,8 +1122,6 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	if (!RegisterClassEx(&winClass)) return -1;
 
 	// stworz w odpowiedni sposob okno
-
-	bJestBramka=false;
 
 	if (bFullScreen==false)	// zwykle okno
 	{
