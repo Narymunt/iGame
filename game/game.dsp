@@ -95,15 +95,7 @@ SOURCE=.\Direct3d.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Font.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\game.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Sprite.cpp
 # End Source File
 # Begin Source File
 
@@ -116,14 +108,6 @@ SOURCE=.\Window.cpp
 # Begin Source File
 
 SOURCE=.\Direct3d.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Font.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Sprite.h
 # End Source File
 # Begin Source File
 

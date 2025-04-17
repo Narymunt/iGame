@@ -10,7 +10,19 @@
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CDirect3D::CDirect3D(CWindow *fp_pWindow)
+CDirect3D::CDirect3D()
+{
+
+}
+
+CDirect3D::~CDirect3D()
+{
+
+}
+
+// tworzy urzadzenie
+
+bool CDirect3D::Create(CWindow *fp_pWindow)
 {
 	HRESULT	hr;
 
@@ -20,7 +32,7 @@ CDirect3D::CDirect3D(CWindow *fp_pWindow)
 
 	pDirect3D = Direct3DCreate8(D3D_SDK_VERSION);
 
-	if (pDirect3D==NULL) return;// false;
+	if (pDirect3D==NULL) return false;
 
 	// ustaw w odpowiedni sposob tryb sprawdzajac czy wyswietlamy w oknie czy
 	// na calym ekranie
@@ -31,7 +43,7 @@ CDirect3D::CDirect3D(CWindow *fp_pWindow)
 	{
 		hr = pDirect3D->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, &displayMode);
 
-		if (FAILED(hr)) return; //false;
+		if (FAILED(hr)) return false;
 	}
 	else
 	{
@@ -67,7 +79,7 @@ CDirect3D::CDirect3D(CWindow *fp_pWindow)
                                   D3DCREATE_SOFTWARE_VERTEXPROCESSING,
                                   &presentParameters, &pDevice ); 
 
-	if (FAILED(hr))	return; // false;
+	if (FAILED(hr))	return false;
 
 	
 
@@ -94,15 +106,17 @@ CDirect3D::CDirect3D(CWindow *fp_pWindow)
 	pDevice->SetTransform(D3DTS_WORLD, &(D3DMATRIX)mat);
 	pDevice->SetTransform(D3DTS_VIEW, &(D3DMATRIX)mat);
 
-	return; // true;
+	return true;
 }
 
-CDirect3D::~CDirect3D()
+// zwolnij
+
+bool CDirect3D::Release()
 {
 	if (pDirect3D) pDirect3D->Release(); pDirect3D=NULL;
 	if (pDevice) pDevice->Release(); pDevice=NULL;
 
-	return ;//true;
+	return true;
 }
 
 // wyczysc
