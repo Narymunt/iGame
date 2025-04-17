@@ -15,7 +15,6 @@
 class CWindow  
 {
 public:
-
 	CWindow(HINSTANCE fp_hInstance, char *szTitle, char *szClassName, int fp_iX, int fp_iY, int fp_iWidth, int fp_iHeight, bool fp_bFullScreen);
 	virtual ~CWindow();
 
@@ -26,17 +25,10 @@ public:
 	
 	int				iWidth;			// szerokosc
 	int				iHeight;		// wysokosc
+	
+	int CheckMessages(); // zwraca -1 dla WM_QUIT
 
-	bool			leftButton;		// przyciski myszki
-	bool			rightButton;
-	bool			centerButton;
-
-	float			mouseX;
-	float			mouseY;
-
-	virtual			int CheckMessages(); // zwraca -1 dla WM_QUIT
-
-	LRESULT static CALLBACK
+	static LRESULT CALLBACK 
 		BasicWindowProc(HWND wpHWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 };
