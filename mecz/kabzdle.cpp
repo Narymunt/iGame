@@ -71,6 +71,10 @@ CFont				*pFont;			// jakas czcionka
 CSprite				*pBubble;		// babelek ;>
 CSprite				*pBackground;	// tlo
 
+CSprite				*pLewaBramka;		// bramki
+CSprite				*pPrawaBramka;
+
+CSprite				*pGoll;
 
 int					iLicznik;
 
@@ -80,6 +84,9 @@ float				f1,f2,f3;
 
 Player				*pGracz1;
 Player				*pGracz2;
+
+bool				bJestBramka;	// czy pilka w bramce
+int					iIleWBramce;	// ile czasu lezy w pilka w bramce
 
 //=== pilka
 
@@ -199,7 +206,7 @@ bool Direct3DInit()
 	// dodatkowe obiekty - powinno byc jak najmniej
 
 	pFont = new CFont();
-	pFont->Initialize(pDevice,(HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(0,255,255));
+	pFont->Initialize(pDevice,(HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(255,255,255));
 
 	pMouseFile = new CFileSystem("mouse.fox");
 	pMouseFile->Load("myszka.tga");
@@ -214,6 +221,21 @@ bool Direct3DInit()
 	pMouseFile->Load("boisko.bmp");
 	pBackground->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
 		pMouseFile->Search("boisko.bmp"),pDevice);
+
+	pLewaBramka = new CSprite(255,255,255,255);
+	pMouseFile->Load("lewa.tga");
+	pLewaBramka->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("lewa.tga"),pDevice);
+
+	pPrawaBramka = new CSprite(255,255,255,255);
+	pMouseFile->Load("prawa.tga");
+	pPrawaBramka->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("prawa.tga"),pDevice);
+
+	pGoll = new CSprite(255,255,255,255);
+	pMouseFile->Load("goll.tga");
+	pGoll->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
+		pMouseFile->Search("goll.tga"),pDevice);
 
 	// wczytaj obiekt graczy
 
@@ -291,8 +313,8 @@ void UpdateScene()
 
 	// player 1 biegnie
 
-	pGracz1->m_ucCurrentFrame=(pGracz1->m_fX+pGracz1->m_fY)/2;
-	pGracz1->m_ucCurrentFrame%=3;
+//	pGracz1->m_ucCurrentFrame=(pGracz1->m_fAddX+pGracz1->m_fAddY-pGracz1->m_fAngle+pGracz1->m_fX-pGracz1->m_fY);
+//	pGracz1->m_ucCurrentFrame%=3;
 
 	// nie za szybko ? 
 
@@ -322,24 +344,24 @@ void UpdateScene()
 
 	// odbicia od scian
 
-	if (pGracz1->m_fX>736 && pGracz1->m_fAddX>0)	// prawa
+	if (pGracz1->m_fX>688 && pGracz1->m_fAddX>0)	// prawa
 	{
-		pGracz1->m_fAddX = -pGracz1->m_fAddX+(pGracz1->m_fAddX*0.3f);
+		pGracz1->m_fX=688;
 	}
 	
-	if (pGracz1->m_fX<0 && pGracz1->m_fAddX<0 )		// lewa
+	if (pGracz1->m_fX<50 && pGracz1->m_fAddX<0 )		// lewa
 	{
-		pGracz1->m_fAddX = -pGracz1->m_fAddX+(pGracz1->m_fAddX*0.3f);
+		pGracz1->m_fX=50;
 	}
 
-	if (pGracz1->m_fY<0 && pGracz1->m_fAddY<0)		// gora
+	if (pGracz1->m_fY<-16 && pGracz1->m_fAddY<0)		// gora
 	{
-		pGracz1->m_fAddY = -pGracz1->m_fAddY+(pGracz1->m_fAddY*0.3f);
+		pGracz1->m_fY=-16;
 	}
 
-	if (pGracz1->m_fY>536 && pGracz1->m_fAddY>0)
+	if (pGracz1->m_fY>440 && pGracz1->m_fAddY>0)
 	{
-		pGracz1->m_fAddY = -pGracz1->m_fAddY+(pGracz1->m_fAddY*0.3f);
+		pGracz1->m_fY=440;
 	}
 
 
@@ -349,15 +371,6 @@ void UpdateScene()
 	if (pGracz1->m_fAddY<0) pGracz1->m_fAddY+=0.1f;
 	if (pGracz1->m_fAddX>0)	pGracz1->m_fAddX-=0.1f;
 	if (pGracz1->m_fAddX<0) pGracz1->m_fAddX+=0.1f;
-
-	// przesuniecie na ekranie
-
-	pGracz1->m_pFrames[pGracz1->m_ucCurrentFrame]->SetTranslation(pGracz1->m_fX, pGracz1->m_fY);
-	
-	// obrot
-
-	pGracz1->m_pFrames[pGracz1->m_ucCurrentFrame]->SetRotationCenter(36,84);
-	pGracz1->m_pFrames[pGracz1->m_ucCurrentFrame]->SetRotation(pGracz1->m_fAngle);
 
 	// player 2 biegnie
 
@@ -388,24 +401,24 @@ void UpdateScene()
 
 	// odbicia od scian
 
-	if (pGracz2->m_fX>736 && pGracz2->m_fAddX>0)	// prawa
+	if (pGracz2->m_fX>688 && pGracz2->m_fAddX>0)	// prawa
 	{
-		pGracz2->m_fAddX = -pGracz2->m_fAddX+(pGracz2->m_fAddX*0.3f);
+		pGracz2->m_fX=688;		
 	}
 	
-	if (pGracz2->m_fX<0&&pGracz2->m_fAddX<0 )		// lewa
+	if (pGracz2->m_fX<50&&pGracz2->m_fAddX<0 )		// lewa
 	{
-		pGracz2->m_fAddX = -pGracz2->m_fAddX+(pGracz2->m_fAddX*0.3f);
+		pGracz2->m_fX=50;
 	}
 
-	if (pGracz2->m_fY<0 && pGracz2->m_fAddY<0)		// gora
+	if (pGracz2->m_fY<-16 && pGracz2->m_fAddY<0)		// gora
 	{
-		pGracz2->m_fAddY = -pGracz2->m_fAddY+(pGracz2->m_fAddY*0.3f);
+		pGracz2->m_fY=-16;
 	}
 
-	if (pGracz2->m_fY>536 && pGracz2->m_fAddY>0)
+	if (pGracz2->m_fY>440 && pGracz2->m_fAddY>0)
 	{
-		pGracz2->m_fAddY = - pGracz2->m_fAddY+(pGracz2->m_fAddY*0.3f);
+		pGracz2->m_fY=440;
 	}
 
 	// tarcie poziome i pionowe (biegnie pod gorke, albo z gorki)
@@ -416,14 +429,6 @@ void UpdateScene()
 	if (pGracz2->m_fAddY>0)	pGracz2->m_fAddY-=0.1f;
 	if (pGracz2->m_fAddY<0) pGracz2->m_fAddY+=0.1f;
 
-	// przesuniecie na ekranie
-
-	pGracz2->m_pFrames[pGracz2->m_ucCurrentFrame]->SetTranslation(pGracz2->m_fX, pGracz2->m_fY);
-	
-	// obrot
-
-	pGracz2->m_pFrames[pGracz2->m_ucCurrentFrame]->SetRotationCenter(36,84);
-	pGracz2->m_pFrames[pGracz2->m_ucCurrentFrame]->SetRotation(pGracz2->m_fAngle);
 
 	//=== pilka, nie ma ograniczen predkosci dla pilki
 
@@ -435,35 +440,87 @@ void UpdateScene()
 
 	// odbicia od scian
 
-	if (pPilka->m_fBallX>736 && pPilka->m_fBallAddX>0)	// prawa
+	if (pPilka->m_fBallY<200 || pPilka->m_fBallY>400)
 	{
-		pPilka->m_fBallAddX = -pPilka->m_fBallAddX+(pPilka->m_fBallAddX*0.3f);
-	}
+		if (pPilka->m_fBallX>710 && pPilka->m_fBallAddX>0)	// prawa
+		{
+			pPilka->m_fBallAddX = -pPilka->m_fBallAddX+(pPilka->m_fBallAddX*0.3f);
+		}
 	
-	if (pPilka->m_fBallX<0&&pPilka->m_fBallAddX<0 )		// lewa
-	{
-		pPilka->m_fBallAddX = -pPilka->m_fBallAddX+(pPilka->m_fBallAddX*0.3f);
+		if (pPilka->m_fBallX<66&&pPilka->m_fBallAddX<0 )		// lewa
+		{
+			pPilka->m_fBallAddX = -pPilka->m_fBallAddX+(pPilka->m_fBallAddX*0.3f);
+		}
 	}
+
+	if (pPilka->m_fBallY>200 && pPilka->m_fBallY<400)
+	{
+		if (pPilka->m_fBallX>764 && pPilka->m_fBallAddX>0)	// prawa
+		{
+			pPilka->m_fBallAddX = -pPilka->m_fBallAddX+(pPilka->m_fBallAddX*0.3f);
+		}
+	
+		if (pPilka->m_fBallX<12&&pPilka->m_fBallAddX<0 )		// lewa
+		{
+			pPilka->m_fBallAddX = -pPilka->m_fBallAddX+(pPilka->m_fBallAddX*0.3f);
+		}
+	
+		// odbicie gora i dol wewnatrz bramki
+
+		if (pPilka->m_fBallX<66 || pPilka->m_fBallX>710)
+		{
+
+			// wolniej x2 + golll!
+
+			pPilka->m_fBallAddX=pPilka->m_fBallAddX*0.9f;
+			pPilka->m_fBallAddY=pPilka->m_fBallAddY*0.9f;
+			
+				if (pPilka->m_fBallY<205 && pPilka->m_fBallAddY<0)		// gora
+				{
+					pPilka->m_fBallAddY = -pPilka->m_fBallAddY+(pPilka->m_fBallAddY*0.3f);
+				}
+
+				if (pPilka->m_fBallY>390 && pPilka->m_fBallAddY>0)		// dol
+				{
+					pPilka->m_fBallAddY = -pPilka->m_fBallAddY+(pPilka->m_fBallAddY*0.3f);
+				}
+
+			if (pPilka->m_fBallX<66 && bJestBramka==false)
+			{
+				pGracz2->m_ucPunkty++;
+				bJestBramka=true;
+			}
+
+			if (pPilka->m_fBallX>710 && bJestBramka==false)
+			{
+				pGracz1->m_ucPunkty++;
+				bJestBramka=true;
+			}
+
+		}
+
+	}
+
 
 	if (pPilka->m_fBallY<36 && pPilka->m_fBallAddY<0)		// gora
 	{
 		pPilka->m_fBallAddY = -pPilka->m_fBallAddY+(pPilka->m_fBallAddY*0.3f);
 	}
 
-	if (pPilka->m_fBallY>536 && pPilka->m_fBallAddY>0)
+	if (pPilka->m_fBallY>536 && pPilka->m_fBallAddY>0)		// dol
 	{
 		pPilka->m_fBallAddY = -pPilka->m_fBallAddY+(pPilka->m_fBallAddY*0.3f);
 	}
 
-	// odbicia od graczy (jeden kopnal w drugiego)
+	// GRACZ  kopnal PILKE
 
-	if ( (pPilka->m_fBallX-pGracz1->m_fX-36)<48 && (pPilka->m_fBallX-pGracz1->m_fX-36)>-48 &&
-		 (pPilka->m_fBallY-pGracz1->m_fY-84)<48 && (pPilka->m_fBallY-pGracz1->m_fY-84)>-48 )
+	if ( (pPilka->m_fBallX-pGracz1->m_fX-36)<32 && (pPilka->m_fBallX-pGracz1->m_fX-36)>-32 &&
+		 (pPilka->m_fBallY-pGracz1->m_fY-84)<32 && (pPilka->m_fBallY-pGracz1->m_fY-84)>-32 )
 	{
 		if (GetAsyncKeyState(VK_RSHIFT)!=0)
 		{
-			pPilka->m_fBallAddX = 5*pGracz1->m_fAddX+(pPilka->m_fBallAddX*0.3f);
-			pPilka->m_fBallAddY = 5*pGracz1->m_fAddY+(pPilka->m_fBallAddY*0.3f);
+			pPilka->m_fBallAddX = 3*pGracz1->m_fAddX+(pPilka->m_fBallAddX*0.3f);
+			pPilka->m_fBallAddY = 3*pGracz1->m_fAddY+(pPilka->m_fBallAddY*0.3f);
 		}
 		else
 		{
@@ -473,13 +530,13 @@ void UpdateScene()
 	}
 
 
-	if ( (pPilka->m_fBallX-pGracz2->m_fX)<64 && (pPilka->m_fBallX-pGracz2->m_fX)>-64 &&
-		 (pPilka->m_fBallY-pGracz2->m_fY)<64 && (pPilka->m_fBallY-pGracz2->m_fY)>-64 )
+	if ( (pPilka->m_fBallX-pGracz2->m_fX-36)<32 && (pPilka->m_fBallX-pGracz2->m_fX-36)>-32 &&
+		 (pPilka->m_fBallY-pGracz2->m_fY-84)<32 && (pPilka->m_fBallY-pGracz2->m_fY-84)>-32 )
 	{
 		if (GetAsyncKeyState(VK_LSHIFT)!=0)
 		{
-			pPilka->m_fBallAddX = 5*pGracz2->m_fAddX+(pPilka->m_fBallAddX*0.3f);
-			pPilka->m_fBallAddY = 5*pGracz2->m_fAddY+(pPilka->m_fBallAddY*0.3f);
+			pPilka->m_fBallAddX = 3*pGracz2->m_fAddX+(pPilka->m_fBallAddX*0.3f);
+			pPilka->m_fBallAddY = 3*pGracz2->m_fAddY+(pPilka->m_fBallAddY*0.3f);
 		}
 		else
 		{
@@ -489,37 +546,41 @@ void UpdateScene()
 	}
 
 	// zderzyli sie ? - odbicie albo ciagniecie
-/*
-	if ( (pGracz1->m_fX-pGracz2->m_fX)<64 && (pGracz1->m_fX-pGracz2->m_fX)>-64 &&
-		 (pGracz1->m_fY-pGracz2->m_fY)<64 && (pGracz1->m_fY-pGracz2->m_fY)>-64 )
+
+	if ( (pGracz1->m_fX-pGracz2->m_fX)<16 && (pGracz1->m_fX-pGracz2->m_fX)>-16 &&
+		 (pGracz1->m_fY-pGracz2->m_fY)<16 && (pGracz1->m_fY-pGracz2->m_fY)>-16 )
 	{
-		if (GetAsyncKeyState(VK_LSHIFT)!=0)
-		{
-			pGracz1->m_fAddY = 2.5*pGracz2->m_fAddX+(pGracz1->m_fAddY*0.3f);
-			pGracz1->m_fAddY = 2.5*pGracz2->m_fAddY+(pGracz1->m_fAddY*0.3f);
-		}
-		else //if (GetAsyncKeyState(VK_RSHIFT)==0)
-		{
-			pGracz1->m_fAddY = pGracz2->m_fAddX+(pGracz1->m_fAddY*0.3f);
-			pGracz1->m_fAddY = pGracz2->m_fAddY+(pGracz1->m_fAddY*0.3f);
-		}
+
+		pGracz1->m_fAddX=0; pGracz1->m_fAddY=0;
+		pGracz2->m_fAddX=0; pGracz2->m_fAddY=0;
+		
+		//		if (GetAsyncKeyState(VK_LSHIFT)!=0)
+//		{
+//			pGracz1->m_fAddY = 2.5*pGracz2->m_fAddX+(pGracz1->m_fAddY*0.3f);
+//			pGracz1->m_fAddY = 2.5*pGracz2->m_fAddY+(pGracz1->m_fAddY*0.3f);
+//		}
+//		else if (GetAsyncKeyState(VK_RSHIFT)==0)
+//		{
+//			pGracz1->m_fAddY = pGracz2->m_fAddX+(pGracz1->m_fAddY*0.3f);
+//			pGracz1->m_fAddY = pGracz2->m_fAddY+(pGracz1->m_fAddY*0.3f);
+//		}
 
 
-		if (GetAsyncKeyState(VK_RSHIFT)!=0)
-		{
-			pGracz2->m_fAddX = 2.5*pGracz1->m_fAddY+(pGracz2->m_fAddX*0.3f);
-			pGracz2->m_fAddY = 2.5*pGracz1->m_fAddY+(pGracz2->m_fAddY*0.3f);
-		}
-		else //if (GetAsyncKeyState(VK_LSHIFT)==0)
-		{
-			pGracz2->m_fAddX = pGracz1->m_fAddY+(pGracz1->m_fAddY*0.3f);
-			pGracz2->m_fAddY = pGracz1->m_fAddY+(pGracz1->m_fAddY*0.3f);
-		}
+//		if (GetAsyncKeyState(VK_RSHIFT)!=0)
+//		{
+//			pGracz2->m_fAddX = 2.5*pGracz1->m_fAddY+(pGracz2->m_fAddX*0.3f);
+//			pGracz2->m_fAddY = 2.5*pGracz1->m_fAddY+(pGracz2->m_fAddY*0.3f);
+//		}
+//		else if (GetAsyncKeyState(VK_LSHIFT)==0)
+//		{
+//			pGracz2->m_fAddX = pGracz1->m_fAddY+(pGracz1->m_fAddY*0.3f);
+//			pGracz2->m_fAddY = pGracz1->m_fAddY+(pGracz1->m_fAddY*0.3f);
+//		}
 
 
 	}
 
-*/
+
 
 	// tarcie poziome i pionowe, pilka leci pod gorke, albo toczy sie z gorki
 
@@ -561,11 +622,39 @@ void UpdateScene()
 
 	//pBall->SetScale(f1,f1);
 
+	// jeszcze raz sprawdzenie zderzenia graczy
+
+	if ( (pGracz1->m_fX-pGracz2->m_fX)<32 && (pGracz1->m_fX-pGracz2->m_fX)>-32 &&
+		 (pGracz1->m_fY-pGracz2->m_fY)<32 && (pGracz1->m_fY-pGracz2->m_fY)>-32 )
+	{
+
+		pGracz1->m_fAddX=0; pGracz1->m_fAddY=0;
+		pGracz2->m_fAddX=0; pGracz2->m_fAddY=0;
+	}
+
+	// przesuniecie na ekranie
+
+	pGracz2->m_pFrames[(pGracz2->m_ucCurrentFrame>>2)%4]->SetTranslation(pGracz2->m_fX, pGracz2->m_fY);
+	
+	// obrot
+
+	pGracz2->m_pFrames[(pGracz2->m_ucCurrentFrame>>2)%4]->SetRotationCenter(36,84);
+	pGracz2->m_pFrames[(pGracz2->m_ucCurrentFrame>>2)%4]->SetRotation(pGracz2->m_fAngle);
+
+	// przesuniecie na ekranie
+
+	pGracz1->m_pFrames[(pGracz1->m_ucCurrentFrame>>2)%4]->SetTranslation(pGracz1->m_fX, pGracz1->m_fY);
+	
+	// obrot
+
+	pGracz1->m_pFrames[(pGracz1->m_ucCurrentFrame>>2)%4]->SetRotationCenter(36,84);
+	pGracz1->m_pFrames[(pGracz1->m_ucCurrentFrame>>2)%4]->SetRotation(pGracz1->m_fAngle);
+
 	// rysuj
 
 	pPilka->m_pFrames[pPilka->m_ucCurrentFrame]->Render();
-	pGracz1->m_pFrames[pGracz1->m_ucCurrentFrame]->Render();
-	pGracz2->m_pFrames[pGracz2->m_ucCurrentFrame]->Render();
+	pGracz1->m_pFrames[(pGracz1->m_ucCurrentFrame>>2)%4]->Render();
+	pGracz2->m_pFrames[(pGracz2->m_ucCurrentFrame>>2)%4]->Render();
 
 	//=== koniec pilka, teraz asynchroniczne sprawdzenie klawiatury
 
@@ -577,6 +666,8 @@ void UpdateScene()
 
 					pGracz1->m_fLastAddX = pGracz1->m_fAddX;
 					pGracz1->m_fLastAddY = pGracz1->m_fAddY;
+
+					pGracz1->m_ucCurrentFrame++;
 
 					// lewo 
 
@@ -635,6 +726,8 @@ void UpdateScene()
 	if (GetAsyncKeyState(VK_DOWN)!=0)
 	{
 					// lewo 
+
+					pGracz1->m_ucCurrentFrame++;
 
 					if (pGracz1->m_fAngle>=0 && pGracz1->m_fAngle<1.5f)
 					{
@@ -717,6 +810,8 @@ void UpdateScene()
 					pGracz2->m_fLastAddX = pGracz2->m_fAddX;
 					pGracz2->m_fLastAddY = pGracz2->m_fAddY;
 
+					pGracz2->m_ucCurrentFrame++;
+
 					// lewo 
 
 					if (pGracz2->m_fAngle>=0 && pGracz2->m_fAngle<1.5f)
@@ -775,6 +870,10 @@ void UpdateScene()
 	{
 					// lewo 
 
+					pGracz2->m_fLastAddX = pGracz2->m_fAddX;
+					pGracz2->m_fLastAddY = pGracz2->m_fAddY;
+					pGracz2->m_ucCurrentFrame++;
+
 					if (pGracz2->m_fAngle>=0 && pGracz2->m_fAngle<1.5f)
 					{
 						pGracz2->m_fAddX+=pGracz2->m_fAngle;
@@ -806,6 +905,7 @@ void UpdateScene()
 						pGracz2->m_fAddX+=pGracz2->m_fAngle;
 						pGracz2->m_fAddY+=(1.5f-pGracz2->m_fAngle);
 					}
+
 
 					if (pGracz2->m_fAngle<=-1.6f && pGracz2->m_fAngle>-3.1f)
 					{
@@ -850,6 +950,16 @@ void UpdateScene()
 					}
 	}
 
+	// bramki
+
+	pLewaBramka->SetTranslation(-92,162);
+	pLewaBramka->Render();
+
+	pPrawaBramka->SetTranslation(638,162);
+	pPrawaBramka->Render();
+	
+	//		pBramki->Render();
+
 
 	// myszka i reszta 
 
@@ -862,9 +972,29 @@ void UpdateScene()
 //	pBubble->SetTranslation(mouseX,mouseY) ? !leftButton : leftButton;
 
 	//pBubble->SetTranslation(mouseX,mouseY);
-	pBubble->Render();
+//	pBubble->Render();
 
+	
+	// jezeli gol to napisz
 
+	if (bJestBramka)
+	{
+		pGoll->SetScale(2,2);
+		pGoll->SetTranslation(400-256,300-256);
+		pGoll->Render();
+	}
+
+	_itoa(pGracz1->m_ucPunkty,str,10);
+	pFont->OutputText(str,368,10);
+
+	pFont->OutputText(":",400,10);
+
+	_itoa(pGracz2->m_ucPunkty,str,10);
+	pFont->OutputText(str,432,10);
+
+	// debug
+
+/*
 	pFont->OutputText("FPS: ",10,10);
 	_itoa(g_FrameRate,str,10);		// fps
 	pFont->OutputText(str,50,10);
@@ -914,7 +1044,7 @@ void UpdateScene()
 
 	_itoa(GetAsyncKeyState(VK_LSHIFT),str,10);
 	pFont->OutputText(str,10,190);
-
+*/
 
 }
 
@@ -963,6 +1093,26 @@ LRESULT CALLBACK BasicWindowProc(HWND wpHWnd, UINT msg, WPARAM wParam, LPARAM lP
 			{
 				case VK_ESCAPE:
 					PostQuitMessage( 0 );
+					break;
+				
+				case VK_SPACE:
+					bJestBramka=false;
+
+					pGracz1->m_fX=368+100; pGracz1->m_fY=268;
+					pGracz2->m_fX=368-100; pGracz2->m_fY=268;
+					
+					pGracz1->m_fAngle=0;
+					pGracz2->m_fAngle=0;
+
+					pGracz1->m_fAddX=0; pGracz1->m_fAddY=0;
+					pGracz2->m_fAddX=0; pGracz2->m_fAddY=0;
+						
+					pPilka->m_fBallX=400-32; 
+					pPilka->m_fBallY=300-32;
+					
+					pPilka->m_fBallAddX=0;
+					pPilka->m_fBallAddY=0;
+
 					break;
 			}
 			break;
@@ -1018,7 +1168,7 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	// zapytaj o pelny ekran ? 
 
-	if (MessageBox(NULL, "Fullscreen?", "Fullscreen?", MB_YESNO)==IDYES)
+	if (MessageBox(NULL, "Reboot?", "Reboot?", MB_YESNO)==IDYES)
 		bFullScreen=true;
 	else 
 		bFullScreen=false;
@@ -1045,6 +1195,8 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	if (!RegisterClassEx(&winClass)) return -1;
 
 	// stworz w odpowiedni sposob okno
+
+	bJestBramka=false;
 
 	if (bFullScreen==false)	// zwykle okno
 	{

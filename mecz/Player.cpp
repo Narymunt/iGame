@@ -26,6 +26,7 @@ Player::Player(float fX, float fY)
 
 	m_ucCurrentFrame=0;
 
+	m_ucPunkty=0; 
 }
 
 Player::~Player()
