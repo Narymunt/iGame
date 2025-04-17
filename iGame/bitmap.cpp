@@ -105,6 +105,7 @@ CBitmap::CBitmap(char filename[], char cType)
     FILE *plik;
     
     unsigned char cHeader[18];
+    unsigned char *pTemp;
     
     // struktura pliku TGA
     
@@ -121,11 +122,13 @@ CBitmap::CBitmap(char filename[], char cType)
     unsigned short	usYSize;		// rozmiar Y
     unsigned char	ucBpp;		// 8,16,24,32
     unsigned char	ucDesc;		// czy obrocony
+
+    unsigned long	size;
     
     if ((plik=fopen(filename,"rb"))==NULL) printf("#\nCBitmap: Nie mozna odczytac %s \n",filename);
     fread(&cHeader,18,1,plik);
     
-    printf("#\n CBitmap: nowy obraz TGA %s\n",filename);
+    printf("#\nCBitmap: nowy obraz TGA %s\n",filename);
     
     ucIdentSize = cHeader[0];
     ucPalette = cHeader[1];
@@ -152,7 +155,33 @@ CBitmap::CBitmap(char filename[], char cType)
     printf("TGA: rozmiar Y %d\n",usYSize);
     printf("TGA: %d bpp\n",ucBpp);
     printf("TGA: opis %d\n",ucDesc);
+
+    // zapamietaj rozmiary
     
+    m_ulSizeX = usXSize;
+    m_ulSizeY = usYSize;
+    
+    // zakladamy, ze tga zawsze bedzie 32bpp
+    
+    size = (m_ulSizeX * m_ulSizeY);
+    pTemp = new unsigned char[1+(size*4)];
+
+    m_pBitmapDataR = (unsigned char*)malloc(size);
+    m_pBitmapDataG = (unsigned char*)malloc(size);
+    m_pBitmapDataB = (unsigned char*)malloc(size);
+    m_pBitmapDataA = (unsigned char*)malloc(size);
+    
+    fread(pTemp,size*4,1,plik);
+    printf("TGA: wczytano dane\n");
+    fclose(plik);
+
+    for (long i=0; i<size; i++)
+    {
+	m_pBitmapDataB[i] = pTemp[(size-i)*4];
+	m_pBitmapDataG[i] = pTemp[((size-i)*4)+1];
+	m_pBitmapDataR[i] = pTemp[((size-i)*4)+2];
+	m_pBitmapDataA[i] = pTemp[((size-i)*4)+3];
+    }	    
     
 }
 
