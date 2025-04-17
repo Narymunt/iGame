@@ -10,14 +10,30 @@
 #include <dmusicc.h>
 #include <dmusici.h>
 
-#include "Direct3D.h"		// obsluga urzadzenia
-#include "Window.h"			// obsluga okna
 #include "Sprite.h"			// sprite 
 #include "Font.h"			// czcionka
 #include "Audio.h"			// system audio
 #include "Sound.h"			// dzwiek
 
 #define		ILE_OBIEKTOW	20
+
+//=== dla dx
+
+IDirect3D8			*pDirect3D;
+IDirect3DDevice8	*pDevice;
+HRESULT				hr;
+HWND				hWnd;
+HINSTANCE			hInstance;
+
+bool bFullScreen;	// czy pelny ekran ? 
+
+bool			leftButton;		// przyciski myszki
+bool			rightButton;
+bool			centerButton;
+
+float			mouseX;
+float			mouseY;
+
 
 //=== aktualny katalog
 
@@ -37,8 +53,6 @@ int						g_FrameRate			= 0;
 
 //=== glowne dla gry
 
-CWindow		*pWindow;		// glowne okno
-CDirect3D	*pDirect3D;		// handler
 CFont		*pFont;			// jakas czcionka
 CAudio		*pAudio;		// audio 
 
@@ -46,6 +60,7 @@ CAudio		*pAudio;		// audio
 
 CSprite		**obiekty;
 CSprite		*back;
+CSprite		*kursor_myszy;
 
 //=== dzwieki
 
@@ -56,29 +71,109 @@ CSound		*pik;
 bool Direct3DInit()
 {
 
-	pDirect3D = new CDirect3D(pWindow);
+	pDirect3D = Direct3DCreate8(D3D_SDK_VERSION);
+
+	if (pDirect3D==NULL) 
+	{
+		MessageBox(0,"B³¹d inicjalizacji DirectX","B³¹d!",MB_OK);
+		return false;
+	}
+
+	// ustaw w odpowiedni sposob tryb sprawdzajac czy wyswietlamy w oknie czy
+	// na calym ekranie
+
+	D3DDISPLAYMODE displayMode;
+
+	if (bFullScreen==false)
+	{
+		hr = pDirect3D->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, &displayMode);
+		
+		MessageBox(0,"Nie mo¿na pobraæ informacji o trybie DirectX","B³¹d!",MB_OK);
+		if (FAILED(hr)) return false;
+	}
+	else
+	{
+		displayMode.Width = 800; //iWidth;
+		displayMode.Height = 600; //iHeight;
+		displayMode.RefreshRate = 0; 
+		displayMode.Format = D3DFMT_R5G6B5;		// dlaczego wlasnie tak ? 
+	}
+
+	// ustaw/zapamietaj parametry wyswietlania
+
+	D3DPRESENT_PARAMETERS presentParameters;
+
+	memset(&presentParameters, 0, sizeof(D3DPRESENT_PARAMETERS));
+
+	if (bFullScreen==false)
+	{
+		presentParameters.Windowed = TRUE;
+	}
+	else
+	{
+		presentParameters.Windowed = FALSE;
+	}
+
+	presentParameters.SwapEffect = D3DSWAPEFFECT_DISCARD;
+	presentParameters.BackBufferFormat = displayMode.Format;
+	presentParameters.BackBufferWidth = displayMode.Width;
+	presentParameters.BackBufferHeight = displayMode.Height;
+
+	// stworz urzadzenie
+
+	hr=pDirect3D->CreateDevice( D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd,
+                                  D3DCREATE_SOFTWARE_VERTEXPROCESSING,
+                                  &presentParameters, &pDevice ); 
+
+	if (FAILED(hr))	
+	{
+		MessageBox(0,"Nie mo¿na stworzyæ urz¹dzenia DirectX","B³¹d!",MB_OK);		
+		return false;
+	}
+
+	SetCursor(NULL);					// ukryj kursor myszy, rysujemy wlasny
+	pDevice->ShowCursor(FALSE);			// przeslij do urzadzenia
 	
+	// ustaw kursor myszy na srodku ekranu
+
+	pDevice->SetCursorPosition(400,300,D3DCURSOR_IMMEDIATE_UPDATE );	
+
+	// ustaw macierze 
+
+	D3DXMATRIX mat;
+
+	// tutaj lepiej ustawic bez rzutowania typu (bez float)
+
+	D3DXMatrixPerspectiveFovLH(&mat, D3DX_PI/6, (float)800/600,	1.0, 100.0);
+	
+	pDevice->SetTransform(D3DTS_PROJECTION, &(D3DMATRIX)mat);
+
+	D3DXMatrixIdentity(&mat);
+
+	pDevice->SetTransform(D3DTS_WORLD, &(D3DMATRIX)mat);
+	pDevice->SetTransform(D3DTS_VIEW, &(D3DMATRIX)mat);
+
 
 //	font.Initialize((HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(255,255,0));
 
-    pDirect3D->pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE ); // backface culling 
-	pDirect3D->pDevice->SetRenderState( D3DRS_LIGHTING, FALSE );	// swiatlo
+    pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE ); // backface culling 
+	pDevice->SetRenderState( D3DRS_LIGHTING, FALSE );	// swiatlo
 	
 	// blending
 	
-	pDirect3D->pDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
-	pDirect3D->pDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
-	pDirect3D->pDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+	pDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+	pDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+	pDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
 
 	// alpha channel
 	
-	pDirect3D->pDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
+	pDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
 
 	// macierz widoku
 
-	D3DXMATRIX mat;
+//	D3DXMATRIX mat;
 	D3DXMatrixTranslation(&mat, 0, 0, 5);
-	pDirect3D->pDevice->SetTransform(D3DTS_VIEW, &(D3DMATRIX)mat);
+	pDevice->SetTransform(D3DTS_VIEW, &(D3DMATRIX)mat);
 
 	// dodatkowe obiekty 
 	
@@ -87,7 +182,7 @@ bool Direct3DInit()
 	for (h1=0; h1<ILE_OBIEKTOW; h1++)	
 	{
 	obiekty[h1] = new CSprite(128,255,255,255);
-	obiekty[h1]->Initialize(pDirect3D->pDevice,"sprite.tga");
+	obiekty[h1]->Initialize(pDevice,"sprite.tga");
 	obiekty[h1]->m_Translation.x=0.5f; //272;
 	obiekty[h1]->m_Translation.y=0.5f; //172;
 	obiekty[h1]->m_RotCenter.x=400;
@@ -95,14 +190,17 @@ bool Direct3DInit()
 	}
 
 	back = new CSprite(255,255,255,255);
-	back->Initialize(pDirect3D->pDevice,"back.bmp");
+	back->Initialize(pDevice,"back.bmp");
 	back->m_Translation.x=0; //272;
 	back->m_Translation.y=0; //172;
 	back->m_RotCenter.x=400;
 	back->m_RotCenter.y=300;
 
 	pFont = new CFont();
-	pFont->Initialize(pDirect3D->pDevice,(HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(255,255,0));
+	pFont->Initialize(pDevice,(HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(255,255,0));
+
+	kursor_myszy = new CSprite(128,255,255,255);
+	kursor_myszy->Initialize(pDevice,"mouse.tga");
 
 	return true;
 }
@@ -111,11 +209,17 @@ bool Direct3DInit()
 
 void UpdateScene()
 {
-	char str[20];
+	char	str[20];
 	float	fIleRotacja;
 	
-	back->Render();
+	back->Render();	
+	
+	kursor_myszy->m_Translation.x=mouseX;
+	kursor_myszy->m_Translation.y=mouseY;
+	kursor_myszy->Render();
+
 	//back->m_Rotation+=0.1f;
+
 	for (h1=0, fIleRotacja=0.01f;h1<ILE_OBIEKTOW;h1++,fIleRotacja+=0.01f)
 	{
 	obiekty[h1]->Render();
@@ -128,8 +232,8 @@ void UpdateScene()
 	obiekty[h1]->m_Translation.y=300;
 
 
-	obiekty[h1]->m_Scaling.x=sin(17*3.14159/(fIleRotacja*g_FrameCount));
-	obiekty[h1]->m_Scaling.y=cos(15*3.14159/(fIleRotacja*g_FrameCount));
+	obiekty[h1]->m_Scaling.x=h1>>1;
+	obiekty[h1]->m_Scaling.y=-h1>>1;
 	}
 
 	pFont->OutputText("FPS: ",10,10);
@@ -144,8 +248,10 @@ void UpdateScene()
 void DrawScene()
 {
 	
-	pDirect3D->Clear(D3DCOLOR_XRGB(0, 0, 0));
-	pDirect3D->BeginScene();
+	pDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0 );
+	//pDirect3D->Clear(D3DCOLOR_XRGB(0, 0, 0));
+	pDevice->BeginScene();
+	//pDirect3D->BeginScene();
 	
 	UpdateScene();	// to zamienic na game,background itepe
 	
@@ -160,50 +266,48 @@ void DrawScene()
 
 	g_FrameCount++;	
 	
-	pDirect3D->EndScene();
-	pDirect3D->Present();
+	pDevice->EndScene();	//pDirect3D->EndScene();
+	pDevice->Present(NULL, NULL, NULL, NULL);	//pDirect3D->Present();
 }
 
-//=== obsluga zdarzen
+// obsluga okna
 
-long FAR PASCAL 
-WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK BasicWindowProc(HWND wpHWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-    switch (message)
-    {
-        case WM_ACTIVATEAPP:
-            // Pause if minimized or not the top window
-            //g_bActive = (wParam == WA_ACTIVE) || (wParam == WA_CLICKACTIVE);
-            return 0L;
 
-        case WM_DESTROY:
-            // Clean up and close the app
-            PostQuitMessage(0);
-            return 0L;
+	switch(msg)
+	{	
+		case WM_DESTROY: 
+		{ 
+			PostQuitMessage(0);
+			return 0;
+		} break;
 
-        case WM_KEYDOWN:
-            // Handle any non-accelerated key commands
-            switch (wParam)
-            {
-				case VK_F1:
-					pik->Play(pAudio,0,0,0);				
-					return 0L;
-               
+		case WM_KEYDOWN:
+			switch( wParam )
+			{
 				case VK_ESCAPE:
-					PostQuitMessage(0); // escape ? 
-					return 0L;
-            }
-            break;
+					PostQuitMessage( 0 );
+					break;
+			}
+			break;
 
-        case WM_SETCURSOR:
+		case WM_MOUSEMOVE:
+			mouseX = LOWORD(lParam);
+			mouseY = HIWORD(lParam);
+			break;
+
+		case WM_SETCURSOR:
             // Turn off the cursor since this is a full-screen app
             SetCursor(NULL);
             return TRUE;
 
-    }
-    return DefWindowProc(hWnd, message, wParam, lParam);
-}
 
+		default:break; 
+	} 
+
+	return DefWindowProc(wpHWnd, msg, wParam, lParam);
+}
 
 
 //### start programu ###
@@ -211,9 +315,6 @@ WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance, 
 					LPSTR lpCmdLine, int nCmdShow) 
 {
-
-	bool bFullScreen;	// czy pelny ekran ? 
-
 	// aktualny katalog
 	
 	GetCurrentDirectory( sizeof(CurrentDirectory), CurrentDirectory);
@@ -225,8 +326,41 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	else 
 		bFullScreen=false;
 
-	pWindow = new CWindow(hInstance, "Kozio³ek Mato³ek idzie do szko³y", "Kozio³ek Mato³ek", 
-					  0, 0, 800, 600, bFullScreen);
+	// inicjalizacja okienka
+
+		WNDCLASSEX winClass;
+
+	// ustaw i zarejestruj klase okna
+	
+	winClass.cbSize         = sizeof(WNDCLASSEX); 
+	winClass.style			= CS_OWNDC | CS_HREDRAW | CS_VREDRAW;
+	winClass.lpfnWndProc	= BasicWindowProc; // nasza statyczna funkcja
+	winClass.cbClsExtra		= 0;
+	winClass.cbWndExtra		= 0; 
+	winClass.hInstance		= hInstance; 
+	winClass.hIcon			= LoadIcon(NULL, IDI_APPLICATION);	// NULL zamiast icon
+	winClass.hCursor		= LoadCursor(NULL, IDC_ARROW); 
+	winClass.hbrBackground	= (HBRUSH)GetStockObject(BLACK_BRUSH); 
+	winClass.lpszMenuName	= NULL; 
+	winClass.lpszClassName	= "Kozio³ek Mato³ek";	//szClassName; 
+	winClass.hIconSm        = LoadIcon(NULL, IDI_APPLICATION);
+	
+	if (!RegisterClassEx(&winClass)) return -1;
+
+	// stworz w odpowiedni sposob okno
+
+	if (bFullScreen==false)	// zwykle okno
+	{
+				
+		hWnd = CreateWindowEx(WS_EX_CLIENTEDGE, "Kozio³ek Mato³ek", "Kozio³ek Mato³ek", 
+							 WS_SYSMENU | WS_BORDER | WS_CAPTION | WS_VISIBLE, 
+					 		 0, 0, 800, 600, NULL, NULL, hInstance, NULL);	
+	}
+	else	// fulscreen
+	{
+		hWnd = CreateWindowEx(NULL, "Kozio³ek Mato³ek", "Kozio³ek Mato³ek", WS_POPUP | WS_VISIBLE, 
+					 		 0, 0, 800, 600, NULL, NULL, hInstance, NULL);	
+	}
 
 	CoInitialize(NULL);	// nie tylko jeden watek
 
@@ -245,34 +379,22 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	pAudio->PlayMusic(L"smok1.wav");
 
 	pik = new CSound(pAudio,L"pik.wav");
-	
-	// petla glowna 
+
 
 	MSG msg;
-    ZeroMemory( &msg, sizeof(msg) );
 
-    while( msg.message != WM_QUIT )
-	     {
-           if( PeekMessage( &msg, NULL, 0U, 0U, PM_REMOVE ) )
-               {
+	while(msg.message != WM_QUIT)
+	{
+       if ( PeekMessage( &msg, NULL, 0U, 0U, PM_REMOVE ) )
+       {
                    TranslateMessage( &msg );
                    DispatchMessage( &msg );
-               }
-		   else
-			   DrawScene();				  
-		  }
-/*
-	while(1)
-	{
-		if (pWindow->CheckMessages()==-1)	break; // koniec ? 
-		
-		if (GetAsyncKeyState(VK_ESCAPE)) PostQuitMessage(0); // escape ? 
-		if (GetAsyncKeyState(VK_F1)) pik->Play(pAudio,0,0,0);
+       }
 
 		DrawScene();	// rysuj klatke 
 	} 
-*/
-	delete pDirect3D;
+
+//	delete pDirect3D;
 
 	return 0;
 }

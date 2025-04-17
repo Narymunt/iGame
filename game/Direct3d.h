@@ -29,8 +29,6 @@ public:
 
 	CWindow				*pWindow;
 	
-	IDirect3D8			*pDirect3D;
-	IDirect3DDevice8	*pDevice;
 };
 
 #endif // !defined(AFX_DIRECT3D_H__2EA60A8F_CAF8_4E3F_96E6_31CFE8E15829__INCLUDED_)

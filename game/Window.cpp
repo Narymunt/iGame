@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "Window.h"
+#include "Mouse.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -52,7 +53,6 @@ CWindow::CWindow(HINSTANCE fp_hInstance, char *szTitle, char *szClassName, int f
 	}
 	else	// fulscreen
 	{
-		
 		hWnd = CreateWindowEx(NULL,  
 							 szClassName,     
 							 szTitle,  
@@ -100,6 +100,27 @@ LRESULT CALLBACK CWindow::BasicWindowProc(HWND wpHWnd, UINT msg, WPARAM wParam, 
 			PostQuitMessage(0);
 			return 0;
 		} break;
+
+		case WM_KEYDOWN:
+			switch( wParam )
+			{
+				case VK_ESCAPE:
+					PostQuitMessage( 0 );
+					break;
+			}
+			break;
+
+		case WM_MOUSEMOVE:
+			static mouseX = LOWORD(lParam);
+			static mouseY = HIWORD(lParam);
+
+			//static h1 = LOWORD(lParam);
+			//mouse->mouseX=LOWORD(lParam);
+		//	mouseX=LOWORD(lParam);
+			//UpdateMouse(LOWORD(lParam),HIWORD(lParam));
+			break;
+
+
 		default:break; 
 	} 
 

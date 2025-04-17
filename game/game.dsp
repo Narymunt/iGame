@@ -97,10 +97,6 @@ SOURCE=.\Audio.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Direct3d.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\Font.cpp
 # End Source File
 # Begin Source File
@@ -115,10 +111,6 @@ SOURCE=.\Sound.cpp
 
 SOURCE=.\Sprite.cpp
 # End Source File
-# Begin Source File
-
-SOURCE=.\Window.cpp
-# End Source File
 # End Group
 # Begin Group "Header Files"
 
@@ -126,10 +118,6 @@ SOURCE=.\Window.cpp
 # Begin Source File
 
 SOURCE=.\Audio.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Direct3d.h
 # End Source File
 # Begin Source File
 
@@ -142,10 +130,6 @@ SOURCE=.\Sound.h
 # Begin Source File
 
 SOURCE=.\Sprite.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Window.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"
