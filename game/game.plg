@@ -1,0 +1,48 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: game - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Firefox\LOCALS~1\Temp\RSPC.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/game.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\projects\game\Audio.cpp"
+"C:\projects\game\Font.cpp"
+"C:\projects\game\game.cpp"
+"C:\projects\game\Sound.cpp"
+"C:\projects\game\Sprite.cpp"
+"C:\projects\game\Sprite2.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Firefox\LOCALS~1\Temp\RSPC.tmp" 
+Creating temporary file "C:\DOCUME~1\Firefox\LOCALS~1\Temp\RSPD.tmp" with contents
+[
+winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3d8.lib d3dx8.lib strmiids.lib dxguid.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/game.pdb" /machine:I386 /out:"Release/game.exe" 
+.\Release\Audio.obj
+.\Release\Font.obj
+.\Release\game.obj
+.\Release\Sound.obj
+.\Release\Sprite.obj
+.\Release\Sprite2.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\Firefox\LOCALS~1\Temp\RSPD.tmp"
+<h3>Output Window</h3>
+Compiling...
+Audio.cpp
+Font.cpp
+game.cpp
+Sound.cpp
+C:\projects\game\game.cpp(402) : warning C4700: local variable 'msg' used without having been initialized
+Sprite.cpp
+Sprite2.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+game.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>
