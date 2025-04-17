@@ -13,7 +13,7 @@
 
 #include <windows.h>
 #include <d3d8.h>
-#include <ghost.h>
+#include <fox.h>
 
 class CMapa  
 {
@@ -27,9 +27,7 @@ public:
 	virtual	void	Initialize(IDirect3DDevice8 *pDevice);	// wczytaj dane
 	virtual void	DeInitialize(void);				// usun dane
 
-	// rysuje pojedyncza klatke i zwraca sygnal co dalej 
-
-	virtual int		DrawScene(long lTimer,float fMouseX, float fMouseY, 
+	virtual void	DrawScene(long lTimer,float fMouseX, float fMouseY, 
 					  bool bLeftButton, bool bRightButton, bool bCenterButton);		// rysuje pojedyncza klatke
 
 private:
@@ -39,9 +37,7 @@ private:
 	CButton	*m_pExitButton;	// przycisk wyjscia 
 
 	CSprite	*m_pBackground;	// tlo modulu
-
-	CSprite *m_pMysticLogo;	// logo
-
+	
 	CFileSystem	*m_pFile;	// od razu bedziemy zamykac
 
 };

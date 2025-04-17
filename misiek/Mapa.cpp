@@ -19,7 +19,7 @@ CMapa::CMapa()
 	m_pBackground = NULL;	// zerujemy wskazniki
 	m_pFile = NULL;
 	m_pExitButton = NULL;
-	m_pMysticLogo = NULL;
+
 }
 
 //=== destruktor 
@@ -27,12 +27,6 @@ CMapa::CMapa()
 CMapa::~CMapa()
 {
 	
-	if (m_pMysticLogo!=NULL)
-	{
-		delete m_pMysticLogo;
-		m_pMysticLogo=NULL;
-	}
-
 	// zwolnij tlo jezeli uzywane
 	
 	if (m_pBackground!=NULL)
@@ -81,14 +75,6 @@ bool CMapa::GetActive(void)
 void CMapa::Initialize(IDirect3DDevice8 *pDevice)
 {
 	
-	m_pFile = new CFileSystem("Resource\\klocki.fox");
-	m_pFile->Load("mystic.tga");
-	m_pMysticLogo = new CSprite(255,255,255,255);
-	m_pMysticLogo->InitializeTGAinMemory((unsigned int*)m_pFile->pDataBuffer,
-		m_pFile->Search("mystic.tga"), pDevice);
-	delete m_pFile;
-	m_pFile = NULL;
-
 	m_pFile = new CFileSystem("Resource\\plansze.fox");	// otworz archiwum
 	m_pFile->Load("lok01.bmp");	// wczytujemy tlo
 
@@ -108,20 +94,14 @@ void CMapa::Initialize(IDirect3DDevice8 *pDevice)
 
 	// koniec
 	
-	delete m_pFile;	// zwolnij system plikow
-	m_pFile = NULL;	// zeruj wskaznik
+	free (m_pFile);	// zwolnij system plikow
+
 }
 
 //=== deaktualizuje, ale trzyma znaczniki (zwalnia tylko textury)
 
 void CMapa::DeInitialize(void)
 {
-
-	if (m_pMysticLogo!=NULL)
-	{
-		delete m_pMysticLogo;
-		m_pMysticLogo=NULL;
-	}
 
 	// zwolnij tlo jezeli uzywane
 	
@@ -143,18 +123,13 @@ void CMapa::DeInitialize(void)
 
 //=== rysuje pojedyncza klatke
 
-int CMapa::DrawScene(long lTimer,float fMouseX, float fMouseY, 
+void CMapa::DrawScene(long lTimer,float fMouseX, float fMouseY, 
 					  bool bLeftButton, bool bRightButton, bool bCenterButton)
 {
 	m_pBackground->Render();	// rysuj tlo
 
-	m_pMysticLogo->SetTranslation(32,32);
-	m_pMysticLogo->Render();
-	
-	m_pExitButton->SetPosition(0,472);	// lewy dolny rog
-	
-	if (bLeftButton) return 2;
-	return 0;//m_pExitButton->Draw(fMouseX,fMouseY,bLeftButton,bRightButton,bCenterButton); // przycisk
+	m_pExitButton->SetPosition(732,532);	// prawy dolny rog
+	m_pExitButton->Draw(fMouseX,fMouseY,bLeftButton,bRightButton,bCenterButton); // przycisk
 
 }
 //end

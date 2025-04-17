@@ -10,14 +10,11 @@
 #include <dmusicc.h>
 #include <dmusici.h>
 
-#include <ghost.h>
+#include <Fox.h>
 
 // modu³y
 
 #include "Mapa.h"
-#include "Rotation.h"
-#include "Intro.h"
-#include "Quiz.h"
 
 // zasoby
 
@@ -84,7 +81,6 @@ enum STAN_GRY		{
 						MAPA,
 						START,
 						ROTATION,
-						ROTATION_PUZZLE,
 						DUZE_MALE,
 						DOTS2DOTS,
 						QUIZ,
@@ -99,10 +95,6 @@ enum STAN_GRY		{
 //=== modu³y ===
 
 CMapa		*pMapa;		// modul mapy (labirynt 3d)
-CRotation	*pRotation;	// ukladanka
-CRotation	*pRotationPuzzle;	// ukladanka puzzle
-CIntro		*pIntro;	// intro - animacja 
-CQuiz		*pQuiz;		// quiz
 
 //=== dodatkowe
 
@@ -145,8 +137,8 @@ bool Direct3DInit()
 	{
 		displayMode.Width = 800;				//iWidth;
 		displayMode.Height = 600;				//iHeight;
-//		displayMode.RefreshRate = 0; 
-		displayMode.Format = D3DFMT_A8R8G8B8;		// tu mozna zmienic
+		displayMode.RefreshRate = 0; 
+		displayMode.Format = D3DFMT_A8R8G8B8;	//R5G6B5;		// tu mozna zmienic
 	}
 
 	// ustaw/zapamietaj aktualne parametry wyswietlania
@@ -207,7 +199,6 @@ bool Direct3DInit()
 
     pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );	// backface culling off
 	pDevice->SetRenderState( D3DRS_LIGHTING, FALSE );			// swiatlo
-	pDevice->SetRenderState( D3DRS_DITHERENABLE, TRUE );		// dithering
 	
 	// blending
 	
@@ -232,16 +223,13 @@ bool Direct3DInit()
 	//=== modu³y
 
 	pMapa = new CMapa();
-	pRotation = new CRotation();
-	pIntro = new CIntro();
-	pRotationPuzzle = new CRotation();
-	pQuiz = new CQuiz();
 
 	//=== myszka 
 
 	pMouse = new CMouse();
 	pMouse->Initialize(pDevice,"Resource\\myszka.fox");
-	pMouse->AddCustomPoint(pDevice,0,"myszka.tga","Resource\\myszka.fox");
+
+
 
 	return true;
 }
@@ -261,30 +249,7 @@ void DrawScene()
 	{
 		
 	case	INTRO:
-				if (!pIntro->GetActive()) // nie zawiera danych
-				{
-					pIntro->Initialize(pDevice,CurrentDirectory,pAudio);
-				}
-
-				if (pIntro->GetActive())	// tutaj leci intro
-				{
-					
-					//pDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0 );
-					
-					// przelaczyc ? 
-					
-					if (pIntro->DrawScene(g_FrameCount,
-						pMouse->GetMouseX(), pMouse->GetMouseY(),
-						pMouse->GetLeftButtonState(),
-						pMouse->GetCenterButtonState(),
-						pMouse->GetRightButtonState(),pAudio,pDevice)==109
-						)
-					{
-						pIntro->DeInitialize();
-						eStanGry=MAPA;
-					}
-				}
-				
+					// tutaj leci intro
 
 			break;
 
@@ -296,142 +261,19 @@ void DrawScene()
 	
 				if (pMapa->GetActive())
 				{
-					
-					// zmiany stanu w zaleznosci od planszy
-					
-					switch (
-						pMapa->DrawScene(g_FrameCount,
+					pMapa->DrawScene(g_FrameCount,
 						pMouse->GetMouseX(), pMouse->GetMouseY(),
 						pMouse->GetLeftButtonState(),
 						pMouse->GetCenterButtonState(),
-						pMouse->GetRightButtonState())
-						)
-						{
-							// lewy przycisk, button exit
-					
-							case 2:
-									pMapa->DeInitialize();
-									eStanGry = ROTATION;
-									break;
-
-						}
-				}
-
-				break;
-
-	case	ROTATION:
-				if (!pRotation->GetActive())	// nie zawiera danych
-				{
-					pAudio->StopMusic(5);		// zmiana muzyki
-
-					if( FAILED( pAudio->Init(CurrentDirectory,"Resource\\Music") ) )
-					{
-						MessageBox(0, "Nie mo¿na zainicjalizowaæ Direct Audio!", "B³¹d!", MB_OK);
-					}
-
-					pAudio->PlayMusic(L"001.wav");
-
-					pRotation->Initialize(pDevice,CurrentDirectory,pAudio );	// wczytaj dane
-
-				}
-	
-				if (pRotation->GetActive())
-				{
-					switch (
-						pRotation->DrawScene(g_FrameCount,
-						pMouse->GetMouseX(), pMouse->GetMouseY(),
-						pMouse->GetLeftButtonState(),
-						pMouse->GetCenterButtonState(),
-						pMouse->GetRightButtonState(),pAudio)		// rysuje jezeli aktywne
-						)
-					{
-						// lewy przycisk, button exit
-	
-					case 2:
-								pRotation->DeInitialize();
-								eStanGry = ROTATION_PUZZLE;
-								break;
-					}
+						pMouse->GetRightButtonState());		// rysuje jezeli aktywne
 				}
 				break;
-
-	case	ROTATION_PUZZLE:
-				if (!pRotationPuzzle->GetActive())	// nie zawiera danych
-				{
-					pAudio->StopMusic(5);		// zmiana muzyki
-
-					if( FAILED( pAudio->Init(CurrentDirectory,"Resource\\Music") ) )
-					{
-						MessageBox(0, "Nie mo¿na zainicjalizowaæ Direct Audio!", "B³¹d!", MB_OK);
-					}
-
-					pAudio->PlayMusic(L"003.wav");
-
-					pRotationPuzzle->Initialize_Puzzle(pDevice,CurrentDirectory,pAudio );	// wczytaj dane
-
-				}
-	
-				if (pRotationPuzzle->GetActive())
-				{
-					switch (
-						pRotationPuzzle->DrawScene(g_FrameCount,
-						pMouse->GetMouseX(), pMouse->GetMouseY(),
-						pMouse->GetLeftButtonState(),
-						pMouse->GetCenterButtonState(),
-						pMouse->GetRightButtonState(),pAudio)		// rysuje jezeli aktywne
-						)
-					{
-						// lewy przycisk myszy, button exit
-					case 4: 
-							pRotationPuzzle->DeInitialize();
-							eStanGry = QUIZ;
-							break;
-					}
-				}
-				break;
-
-	case	QUIZ:
-				if (!pQuiz->GetActive())	// nie zawiera danych
-				{
-					pAudio->StopMusic(5);		// zmiana muzyki
-
-					if( FAILED( pAudio->Init(CurrentDirectory,"Resource\\Music") ) )
-					{
-						MessageBox(0, "Nie mo¿na zainicjalizowaæ Direct Audio!", "B³¹d!", MB_OK);
-					}
-
-					pAudio->PlayMusic(L"004.wav");
-
-					pQuiz->Initialize(pDevice,CurrentDirectory,pAudio );	// wczytaj dane
-
-				}
-	
-				if (pQuiz->GetActive())
-				{
-					switch (
-						pQuiz->DrawScene(g_FrameCount,
-						pMouse->GetMouseX(), pMouse->GetMouseY(),
-						pMouse->GetLeftButtonState(),
-						pMouse->GetCenterButtonState(),
-						pMouse->GetRightButtonState(),pAudio)		// rysuje jezeli aktywne
-						)
-					{
-						// lewy przycisk myszy, button exit
-					case 2: 
-							pRotationPuzzle->DeInitialize();
-							eStanGry = QUIZ;
-							break;
-					}
-				}
-				break;
-
-				
 	}
 	
 
 	// tutaj kursor myszy
 
-	pMouse->Render(0);
+	pMouse->Render();
 
 	// wypisz fps
 
@@ -525,7 +367,7 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	
 	// tak wyglada na poczatku
 
-	eStanGry = INTRO;
+	eStanGry = MAPA;
 
 	// pobierz aktualny katalog
 	
@@ -582,13 +424,13 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	pAudio = new CAudio();
 
-	if( FAILED( pAudio->Init(CurrentDirectory,"Resource\\Music") ) )
+	if( FAILED( pAudio->Init(CurrentDirectory) ) )
 	{
 		MessageBox(0, "Nie mo¿na zainicjalizowaæ Direct Audio!", "B³¹d!", MB_OK);
 		return 0;
 	}
 
-	pAudio->PlayMusic(L"002.wav");
+	pAudio->PlayMusic(L"001.wav");
 
 	// petla przechwytywania komunikatow
 
@@ -607,23 +449,19 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		DrawScene();	// rysuj klatke 
 	} 
 
-	delete pMapa;
-	delete pRotation;
-	delete pRotationPuzzle;
-	delete pIntro;
-	delete pQuiz;
+	free (pMapa);
 
 	// zwolnij myszke
 
 	pMouse->DeInitialize();
 
-	delete pMouse;
+	free(pMouse);
 
 	// fonty
 
-	delete pFont;
+	free (pFont);
 
-	delete pAudio;
+	free (pAudio);
 
 	pDevice->Release();
 	pDirect3D->Release();
