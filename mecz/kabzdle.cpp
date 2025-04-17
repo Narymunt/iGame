@@ -71,6 +71,8 @@ int					iLicznik;
 
 long				h1,h2,h3,h4;	// do petli
 
+float				f1,f2,f3;
+
 //=== zawodnik #1
 
 CSprite				*pPlayer1;	// jego wyglad
@@ -97,6 +99,11 @@ float				fPlayer2Y;	// y na ekranie
 
 float				fPlayer2AddX;	// inkrementator
 float				fPlayer2AddY;
+
+float				fPlayer2LastAddX;
+float				fPlayer2LastAddY;
+
+float				fPlayer2Angle;
 
 float				fPlayer2Kick;	// si³a uderzenia
 
@@ -234,9 +241,9 @@ bool Direct3DInit()
 		pMouseFile->Search("myszka.tga"),pDevice);
 
 	pBackground = new CSprite(255,255,255,255);
-	pMouseFile->Load("back001.bmp");
+	pMouseFile->Load("boisko.bmp");
 	pBackground->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
-		pMouseFile->Search("back001.bmp"),pDevice);
+		pMouseFile->Search("boisko.bmp"),pDevice);
 
 	// wczytaj obiekt graczy
 
@@ -253,6 +260,10 @@ bool Direct3DInit()
 	pMouseFile->Load("player2.tga");
 	pPlayer2->InitializeTGAinMemory((unsigned int*)pMouseFile->pDataBuffer,
 		pMouseFile->Search("player2.tga"),pDevice);
+
+	fPlayer2X=368-100; fPlayer2Y=268;
+	fPlayer2AddX=0; fPlayer2AddY=0;
+	fPlayer2Angle=0;
 
 	// wczytaj obiekt pi³ki
 
@@ -301,8 +312,8 @@ void UpdateScene()
 		fPlayer1AddY=-2.0f;
 	}
 
-	fPlayer1X+=fPlayer1AddX;
-	fPlayer1Y+=fPlayer1AddY;
+		fPlayer1X+=fPlayer1AddX;
+		fPlayer1Y+=fPlayer1AddY;
 
 	// odbicia od scian
 
@@ -379,7 +390,110 @@ void UpdateScene()
 
 	pPlayer1->SetRotationCenter(32,32);
 	pPlayer1->SetRotation(fPlayer1Angle);	
-		
+
+	// player 2 biegnie
+
+	// nie za szybko ? 
+
+	if (fPlayer2AddX>2.0f)
+	{
+		fPlayer2AddX=2.0f;
+	}
+
+	if (fPlayer2AddX<-2.0f)
+	{
+		fPlayer2AddX=-2.0f;
+	}
+
+	if (fPlayer2AddY>2.0f)
+	{
+		fPlayer2AddY=2.0f;
+	}
+
+	if (fPlayer2AddY<-2.0f)
+	{
+		fPlayer2AddY=-2.0f;
+	}
+
+	fPlayer2X+=fPlayer2AddX;
+	fPlayer2Y+=fPlayer2AddY;
+
+	// odbicia od scian
+
+	if (fPlayer2X>736 && fPlayer2AddX>0)	// prawa
+	{
+		fPlayer2AddX = -fPlayer2AddX+(fPlayer2AddX*0.3f);
+	}
+	
+	if (fPlayer2X<0&&fPlayer2AddX<0 )		// lewa
+	{
+		fPlayer2AddX = -fPlayer2AddX+(fPlayer2AddX*0.3f);
+	}
+
+	if (fPlayer2Y<0 && fPlayer2AddY<0)		// gora
+	{
+		fPlayer2AddY = -fPlayer2AddY+(fPlayer2AddY*0.3f);
+	}
+
+	if (fPlayer2Y>536 && fPlayer2AddY>0)
+	{
+		fPlayer2AddY = - fPlayer2AddY+(fPlayer2AddY*0.3f);
+	}
+
+	// odbicia wzajemne poziome
+
+//	for (h1=0;h1<ILE_KULEK;h1++)
+//	{
+//		if (
+//			(fKabzdelX[iLicznik]>fKabzdelX[h1])&&
+//			(fKabzdelX[iLicznik]<fKabzdelX[h1]+64)&&
+//			fKabzdelAddX[iLicznik]<0)	// prawa
+//		{
+//			fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik]-fKabzdelAddX[h1];
+//			fKabzdelAddX[h1] = -fKabzdelAddX[h1]-fKabzdelAddX[iLicznik];
+//
+//			pBounce->Play(pAudio,0,0,0);
+
+			//fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik]*0.7f;
+//		}
+//
+//		if (
+//			(fKabzdelX[iLicznik]<fKabzdelX[h1])&&
+//			(fKabzdelX[iLicznik]>fKabzdelX[h1]-64)&&
+//			fKabzdelAddX[iLicznik]>0)	// lewa
+//		{
+//			fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik]-fKabzdelAddX[h1];
+//			fKabzdelAddX[h1] = -fKabzdelAddX[h1]-fKabzdelAddX[iLicznik];
+
+//			pBounce->Play(pAudio,0,0,0);
+
+//		}
+			
+
+//		if (fKabzdelX[iLicznik]>fKabzdelX[h1]&&fKabzdelX[iLicznik]-64<fKabzdelX[h1])	// lewa
+//		{
+			//fKabzdelAddX[iLicznik] = -fKabzdelAddX[iLicznik];
+//		}
+
+//	}
+
+	// tarcie poziome i pionowe (biegnie pod gorke, albo z gorki)
+
+	if (fPlayer2AddX>0) fPlayer2AddX-=0.1f;
+	if (fPlayer2AddX<0) fPlayer2AddX+=0.1f;
+	
+	if (fPlayer2AddY>0)	fPlayer2AddY-=0.1f;
+	if (fPlayer2AddY<0) fPlayer2AddY+=0.1f;
+
+	// przesuniecie na ekranie
+
+	pPlayer2->SetTranslation(fPlayer2X, fPlayer2Y);
+	
+	// obrot
+
+	pPlayer2->SetRotationCenter(32,32);
+	pPlayer2->SetRotation(fPlayer2Angle);	
+
 	//=== pilka, nie ma ograniczen predkosci dla pilki
 
 	fBallX+=fBallAddX;
@@ -424,6 +538,55 @@ void UpdateScene()
 		}
 	}
 
+
+	if ( (fBallX-fPlayer2X)<64 && (fBallX-fPlayer2X)>-64 &&
+		 (fBallY-fPlayer2Y)<64 && (fBallY-fPlayer2Y)>-64 )
+	{
+		if (GetAsyncKeyState(VK_LSHIFT)!=0)
+		{
+			fBallAddX = 5*fPlayer2AddX+(fBallAddX*0.3f);
+			fBallAddY = 5*fPlayer2AddY+(fBallAddY*0.3f);
+		}
+		else
+		{
+			fBallAddX = fPlayer2AddX+(fBallAddX*0.3f);
+			fBallAddY = fPlayer2AddY+(fBallAddY*0.3f);
+		}
+	}
+
+	// zderzyli sie ? - odbicie albo ciagniecie
+
+	if ( (fPlayer1X-fPlayer2X)<64 && (fPlayer1X-fPlayer2X)>-64 &&
+		 (fPlayer1Y-fPlayer2Y)<64 && (fPlayer1Y-fPlayer2Y)>-64 )
+	{
+		if (GetAsyncKeyState(VK_LSHIFT)!=0)
+		{
+			fPlayer1AddX = 2.5*fPlayer2AddX+(fPlayer1AddX*0.3f);
+			fPlayer1AddY = 2.5*fPlayer2AddY+(fPlayer1AddY*0.3f);
+		}
+		else //if (GetAsyncKeyState(VK_RSHIFT)==0)
+		{
+			fPlayer1AddX = fPlayer2AddX+(fPlayer1AddX*0.3f);
+			fPlayer1AddY = fPlayer2AddY+(fPlayer1AddY*0.3f);
+		}
+
+
+		if (GetAsyncKeyState(VK_RSHIFT)!=0)
+		{
+			fPlayer2AddX = 2.5*fPlayer1AddX+(fPlayer2AddX*0.3f);
+			fPlayer2AddY = 2.5*fPlayer1AddY+(fPlayer2AddY*0.3f);
+		}
+		else //if (GetAsyncKeyState(VK_LSHIFT)==0)
+		{
+			fPlayer2AddX = fPlayer1AddX+(fPlayer1AddX*0.3f);
+			fPlayer2AddY = fPlayer1AddY+(fPlayer1AddY*0.3f);
+		}
+
+
+	}
+
+
+
 	// tarcie poziome i pionowe, pilka leci pod gorke, albo toczy sie z gorki
 
 	if (fBallAddX>0) fBallAddX-=0.01f;
@@ -438,108 +601,45 @@ void UpdateScene()
 	
 	// obrot
 
+	f1=1+(fBallAddX+fBallAddY)/10;
+
+	if (f1<0)
+	{
+		f1 = -1 * f1;
+	}
+
+	if (f1<1) 
+	{
+		f1 = 1;
+	}
+
+	if (f1>2)
+	{
+		f1 = 2;
+	}
+
+//	pBall->SetRotationCenter((64*f1)/2,(64*f1)/2);
 	pBall->SetRotationCenter(32,32);
-	pBall->SetRotation(fBallAddX*fBallAddY);	
+	pBall->SetRotation(fBallAddX*fBallAddY*4);	
+
+	// skala
+	
+
+	//pBall->SetScale(f1,f1);
 
 	// rysuj
 
 	pBall->Render();
 	pPlayer1->Render();
+	pPlayer2->Render();
 
+	//=== koniec pilka, teraz asynchroniczne sprawdzenie klawiatury
 
-	//=== koniec pilka
+	// player1 
 
-	pBubble->SetRotationCenter(0,64);
-	
-	if (rightButton) pBubble->AddRotation(0.01f);
-
-	leftButton ? pBubble->SetTranslation(mouseX+16,mouseY+16) : pBubble->SetTranslation(mouseX,mouseY);
-
-//	pBubble->SetTranslation(mouseX,mouseY) ? !leftButton : leftButton;
-
-	//pBubble->SetTranslation(mouseX,mouseY);
-	pBubble->Render();
-
-
-	pFont->OutputText("FPS: ",10,10);
-	_itoa(g_FrameRate,str,10);		// fps
-	pFont->OutputText(str,50,10);
-
-	pFont->OutputText("Player1 Angle: ",10,30);
-	_itoa(fPlayer1Angle*10,str,10);
-	pFont->OutputText(str,120,30);
-
-	pFont->OutputText("Player1 X: ",10,50);
-	_itoa(fPlayer1X,str,10);
-	pFont->OutputText(str,100,50);
-
-	pFont->OutputText("Y: ",140,50);
-	_itoa(fPlayer1Y,str,10);
-	pFont->OutputText(str,160,50);
-
-	pFont->OutputText("LX: ", 190,50);
-	_itoa(fPlayer1LastAddX*100,str,10);
-	pFont->OutputText(str,220,50);
-
-	pFont->OutputText("LY: ",250,50);
-	_itoa(fPlayer1LastAddY*100,str,10);
-	pFont->OutputText(str,280,50);
-
-	_itoa(GetAsyncKeyState(VK_RSHIFT),str,10);
-	pFont->OutputText(str,10,160);
-
-}
-
-//=== rysuj scenke, tylko przygotowuje calosc, a potem odwoluje sie do odpowiedniej
-//=== funkcji aktualizujacej w zaleznosci od CScene
-
-void DrawScene()
-{
-//	pDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0 );
-	
-	pDevice->BeginScene();
-	
-	
-	UpdateScene();	// to zamienic na game,background itepe
-	
-	g_EndTime = timeGetTime();
-
-	if (g_EndTime - g_StartTime > 1000)
+	if (GetAsyncKeyState(VK_UP)!=0)	// biegnie przed siebie ? 
 	{
-		g_FrameRate = (g_FrameCount - g_StartFrameCount) * 1000 / (g_EndTime - g_StartTime);
-		g_StartTime = g_EndTime;
-		g_StartFrameCount = g_FrameCount;
-	}
-
-	g_FrameCount++;	
-	
-	pDevice->EndScene();	//pDirect3D->EndScene();
-	pDevice->Present(NULL, NULL, NULL, NULL);	//pDirect3D->Present();
-}
-
-//=== obsluga okna
-
-LRESULT CALLBACK BasicWindowProc(HWND wpHWnd, UINT msg, WPARAM wParam, LPARAM lParam)
-{
-
-	switch(msg)
-	{	
-		case WM_DESTROY: 
-		{ 
-			PostQuitMessage(0);
-			return 0;
-		} break;
-
-		case WM_KEYDOWN:
-			switch( wParam )
-			{
-				case VK_ESCAPE:
-					PostQuitMessage( 0 );
-					break;
-
-				case VK_UP:		// player1 biegnie do przodu
-
-					// zapamietaj (bedzie potrzebne przy kopnieciu pilki)
+							// zapamietaj (bedzie potrzebne przy kopnieciu pilki)
 
 					fPlayer1LastAddX = fPlayer1AddX;
 					fPlayer1LastAddY = fPlayer1AddY;
@@ -596,10 +696,10 @@ LRESULT CALLBACK BasicWindowProc(HWND wpHWnd, UINT msg, WPARAM wParam, LPARAM lP
 						fPlayer1AddY-=6.3f-fPlayer1Angle;
 					}
 					
-					break;
+	}
 
-				case VK_DOWN:	// player1 biegnie do ty³u
-
+	if (GetAsyncKeyState(VK_DOWN)!=0)
+	{
 					// lewo 
 
 					if (fPlayer1Angle>=0 && fPlayer1Angle<1.5f)
@@ -651,38 +751,285 @@ LRESULT CALLBACK BasicWindowProc(HWND wpHWnd, UINT msg, WPARAM wParam, LPARAM lP
 						fPlayer1AddX+=6.3f-fPlayer1Angle;
 						fPlayer1AddY+=6.3f-fPlayer1Angle;
 					}
-					
-					break;				
+	}
 
-
-				case VK_LEFT:
-					
+	if (GetAsyncKeyState(VK_LEFT)!=0)	// player1 odwraca sie w lewo
+	{
 					fPlayer1Angle+=0.1f;
 					
 					if (fPlayer1Angle>6.2)
 					{
 						fPlayer1Angle=0;
 					}
+	}
 
-					break;
-
-				case VK_RIGHT:
-					
+	
+	if (GetAsyncKeyState(VK_RIGHT)!=0)	// player1 odwraca sie w prawo
+	{
 					fPlayer1Angle-=0.1f;
 
 					if (fPlayer1Angle<-6.2)
 					{
 						fPlayer1Angle=0;
 					}
+	}
 
+
+	if (GetAsyncKeyState('W')!=0)	// player 2 biegnie do przodu
+	{
+
+					// zapamietaj (bedzie potrzebne przy kopnieciu pilki)
+
+					fPlayer2LastAddX = fPlayer2AddX;
+					fPlayer2LastAddY = fPlayer2AddY;
+
+					// lewo 
+
+					if (fPlayer2Angle>=0 && fPlayer2Angle<1.5f)
+					{
+						fPlayer2AddX-=fPlayer2Angle;
+						fPlayer2AddY-=(1.5f-fPlayer2Angle);
+					}
+
+					if (fPlayer2Angle>=1.5f && fPlayer2Angle<3.0f)
+					{
+						fPlayer2AddX-=(3.0f-fPlayer2Angle);
+						fPlayer2AddY+=fPlayer2Angle-1.5f;
+					}
+
+					if (fPlayer2Angle>=3.0f && fPlayer2Angle<4.7f)
+					{
+						fPlayer2AddX+=fPlayer2Angle-3.0f;
+						fPlayer2AddY+=4.5f-fPlayer2Angle;
+					}
+
+					if (fPlayer2Angle>=4.7)
+					{
+						fPlayer2AddX+=6.3f-fPlayer2Angle;
+						fPlayer2AddY-=6.3f-fPlayer2Angle;
+					}
+
+					// prawo
+
+					if (fPlayer2Angle<0 && fPlayer2Angle>-1.6f)
+					{
+						fPlayer2AddX-=fPlayer2Angle;
+						fPlayer2AddY-=(1.5f-fPlayer2Angle);
+					}
+
+					if (fPlayer2Angle<=-1.6f && fPlayer2Angle>-3.1f)
+					{
+						fPlayer2AddX+=(3.1f+fPlayer2Angle);
+						fPlayer2AddY-=fPlayer2Angle+1.6f;
+					}
+
+					if (fPlayer2Angle<=-3.1f && fPlayer2Angle>-4.7f)
+					{
+						fPlayer2AddX+=fPlayer2Angle+3.0f;
+						fPlayer2AddY+=4.5f-fPlayer2Angle;
+					}
+
+					if (fPlayer2Angle<=-4.7)
+					{
+						fPlayer2AddX-=6.3f-fPlayer2Angle;
+						fPlayer2AddY-=6.3f-fPlayer2Angle;
+					}
+					
+	}					
+
+	if (GetAsyncKeyState('S')!=0)	// player2 biegnie do ty³u
+	{
+					// lewo 
+
+					if (fPlayer2Angle>=0 && fPlayer2Angle<1.5f)
+					{
+						fPlayer2AddX+=fPlayer2Angle;
+						fPlayer2AddY+=(1.5f-fPlayer2Angle);
+					}
+
+					if (fPlayer2Angle>=1.5f && fPlayer2Angle<3.0f)
+					{
+						fPlayer2AddX+=(3.0f-fPlayer2Angle);
+						fPlayer2AddY-=fPlayer2Angle-1.5f;
+					}
+
+					if (fPlayer2Angle>=3.0f && fPlayer2Angle<4.7f)
+					{
+						fPlayer2AddX-=fPlayer2Angle-3.0f;
+						fPlayer2AddY-=4.5f-fPlayer2Angle;
+					}
+
+					if (fPlayer2Angle>=4.7)
+					{
+						fPlayer2AddX-=6.3f-fPlayer2Angle;
+						fPlayer2AddY+=6.3f-fPlayer2Angle;
+					}
+
+					// prawo
+
+					if (fPlayer2Angle<0 && fPlayer2Angle>-1.6f)
+					{
+						fPlayer2AddX+=fPlayer2Angle;
+						fPlayer2AddY+=(1.5f-fPlayer2Angle);
+					}
+
+					if (fPlayer2Angle<=-1.6f && fPlayer2Angle>-3.1f)
+					{
+						fPlayer2AddX-=(3.1f+fPlayer2Angle);
+						fPlayer2AddY+=fPlayer2Angle+1.6f;
+					}
+
+					if (fPlayer2Angle<=-3.1f && fPlayer2Angle>-4.7f)
+					{
+						fPlayer2AddX-=fPlayer2Angle+3.0f;
+						fPlayer2AddY-=4.7f-fPlayer2Angle;
+					}
+
+					if (fPlayer2Angle<=-4.7)
+					{
+						fPlayer2AddX+=6.3f-fPlayer2Angle;
+						fPlayer2AddY+=6.3f-fPlayer2Angle;
+					}
+					
+	}
+
+	if (GetAsyncKeyState('A')!=0)	// odwraca sie w lewo
+	{
+					
+					fPlayer2Angle+=0.1f;
+					
+					if (fPlayer2Angle>6.2)
+					{
+						fPlayer2Angle=0;
+					}
+
+	}					
+
+	if (GetAsyncKeyState('D')!=0)
+	{				
+		
+					fPlayer2Angle-=0.1f;
+
+					if (fPlayer2Angle<-6.2)
+					{
+						fPlayer2Angle=0;
+					}
+	}
+
+
+	// myszka i reszta 
+
+	pBubble->SetRotationCenter(0,64);
+	
+	if (rightButton) pBubble->AddRotation(0.01f);
+
+	leftButton ? pBubble->SetTranslation(mouseX+16,mouseY+16) : pBubble->SetTranslation(mouseX,mouseY);
+
+//	pBubble->SetTranslation(mouseX,mouseY) ? !leftButton : leftButton;
+
+	//pBubble->SetTranslation(mouseX,mouseY);
+	pBubble->Render();
+
+
+	pFont->OutputText("FPS: ",10,10);
+	_itoa(g_FrameRate,str,10);		// fps
+	pFont->OutputText(str,50,10);
+
+	pFont->OutputText("Player1 Angle: ",10,30);
+	_itoa(fPlayer1Angle*10,str,10);
+	pFont->OutputText(str,120,30);
+
+	pFont->OutputText("Player1 X: ",10,50);
+	_itoa(fPlayer1X,str,10);
+	pFont->OutputText(str,100,50);
+
+	pFont->OutputText("Y: ",140,50);
+	_itoa(fPlayer1Y,str,10);
+	pFont->OutputText(str,160,50);
+
+	pFont->OutputText("LX: ", 190,50);
+	_itoa(fPlayer1LastAddX*100,str,10);
+	pFont->OutputText(str,220,50);
+
+	pFont->OutputText("LY: ",250,50);
+	_itoa(fPlayer1LastAddY*100,str,10);
+	pFont->OutputText(str,280,50);
+
+	_itoa(GetAsyncKeyState(VK_RSHIFT),str,10);
+	pFont->OutputText(str,10,170);
+
+	pFont->OutputText("Player2 Angle: ",10,130);
+	_itoa(fPlayer2Angle*10,str,10);
+	pFont->OutputText(str,120,130);
+
+	pFont->OutputText("Player2 X: ",10,150);
+	_itoa(fPlayer2X,str,10);
+	pFont->OutputText(str,100,150);
+
+	pFont->OutputText("Y: ",140,150);
+	_itoa(fPlayer2Y,str,10);
+	pFont->OutputText(str,160,150);
+
+	pFont->OutputText("LX: ", 190,150);
+	_itoa(fPlayer2LastAddX*100,str,10);
+	pFont->OutputText(str,220,150);
+
+	pFont->OutputText("LY: ",250,150);
+	_itoa(fPlayer2LastAddY*100,str,10);
+	pFont->OutputText(str,280,150);
+
+	_itoa(GetAsyncKeyState(VK_LSHIFT),str,10);
+	pFont->OutputText(str,10,190);
+
+
+}
+
+//=== rysuj scenke, tylko przygotowuje calosc, a potem odwoluje sie do odpowiedniej
+//=== funkcji aktualizujacej w zaleznosci od CScene
+
+void DrawScene()
+{
+//	pDevice->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0 );
+	
+	pDevice->BeginScene();
+	
+	
+	UpdateScene();	// to zamienic na game,background itepe
+	
+	g_EndTime = timeGetTime();
+
+	if (g_EndTime - g_StartTime > 1000)
+	{
+		g_FrameRate = (g_FrameCount - g_StartFrameCount) * 1000 / (g_EndTime - g_StartTime);
+		g_StartTime = g_EndTime;
+		g_StartFrameCount = g_FrameCount;
+	}
+
+	g_FrameCount++;	
+	
+	pDevice->EndScene();	//pDirect3D->EndScene();
+	pDevice->Present(NULL, NULL, NULL, NULL);	//pDirect3D->Present();
+}
+
+//=== obsluga okna
+
+LRESULT CALLBACK BasicWindowProc(HWND wpHWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+
+	switch(msg)
+	{	
+		case WM_DESTROY: 
+		{ 
+			PostQuitMessage(0);
+			return 0;
+		} break;
+
+		case WM_KEYDOWN:
+			switch( wParam ) 
+			{
+				case VK_ESCAPE:
+					PostQuitMessage( 0 );
 					break;
-
-				case VK_SPACE:
-					fPlayer1Angle=0;
-					fPlayer1AddX=0;
-					fPlayer1AddY=0;
-					break;
-
 			}
 			break;
 
