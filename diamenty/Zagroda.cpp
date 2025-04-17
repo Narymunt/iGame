@@ -1,0 +1,24 @@
+// Zagroda.cpp: implementation of the Zagroda class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "Zagroda.h"
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+Zagroda::Zagroda()
+{
+	for (int a1=0; a1<4000; a1++) teren_global[a1]=1;	
+	
+	for (int b1=0; b1<160; b1++) teren[b1]=1;	// wszedzie trawa
+
+	teren_global[7]=5;	// murek bialy
+
+}
+
+Zagroda::~Zagroda()
+{
+
+}
