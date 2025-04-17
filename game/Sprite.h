@@ -16,7 +16,7 @@
 class CSprite  
 {
 public:
-	CSprite(unsigned char alpha, unsigned char r, unsigned char g, unsigned char b);
+	CSprite();
 	virtual ~CSprite();
 
 	HRESULT				Initialize(IDirect3DDevice8 *g_pDevice, char *path);

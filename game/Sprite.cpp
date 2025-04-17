@@ -13,7 +13,7 @@
 
 // stworz obiekt 
 
-CSprite::CSprite(unsigned char alpha, unsigned char r, unsigned char g, unsigned char b)
+CSprite::CSprite()
 {
 	m_pSprite = 0;
 	m_pTexture = 0;
@@ -29,7 +29,7 @@ CSprite::CSprite(unsigned char alpha, unsigned char r, unsigned char g, unsigned
 	m_Scaling.x = 1.0f;
 	m_Scaling.y = 1.0f;
 	
-	m_ModulateColor = D3DCOLOR_ARGB(alpha,r,g,b);	// lub RGBA
+	m_ModulateColor = D3DCOLOR_XRGB(255,255,255);	// lub RGBA
 	
 	m_Rotation = 0.0f;
 }
@@ -66,8 +66,12 @@ HRESULT CSprite::Render()
 
 	m_pSprite->Begin();
 
-	hr = m_pSprite->Draw(m_pTexture, NULL,
-						 &m_Scaling, &m_RotCenter, m_Rotation, &m_Translation, 
+	hr = m_pSprite->Draw(m_pTexture, 
+						 NULL,
+						 &m_Scaling,
+						 &m_RotCenter,
+						 m_Rotation, 
+						 &m_Translation, 
 						 m_ModulateColor);
 
 	m_pSprite->End();

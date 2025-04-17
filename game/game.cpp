@@ -11,41 +11,55 @@
 
 #include "Direct3D.h"		// obsluga urzadzenia
 #include "Window.h"			// obsluga okna
-
+#include "Sprite.h"			// sprite 
+#include "Font.h"			// czcionka
 
 //=== glowne dla gry
 
-CWindow		*Window;		// glowne okno
-CDirect3D	*Direct3D;	// handler
+CWindow		*pWindow;		// glowne okno
+CDirect3D	*pDirect3D;		// handler
+CFont		*pFont;			//	
+//=== obiekty graficzne
+
+CSprite		*obiekt;
 
 //=== pomocnicza
 
 bool Direct3DInit()
 {
 
-	Direct3D = new CDirect3D(Window);
+	pDirect3D = new CDirect3D(pWindow);
 	
 
 //	font.Initialize((HFONT)GetStockObject(SYSTEM_FONT),D3DCOLOR_XRGB(255,255,0));
 
-    Direct3D->pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE ); // backface culling 
-	Direct3D->pDevice->SetRenderState( D3DRS_LIGHTING, FALSE );	// swiatlo
+    pDirect3D->pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE ); // backface culling 
+	pDirect3D->pDevice->SetRenderState( D3DRS_LIGHTING, FALSE );	// swiatlo
 	
 	// blending
 	
-	Direct3D->pDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
-	Direct3D->pDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
-	Direct3D->pDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+	pDirect3D->pDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+	pDirect3D->pDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+	pDirect3D->pDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
 
 	// alpha channel
 	
-	Direct3D->pDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
+	pDirect3D->pDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
 
 	// macierz widoku
 
 	D3DXMATRIX mat;
 	D3DXMatrixTranslation(&mat, 0, 0, 5);
-	Direct3D->pDevice->SetTransform(D3DTS_VIEW, &(D3DMATRIX)mat);
+	pDirect3D->pDevice->SetTransform(D3DTS_VIEW, &(D3DMATRIX)mat);
+
+	// dodatkowe obiekty 
+
+	obiekt = new CSprite();
+	obiekt->Initialize(pDirect3D->pDevice,"sprite.bmp");
+	obiekt->m_Translation.x=0.5f; //272;
+	obiekt->m_Translation.y=0.5f; //172;
+	obiekt->m_RotCenter.x=400;
+	obiekt->m_RotCenter.y=300;
 
 	return true;
 }
@@ -54,24 +68,21 @@ bool Direct3DInit()
 
 void UpdateScene()
 {
-
-	int h1;
-
-	h1++;
-
+	obiekt->Render();
+	obiekt->m_Rotation+=0.01f;
 }
 
 // rysuj scenke
 
 void DrawScene()
 {
-	Direct3D->Clear(D3DCOLOR_XRGB(0, 0, 0));
-	Direct3D->BeginScene();
+	pDirect3D->Clear(D3DCOLOR_XRGB(0, 0, 0));
+	pDirect3D->BeginScene();
 
 	UpdateScene();	// to zamienic na game,background itepe
 	
-	Direct3D->EndScene();
-	Direct3D->Present();
+	pDirect3D->EndScene();
+	pDirect3D->Present();
 }
 
 //### start programu ###
@@ -89,7 +100,7 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	else 
 		bFullScreen=false;
 
-	Window = new CWindow(hInstance, "Kozio³ek Mato³ek idzie do szko³y", "Kozio³ek Mato³ek", 
+	pWindow = new CWindow(hInstance, "Kozio³ek Mato³ek idzie do szko³y", "Kozio³ek Mato³ek", 
 					  0, 0, 800, 600, bFullScreen);
 
 	Direct3DInit();		// usunac, bez funkcji pomocniczej
@@ -98,15 +109,14 @@ int WINAPI WinMain(	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	while(1)
 	{
-		if (Window->CheckMessages()==-1)	break; // koniec ? 
+		if (pWindow->CheckMessages()==-1)	break; // koniec ? 
 		
 		if (GetAsyncKeyState(VK_ESCAPE)) PostQuitMessage(0); // escape ? 
 		
 		DrawScene();	// rysuj klatke 
 	} 
 
-	delete Direct3D;	// usunac, bez funkcji pomocniczej
+	delete pDirect3D;
 
 	return 0;
-
 }

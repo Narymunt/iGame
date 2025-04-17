@@ -53,8 +53,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3d8.lib d3dx8.lib strmiids.lib dxguid.lib /nologo /subsystem:windows /machine:I386
-# SUBTRACT LINK32 /pdb:none
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3d8.lib d3dx8.lib /nologo /subsystem:windows /machine:I386
 
 !ELSEIF  "$(CFG)" == "game - Win32 Debug"
 
@@ -67,7 +66,6 @@ LINK32=link.exe
 # PROP Use_Debug_Libraries 1
 # PROP Output_Dir "Debug"
 # PROP Intermediate_Dir "Debug"
-# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
 # ADD CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
@@ -80,7 +78,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3d8.lib d3dx8d.lib strmiids.lib dxguid.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
 
 !ENDIF 
 
@@ -93,7 +91,7 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\Audio.cpp
+SOURCE=.\Direct3d.cpp
 # End Source File
 # Begin Source File
 
@@ -105,15 +103,11 @@ SOURCE=.\game.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Sound.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\Sprite.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Sprite2.cpp
+SOURCE=.\Window.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -121,7 +115,7 @@ SOURCE=.\Sprite2.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=.\Audio.h
+SOURCE=.\Direct3d.h
 # End Source File
 # Begin Source File
 
@@ -129,15 +123,11 @@ SOURCE=.\Font.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Sound.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\Sprite.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Sprite2.h
+SOURCE=.\Window.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"
