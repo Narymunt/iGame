@@ -98,6 +98,63 @@ CBitmap::CBitmap(long lX, long lY, char filename[])
     }
 }
 
+//=== bitmapa wg typu
+
+CBitmap::CBitmap(char filename[], char cType)
+{
+    FILE *plik;
+    
+    unsigned char cHeader[18];
+    
+    // struktura pliku TGA
+    
+    unsigned char	ucIdentSize;	// zwykle 0
+    unsigned char	ucPalette;	// 0 brak, 1 paleta
+    unsigned char	ucType;		// 0 brak, 1 index, 2 rgb, 3 szary, +8 spakowane rle
+    unsigned short	usPalStart;	// poczatek palety
+    unsigned short	usPalLength;	// dlugosc palety
+    unsigned char	ucPalBpp;	// 15,16,24,32
+    
+    unsigned short	usXStart;	// poczatek X
+    unsigned short	usYStart;	// poczatek Y
+    unsigned short	usXSize;		// rozmiar X
+    unsigned short	usYSize;		// rozmiar Y
+    unsigned char	ucBpp;		// 8,16,24,32
+    unsigned char	ucDesc;		// czy obrocony
+    
+    if ((plik=fopen(filename,"rb"))==NULL) printf("#\nCBitmap: Nie mozna odczytac %s \n",filename);
+    fread(&cHeader,18,1,plik);
+    
+    printf("#\n CBitmap: nowy obraz TGA %s\n",filename);
+    
+    ucIdentSize = cHeader[0];
+    ucPalette = cHeader[1];
+    ucType = cHeader[2];
+    usPalStart = (cHeader[4]<<8)+cHeader[3];
+    usPalLength = (cHeader[6]<<8)+cHeader[5];
+    ucPalBpp = cHeader[7];
+    usXStart = (cHeader[9]<<8)+cHeader[8];
+    usYStart = (cHeader[11]<<8)+cHeader[10];
+    usXSize = (cHeader[13]<<8)+cHeader[12];
+    usYSize = (cHeader[15]<<8)+cHeader[14];
+    ucBpp = cHeader[16];
+    ucDesc = cHeader[17];    
+    
+    printf("TGA: identyfikator %d\n",ucIdentSize);
+    printf("TGA: paleta %d\n",ucPalette);
+    printf("TGA: typ %d\n",ucType);
+    printf("TGA: poczatek palety %d\n",usPalStart);
+    printf("TGA: dlugosc palety %d\n",usPalLength);
+    printf("TGA: rodzaj palety %d bpp\n",ucPalBpp);
+    printf("TGA: poczatek X %d\n",usXStart);
+    printf("TGA: poczatek Y %d\n",usYStart);
+    printf("TGA: rozmiar X %d\n",usXSize);
+    printf("TGA: rozmiar Y %d\n",usYSize);
+    printf("TGA: %d bpp\n",ucBpp);
+    printf("TGA: opis %d\n",ucDesc);
+    
+    
+}
 
 //=== akcesory dla danych bitmapy
 
