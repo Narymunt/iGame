@@ -15,7 +15,7 @@
 class CWindow  
 {
 public:
-	CWindow();
+	CWindow(HINSTANCE fp_hInstance, char *szTitle, char *szClassName, int fp_iX, int fp_iY, int fp_iWidth, int fp_iHeight, bool fp_bFullScreen);
 	virtual ~CWindow();
 
 	HWND			hWnd;
@@ -25,9 +25,6 @@ public:
 	
 	int				iWidth;			// szerokosc
 	int				iHeight;		// wysokosc
-
-	void MakeWindow(HINSTANCE fp_hInstance, char *szTitle, char *szClassName, 
-		int fp_iX, int fp_iY, int fp_iWidth, int fp_iHeight, bool fp_bFullScreen);
 	
 	int CheckMessages(); // zwraca -1 dla WM_QUIT
 

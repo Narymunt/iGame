@@ -10,19 +10,7 @@
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CDirect3D::CDirect3D()
-{
-
-}
-
-CDirect3D::~CDirect3D()
-{
-
-}
-
-// tworzy urzadzenie
-
-bool CDirect3D::Create(CWindow *fp_pWindow)
+CDirect3D::CDirect3D(CWindow *fp_pWindow)
 {
 	HRESULT	hr;
 
@@ -32,7 +20,11 @@ bool CDirect3D::Create(CWindow *fp_pWindow)
 
 	pDirect3D = Direct3DCreate8(D3D_SDK_VERSION);
 
-	if (pDirect3D==NULL) return false;
+	if (pDirect3D==NULL) 
+	{
+		MessageBox(0,"B³¹d inicjalizacji DirectX","B³¹d!",MB_OK);
+		return;// false;
+	}
 
 	// ustaw w odpowiedni sposob tryb sprawdzajac czy wyswietlamy w oknie czy
 	// na calym ekranie
@@ -42,8 +34,9 @@ bool CDirect3D::Create(CWindow *fp_pWindow)
 	if (pWindow->bFullScreen==false)
 	{
 		hr = pDirect3D->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, &displayMode);
-
-		if (FAILED(hr)) return false;
+		
+		MessageBox(0,"Nie mo¿na pobraæ informacji o trybie DirectX","B³¹d!",MB_OK);
+		if (FAILED(hr)) return; //false;
 	}
 	else
 	{
@@ -79,9 +72,11 @@ bool CDirect3D::Create(CWindow *fp_pWindow)
                                   D3DCREATE_SOFTWARE_VERTEXPROCESSING,
                                   &presentParameters, &pDevice ); 
 
-	if (FAILED(hr))	return false;
-
-	
+	if (FAILED(hr))	
+	{
+		MessageBox(0,"Nie mo¿na stworzyæ urz¹dzenia DirectX","B³¹d!",MB_OK);		
+		return; // false;
+	}
 
 	SetCursor(NULL);					// ukryj kursor myszy, rysujemy wlasny
 	pDevice->ShowCursor(FALSE);			// przeslij do urzadzenia
@@ -106,17 +101,15 @@ bool CDirect3D::Create(CWindow *fp_pWindow)
 	pDevice->SetTransform(D3DTS_WORLD, &(D3DMATRIX)mat);
 	pDevice->SetTransform(D3DTS_VIEW, &(D3DMATRIX)mat);
 
-	return true;
+	return; // true;
 }
 
-// zwolnij
-
-bool CDirect3D::Release()
+CDirect3D::~CDirect3D()
 {
 	if (pDirect3D) pDirect3D->Release(); pDirect3D=NULL;
 	if (pDevice) pDevice->Release(); pDevice=NULL;
 
-	return true;
+	return ;//true;
 }
 
 // wyczysc

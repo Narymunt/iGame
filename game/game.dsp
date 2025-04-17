@@ -53,7 +53,8 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3d8.lib d3dx8.lib /nologo /subsystem:windows /machine:I386
+# ADD LINK32 winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3d8.lib d3dx8.lib /nologo /subsystem:windows /machine:I386
+# SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "game - Win32 Debug"
 
@@ -95,7 +96,15 @@ SOURCE=.\Direct3d.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\Font.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\game.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Sprite.cpp
 # End Source File
 # Begin Source File
 
@@ -108,6 +117,14 @@ SOURCE=.\Window.cpp
 # Begin Source File
 
 SOURCE=.\Direct3d.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Font.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Sprite.h
 # End Source File
 # Begin Source File
 

@@ -8,19 +8,7 @@
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CWindow::CWindow()
-{
-
-}
-
-CWindow::~CWindow()
-{
-
-}
-
-// tworzy okno
-
-void CWindow::MakeWindow(HINSTANCE fp_hInstance, char *szTitle, char *szClassName, int fp_iX, int fp_iY, int fp_iWidth, int fp_iHeight, bool fp_bFullScreen)
+CWindow::CWindow(HINSTANCE fp_hInstance, char *szTitle, char *szClassName, int fp_iX, int fp_iY, int fp_iWidth, int fp_iHeight, bool fp_bFullScreen)
 {
 	WNDCLASSEX winClass;
 
@@ -75,9 +63,12 @@ void CWindow::MakeWindow(HINSTANCE fp_hInstance, char *szTitle, char *szClassNam
 							 NULL,
 							 hInstance,  
 							 NULL);	
-		
-
 	}
+}
+
+CWindow::~CWindow()
+{
+
 }
 
 // petla obslugi zdarzen
