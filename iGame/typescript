@@ -1,8 +1,8 @@
-Script started on Wed 25 Jul 2007 10:45:36 PM CEST
-abash-3.1# a ./main
+Script started on Sat 04 Aug 2007 08:31:17 PM CEST
+root@wfmh:/opt/prj/iGame# ./main
 Opened audio at 22050 Hz 16 bit stereo, 4096 bytes audio buffer
 [CBitmap]: resource/img/pic.bmp x: 800 y: 600 size: 480000
-XML: name: spec/seq.xml size: 888
+XML: name: spec/seq.xml size: 885
 XML: start offset 0 , end offset 36
 CXmlNode: [new]: xml version="1.0" encoding="UTF-8"
 XML: 14 nodes
@@ -18,8 +18,8 @@ CXmlNode: [new]: file="wilk.evt" event="zle" sound="zle.snd"
 CXmlNode: [new]: file="wilk.evt" event="sproboj_jeszcze_raz" sound="jeszczeraz.snd"
 CXmlNode: [new]: name="intro" type="SPEAK"
 CXmlNode: [new]: start="bobul.evt" event="wlatuje" sound="benc.snd"
-CXmlNode: [new]: start="bobul.evt" event="mumla_morda" sound="wprowadzenie.snd"
-CXmlNode: [new]: start="bobul.evt" event="wypad" sound="szast_prast.snd"
+CXmlNode: [new]: loop="bobul.evt" event="mumla_morda" sound="wprowadzenie.snd"
+CXmlNode: [new]: end="bobul.evt" event="wypad" sound="szast_prast.snd"
 XML: max node size 92
 EVT: resource/evt/bobul.evt size 45934
 EVT: wersja 129
@@ -963,31 +963,27 @@ TGA: rozmiar Y 128
 TGA: 32 bpp
 TGA: opis 0
 TGA: wczytano dane
-timer: 56
-timer: 59
-timer: 61
-timer: 64
-timer: 66
-timer: 69
-timer: 71
-timer: 74
-timer: 76
-timer: 79
-timer: 81
-timer: 84
-timer: 86
-timer: 89
+timer: 83
+timer: 87
 timer: 91
-timer: 94
-timer: 96
+timer: 95
 timer: 99
-timer: 101
 timer: 103
-timer: 106
-timer: 109
+timer: 107
 timer: 111
-timer: 114
-timer: 114
-bash-3.1# exit
+timer: 115
+timer: 119
+timer: 123
+timer: 128
+timer: 132
+timer: 136
+timer: 140
+timer: 144
+timer: 148
+timer: 152
+timer: 156
+timer: 156
+root@wfmh:/opt/prj/iGame# exit
+exit
 
-Script done on Wed 25 Jul 2007 10:45:48 PM CEST
+Script done on Sat 04 Aug 2007 08:31:27 PM CEST
