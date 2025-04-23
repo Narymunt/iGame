@@ -1,6 +1,5 @@
 // implementation of class
 // .bmp file is reversed, so at and we flip it
-// .tga jest 32bpp, wiec zawsze odczytywana alfa
 
 #include "bitmap.h"
 #include <stdlib.h>
@@ -10,22 +9,30 @@
 
 CBitmap::CBitmap()
 {
-    m_pBitmapData=NULL;
+    m_pBitmapDataR=NULL;
+    m_pBitmapDataG=NULL;
+    m_pBitmapDataB=NULL;
+    m_pBitmapDataA = NULL;
 }
 
 //=== class destructor
 
 CBitmap::~CBitmap()
 {
-	if (m_pBitmapData!=NULL) free(m_pBitmapData);
+	if (m_pBitmapDataR!=NULL) free(m_pBitmapDataR);
+	if (m_pBitmapDataG!=NULL) free(m_pBitmapDataG);
+	if (m_pBitmapDataB!=NULL) free(m_pBitmapDataB);
+	if (m_pBitmapDataA!=NULL) free(m_pBitmapDataA);
 }
 
 //=== class constructor - automatic memory allocation
-// ten rozmiar musi byc podany w bajtach (x4)
 
 CBitmap::CBitmap(unsigned long size)
 {
-	m_pBitmapData = (unsigned char*)malloc(1+size);
+	m_pBitmapDataR = (unsigned char*)malloc(size);
+	m_pBitmapDataG = (unsigned char*)malloc(size);
+	m_pBitmapDataB = (unsigned char*)malloc(size);
+	m_pBitmapDataA = (unsigned char*)malloc(size);
 }
 
 //=== class constructor - automatic load file
@@ -39,7 +46,10 @@ CBitmap::CBitmap(unsigned long size, char filename[])
 
     mTemp = (unsigned char *)malloc(54+(size*3));	// 54 bytes for header, skip
 
-    m_pBitmapData = (unsigned char*)malloc(size*4);	// rgba
+    m_pBitmapDataR = (unsigned char*)malloc(size);
+    m_pBitmapDataG = (unsigned char*)malloc(size);
+    m_pBitmapDataB = (unsigned char*)malloc(size);
+	m_pBitmapDataA = (unsigned char*)malloc(size);
 
     if ((bmp_file=fopen(filename,"rb"))==NULL) printf("Error opening %s file!\n",filename);
     fread(mTemp,54+(size*3),1,bmp_file); // header and data
@@ -47,10 +57,10 @@ CBitmap::CBitmap(unsigned long size, char filename[])
 
     for (b1=0, b2=0; b1<size; b1++, b2+=3)	// reverse data
     {
-		m_pBitmapData[(b1*4)]=mTemp[51+(size*3)-b2];
-		m_pBitmapData[(b1*4)+1]=mTemp[52+(size*3)-b2];
-		m_pBitmapData[(b1*4)+2]=mTemp[53+(size*3)-b2];
-		m_pBitmapData[(b1*4)+3]=255;	// przy okazji ustawiamy alfa na zawsze widoczna
+	m_pBitmapDataB[b1]=mTemp[51+(size*3)-b2];
+	m_pBitmapDataG[b1]=mTemp[52+(size*3)-b2];
+	m_pBitmapDataR[b1]=mTemp[53+(size*3)-b2];
+	m_pBitmapDataA[b1]=255;	// przy okazji ustawiamy alfa na zawsze widoczna
     }
 }
 
@@ -71,9 +81,12 @@ CBitmap::CBitmap(long lX, long lY, char filename[])
     size = lX *lY;
     printf("[CBitmap]: %s x: %d y: %d size: %d\n",filename,m_ulSizeX,m_ulSizeY,size);
     
-    mTemp = (unsigned char *)malloc(54+(size*3));	// 54 bytes for header, 24bpp, skip
+    mTemp = (unsigned char *)malloc(54+(size*3));	// 54 bytes for header, skip
 
-    m_pBitmapData = (unsigned char*)malloc(size*4);
+    m_pBitmapDataR = (unsigned char*)malloc(size);
+    m_pBitmapDataG = (unsigned char*)malloc(size);
+    m_pBitmapDataB = (unsigned char*)malloc(size);
+    m_pBitmapDataA = (unsigned char*)malloc(size);
 
     if ((bmp_file=fopen(filename,"rb"))==NULL) printf("Error opening %s file!\n",filename);
     fread(mTemp,54+(size*3),1,bmp_file); // header and data
@@ -81,10 +94,10 @@ CBitmap::CBitmap(long lX, long lY, char filename[])
 
     for (b1=0, b2=0; b1<size; b1++, b2+=3)	// reverse data
     {
-		m_pBitmapData[(b1*4)]=mTemp[51+(size*3)-b2];
-		m_pBitmapData[(b1*4)+1]=mTemp[52+(size*3)-b2];
-		m_pBitmapData[(b1*4)+2]=mTemp[53+(size*3)-b2];
-		m_pBitmapData[(b1*4)+3]=255;	// przy okazji ustawiamy alfa na zawsze widoczna
+	m_pBitmapDataB[b1]=mTemp[51+(size*3)-b2];
+	m_pBitmapDataG[b1]=mTemp[52+(size*3)-b2];
+	m_pBitmapDataR[b1]=mTemp[53+(size*3)-b2];
+	m_pBitmapDataA[b1]=255;	// przy okazji ustawiamy alfa na zawsze widoczna
     }
 }
 
@@ -159,7 +172,10 @@ CBitmap::CBitmap(char filename[], char cType)
         size = (m_ulSizeX * m_ulSizeY);
         pTemp = new unsigned char[1+(size*4)];
 
-        m_pBitmapData = (unsigned char*)malloc(size*4);
+        m_pBitmapDataR = (unsigned char*)malloc(size);
+        m_pBitmapDataG = (unsigned char*)malloc(size);
+        m_pBitmapDataB = (unsigned char*)malloc(size);
+        m_pBitmapDataA = (unsigned char*)malloc(size);
     
         if (ucBpp==32) fread(pTemp,size*4,1,plik);
         if (ucBpp==24) fread(pTemp,size*3,1,plik);
@@ -167,27 +183,27 @@ CBitmap::CBitmap(char filename[], char cType)
         printf("TGA: wczytano dane\n");
         fclose(plik);
 
-		if (ucBpp==32) // pobieramy alfe
-		{
-				for (long i=0; i<size; i++)
-				{
-					m_pBitmapData[(i*4)] = pTemp[(size-i)*4];
-					m_pBitmapData[(i*4)+1] = pTemp[((size-i)*4)+1];
-					m_pBitmapData[(i*4)+2] = pTemp[((size-i)*4)+2];
-					m_pBitmapData[(i*4)+3] = pTemp[((size-i)*4)+3];
-				}	    
-		}
+	if (ucBpp==32) // pobieramy alfe
+	{
+    	    for (long i=0; i<size; i++)
+    	    {
+		m_pBitmapDataB[i] = pTemp[(size-i)*4];
+        	m_pBitmapDataG[i] = pTemp[((size-i)*4)+1];
+		m_pBitmapDataR[i] = pTemp[((size-i)*4)+2];
+        	m_pBitmapDataA[i] = pTemp[((size-i)*4)+3];
+	    }	    
+	}
 	
-		if (ucBpp==24) // nie ma alfy w pliku
-		{
-				for (long i=0; i<size; i++)
-				{
-					m_pBitmapData[(i*4)] = pTemp[(size-i)*3];
-					m_pBitmapData[(i*4)+1] = pTemp[((size-i)*3)+1];
-					m_pBitmapData[(i*4)+2] = pTemp[((size-i)*3)+2];
-					m_pBitmapData[(i*4)+3] = 255;
-				}	    
-		}
+	if (ucBpp==24) // nie ma alfy w pliku
+	{
+    	    for (long i=0; i<size; i++)
+    	    {
+		m_pBitmapDataB[i] = pTemp[(size-i)*3];
+        	m_pBitmapDataG[i] = pTemp[((size-i)*3)+1];
+		m_pBitmapDataR[i] = pTemp[((size-i)*3)+2];
+        	m_pBitmapDataA[i] = 255;
+	    }	    
+	}
 
     } // cType==TGA
     
@@ -197,22 +213,22 @@ CBitmap::CBitmap(char filename[], char cType)
 
 unsigned char CBitmap::ucGetDataR(int iIndex)
 {
-    return m_pBitmapData[(iIndex*4)+2];	// bgra
+    return m_pBitmapDataR[iIndex];
 }
 
 unsigned char CBitmap::ucGetDataG(int iIndex)
 {
-    return m_pBitmapData[(iIndex*4)+1]; // bgra
+    return m_pBitmapDataG[iIndex];
 }
 
 unsigned char CBitmap::ucGetDataB(int iIndex)
 {
-    return m_pBitmapData[(iIndex*4)]; // bgra
+    return m_pBitmapDataB[iIndex];
 }
 
 unsigned char CBitmap::ucGetDataA(int iIndex)
 {
-    return m_pBitmapData[(iIndex*4)+3]; // bgra
+    return m_pBitmapDataA[iIndex];
 }
 
 // renderowanie po przeskalowaniu
@@ -233,13 +249,13 @@ int CBitmap::Render(int iX, int iY, unsigned char *pBuffer)
 	{
 		for (int h2=0;h2<m_ulSizeX; h2++)
 		{
-			if ( ((iX+h2)<1024) && ((iX+h2)>0) &&
-			     ((iY+h1)<768) && ((iY+h1)>0) && (m_pBitmapData[(((m_ulSizeX*h1)+h2)*4)+3]>127))
+			if ( ((iX+h2)<800) && ((iX+h2)>0) &&
+			     ((iY+h1)<600) && ((iY+h1)>0) && (m_pBitmapDataA[(m_ulSizeX*h1)+h2]>127))
 			{
-				lAdres=((1024*(iY+h1))+iX+h2)*4;
-				pBuffer[lAdres] = m_pBitmapData[(((m_ulSizeX*h1)+h2)*4)+2]; // r
-				pBuffer[lAdres+1] = m_pBitmapData[(((m_ulSizeX*h1)+h2)*4)+1]; // g
-				pBuffer[lAdres+2] = m_pBitmapData[((m_ulSizeX*h1)+h2)*4]; // b
+			lAdres=((800*(iY+h1))+iX+h2)*4;
+			pBuffer[lAdres] = m_pBitmapDataR[(m_ulSizeX*h1)+h2];
+			pBuffer[lAdres+1] = m_pBitmapDataG[(m_ulSizeX*h1)+h2];
+			pBuffer[lAdres+2] = m_pBitmapDataB[(m_ulSizeX*h1)+h2];
 			}
 		}
 	}
@@ -257,12 +273,12 @@ int CBitmap::Render1280(int iX, int iY, unsigned char *pBuffer)
 		for (int h2=0;h2<m_ulSizeX; h2++)
 		{
 			if ( ((iX+h2)<1280) && ((iX+h2)>0) &&
-			     ((iY+h1)<1024) && ((iY+h1)>0) && (m_pBitmapData[(((m_ulSizeX*h1)+h2)*4)+3]>127))
+			     ((iY+h1)<1024) && ((iY+h1)>0) && (m_pBitmapDataA[(m_ulSizeX*h1)+h2]>127))
 			{
 			lAdres=((1280*(iY+h1))+iX+h2)*4;
-			pBuffer[lAdres] = m_pBitmapData[(((m_ulSizeX*h1)+h2)*4)+2]; // r
-			pBuffer[lAdres+1] = m_pBitmapData[(((m_ulSizeX*h1)+h2)*4)+1]; // g
-			pBuffer[lAdres+2] = m_pBitmapData[(((m_ulSizeX*h1)+h2)*4)]; // b
+			pBuffer[lAdres] = m_pBitmapDataR[(m_ulSizeX*h1)+h2];
+			pBuffer[lAdres+1] = m_pBitmapDataG[(m_ulSizeX*h1)+h2];
+			pBuffer[lAdres+2] = m_pBitmapDataB[(m_ulSizeX*h1)+h2];
 			}
 		}
 	}
@@ -282,23 +298,23 @@ int CBitmap::RenderPlus(int iX, int iY, unsigned char *pBuffer)
 	{
 		for (int h2=0;h2<m_ulSizeX; h2++)
 		{
-			if ( ((iX+h2)<1024) && ((iX+h2)>0) &&
-			     ((iY+h1)<768) && ((iY+h1)>0) )
+			if ( ((iX+h2)<800) && ((iX+h2)>0) &&
+			     ((iY+h1)<600) && ((iY+h1)>0) )
 			{
-			lAdres=((1024*(iY+h1))+iX+h2)*4;
+			lAdres=((800*(iY+h1))+iX+h2)*4;
 
 			cKolor = pBuffer[lAdres]; 
-			iKolor = cKolor + m_pBitmapData[(((m_ulSizeX*h1)+h2)*4)+2]; // r
+			iKolor = cKolor + m_pBitmapDataR[(m_ulSizeX*h1)+h2];
 			if (iKolor>255) iKolor = 255;
 			pBuffer[lAdres] = (unsigned char)iKolor;
 
 			cKolor = pBuffer[lAdres+1]; 
-			iKolor = cKolor + m_pBitmapData[(((m_ulSizeX*h1)+h2)*4)+1]; // g
+			iKolor = cKolor + m_pBitmapDataG[(m_ulSizeX*h1)+h2];
 			if (iKolor>255) iKolor = 255;
 			pBuffer[lAdres+1] = (unsigned char)iKolor;
 
 			cKolor = pBuffer[lAdres+2]; 
-			iKolor = cKolor + m_pBitmapData[((m_ulSizeX*h1)+h2)*4]; // b
+			iKolor = cKolor + m_pBitmapDataB[(m_ulSizeX*h1)+h2];
 			if (iKolor>255) iKolor = 255;
 			pBuffer[lAdres+2] = (unsigned char)iKolor;
 			}
@@ -348,14 +364,14 @@ int CBitmap::RenderScale(int iX, int iY, int iXSize, int iYSize, double dXScale,
 	
 	for (int a2=0; a2<dXScale; a2++)
 	{
-	    if ( (iX+a2>0) &&(iX+a2<1024) && (iY+a1>0) && (iY+a1<768) )
+	    if ( (iX+a2>0) &&(iX+a2<800) && (iY+a1>0) && (iY+a1<600) )
 	    {
-		lAdresBufora = ((1024*(iY+a1))+iX+a2)*4;
+		lAdresBufora = ((800*(iY+a1))+iX+a2)*4;
 		flare_addr = (long)((((long)dCurrentY)*iXSize)+dCurrentX);
 
-		pBuffer[lAdresBufora] = m_pBitmapData[(flare_addr<<2)+2]; // r
-		pBuffer[lAdresBufora+1] = m_pBitmapData[(flare_addr<<2)+1]; // g
-		pBuffer[lAdresBufora+2] = m_pBitmapData[(flare_addr<<2)]; // b
+		pBuffer[lAdresBufora] = m_pBitmapDataR[flare_addr];
+		pBuffer[lAdresBufora+1] = m_pBitmapDataG[flare_addr];
+		pBuffer[lAdresBufora+2] = m_pBitmapDataB[flare_addr];
 	    }
 	
 	    dCurrentX = dCurrentX + dAddX;
@@ -389,20 +405,20 @@ int CBitmap::RenderScalePlus(int iX, int iY, int iXSize, int iYSize, double dXSc
 	
 	for (int a2=0; a2<dXScale; a2++)
 	{
-	    if ( (iX+a2>0) &&(iX+a2<1024) && (iY+a1>0) && (iY+a1<768) )
+	    if ( (iX+a2>0) &&(iX+a2<800) && (iY+a1>0) && (iY+a1<600) )
 	    {
-		lAdresBufora = ((1024*(iY+a1))+iX+a2)*4;
+		lAdresBufora = ((800*(iY+a1))+iX+a2)*4;
 		flare_addr = (long)((((long)dCurrentY)*iXSize)+dCurrentX);
 
-		iKolor = m_pBitmapData[(flare_addr<<2)+2] + pBuffer[lAdresBufora]; // r
+		iKolor = m_pBitmapDataR[flare_addr] + pBuffer[lAdresBufora];
 		if (iKolor>255) iKolor = 255;
 		pBuffer[lAdresBufora] = (unsigned char)iKolor;
 
-		iKolor = m_pBitmapData[(flare_addr<<2)+1] + pBuffer[lAdresBufora+1]; // g
+		iKolor = m_pBitmapDataG[flare_addr] + pBuffer[lAdresBufora+1];
 		if (iKolor>255) iKolor = 255;
 		pBuffer[lAdresBufora+1] = (unsigned char)iKolor;
 
-		iKolor = m_pBitmapData[flare_addr<<2] + pBuffer[lAdresBufora+2]; // b
+		iKolor = m_pBitmapDataB[flare_addr] + pBuffer[lAdresBufora+2];
 		if (iKolor>255) iKolor = 255;
 		pBuffer[lAdresBufora+2] = (unsigned char)iKolor;
 

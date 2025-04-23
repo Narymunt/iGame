@@ -1,0 +1,526 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
+		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */; };
+		EF45B14B1AD6F2EA00A6F81D /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF45B1491AD6F2EA00A6F81D /* Sprite.cpp */; };
+		EF45B14E1AD6F33A00A6F81D /* Screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF45B14C1AD6F33A00A6F81D /* Screen.cpp */; };
+		EF45B1511AD6F4B800A6F81D /* OGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF45B14F1AD6F4B800A6F81D /* OGL.cpp */; };
+		EF45B1571AD6F98600A6F81D /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF45B1561AD6F98600A6F81D /* libSDL2.a */; };
+		EF45B15B1AD6FA4300A6F81D /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF45B15A1AD6FA4300A6F81D /* libSDL2_mixer.a */; };
+		EF7F436F19D09E8400BC6BA2 /* SDL_config.h.cmake in Resources */ = {isa = PBXBuildFile; fileRef = EF7F432519D09E8400BC6BA2 /* SDL_config.h.cmake */; };
+		EF7F437019D09E8400BC6BA2 /* SDL_config.h.in in Resources */ = {isa = PBXBuildFile; fileRef = EF7F432619D09E8400BC6BA2 /* SDL_config.h.in */; };
+		EF7F437519D09EE900BC6BA2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF7F437219D09EE900BC6BA2 /* main.cpp */; };
+		EF7F437619D09EE900BC6BA2 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = EF7F437419D09EE900BC6BA2 /* ResourcePath.mm */; };
+		FA8B4B97196703B400F8EB7C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8B4B96196703B400F8EB7C /* CoreMotion.framework */; };
+		FD779EDE0E26BA1200F39101 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD779EDD0E26BA1200F39101 /* CoreAudio.framework */; };
+		FD77A07D0E26BD8C00F39101 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FD77A07C0E26BD8C00F39101 /* Icon.png */; };
+		FD77A07F0E26BDA900F39101 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FD77A07E0E26BDA900F39101 /* Default.png */; };
+		FD77A0850E26BDB800F39101 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD77A0840E26BDB800F39101 /* AudioToolbox.framework */; };
+		FDB8BFC60E5A0F6A00980157 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB8BFC50E5A0F6A00980157 /* CoreGraphics.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* iGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		EF45B1491AD6F2EA00A6F81D /* Sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
+		EF45B14A1AD6F2EA00A6F81D /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
+		EF45B14C1AD6F33A00A6F81D /* Screen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Screen.cpp; sourceTree = "<group>"; };
+		EF45B14D1AD6F33A00A6F81D /* Screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screen.h; sourceTree = "<group>"; };
+		EF45B14F1AD6F4B800A6F81D /* OGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGL.cpp; sourceTree = "<group>"; };
+		EF45B1501AD6F4B800A6F81D /* OGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGL.h; sourceTree = "<group>"; };
+		EF45B1531AD6F8EA00A6F81D /* SDL_mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDL_mixer.h; path = SDL_mixer/SDL_mixer.h; sourceTree = "<group>"; };
+		EF45B1561AD6F98600A6F81D /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "SDL/lib/Release-iphoneos/libSDL2.a"; sourceTree = "<group>"; };
+		EF45B15A1AD6FA4300A6F81D /* libSDL2_mixer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_mixer.a; path = SDL_mixer/lib/libSDL2_mixer.a; sourceTree = "<group>"; };
+		EF7F431B19D09E8400BC6BA2 /* begin_code.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = begin_code.h; sourceTree = "<group>"; };
+		EF7F431C19D09E8400BC6BA2 /* close_code.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = close_code.h; sourceTree = "<group>"; };
+		EF7F431D19D09E8400BC6BA2 /* SDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL.h; sourceTree = "<group>"; };
+		EF7F431E19D09E8400BC6BA2 /* SDL_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_assert.h; sourceTree = "<group>"; };
+		EF7F431F19D09E8400BC6BA2 /* SDL_atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_atomic.h; sourceTree = "<group>"; };
+		EF7F432019D09E8400BC6BA2 /* SDL_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_audio.h; sourceTree = "<group>"; };
+		EF7F432119D09E8400BC6BA2 /* SDL_bits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_bits.h; sourceTree = "<group>"; };
+		EF7F432219D09E8400BC6BA2 /* SDL_blendmode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_blendmode.h; sourceTree = "<group>"; };
+		EF7F432319D09E8400BC6BA2 /* SDL_clipboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_clipboard.h; sourceTree = "<group>"; };
+		EF7F432419D09E8400BC6BA2 /* SDL_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config.h; sourceTree = "<group>"; };
+		EF7F432519D09E8400BC6BA2 /* SDL_config.h.cmake */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SDL_config.h.cmake; sourceTree = "<group>"; };
+		EF7F432619D09E8400BC6BA2 /* SDL_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SDL_config.h.in; sourceTree = "<group>"; };
+		EF7F432719D09E8400BC6BA2 /* SDL_config_android.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_android.h; sourceTree = "<group>"; };
+		EF7F432819D09E8400BC6BA2 /* SDL_config_iphoneos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_iphoneos.h; sourceTree = "<group>"; };
+		EF7F432919D09E8400BC6BA2 /* SDL_config_macosx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_macosx.h; sourceTree = "<group>"; };
+		EF7F432A19D09E8400BC6BA2 /* SDL_config_minimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_minimal.h; sourceTree = "<group>"; };
+		EF7F432B19D09E8400BC6BA2 /* SDL_config_pandora.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_pandora.h; sourceTree = "<group>"; };
+		EF7F432C19D09E8400BC6BA2 /* SDL_config_psp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_psp.h; sourceTree = "<group>"; };
+		EF7F432D19D09E8400BC6BA2 /* SDL_config_windows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_windows.h; sourceTree = "<group>"; };
+		EF7F432E19D09E8400BC6BA2 /* SDL_config_winrt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_winrt.h; sourceTree = "<group>"; };
+		EF7F432F19D09E8400BC6BA2 /* SDL_config_wiz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config_wiz.h; sourceTree = "<group>"; };
+		EF7F433019D09E8400BC6BA2 /* SDL_copying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_copying.h; sourceTree = "<group>"; };
+		EF7F433119D09E8400BC6BA2 /* SDL_cpuinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_cpuinfo.h; sourceTree = "<group>"; };
+		EF7F433219D09E8400BC6BA2 /* SDL_egl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_egl.h; sourceTree = "<group>"; };
+		EF7F433319D09E8400BC6BA2 /* SDL_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_endian.h; sourceTree = "<group>"; };
+		EF7F433419D09E8400BC6BA2 /* SDL_error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_error.h; sourceTree = "<group>"; };
+		EF7F433519D09E8400BC6BA2 /* SDL_events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_events.h; sourceTree = "<group>"; };
+		EF7F433619D09E8400BC6BA2 /* SDL_filesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_filesystem.h; sourceTree = "<group>"; };
+		EF7F433719D09E8400BC6BA2 /* SDL_gamecontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_gamecontroller.h; sourceTree = "<group>"; };
+		EF7F433819D09E8400BC6BA2 /* SDL_gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_gesture.h; sourceTree = "<group>"; };
+		EF7F433919D09E8400BC6BA2 /* SDL_haptic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_haptic.h; sourceTree = "<group>"; };
+		EF7F433A19D09E8400BC6BA2 /* SDL_hints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_hints.h; sourceTree = "<group>"; };
+		EF7F433B19D09E8400BC6BA2 /* SDL_joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_joystick.h; sourceTree = "<group>"; };
+		EF7F433C19D09E8400BC6BA2 /* SDL_keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keyboard.h; sourceTree = "<group>"; };
+		EF7F433D19D09E8400BC6BA2 /* SDL_keycode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keycode.h; sourceTree = "<group>"; };
+		EF7F433E19D09E8400BC6BA2 /* SDL_loadso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_loadso.h; sourceTree = "<group>"; };
+		EF7F433F19D09E8400BC6BA2 /* SDL_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_log.h; sourceTree = "<group>"; };
+		EF7F434019D09E8400BC6BA2 /* SDL_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_main.h; sourceTree = "<group>"; };
+		EF7F434119D09E8400BC6BA2 /* SDL_messagebox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_messagebox.h; sourceTree = "<group>"; };
+		EF7F434219D09E8400BC6BA2 /* SDL_mouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mouse.h; sourceTree = "<group>"; };
+		EF7F434319D09E8400BC6BA2 /* SDL_mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mutex.h; sourceTree = "<group>"; };
+		EF7F434419D09E8400BC6BA2 /* SDL_name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_name.h; sourceTree = "<group>"; };
+		EF7F434519D09E8400BC6BA2 /* SDL_opengl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengl.h; sourceTree = "<group>"; };
+		EF7F434619D09E8400BC6BA2 /* SDL_opengl_glext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengl_glext.h; sourceTree = "<group>"; };
+		EF7F434719D09E8400BC6BA2 /* SDL_opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengles.h; sourceTree = "<group>"; };
+		EF7F434819D09E8400BC6BA2 /* SDL_opengles2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengles2.h; sourceTree = "<group>"; };
+		EF7F434919D09E8400BC6BA2 /* SDL_opengles2_gl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengles2_gl2.h; sourceTree = "<group>"; };
+		EF7F434A19D09E8400BC6BA2 /* SDL_opengles2_gl2ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengles2_gl2ext.h; sourceTree = "<group>"; };
+		EF7F434B19D09E8400BC6BA2 /* SDL_opengles2_gl2platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengles2_gl2platform.h; sourceTree = "<group>"; };
+		EF7F434C19D09E8400BC6BA2 /* SDL_opengles2_khrplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengles2_khrplatform.h; sourceTree = "<group>"; };
+		EF7F434D19D09E8400BC6BA2 /* SDL_pixels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_pixels.h; sourceTree = "<group>"; };
+		EF7F434E19D09E8400BC6BA2 /* SDL_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_platform.h; sourceTree = "<group>"; };
+		EF7F434F19D09E8400BC6BA2 /* SDL_power.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_power.h; sourceTree = "<group>"; };
+		EF7F435019D09E8400BC6BA2 /* SDL_quit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_quit.h; sourceTree = "<group>"; };
+		EF7F435119D09E8400BC6BA2 /* SDL_rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_rect.h; sourceTree = "<group>"; };
+		EF7F435219D09E8400BC6BA2 /* SDL_render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_render.h; sourceTree = "<group>"; };
+		EF7F435319D09E8400BC6BA2 /* SDL_revision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_revision.h; sourceTree = "<group>"; };
+		EF7F435419D09E8400BC6BA2 /* SDL_rwops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_rwops.h; sourceTree = "<group>"; };
+		EF7F435519D09E8400BC6BA2 /* SDL_scancode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_scancode.h; sourceTree = "<group>"; };
+		EF7F435619D09E8400BC6BA2 /* SDL_shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_shape.h; sourceTree = "<group>"; };
+		EF7F435719D09E8400BC6BA2 /* SDL_stdinc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_stdinc.h; sourceTree = "<group>"; };
+		EF7F435819D09E8400BC6BA2 /* SDL_surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_surface.h; sourceTree = "<group>"; };
+		EF7F435919D09E8400BC6BA2 /* SDL_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_system.h; sourceTree = "<group>"; };
+		EF7F435A19D09E8400BC6BA2 /* SDL_syswm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_syswm.h; sourceTree = "<group>"; };
+		EF7F435B19D09E8400BC6BA2 /* SDL_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test.h; sourceTree = "<group>"; };
+		EF7F435C19D09E8400BC6BA2 /* SDL_test_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_assert.h; sourceTree = "<group>"; };
+		EF7F435D19D09E8400BC6BA2 /* SDL_test_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_common.h; sourceTree = "<group>"; };
+		EF7F435E19D09E8400BC6BA2 /* SDL_test_compare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_compare.h; sourceTree = "<group>"; };
+		EF7F435F19D09E8400BC6BA2 /* SDL_test_crc32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_crc32.h; sourceTree = "<group>"; };
+		EF7F436019D09E8400BC6BA2 /* SDL_test_font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_font.h; sourceTree = "<group>"; };
+		EF7F436119D09E8400BC6BA2 /* SDL_test_fuzzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_fuzzer.h; sourceTree = "<group>"; };
+		EF7F436219D09E8400BC6BA2 /* SDL_test_harness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_harness.h; sourceTree = "<group>"; };
+		EF7F436319D09E8400BC6BA2 /* SDL_test_images.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_images.h; sourceTree = "<group>"; };
+		EF7F436419D09E8400BC6BA2 /* SDL_test_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_log.h; sourceTree = "<group>"; };
+		EF7F436519D09E8400BC6BA2 /* SDL_test_md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_md5.h; sourceTree = "<group>"; };
+		EF7F436619D09E8400BC6BA2 /* SDL_test_random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_test_random.h; sourceTree = "<group>"; };
+		EF7F436719D09E8400BC6BA2 /* SDL_thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_thread.h; sourceTree = "<group>"; };
+		EF7F436819D09E8400BC6BA2 /* SDL_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_timer.h; sourceTree = "<group>"; };
+		EF7F436919D09E8400BC6BA2 /* SDL_touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_touch.h; sourceTree = "<group>"; };
+		EF7F436A19D09E8400BC6BA2 /* SDL_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_types.h; sourceTree = "<group>"; };
+		EF7F436B19D09E8400BC6BA2 /* SDL_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_version.h; sourceTree = "<group>"; };
+		EF7F436C19D09E8400BC6BA2 /* SDL_video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_video.h; sourceTree = "<group>"; };
+		EF7F437219D09EE900BC6BA2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EF7F437319D09EE900BC6BA2 /* ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcePath.h; sourceTree = "<group>"; };
+		EF7F437419D09EE900BC6BA2 /* ResourcePath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
+		EF7F437919D0AE2800BC6BA2 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "Debug-iphoneos/libSDL2.a"; sourceTree = "<group>"; };
+		FA8B4B96196703B400F8EB7C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		FD779EDD0E26BA1200F39101 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		FD77A07C0E26BD8C00F39101 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		FD77A07E0E26BDA900F39101 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FD77A0840E26BDB800F39101 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FDB8BFC50E5A0F6A00980157 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				EF45B15B1AD6FA4300A6F81D /* libSDL2_mixer.a in Frameworks */,
+				EF45B1571AD6F98600A6F81D /* libSDL2.a in Frameworks */,
+				28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */,
+				28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */,
+				FD779EDE0E26BA1200F39101 /* CoreAudio.framework in Frameworks */,
+				FD77A0850E26BDB800F39101 /* AudioToolbox.framework in Frameworks */,
+				FDB8BFC60E5A0F6A00980157 /* CoreGraphics.framework in Frameworks */,
+				FA8B4B97196703B400F8EB7C /* CoreMotion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* iGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				945C4F52195AF17F00DBBF61 /* Default-568h@2x.png */,
+				EF45B1521AD6F8CF00A6F81D /* SDL_mixer */,
+				EF7F431919D09E8400BC6BA2 /* SDL */,
+				29B97315FDCFA39411CA2CEA /* Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EF45B14F1AD6F4B800A6F81D /* OGL.cpp */,
+				EF45B1501AD6F4B800A6F81D /* OGL.h */,
+				EF45B14C1AD6F33A00A6F81D /* Screen.cpp */,
+				EF45B14D1AD6F33A00A6F81D /* Screen.h */,
+				EF45B1491AD6F2EA00A6F81D /* Sprite.cpp */,
+				EF45B14A1AD6F2EA00A6F81D /* Sprite.h */,
+				EF7F437219D09EE900BC6BA2 /* main.cpp */,
+				EF7F437319D09EE900BC6BA2 /* ResourcePath.h */,
+				EF7F437419D09EE900BC6BA2 /* ResourcePath.mm */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FD77A07E0E26BDA900F39101 /* Default.png */,
+				FD77A07C0E26BD8C00F39101 /* Icon.png */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF45B15A1AD6FA4300A6F81D /* libSDL2_mixer.a */,
+				EF45B1561AD6F98600A6F81D /* libSDL2.a */,
+				FA8B4B96196703B400F8EB7C /* CoreMotion.framework */,
+				FDB8BFC50E5A0F6A00980157 /* CoreGraphics.framework */,
+				FD77A0840E26BDB800F39101 /* AudioToolbox.framework */,
+				FD779EDD0E26BA1200F39101 /* CoreAudio.framework */,
+				28FD15070DC6FC5B0079059D /* QuartzCore.framework */,
+				28FD14FF0DC6FC520079059D /* OpenGLES.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF45B1521AD6F8CF00A6F81D /* SDL_mixer */ = {
+			isa = PBXGroup;
+			children = (
+				EF45B1531AD6F8EA00A6F81D /* SDL_mixer.h */,
+			);
+			name = SDL_mixer;
+			sourceTree = "<group>";
+		};
+		EF7F431919D09E8400BC6BA2 /* SDL */ = {
+			isa = PBXGroup;
+			children = (
+				EF7F431A19D09E8400BC6BA2 /* include */,
+				EF7F436D19D09E8400BC6BA2 /* lib */,
+			);
+			path = SDL;
+			sourceTree = "<group>";
+		};
+		EF7F431A19D09E8400BC6BA2 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EF7F431B19D09E8400BC6BA2 /* begin_code.h */,
+				EF7F431C19D09E8400BC6BA2 /* close_code.h */,
+				EF7F431D19D09E8400BC6BA2 /* SDL.h */,
+				EF7F431E19D09E8400BC6BA2 /* SDL_assert.h */,
+				EF7F431F19D09E8400BC6BA2 /* SDL_atomic.h */,
+				EF7F432019D09E8400BC6BA2 /* SDL_audio.h */,
+				EF7F432119D09E8400BC6BA2 /* SDL_bits.h */,
+				EF7F432219D09E8400BC6BA2 /* SDL_blendmode.h */,
+				EF7F432319D09E8400BC6BA2 /* SDL_clipboard.h */,
+				EF7F432419D09E8400BC6BA2 /* SDL_config.h */,
+				EF7F432519D09E8400BC6BA2 /* SDL_config.h.cmake */,
+				EF7F432619D09E8400BC6BA2 /* SDL_config.h.in */,
+				EF7F432719D09E8400BC6BA2 /* SDL_config_android.h */,
+				EF7F432819D09E8400BC6BA2 /* SDL_config_iphoneos.h */,
+				EF7F432919D09E8400BC6BA2 /* SDL_config_macosx.h */,
+				EF7F432A19D09E8400BC6BA2 /* SDL_config_minimal.h */,
+				EF7F432B19D09E8400BC6BA2 /* SDL_config_pandora.h */,
+				EF7F432C19D09E8400BC6BA2 /* SDL_config_psp.h */,
+				EF7F432D19D09E8400BC6BA2 /* SDL_config_windows.h */,
+				EF7F432E19D09E8400BC6BA2 /* SDL_config_winrt.h */,
+				EF7F432F19D09E8400BC6BA2 /* SDL_config_wiz.h */,
+				EF7F433019D09E8400BC6BA2 /* SDL_copying.h */,
+				EF7F433119D09E8400BC6BA2 /* SDL_cpuinfo.h */,
+				EF7F433219D09E8400BC6BA2 /* SDL_egl.h */,
+				EF7F433319D09E8400BC6BA2 /* SDL_endian.h */,
+				EF7F433419D09E8400BC6BA2 /* SDL_error.h */,
+				EF7F433519D09E8400BC6BA2 /* SDL_events.h */,
+				EF7F433619D09E8400BC6BA2 /* SDL_filesystem.h */,
+				EF7F433719D09E8400BC6BA2 /* SDL_gamecontroller.h */,
+				EF7F433819D09E8400BC6BA2 /* SDL_gesture.h */,
+				EF7F433919D09E8400BC6BA2 /* SDL_haptic.h */,
+				EF7F433A19D09E8400BC6BA2 /* SDL_hints.h */,
+				EF7F433B19D09E8400BC6BA2 /* SDL_joystick.h */,
+				EF7F433C19D09E8400BC6BA2 /* SDL_keyboard.h */,
+				EF7F433D19D09E8400BC6BA2 /* SDL_keycode.h */,
+				EF7F433E19D09E8400BC6BA2 /* SDL_loadso.h */,
+				EF7F433F19D09E8400BC6BA2 /* SDL_log.h */,
+				EF7F434019D09E8400BC6BA2 /* SDL_main.h */,
+				EF7F434119D09E8400BC6BA2 /* SDL_messagebox.h */,
+				EF7F434219D09E8400BC6BA2 /* SDL_mouse.h */,
+				EF7F434319D09E8400BC6BA2 /* SDL_mutex.h */,
+				EF7F434419D09E8400BC6BA2 /* SDL_name.h */,
+				EF7F434519D09E8400BC6BA2 /* SDL_opengl.h */,
+				EF7F434619D09E8400BC6BA2 /* SDL_opengl_glext.h */,
+				EF7F434719D09E8400BC6BA2 /* SDL_opengles.h */,
+				EF7F434819D09E8400BC6BA2 /* SDL_opengles2.h */,
+				EF7F434919D09E8400BC6BA2 /* SDL_opengles2_gl2.h */,
+				EF7F434A19D09E8400BC6BA2 /* SDL_opengles2_gl2ext.h */,
+				EF7F434B19D09E8400BC6BA2 /* SDL_opengles2_gl2platform.h */,
+				EF7F434C19D09E8400BC6BA2 /* SDL_opengles2_khrplatform.h */,
+				EF7F434D19D09E8400BC6BA2 /* SDL_pixels.h */,
+				EF7F434E19D09E8400BC6BA2 /* SDL_platform.h */,
+				EF7F434F19D09E8400BC6BA2 /* SDL_power.h */,
+				EF7F435019D09E8400BC6BA2 /* SDL_quit.h */,
+				EF7F435119D09E8400BC6BA2 /* SDL_rect.h */,
+				EF7F435219D09E8400BC6BA2 /* SDL_render.h */,
+				EF7F435319D09E8400BC6BA2 /* SDL_revision.h */,
+				EF7F435419D09E8400BC6BA2 /* SDL_rwops.h */,
+				EF7F435519D09E8400BC6BA2 /* SDL_scancode.h */,
+				EF7F435619D09E8400BC6BA2 /* SDL_shape.h */,
+				EF7F435719D09E8400BC6BA2 /* SDL_stdinc.h */,
+				EF7F435819D09E8400BC6BA2 /* SDL_surface.h */,
+				EF7F435919D09E8400BC6BA2 /* SDL_system.h */,
+				EF7F435A19D09E8400BC6BA2 /* SDL_syswm.h */,
+				EF7F435B19D09E8400BC6BA2 /* SDL_test.h */,
+				EF7F435C19D09E8400BC6BA2 /* SDL_test_assert.h */,
+				EF7F435D19D09E8400BC6BA2 /* SDL_test_common.h */,
+				EF7F435E19D09E8400BC6BA2 /* SDL_test_compare.h */,
+				EF7F435F19D09E8400BC6BA2 /* SDL_test_crc32.h */,
+				EF7F436019D09E8400BC6BA2 /* SDL_test_font.h */,
+				EF7F436119D09E8400BC6BA2 /* SDL_test_fuzzer.h */,
+				EF7F436219D09E8400BC6BA2 /* SDL_test_harness.h */,
+				EF7F436319D09E8400BC6BA2 /* SDL_test_images.h */,
+				EF7F436419D09E8400BC6BA2 /* SDL_test_log.h */,
+				EF7F436519D09E8400BC6BA2 /* SDL_test_md5.h */,
+				EF7F436619D09E8400BC6BA2 /* SDL_test_random.h */,
+				EF7F436719D09E8400BC6BA2 /* SDL_thread.h */,
+				EF7F436819D09E8400BC6BA2 /* SDL_timer.h */,
+				EF7F436919D09E8400BC6BA2 /* SDL_touch.h */,
+				EF7F436A19D09E8400BC6BA2 /* SDL_types.h */,
+				EF7F436B19D09E8400BC6BA2 /* SDL_version.h */,
+				EF7F436C19D09E8400BC6BA2 /* SDL_video.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EF7F436D19D09E8400BC6BA2 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				EF7F437919D0AE2800BC6BA2 /* libSDL2.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* iGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iGame" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iGame;
+			productName = "___PROJECTNAME___";
+			productReference = 1D6058910D05DD3D006BFB54 /* iGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = FD4KXTGVVX;
+					};
+				};
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iGame" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* iGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD77A07D0E26BD8C00F39101 /* Icon.png in Resources */,
+				FD77A07F0E26BDA900F39101 /* Default.png in Resources */,
+				945C4F53195AF17F00DBBF61 /* Default-568h@2x.png in Resources */,
+				EF7F436F19D09E8400BC6BA2 /* SDL_config.h.cmake in Resources */,
+				EF7F437019D09E8400BC6BA2 /* SDL_config.h.in in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF7F437619D09EE900BC6BA2 /* ResourcePath.mm in Sources */,
+				EF45B1511AD6F4B800A6F81D /* OGL.cpp in Sources */,
+				EF7F437519D09EE900BC6BA2 /* main.cpp in Sources */,
+				EF45B14B1AD6F2EA00A6F81D /* Sprite.cpp in Sources */,
+				EF45B14E1AD6F33A00A6F81D /* Screen.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDL/lib",
+					"$(PROJECT_DIR)/SDL/lib/Debug-iphoneos",
+					"$(PROJECT_DIR)/SDL_mixer/lib",
+					"$(PROJECT_DIR)/SDL/lib/Release-iphoneos",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = iGame;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = ../../../include;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDL/lib",
+					"$(PROJECT_DIR)/SDL/lib/Debug-iphoneos",
+					"$(PROJECT_DIR)/SDL_mixer/lib",
+					"$(PROJECT_DIR)/SDL/lib/Release-iphoneos",
+				);
+				PRODUCT_NAME = iGame;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = ../../../include;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

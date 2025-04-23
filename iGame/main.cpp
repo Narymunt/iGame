@@ -149,7 +149,7 @@ int main(int gArgc, char **gArgv)
 
 	eAppState = START;
 
-	bFullscreen = true;
+	bFullscreen = false;
 	iXSize = 800;
 	iYSize = 600;
 	iBpp = 32;
@@ -245,7 +245,7 @@ int main(int gArgc, char **gArgv)
 	if (sdlkeys[SDLK_b]==SDL_PRESSED)  pSND->PlayRandom(ulTimer);
 
 	pBitmap->Render(0,0,pBackBuffer);
-	pKonEVT->Put(iMouseX, iMouseY,(unsigned int)(ulTimer/3)%18,(unsigned int)1,pBackBuffer);
+	pKonEVT->Put(iMouseX, iMouseY,(unsigned int)(ulTimer/3)%18,(unsigned int)2,pBackBuffer);
 	AppRender(0);
 	SDL_PumpEvents();
 	sdlkeys=(char*)SDL_GetKeyState(NULL);

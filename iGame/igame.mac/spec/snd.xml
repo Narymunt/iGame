@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE SOUND version="1.0">
+<sound>
+    <name="gratulacje" type="RANDOM">
+	<wave="dobrze1.wav"/>
+	<wave="dobrze2.wav"/>
+	<wave="dobrze3.wav"/>
+    </name>
+    
+    <name="wstep" type="STORY">
+	<wave="dawnotemu.wav"/>
+	<wave="byldomek.wav"/>
+    </name>
+</sound>
+

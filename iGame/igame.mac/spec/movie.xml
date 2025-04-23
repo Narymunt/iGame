@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE MOVIE version="1.0">
+<movie>
+    <!-komentarz tutaj moge napisac co chce-!>
+    <background="tlo.bmp"/>
+    <play seq="tutaj_sekwencje.seq" event="rozpocznij"/>
+    <play seq="wilk.seq" event="witaj"/>
+</movie>

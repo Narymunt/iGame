@@ -1,0 +1,15 @@
+g++ -I /Library/Frameworks/SDL.framework/Headers -c sprite.cpp -o sprite.o
+g++ -I /Library/Frameworks/SDL.framework/Headers -c bitmap.cpp -o bitmap.o
+g++ -I /Library/Frameworks/SDL.framework/Headers -c ytable.cpp -o ytable.o
+g++ -I /Library/Frameworks/SDL.framework/Headers -c bitmapmask.cpp -o bitmapmask.o
+g++ -I /Library/Frameworks/SDL.framework/Headers -c eventsnd.cpp -o eventsnd.o
+g++ -I /Library/Frameworks/SDL.framework/Headers /Library/Frameworks/SDL_mixer.framework/Headers -c banksfx.cpp -o banksfx.o
+g++ -I /Library/Frameworks/SDL.framework/Headers -c eventevt.cpp -o eventevt.o
+g++ -I /Library/Frameworks/SDL.framework/Headers -c event.cpp -o event.o
+g++ -I /Library/Frameworks/SDL.framework/Headers -c pinch.cpp -o pinch.o
+g++ -I /Library/Frameworks/SDL.framework/Headers -c button_flat.cpp -o button_flat.o
+g++ -I /Library/Frameworks/SDL.framework/Headers -c xml_file.cpp -o xml_file.o
+g++ -I /Library/Frameworks/SDL.framework/Headers -c xml_node.cpp -o xml_node.o
+g++ -I /Library/Frameworks/SDL.framework/Headers main.cpp SDLmain.m \
+banksfx.o bitmapmask.o event.o eventsnd.o sprite.o xml_node.o bitmap.o button_flat.o eventevt.o pinch.o xml_file.o ytable.o SDL_mixer \
+-o main.exe -framework SDL -framework Cocoa

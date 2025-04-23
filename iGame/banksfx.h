@@ -4,16 +4,6 @@
 
 // typ : 1 - po kolei, 2 losowo
 
-// czyli np. zdarzenie "gada" ma 3 dzwieki i odtwarzane sa po kolei
-// wav start.wav
-// wav gadanie.wav
-// wav end.wav
-
-// zdarzenie "dobrze", czyli losowe mowienie roznego tekstu o tym,
-// ze zadanie zostalo wykonane poprawnie
-// wav dobrze1.wav
-// wav dobrze2.wav
-// wav.... 
 
 
 //#include "sound.h"

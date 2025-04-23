@@ -1,5 +1,5 @@
 #include <SDL/SDL.h>
-#include <SDL_mixer/SDL_mixer.h>
+#include <SDL/SDL_mixer.h>
 #include "debug.h"		// obsluga bledow, zapisywanie do dziennika
 #include "sprite.h"		// obsluga grafiki
 #include "bitmap.h"		// statyczna bitmapa
