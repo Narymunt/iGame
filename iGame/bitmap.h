@@ -4,11 +4,6 @@
 #ifndef _IGAME__BITMAP_
 #define _IGAME__BITMAP_
 
-// jaka to bitmapa
-
-#define 	BMP	1
-#define		TGA	2
-
 class CBitmap
 {
 
@@ -18,7 +13,6 @@ class CBitmap
 	CBitmap(unsigned long size);	// bitmap size
 	CBitmap(unsigned long size, char filename[]); // read bitmap
 	CBitmap(long lX, long lY, char filename[]);
-	CBitmap(char filename[],char cType);	// glownie dla .tga
 	
 	virtual ~CBitmap();
 
@@ -31,7 +25,6 @@ class CBitmap
 
 	int		Render(int iX, int iY, int iXSize, int iYSize, double iXScale, double iYScale, unsigned char *pBuffer);
 	int		Render(int iX, int iY, unsigned char *pBuffer);
-	int		Render1280(int iX, int iY, unsigned char *pBuffer);
 
 	int		RenderPlus(int iX, int iY, unsigned char *pBuffer);
 

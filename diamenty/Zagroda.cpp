@@ -10,11 +10,16 @@
 
 Zagroda::Zagroda()
 {
-	for (int a1=0; a1<4000; a1++) teren_global[a1]=1;	
 	
 	for (int b1=0; b1<160; b1++) teren[b1]=1;	// wszedzie trawa
 
-	teren_global[7]=5;	// murek bialy
+	teren[7]=5;	// murek bialy
+	
+	for (b1=115; b1<125; b1++) teren[b1]=5;
+
+	for (b1=55; b1<62;b1++) teren[b1]=6;
+
+	for (b1=87; b1<95; b1++) teren[b1]=0;
 
 }
 

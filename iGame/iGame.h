@@ -1,20 +1,12 @@
-#include <SDL/SDL.h>
-#include <SDL/SDL_mixer.h>
-#include "debug.h"		// obsluga bledow, zapisywanie do dziennika
-#include "sprite.h"		// obsluga grafiki
-#include "bitmap.h"		// statyczna bitmapa
-#include "bitmapmask.h"		// maskowanie
-#include "ytable.h"		// tablica z przeliczeniami, zamiast y*640+x jest ytable[y]+x
-#include "sintable.h"		// tablice przeliczen
-#include "filesys.h"		// pliki formatu .exedat
-#include "eventsnd.h"		// zdarzenia dzwiekowe
-#include "banksfx.h"		// bank zdarzen dzwiekowych
-#include "event.h"		// zdarzenie
-#include "eventevt.h"		// zdarzenie animacyjne
-#include "pinch.h"		// tunele x/y
-#include "button_flat.h"	// plaski obszar do naciskania przycisku
-#include "xml_node.h"		// wezel do parsowania plikow xml
-#include "xml_file.h"		// parsowanie pliku xml
-//#include <nn_matrix.h>	// operacja na macierzach
-
-
+#ifndef _IGAME__H
+#define _IGAME__H
+	#include <SDL.h>
+    #include "BankSFX.h"
+    #include "Bitmap.h"
+    #include "BitmapMask.h"
+    #include "Button.h"
+    #include "YTable.h"
+    #include "ButtonFlat.h"
+    #include "XmlFile.h"
+    #include "XmlNode.h"
+#endif

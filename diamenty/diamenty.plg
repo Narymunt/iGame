@@ -6,34 +6,46 @@
 --------------------Configuration: diamenty - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP6A2.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP1B.tmp" with contents
 [
 /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/diamenty.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
-"C:\Tools\prj\diamenty\MurekB.cpp"
+"D:\Tools\prj\diamenty\main.cpp"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP6A2.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP6A3.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP1B.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP1C.tmp" with contents
 [
 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib FOX.lib FOXmain.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/diamenty.pdb" /machine:I386 /out:"Release/diamenty.exe" 
 .\Release\Diament.obj
+.\Release\DiamentSpada.obj
+.\Release\Drzwi.obj
 .\Release\Dynia.obj
 .\Release\FGame.obj
 .\Release\Henryk.obj
 .\Release\main.obj
+.\Release\MurekB.obj
+.\Release\MurekC.obj
+.\Release\Potwor.obj
 .\Release\Trawa.obj
 .\Release\Zagroda.obj
-.\Release\MurekB.obj
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP6A3.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP1C.tmp"
 <h3>Output Window</h3>
 Compiling...
-MurekB.cpp
+main.cpp
+D:\Tools\prj\diamenty\main.cpp(911) : warning C4244: 'argument' : conversion from 'long' to 'short', possible loss of data
+D:\Tools\prj\diamenty\main.cpp(911) : warning C4244: 'argument' : conversion from 'long' to 'short', possible loss of data
+D:\Tools\prj\diamenty\main.cpp(941) : warning C4244: 'argument' : conversion from 'long' to 'short', possible loss of data
+D:\Tools\prj\diamenty\main.cpp(941) : warning C4244: 'argument' : conversion from 'long' to 'short', possible loss of data
+D:\Tools\prj\diamenty\main.cpp(981) : warning C4244: 'argument' : conversion from 'long' to 'short', possible loss of data
+D:\Tools\prj\diamenty\main.cpp(981) : warning C4244: 'argument' : conversion from 'long' to 'short', possible loss of data
+D:\Tools\prj\diamenty\main.cpp(1000) : warning C4244: 'argument' : conversion from 'long' to 'short', possible loss of data
+D:\Tools\prj\diamenty\main.cpp(1000) : warning C4244: 'argument' : conversion from 'long' to 'short', possible loss of data
 Linking...
 
 
 
 <h3>Results</h3>
-diamenty.exe - 0 error(s), 0 warning(s)
+diamenty.exe - 0 error(s), 8 warning(s)
 </pre>
 </body>
 </html>

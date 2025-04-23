@@ -40,7 +40,6 @@ MurekB::MurekB()
 
 MurekB::~MurekB()
 {
-
 	free(image_b);
 	free(image_g);
 	free(image_r);

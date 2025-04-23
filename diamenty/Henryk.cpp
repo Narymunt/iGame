@@ -346,6 +346,12 @@ Henryk::~Henryk()
 		free(dol_r[A1]); free(dol_g[A1]); free(dol_b[A1]); free(dol_a[A1]);
 	}
 
+	for (A1=0; A1<6; A1++)
+	{
+		free(prawo_r[A1]); free(prawo_g[A1]); free(prawo_b[A1]); free(prawo_a[A1]);
+		free(lewo_r[A1]); free(lewo_g[A1]); free(lewo_b[A1]); free(lewo_a[A1]);
+	}
+
 	free(stoi_r); free(stoi_g); free(stoi_b); free(stoi_a);
 
 

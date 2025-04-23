@@ -1,0 +1,271 @@
+ import
+
+ Timestamp is 3c8392b3 (Mon Mar 04 16:28:51 2002)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00002a65H .text                   CODE
+ 0001:00002a70 0000101aH .text$x                 CODE
+ 0002:00000000 00000151H .rdata                  DATA
+ 0002:00000158 00000130H .xdata$x                DATA
+ 0002:00000288 00000000H .edata                  DATA
+ 0003:00000000 00000104H .CRT$XCA                DATA
+ 0003:00000104 00000104H .CRT$XCZ                DATA
+ 0003:00000208 00000104H .CRT$XIA                DATA
+ 0003:0000030c 00000104H .CRT$XIZ                DATA
+ 0003:00000410 000005c2H .data                   DATA
+ 0003:000009d8 00000094H .bss                    DATA
+ 0004:00000000 0000003cH .idata$2                DATA
+ 0004:0000003c 00000014H .idata$3                DATA
+ 0004:00000050 00000194H .idata$4                DATA
+ 0004:000001e4 00000194H .idata$5                DATA
+ 0004:00000378 000004caH .idata$6                DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0001:00000140       ??0FBackground@@QAE@QAD@Z  00401140 f   FBackground.obj
+ 0001:00000280       ??_EFBackground@@UAEPAXI@Z 00401280 f i FBackground.obj
+ 0001:00000280       ??_GFBackground@@UAEPAXI@Z 00401280 f i FBackground.obj
+ 0001:000002b0       ??1FBackground@@UAE@XZ     004012b0 f   FBackground.obj
+ 0001:000002e0       ??0FEpisode@@QAE@XZ        004012e0 f   FEpisode.obj
+ 0001:00000300       ??_GFEpisode@@UAEPAXI@Z    00401300 f i FEpisode.obj
+ 0001:00000300       ??_EFEpisode@@UAEPAXI@Z    00401300 f i FEpisode.obj
+ 0001:00000330       ??1FEpisode@@UAE@XZ        00401330 f   FEpisode.obj
+ 0001:00000350       ??0FEvent@@QAE@XZ          00401350 f   FEvent.obj
+ 0001:00000370       ??_GFEvent@@UAEPAXI@Z      00401370 f i FEvent.obj
+ 0001:00000370       ??_EFEvent@@UAEPAXI@Z      00401370 f i FEvent.obj
+ 0001:000003a0       ??1FEvent@@UAE@XZ          004013a0 f   FEvent.obj
+ 0001:000003c0       ??0FGame@@QAE@XZ           004013c0 f   FGame.obj
+ 0001:000003e0       ??_GFGame@@UAEPAXI@Z       004013e0 f i FGame.obj
+ 0001:000003e0       ??_EFGame@@UAEPAXI@Z       004013e0 f i FGame.obj
+ 0001:00000410       ??1FGame@@UAE@XZ           00401410 f   FGame.obj
+ 0001:00000430       ??0FScene@@QAE@XZ          00401430 f   FScene.obj
+ 0001:00000450       ??_GFScene@@UAEPAXI@Z      00401450 f i FScene.obj
+ 0001:00000450       ??_EFScene@@UAEPAXI@Z      00401450 f i FScene.obj
+ 0001:00000480       ??1FScene@@UAE@XZ          00401480 f   FScene.obj
+ 0001:00000c70       ??_GFSprite@@UAEPAXI@Z     00401c70 f i FSprite.obj
+ 0001:00000c70       ??_EFSprite@@UAEPAXI@Z     00401c70 f i FSprite.obj
+ 0001:00000ca0       ??1FSprite@@UAE@XZ         00401ca0 f   FSprite.obj
+ 0001:00000ce0       ?Put@FSprite@@QAEXPAUFOX_Surface@@KKK@Z 00401ce0 f   FSprite.obj
+ 0001:00000e10       ??0FWorld@@QAE@XZ          00401e10 f   FWorld.obj
+ 0001:00000e30       ??_GFWorld@@UAEPAXI@Z      00401e30 f i FWorld.obj
+ 0001:00000e30       ??_EFWorld@@UAEPAXI@Z      00401e30 f i FWorld.obj
+ 0001:00000e60       ??1FWorld@@UAE@XZ          00401e60 f   FWorld.obj
+ 0001:00000e80       _FOX_main                  00401e80 f   main.obj
+ 0001:00001114       _FOX_pixelRGBA             00402114 f   fox:FOX.dll
+ 0001:0000111a       _FOX_CreateRGBSurface      0040211a f   fox:FOX.dll
+ 0001:00001120       _FOX_filesys_load_in       00402120 f   fox:FOX.dll
+ 0001:00001126       _FOX_filesys_search        00402126 f   fox:FOX.dll
+ 0001:0000112c       _FOX_UpperBlit             0040212c f   fox:FOX.dll
+ 0001:00001132       _FOX_PumpEvents            00402132 f   fox:FOX.dll
+ 0001:00001138       _FOX_PollEvent             00402138 f   fox:FOX.dll
+ 0001:0000113e       _FOX_Flip                  0040213e f   fox:FOX.dll
+ 0001:00001144       _FOX_GetKeyState           00402144 f   fox:FOX.dll
+ 0001:0000114a       _FOX_filesys_archive       0040214a f   fox:FOX.dll
+ 0001:00001150       _FOX_ShowCursor            00402150 f   fox:FOX.dll
+ 0001:00001156       _FOX_EventState            00402156 f   fox:FOX.dll
+ 0001:0000115c       _FOX_WM_SetCaption         0040215c f   fox:FOX.dll
+ 0001:00001162       _FOX_SetTimer              00402162 f   fox:FOX.dll
+ 0001:00001168       _FOX_SetVideoMode          00402168 f   fox:FOX.dll
+ 0001:0000116e       _FOX_Quit                  0040216e f   fox:FOX.dll
+ 0001:00001174       _FOX_GetError              00402174 f   fox:FOX.dll
+ 0001:0000117a       _FOX_Init                  0040217a f   fox:FOX.dll
+ 0001:00001180       _free                      00402180 f   MSVCRT:MSVCRT.dll
+ 0001:00001186       _malloc                    00402186 f   MSVCRT:MSVCRT.dll
+ 0001:0000118c       _fprintf                   0040218c f   MSVCRT:MSVCRT.dll
+ 0001:00001192       ??3@YAXPAX@Z               00402192 f   MSVCRT:MSVCRT.dll
+ 0001:00001198       ??2@YAPAXI@Z               00402198 f   MSVCRT:MSVCRT.dll
+ 0001:0000119e       ___CxxFrameHandler         0040219e f   MSVCRT:MSVCRT.dll
+ 0001:000011b0       __onexit                   004021b0 f   MSVCRT:atonexit.obj
+ 0001:000011dc       _atexit                    004021dc f   MSVCRT:atonexit.obj
+ 0001:000011ee       _exit                      004021ee f   MSVCRT:MSVCRT.dll
+ 0001:000011f4       _WinMainCRTStartup         004021f4 f   MSVCRT:crtexew.obj
+ 0001:00001352       ___dllonexit               00402352 f   MSVCRT:MSVCRT.dll
+ 0001:00001358       __exit                     00402358 f   MSVCRT:MSVCRT.dll
+ 0001:0000135e       __XcptFilter               0040235e f   MSVCRT:MSVCRT.dll
+ 0001:00001364       ___getmainargs             00402364 f   MSVCRT:MSVCRT.dll
+ 0001:0000136a       __initterm                 0040236a f   MSVCRT:MSVCRT.dll
+ 0001:00001370       __setdefaultprecision      00402370 f   MSVCRT:fp8.obj
+ 0001:00001382       ___setusermatherr          00402382 f   MSVCRT:MSVCRT.dll
+ 0001:00001388       __matherr                  00402388 f   MSVCRT:merr.obj
+ 0001:0000138b       __setargv                  0040238b f   MSVCRT:dllargv.obj
+ 0001:0000138c       ___p__commode              0040238c f   MSVCRT:MSVCRT.dll
+ 0001:00001392       ___p__fmode                00402392 f   MSVCRT:MSVCRT.dll
+ 0001:00001398       ___set_app_type            00402398 f   MSVCRT:MSVCRT.dll
+ 0001:0000139e       __except_handler3          0040239e f   MSVCRT:MSVCRT.dll
+ 0001:000013a4       __controlfp                004023a4 f   MSVCRT:MSVCRT.dll
+ 0001:000013aa       _GetModuleHandleA@4        004023aa f   kernel32:KERNEL32.dll
+ 0001:000013b0       _GetStartupInfoA@4         004023b0 f   kernel32:KERNEL32.dll
+ 0001:000013c0       _main                      004023c0 f   foxmain:FOX_main.obj
+ 0001:000015b0       _WinMain@16                004025b0 f   foxmain:FOX_main.obj
+ 0001:00001830       _strncpy                   00402830 f   MSVCRT:MSVCRT.dll
+ 0001:00001836       _strrchr                   00402836 f   MSVCRT:MSVCRT.dll
+ 0001:00001840       __alloca_probe             00402840 f   MSVCRT:chkstk.obj
+ 0001:00001840       __chkstk                   00402840 f   MSVCRT:chkstk.obj
+ 0001:00001870       _remove                    00402870 f   MSVCRT:MSVCRT.dll
+ 0001:00001876       _fgetc                     00402876 f   MSVCRT:MSVCRT.dll
+ 0001:0000187c       _fopen                     0040287c f   MSVCRT:MSVCRT.dll
+ 0001:00001882       _fclose                    00402882 f   MSVCRT:MSVCRT.dll
+ 0001:00001888       _setbuf                    00402888 f   MSVCRT:MSVCRT.dll
+ 0001:0000188e       _setvbuf                   0040288e f   MSVCRT:MSVCRT.dll
+ 0001:00001894       _freopen                   00402894 f   MSVCRT:MSVCRT.dll
+ 0001:0000189a       __isctype                  0040289a f   MSVCRT:MSVCRT.dll
+ 0001:000018a0       _GetCommandLineA@0         004028a0 f   kernel32:KERNEL32.dll
+ 0001:000018a6       _FreeLibrary@4             004028a6 f   kernel32:KERNEL32.dll
+ 0001:000018ac       _LoadLibraryA@4            004028ac f   kernel32:KERNEL32.dll
+ 0001:000018b2       _FOX_SetModuleHandle       004028b2 f   fox:FOX.dll
+ 0001:000018c0       ??0FSprite@@QAE@QAD@Z      004028c0 f   FSprite.obj
+ 0002:0000001c       ??_7FBackground@@6B@       0040501c     FBackground.obj
+ 0002:00000020       ??_7FEpisode@@6B@          00405020     FEpisode.obj
+ 0002:00000024       ??_7FEvent@@6B@            00405024     FEvent.obj
+ 0002:00000028       ??_7FGame@@6B@             00405028     FGame.obj
+ 0002:0000002c       ??_7FScene@@6B@            0040502c     FScene.obj
+ 0002:00000030       ??_7FSprite@@6B@           00405030     FSprite.obj
+ 0002:00000034       ??_7FWorld@@6B@            00405034     FWorld.obj
+ 0003:00000000       ___xc_a                    00406000     MSVCRT:cinitexe.obj
+ 0003:00000104       ___xc_z                    00406104     MSVCRT:cinitexe.obj
+ 0003:00000208       ___xi_a                    00406208     MSVCRT:cinitexe.obj
+ 0003:0000030c       ___xi_z                    0040630c     MSVCRT:cinitexe.obj
+ 0003:00000410       ??_C@_0CC@DIBB@?$FLFOX?$FN?3?5blad?$CB?5nie?5moge?5wczytac?5?$CFs@ 00406410     FBackground.obj
+ 0003:00000434       ??_C@_0BD@JFGC@frRectangle?4w?3?5?$CFd?6?$AA@ 00406434     FSprite.obj
+ 0003:00000448       ??_C@_0BD@IKAB@frRectangle?4h?3?5?$CFd?6?$AA@ 00406448     FSprite.obj
+ 0003:0000045c       ??_C@_0N@DLBJ@ulFrame?3?5?$CFd?6?$AA@ 0040645c     FSprite.obj
+ 0003:0000046c       ??_C@_0BF@LDMA@?$FLFOX?$FN?3?5ulOffset?5ADD?6?$AA@ 0040646c     FSprite.obj
+ 0003:0000048c       ??_C@_0BK@HOFE@?$FLFOX?$FN?3?5ilosc?5klatek?5?3?5?$CFd?6?$AA@ 0040648c     FSprite.obj
+ 0003:000004ac       ??_C@_0BE@MAOC@?$FLFOX?$FN?3?5Offset?5?3?5?$CFd?6?$AA@ 004064ac     FSprite.obj
+ 0003:000004c0       ??_C@_0CI@OJIF@?$FLFOX?$FN?3?5alokacja?5pamieci?5na?5zdarz@ 004064c0     FSprite.obj
+ 0003:000004e8       ??_C@_0BH@LJHA@?7Szerokosc?5klatki?3?5?$CFd?6?$AA@ 004064e8     FSprite.obj
+ 0003:00000500       ??_C@_0BK@EJE@?$FLFOX?$FN?3?5ilosc?5zdarzen?3?5?$CFd?6?$AA@ 00406500     FSprite.obj
+ 0003:00000524       ??_C@_0BD@EFKD@frRectangle?4y?3?5?$CFd?6?$AA@ 00406524     FSprite.obj
+ 0003:00000538       ??_C@_05FONL@ok?$CB?6?6?$AA@ 00406538     FSprite.obj
+ 0003:00000540       ??_C@_0BD@NAAD@frRectangle?4x?3?5?$CFd?6?$AA@ 00406540     FSprite.obj
+ 0003:00000554       ??_C@_0BK@GDPG@Kopiowanie?5na?5surface?4?4?4?6?$AA@ 00406554     FSprite.obj
+ 0003:00000570       ??_C@_0BH@MAEH@?7Wysokosc?5klatki?3?5?$CFd?6?6?$AA@ 00406570     FSprite.obj
+ 0003:0000058c       ??_C@_0BG@NBFN@?7Wysokosc?5klatki?3?5?$CFd?6?$AA@ 0040658c     FSprite.obj
+ 0003:000005a4       ??_C@_0BF@FGJB@Alokacja?5surface?4?4?4?6?$AA@ 004065a4     FSprite.obj
+ 0003:000005c8       ??_C@_0BG@LHGC@Szerokosc?5klatki?3?5?$CFd?6?$AA@ 004065c8     FSprite.obj
+ 0003:000005e0       ??_C@_0BF@MDAB@Wysokosc?5klatki?3?5?$CFd?6?$AA@ 004065e0     FSprite.obj
+ 0003:00000604       ??_C@_0N@DFIG@Klatka?5?3?5?$CFd?6?$AA@ 00406604     FSprite.obj
+ 0003:0000062c       ??_C@_0CF@KGGJ@?$FLFOX?$FN?3?5alokacja?5surface?5dla?5obra@ 0040662c     FSprite.obj
+ 0003:00000654       ??_C@_0BJ@CMLB@?$FLFOX?$FN?3?5za?5malo?5pamieci?$CB?6?$AA@ 00406654     FSprite.obj
+ 0003:00000670       ??_C@_0CD@GPKO@?$FLFOX?$FN?3?5blad?$CB?5nie?5moge?5wczytac?5?$CFs@ 00406670     FSprite.obj
+ 0003:00000694       ??_C@_04ENHG@ok?$CB?6?$AA@ 00406694     FSprite.obj
+ 0003:000006c8       ??_C@_0CE@PLPA@?$FLFOX?$FN?3?5alokacja?5wysokosci?5klatek@ 004066c8     FSprite.obj
+ 0003:000006f4       ??_C@_0BJ@EODH@?$FLFOX?$FN?3?5ilosc?5klatek?3?5?$CFd?6?$AA@ 004066f4     FSprite.obj
+ 0003:00000720       ??_C@_0CJ@IMBF@?$FLFOX?$FN?3?5alokacja?5FSprite?3ucTempBu@ 00406720     FSprite.obj
+ 0003:00000760       ??_C@_0BN@EHJI@FSprite?3?3new?5?5csFilename?$DN?$CFs?6?$AA@ 00406760     FSprite.obj
+ 0003:00000788       ??_C@_0M@KGHE@back001?4raw?$AA@ 00406788     main.obj
+ 0003:00000798       ??_C@_0L@HMFF@smokul?4evt?$AA@ 00406798     main.obj
+ 0003:000007a8       ??_C@_0N@CPBF@resource?4fox?$AA@ 004067a8     main.obj
+ 0003:000007b8       ??_C@_06PCIG@Import?$AA@   004067b8     main.obj
+ 0003:000007c0       ??_C@_0CP@IPHE@Nie?5mozna?5ustawic?5trybu?5graficzn@ 004067c0     main.obj
+ 0003:000007f8       ??_C@_0CB@BOFA@Nie?5mozna?5zainicjalizowac?4?4?4?5?$CFs?6@ 004067f8     main.obj
+ 0003:00000820       ___defaultmatherr          00406820     MSVCRT:merr.obj
+ 0003:00000824       ??_C@_0BH@FFOP@?$FLFOX?$FN?3?5WinMain?$CI?$CJ?5error?$AA@ 00406824     foxmain:FOX_main.obj
+ 0003:0000083c       ??_C@_0P@NMDD@?$FLFOX?$FN?3?5?$CFs?3?5?$CFs?6?$AA@ 0040683c     foxmain:FOX_main.obj
+ 0003:0000084c       ??_C@_0M@MMAJ@Fatal?5Error?$AA@ 0040684c     foxmain:FOX_main.obj
+ 0003:00000858       ??_C@_0BJ@EJNJ@Out?5of?5memory?5?9?5aborting?$AA@ 00406858     foxmain:FOX_main.obj
+ 0003:00000874       ??_C@_0L@BIBO@stderr?4txt?$AA@ 00406874     foxmain:FOX_main.obj
+ 0003:00000880       ??_C@_0L@BJCH@stdout?4txt?$AA@ 00406880     foxmain:FOX_main.obj
+ 0003:0000088c       ??_C@_02JKAF@rb?$AA@       0040688c     foxmain:FOX_main.obj
+ 0003:00000890       ??_C@_01LLF@w?$AA@         00406890     foxmain:FOX_main.obj
+ 0003:00000894       ??_C@_09LLMO@DDRAW?4DLL?$AA@ 00406894     foxmain:FOX_main.obj
+ 0003:000008a0       ??_C@_0CA@DBFI@?$FLFOX?$FN?3?5Nazwa?5zdarzenia?5?$CD?$CFd?3?7?$CFs?6?$AA@ 004068a0     FSprite.obj
+ 0003:000008d4       ??_C@_0N@GPPA@Offset?5?3?5?$CFd?6?$AA@ 004068d4     FSprite.obj
+ 0003:000008fc       ??_C@_0CC@HACP@?$FLFOX?$FN?3?5Klatka?5?$CFd?5X?3?$CFd?5Y?3?$CFd?5Nr?3?$CFd@ 004068fc     FSprite.obj
+ 0003:00000920       ??_C@_0CF@DHFL@?$FLFOX?$FN?3?5alokacja?5szerokosci?5klate@ 00406920     FSprite.obj
+ 0003:0000094c       ??_C@_0CL@HFMA@?$FLFOX?$FN?3?5alokacja?5pamieci?5na?5liste@ 0040694c     FSprite.obj
+ 0003:00000998       ??_C@_0CK@LFF@?$FLFOX?$FN?3?5alokacja?5pamieci?5na?5wspol@ 00406998     FSprite.obj
+ 0003:000009d8       ?b@@3KA                    004069d8     main.obj
+ 0003:000009dc       ?klawiatura@@3PAEA         004069dc     main.obj
+ 0003:000009e0       ?g@@3KA                    004069e0     main.obj
+ 0003:000009e4       ?screen@@3PAUFOX_Surface@@A 004069e4     main.obj
+ 0003:000009e8       ?r@@3KA                    004069e8     main.obj
+ 0003:000009ec       ?gra@@3PAVFGame@@A         004069ec     main.obj
+ 0003:000009f0       ?ulTimer@@3KA              004069f0     main.obj
+ 0003:000009f4       ?iDesired@@3HA             004069f4     main.obj
+ 0003:000009f8       ?h1@@3JA                   004069f8     main.obj
+ 0003:000009fc       ?h2@@3JA                   004069fc     main.obj
+ 0003:00000a00       ?h3@@3JA                   00406a00     main.obj
+ 0003:00000a04       ?h4@@3JA                   00406a04     main.obj
+ 0003:00000a08       ?h5@@3JA                   00406a08     main.obj
+ 0003:00000a0c       ?plik@@3PAU_iobuf@@A       00406a0c     main.obj
+ 0003:00000a10       ?event@@3TFOX_Event@@A     00406a10     main.obj
+ 0003:00000a24       ?smokul@@3PAVFSprite@@A    00406a24     main.obj
+ 0003:00000a28       ?fbKomnata@@3PAVFBackground@@A 00406a28     main.obj
+ 0003:00000a3c       __dowildcard               00406a3c     MSVCRT:wildcard.obj
+ 0003:00000a40       __newmode                  00406a40     MSVCRT:_newmode.obj
+ 0003:00000a44       __commode                  00406a44     MSVCRT:xncommod.obj
+ 0003:00000a48       __fmode                    00406a48     MSVCRT:xtxtmode.obj
+ 0003:00000a4c       __adjust_fdiv              00406a4c     <common>
+ 0003:00000a58       ___onexitend               00406a58     <common>
+ 0003:00000a68       ___onexitbegin             00406a68     <common>
+ 0004:00000000       __IMPORT_DESCRIPTOR_FOX    00407000     fox:FOX.dll
+ 0004:00000014       __IMPORT_DESCRIPTOR_MSVCRT 00407014     MSVCRT:MSVCRT.dll
+ 0004:00000028       __IMPORT_DESCRIPTOR_KERNEL32 00407028     kernel32:KERNEL32.dll
+ 0004:0000003c       __NULL_IMPORT_DESCRIPTOR   0040703c     fox:FOX.dll
+ 0004:000001e4       __imp__FOX_pixelRGBA       004071e4     fox:FOX.dll
+ 0004:000001e8       __imp__FOX_CreateRGBSurface 004071e8     fox:FOX.dll
+ 0004:000001ec       __imp__FOX_filesys_load_in 004071ec     fox:FOX.dll
+ 0004:000001f0       __imp__FOX_filesys_search  004071f0     fox:FOX.dll
+ 0004:000001f4       __imp__FOX_UpperBlit       004071f4     fox:FOX.dll
+ 0004:000001f8       __imp__FOX_PumpEvents      004071f8     fox:FOX.dll
+ 0004:000001fc       __imp__FOX_PollEvent       004071fc     fox:FOX.dll
+ 0004:00000200       __imp__FOX_Flip            00407200     fox:FOX.dll
+ 0004:00000204       __imp__FOX_GetKeyState     00407204     fox:FOX.dll
+ 0004:00000208       __imp__FOX_filesys_archive 00407208     fox:FOX.dll
+ 0004:0000020c       __imp__FOX_ShowCursor      0040720c     fox:FOX.dll
+ 0004:00000210       __imp__FOX_EventState      00407210     fox:FOX.dll
+ 0004:00000214       __imp__FOX_WM_SetCaption   00407214     fox:FOX.dll
+ 0004:00000218       __imp__FOX_SetTimer        00407218     fox:FOX.dll
+ 0004:0000021c       __imp__FOX_SetVideoMode    0040721c     fox:FOX.dll
+ 0004:00000220       __imp__FOX_Quit            00407220     fox:FOX.dll
+ 0004:00000224       __imp__FOX_GetError        00407224     fox:FOX.dll
+ 0004:00000228       __imp__FOX_Init            00407228     fox:FOX.dll
+ 0004:0000022c       __imp__FOX_SetModuleHandle 0040722c     fox:FOX.dll
+ 0004:00000230       \177FOX_NULL_THUNK_DATA    00407230     fox:FOX.dll
+ 0004:00000268       __imp__FreeLibrary@4       00407268     kernel32:KERNEL32.dll
+ 0004:0000026c       __imp__LoadLibraryA@4      0040726c     kernel32:KERNEL32.dll
+ 0004:00000270       __imp__GetStartupInfoA@4   00407270     kernel32:KERNEL32.dll
+ 0004:00000274       __imp__GetModuleHandleA@4  00407274     kernel32:KERNEL32.dll
+ 0004:00000278       __imp__GetCommandLineA@0   00407278     kernel32:KERNEL32.dll
+ 0004:0000027c       \177KERNEL32_NULL_THUNK_DATA 0040727c     kernel32:KERNEL32.dll
+ 0004:000002ac       __imp____dllonexit         004072ac     MSVCRT:MSVCRT.dll
+ 0004:000002b0       __imp___onexit             004072b0     MSVCRT:MSVCRT.dll
+ 0004:000002b4       __imp___exit               004072b4     MSVCRT:MSVCRT.dll
+ 0004:000002b8       __imp__malloc              004072b8     MSVCRT:MSVCRT.dll
+ 0004:000002bc       __imp__exit                004072bc     MSVCRT:MSVCRT.dll
+ 0004:000002c0       __imp___acmdln             004072c0     MSVCRT:MSVCRT.dll
+ 0004:000002c4       __imp_??3@YAXPAX@Z         004072c4     MSVCRT:MSVCRT.dll
+ 0004:000002c8       __imp____CxxFrameHandler   004072c8     MSVCRT:MSVCRT.dll
+ 0004:000002cc       __imp____setusermatherr    004072cc     MSVCRT:MSVCRT.dll
+ 0004:000002d0       __imp___adjust_fdiv        004072d0     MSVCRT:MSVCRT.dll
+ 0004:000002d4       __imp____p__commode        004072d4     MSVCRT:MSVCRT.dll
+ 0004:000002d8       __imp____p__fmode          004072d8     MSVCRT:MSVCRT.dll
+ 0004:000002dc       __imp_??2@YAPAXI@Z         004072dc     MSVCRT:MSVCRT.dll
+ 0004:000002e0       __imp___iob                004072e0     MSVCRT:MSVCRT.dll
+ 0004:000002e4       __imp___controlfp          004072e4     MSVCRT:MSVCRT.dll
+ 0004:000002e8       __imp____getmainargs       004072e8     MSVCRT:MSVCRT.dll
+ 0004:000002ec       __imp___initterm           004072ec     MSVCRT:MSVCRT.dll
+ 0004:000002f0       __imp__fprintf             004072f0     MSVCRT:MSVCRT.dll
+ 0004:000002f4       __imp__strncpy             004072f4     MSVCRT:MSVCRT.dll
+ 0004:000002f8       __imp__strrchr             004072f8     MSVCRT:MSVCRT.dll
+ 0004:000002fc       __imp__remove              004072fc     MSVCRT:MSVCRT.dll
+ 0004:00000300       __imp__fgetc               00407300     MSVCRT:MSVCRT.dll
+ 0004:00000304       __imp__fopen               00407304     MSVCRT:MSVCRT.dll
+ 0004:00000308       __imp__fclose              00407308     MSVCRT:MSVCRT.dll
+ 0004:0000030c       __imp__setbuf              0040730c     MSVCRT:MSVCRT.dll
+ 0004:00000310       __imp__setvbuf             00407310     MSVCRT:MSVCRT.dll
+ 0004:00000314       __imp__freopen             00407314     MSVCRT:MSVCRT.dll
+ 0004:00000318       __imp___pctype             00407318     MSVCRT:MSVCRT.dll
+ 0004:0000031c       __imp____mb_cur_max        0040731c     MSVCRT:MSVCRT.dll
+ 0004:00000320       __imp___isctype            00407320     MSVCRT:MSVCRT.dll
+ 0004:00000324       __imp____set_app_type      00407324     MSVCRT:MSVCRT.dll
+ 0004:00000328       __imp__free                00407328     MSVCRT:MSVCRT.dll
+ 0004:0000032c       __imp___except_handler3    0040732c     MSVCRT:MSVCRT.dll
+ 0004:00000330       __imp___XcptFilter         00407330     MSVCRT:MSVCRT.dll
+ 0004:00000334       \177MSVCRT_NULL_THUNK_DATA 00407334     MSVCRT:MSVCRT.dll
+
+ entry point at        0001:000011f4
+

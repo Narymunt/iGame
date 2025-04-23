@@ -1,0 +1,33 @@
+# Microsoft Developer Studio Generated Dependency File, included by diamenty.mak
+
+.\FGame.cpp : \
+	".\FGame.h"\
+	
+
+.\main.cpp : \
+	".\FGame.h"\
+	{$(INCLUDE)}"FOX.h"\
+	{$(INCLUDE)}"FOX_active.h"\
+	{$(INCLUDE)}"FOX_Audio.h"\
+	{$(INCLUDE)}"FOX_begin.h"\
+	{$(INCLUDE)}"FOX_byteorder.h"\
+	{$(INCLUDE)}"FOX_cdrom.h"\
+	{$(INCLUDE)}"FOX_draw2d.h"\
+	{$(INCLUDE)}"FOX_end.h"\
+	{$(INCLUDE)}"FOX_error.h"\
+	{$(INCLUDE)}"FOX_events.h"\
+	{$(INCLUDE)}"FOX_filesys.h"\
+	{$(INCLUDE)}"FOX_getenv.h"\
+	{$(INCLUDE)}"FOX_joystick.h"\
+	{$(INCLUDE)}"FOX_keyboard.h"\
+	{$(INCLUDE)}"FOX_keysym.h"\
+	{$(INCLUDE)}"FOX_main.h"\
+	{$(INCLUDE)}"FOX_mouse.h"\
+	{$(INCLUDE)}"FOX_mutex.h"\
+	{$(INCLUDE)}"FOX_quit.h"\
+	{$(INCLUDE)}"FOX_rwops.h"\
+	{$(INCLUDE)}"FOX_timer.h"\
+	{$(INCLUDE)}"FOX_types.h"\
+	{$(INCLUDE)}"FOX_version.h"\
+	{$(INCLUDE)}"FOX_video.h"\
+	

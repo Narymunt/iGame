@@ -36,10 +36,11 @@ class CEventEVT
 	    unsigned char	m_ucVersion;		// wersja pliku
 	    unsigned int	m_uiIloscKlatek;		// ile klatek w tym pliku
 	    
-	    CBitmap		**m_pEventFrames;		// wskaznik na tablice (!!) klatek 
+	    // CSprite		**pEventFrames;		// wskaznik na tablice (!!) klatek 
 	    
 	    unsigned int	m_uiIloscZdarzen;	// ile jest zdarzen w tym sprite
-	    CEvent		**m_pEvent;		// zdarzenia
+	    
+	    // CEvent		**pEvent;		// zdarzenia
     
 };
 

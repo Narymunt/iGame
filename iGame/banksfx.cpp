@@ -3,7 +3,7 @@
 
 //=== konstruktor 
 
-CBankSFX::CBankSFX(char XMLFilename[])
+CBankSFX::CBankSFX()
 {
 
 }

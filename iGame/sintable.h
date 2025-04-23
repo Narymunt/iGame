@@ -17,9 +17,15 @@ class SinTable
     int iSin256[256];
     int iCos256[256];
     
-    int iSin1024[256];
-    int iCos1024[256];
+    int iSin1024[1024];
+    int iCos1024[1024];
 
+    float fSin256[256];
+    float fCos256[256];
+
+    float fSin1024[1024];
+    float fCos1024[1024];
+    
 };
 
 #endif

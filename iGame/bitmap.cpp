@@ -12,7 +12,7 @@ CBitmap::CBitmap()
     m_pBitmapDataR=NULL;
     m_pBitmapDataG=NULL;
     m_pBitmapDataB=NULL;
-    m_pBitmapDataA = NULL;
+	m_pBitmapDataA = NULL;
 }
 
 //=== class destructor
@@ -60,7 +60,6 @@ CBitmap::CBitmap(unsigned long size, char filename[])
 	m_pBitmapDataB[b1]=mTemp[51+(size*3)-b2];
 	m_pBitmapDataG[b1]=mTemp[52+(size*3)-b2];
 	m_pBitmapDataR[b1]=mTemp[53+(size*3)-b2];
-	m_pBitmapDataA[b1]=255;	// przy okazji ustawiamy alfa na zawsze widoczna
     }
 }
 
@@ -79,14 +78,13 @@ CBitmap::CBitmap(long lX, long lY, char filename[])
     m_ulSizeY = lY;
 
     size = lX *lY;
-    printf("[CBitmap]: %s x: %d y: %d size: %d\n",filename,m_ulSizeX,m_ulSizeY,size);
-    
+
     mTemp = (unsigned char *)malloc(54+(size*3));	// 54 bytes for header, skip
 
     m_pBitmapDataR = (unsigned char*)malloc(size);
     m_pBitmapDataG = (unsigned char*)malloc(size);
     m_pBitmapDataB = (unsigned char*)malloc(size);
-    m_pBitmapDataA = (unsigned char*)malloc(size);
+	m_pBitmapDataA = (unsigned char*)malloc(size);
 
     if ((bmp_file=fopen(filename,"rb"))==NULL) printf("Error opening %s file!\n",filename);
     fread(mTemp,54+(size*3),1,bmp_file); // header and data
@@ -97,117 +95,9 @@ CBitmap::CBitmap(long lX, long lY, char filename[])
 	m_pBitmapDataB[b1]=mTemp[51+(size*3)-b2];
 	m_pBitmapDataG[b1]=mTemp[52+(size*3)-b2];
 	m_pBitmapDataR[b1]=mTemp[53+(size*3)-b2];
-	m_pBitmapDataA[b1]=255;	// przy okazji ustawiamy alfa na zawsze widoczna
     }
 }
 
-//=== bitmapa wg typu
-
-CBitmap::CBitmap(char filename[], char cType)
-{
-    FILE *plik;
-    
-    unsigned char cHeader[18];
-    unsigned char *pTemp;
-    
-    // struktura pliku TGA
-    
-    unsigned char	ucIdentSize;	// zwykle 0
-    unsigned char	ucPalette;	// 0 brak, 1 paleta
-    unsigned char	ucType;		// 0 brak, 1 index, 2 rgb, 3 szary, +8 spakowane rle
-    unsigned short	usPalStart;	// poczatek palety
-    unsigned short	usPalLength;	// dlugosc palety
-    unsigned char	ucPalBpp;	// 15,16,24,32
-    
-    unsigned short	usXStart;	// poczatek X
-    unsigned short	usYStart;	// poczatek Y
-    unsigned short	usXSize;		// rozmiar X
-    unsigned short	usYSize;		// rozmiar Y
-    unsigned char	ucBpp;		// 8,16,24,32
-    unsigned char	ucDesc;		// czy obrocony
-
-    unsigned long	size;
-
-    if (cType==TGA)
-    {
-    
-        if ((plik=fopen(filename,"rb"))==NULL) printf("#\nCBitmap: Nie mozna odczytac %s \n",filename);
-        fread(&cHeader,18,1,plik);
-    
-        printf("#\nCBitmap: nowy obraz TGA %s\n",filename);
-    
-        ucIdentSize = cHeader[0];
-        ucPalette = cHeader[1];
-        ucType = cHeader[2];
-        usPalStart = (cHeader[4]<<8)+cHeader[3];
-        usPalLength = (cHeader[6]<<8)+cHeader[5];
-        ucPalBpp = cHeader[7];
-        usXStart = (cHeader[9]<<8)+cHeader[8];
-        usYStart = (cHeader[11]<<8)+cHeader[10];
-        usXSize = (cHeader[13]<<8)+cHeader[12];
-        usYSize = (cHeader[15]<<8)+cHeader[14];
-        ucBpp = cHeader[16];
-        ucDesc = cHeader[17];    
-    
-        printf("TGA: identyfikator %d\n",ucIdentSize);
-        printf("TGA: paleta %d\n",ucPalette);
-        printf("TGA: typ %d\n",ucType);
-        printf("TGA: poczatek palety %d\n",usPalStart);
-        printf("TGA: dlugosc palety %d\n",usPalLength);
-        printf("TGA: rodzaj palety %d bpp\n",ucPalBpp);
-        printf("TGA: poczatek X %d\n",usXStart);
-        printf("TGA: poczatek Y %d\n",usYStart);
-        printf("TGA: rozmiar X %d\n",usXSize);
-        printf("TGA: rozmiar Y %d\n",usYSize);
-        printf("TGA: %d bpp\n",ucBpp);
-        printf("TGA: opis %d\n",ucDesc);
-
-	// zapamietaj rozmiary
-    
-        m_ulSizeX = usXSize;
-        m_ulSizeY = usYSize;
-    
-        // zakladamy, ze tga zawsze bedzie 32bpp
-    
-        size = (m_ulSizeX * m_ulSizeY);
-        pTemp = new unsigned char[1+(size*4)];
-
-        m_pBitmapDataR = (unsigned char*)malloc(size);
-        m_pBitmapDataG = (unsigned char*)malloc(size);
-        m_pBitmapDataB = (unsigned char*)malloc(size);
-        m_pBitmapDataA = (unsigned char*)malloc(size);
-    
-        if (ucBpp==32) fread(pTemp,size*4,1,plik);
-        if (ucBpp==24) fread(pTemp,size*3,1,plik);
-        
-        printf("TGA: wczytano dane\n");
-        fclose(plik);
-
-	if (ucBpp==32) // pobieramy alfe
-	{
-    	    for (long i=0; i<size; i++)
-    	    {
-		m_pBitmapDataB[i] = pTemp[(size-i)*4];
-        	m_pBitmapDataG[i] = pTemp[((size-i)*4)+1];
-		m_pBitmapDataR[i] = pTemp[((size-i)*4)+2];
-        	m_pBitmapDataA[i] = pTemp[((size-i)*4)+3];
-	    }	    
-	}
-	
-	if (ucBpp==24) // nie ma alfy w pliku
-	{
-    	    for (long i=0; i<size; i++)
-    	    {
-		m_pBitmapDataB[i] = pTemp[(size-i)*3];
-        	m_pBitmapDataG[i] = pTemp[((size-i)*3)+1];
-		m_pBitmapDataR[i] = pTemp[((size-i)*3)+2];
-        	m_pBitmapDataA[i] = 255;
-	    }	    
-	}
-
-    } // cType==TGA
-    
-}
 
 //=== akcesory dla danych bitmapy
 
@@ -250,7 +140,7 @@ int CBitmap::Render(int iX, int iY, unsigned char *pBuffer)
 		for (int h2=0;h2<m_ulSizeX; h2++)
 		{
 			if ( ((iX+h2)<800) && ((iX+h2)>0) &&
-			     ((iY+h1)<600) && ((iY+h1)>0) && (m_pBitmapDataA[(m_ulSizeX*h1)+h2]>127))
+			     ((iY+h1)<600) && ((iY+h1)>0) )
 			{
 			lAdres=((800*(iY+h1))+iX+h2)*4;
 			pBuffer[lAdres] = m_pBitmapDataR[(m_ulSizeX*h1)+h2];
@@ -261,30 +151,6 @@ int CBitmap::Render(int iX, int iY, unsigned char *pBuffer)
 	}
 	return 0;
 }
-
-// dla rozdzielczosci 1280x1024
-
-int CBitmap::Render1280(int iX, int iY, unsigned char *pBuffer)
-{
-	long lAdres;
-	
-	for (int h1=0; h1<m_ulSizeY; h1++)
-	{
-		for (int h2=0;h2<m_ulSizeX; h2++)
-		{
-			if ( ((iX+h2)<1280) && ((iX+h2)>0) &&
-			     ((iY+h1)<1024) && ((iY+h1)>0) && (m_pBitmapDataA[(m_ulSizeX*h1)+h2]>127))
-			{
-			lAdres=((1280*(iY+h1))+iX+h2)*4;
-			pBuffer[lAdres] = m_pBitmapDataR[(m_ulSizeX*h1)+h2];
-			pBuffer[lAdres+1] = m_pBitmapDataG[(m_ulSizeX*h1)+h2];
-			pBuffer[lAdres+2] = m_pBitmapDataB[(m_ulSizeX*h1)+h2];
-			}
-		}
-	}
-	return 0;
-}
-
 
 // renderowanie, dodaje kolory do siebie
 

@@ -1,0 +1,4203 @@
+FSprite::new  csFilename=smokul.evt
+[FOX]: alokacja FSprite:ucTempBuffer 1334166
+[FOX]: ilosc klatek: 72
+[FOX]: alokacja wysokosci klatek...ok!
+[FOX]: alokacja szerokosci klatek...ok!
+[FOX]: alokacja surface dla obrazu..ok!
+Klatka : 0
+Offset : 4
+Wysokosc klatki: 70
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Klatka : 1
+Offset : 17092
+Wysokosc klatki: 70
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Klatka : 2
+Offset : 34180
+Wysokosc klatki: 70
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Klatka : 3
+Offset : 51268
+Wysokosc klatki: 70
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Klatka : 4
+Offset : 68356
+Wysokosc klatki: 70
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Klatka : 5
+Offset : 85444
+Wysokosc klatki: 71
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 71
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 71
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 71
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 71
+
+Klatka : 6
+Offset : 102776
+Wysokosc klatki: 72
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+Klatka : 7
+Offset : 120352
+Wysokosc klatki: 72
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+Klatka : 8
+Offset : 137928
+Wysokosc klatki: 74
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Klatka : 9
+Offset : 156584
+Wysokosc klatki: 74
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Klatka : 10
+Offset : 175240
+Wysokosc klatki: 74
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Klatka : 11
+Offset : 193896
+Wysokosc klatki: 74
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Klatka : 12
+Offset : 212552
+Wysokosc klatki: 74
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Klatka : 13
+Offset : 231208
+Wysokosc klatki: 71
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 71
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 71
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 71
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 71
+
+Klatka : 14
+Offset : 248540
+Wysokosc klatki: 72
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+Klatka : 15
+Offset : 266116
+Wysokosc klatki: 72
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 72
+
+Klatka : 16
+Offset : 283692
+Wysokosc klatki: 74
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Klatka : 17
+Offset : 302348
+Wysokosc klatki: 74
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Klatka : 18
+Offset : 321004
+Wysokosc klatki: 74
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Klatka : 19
+Offset : 339660
+Wysokosc klatki: 74
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Klatka : 20
+Offset : 358316
+Wysokosc klatki: 74
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 74
+
+Klatka : 21
+Offset : 376972
+Wysokosc klatki: 70
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Klatka : 22
+Offset : 394060
+Wysokosc klatki: 70
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Klatka : 23
+Offset : 411148
+Wysokosc klatki: 70
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 70
+
+Klatka : 24
+Offset : 428236
+Wysokosc klatki: 69
+Szerokosc klatki: 62
+Alokacja surface...
+	Szerokosc klatki: 62
+	Wysokosc klatki: 69
+ok!
+	Szerokosc klatki: 62
+	Wysokosc klatki: 69
+
+Kopiowanie na surface...
+	Szerokosc klatki: 62
+	Wysokosc klatki: 69
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 62
+	Wysokosc klatki: 69
+
+Klatka : 25
+Offset : 445356
+Wysokosc klatki: 68
+Szerokosc klatki: 66
+Alokacja surface...
+	Szerokosc klatki: 66
+	Wysokosc klatki: 68
+ok!
+	Szerokosc klatki: 66
+	Wysokosc klatki: 68
+
+Kopiowanie na surface...
+	Szerokosc klatki: 66
+	Wysokosc klatki: 68
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 66
+	Wysokosc klatki: 68
+
+Klatka : 26
+Offset : 463316
+Wysokosc klatki: 67
+Szerokosc klatki: 73
+Alokacja surface...
+	Szerokosc klatki: 73
+	Wysokosc klatki: 67
+ok!
+	Szerokosc klatki: 73
+	Wysokosc klatki: 67
+
+Kopiowanie na surface...
+	Szerokosc klatki: 73
+	Wysokosc klatki: 67
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 73
+	Wysokosc klatki: 67
+
+Klatka : 27
+Offset : 482888
+Wysokosc klatki: 66
+Szerokosc klatki: 81
+Alokacja surface...
+	Szerokosc klatki: 81
+	Wysokosc klatki: 66
+ok!
+	Szerokosc klatki: 81
+	Wysokosc klatki: 66
+
+Kopiowanie na surface...
+	Szerokosc klatki: 81
+	Wysokosc klatki: 66
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 81
+	Wysokosc klatki: 66
+
+Klatka : 28
+Offset : 504280
+Wysokosc klatki: 66
+Szerokosc klatki: 79
+Alokacja surface...
+	Szerokosc klatki: 79
+	Wysokosc klatki: 66
+ok!
+	Szerokosc klatki: 79
+	Wysokosc klatki: 66
+
+Kopiowanie na surface...
+	Szerokosc klatki: 79
+	Wysokosc klatki: 66
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 79
+	Wysokosc klatki: 66
+
+Klatka : 29
+Offset : 525144
+Wysokosc klatki: 69
+Szerokosc klatki: 78
+Alokacja surface...
+	Szerokosc klatki: 78
+	Wysokosc klatki: 69
+ok!
+	Szerokosc klatki: 78
+	Wysokosc klatki: 69
+
+Kopiowanie na surface...
+	Szerokosc klatki: 78
+	Wysokosc klatki: 69
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 78
+	Wysokosc klatki: 69
+
+Klatka : 30
+Offset : 546680
+Wysokosc klatki: 72
+Szerokosc klatki: 72
+Alokacja surface...
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+ok!
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+
+Kopiowanie na surface...
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+
+Klatka : 31
+Offset : 567424
+Wysokosc klatki: 73
+Szerokosc klatki: 65
+Alokacja surface...
+	Szerokosc klatki: 65
+	Wysokosc klatki: 73
+ok!
+	Szerokosc klatki: 65
+	Wysokosc klatki: 73
+
+Kopiowanie na surface...
+	Szerokosc klatki: 65
+	Wysokosc klatki: 73
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 65
+	Wysokosc klatki: 73
+
+Klatka : 32
+Offset : 586412
+Wysokosc klatki: 75
+Szerokosc klatki: 57
+Alokacja surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+ok!
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Kopiowanie na surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Klatka : 33
+Offset : 603520
+Wysokosc klatki: 75
+Szerokosc klatki: 57
+Alokacja surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+ok!
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Kopiowanie na surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Klatka : 34
+Offset : 620628
+Wysokosc klatki: 75
+Szerokosc klatki: 57
+Alokacja surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+ok!
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Kopiowanie na surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Klatka : 35
+Offset : 637736
+Wysokosc klatki: 75
+Szerokosc klatki: 57
+Alokacja surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+ok!
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Kopiowanie na surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Klatka : 36
+Offset : 654844
+Wysokosc klatki: 75
+Szerokosc klatki: 57
+Alokacja surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+ok!
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Kopiowanie na surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Klatka : 37
+Offset : 671952
+Wysokosc klatki: 68
+Szerokosc klatki: 78
+Alokacja surface...
+	Szerokosc klatki: 78
+	Wysokosc klatki: 68
+ok!
+	Szerokosc klatki: 78
+	Wysokosc klatki: 68
+
+Kopiowanie na surface...
+	Szerokosc klatki: 78
+	Wysokosc klatki: 68
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 78
+	Wysokosc klatki: 68
+
+Klatka : 38
+Offset : 693176
+Wysokosc klatki: 70
+Szerokosc klatki: 72
+Alokacja surface...
+	Szerokosc klatki: 72
+	Wysokosc klatki: 70
+ok!
+	Szerokosc klatki: 72
+	Wysokosc klatki: 70
+
+Kopiowanie na surface...
+	Szerokosc klatki: 72
+	Wysokosc klatki: 70
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 72
+	Wysokosc klatki: 70
+
+Klatka : 39
+Offset : 713344
+Wysokosc klatki: 72
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 72
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 72
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 72
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 72
+
+Klatka : 40
+Offset : 731496
+Wysokosc klatki: 73
+Szerokosc klatki: 59
+Alokacja surface...
+	Szerokosc klatki: 59
+	Wysokosc klatki: 73
+ok!
+	Szerokosc klatki: 59
+	Wysokosc klatki: 73
+
+Kopiowanie na surface...
+	Szerokosc klatki: 59
+	Wysokosc klatki: 73
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 59
+	Wysokosc klatki: 73
+
+Klatka : 41
+Offset : 748732
+Wysokosc klatki: 72
+Szerokosc klatki: 63
+Alokacja surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 72
+ok!
+	Szerokosc klatki: 63
+	Wysokosc klatki: 72
+
+Kopiowanie na surface...
+	Szerokosc klatki: 63
+	Wysokosc klatki: 72
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 63
+	Wysokosc klatki: 72
+
+Klatka : 42
+Offset : 766884
+Wysokosc klatki: 71
+Szerokosc klatki: 69
+Alokacja surface...
+	Szerokosc klatki: 69
+	Wysokosc klatki: 71
+ok!
+	Szerokosc klatki: 69
+	Wysokosc klatki: 71
+
+Kopiowanie na surface...
+	Szerokosc klatki: 69
+	Wysokosc klatki: 71
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 69
+	Wysokosc klatki: 71
+
+Klatka : 43
+Offset : 786488
+Wysokosc klatki: 72
+Szerokosc klatki: 72
+Alokacja surface...
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+ok!
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+
+Kopiowanie na surface...
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+
+Klatka : 44
+Offset : 807232
+Wysokosc klatki: 66
+Szerokosc klatki: 79
+Alokacja surface...
+	Szerokosc klatki: 79
+	Wysokosc klatki: 66
+ok!
+	Szerokosc klatki: 79
+	Wysokosc klatki: 66
+
+Kopiowanie na surface...
+	Szerokosc klatki: 79
+	Wysokosc klatki: 66
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 79
+	Wysokosc klatki: 66
+
+Klatka : 45
+Offset : 828096
+Wysokosc klatki: 69
+Szerokosc klatki: 78
+Alokacja surface...
+	Szerokosc klatki: 78
+	Wysokosc klatki: 69
+ok!
+	Szerokosc klatki: 78
+	Wysokosc klatki: 69
+
+Kopiowanie na surface...
+	Szerokosc klatki: 78
+	Wysokosc klatki: 69
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 78
+	Wysokosc klatki: 69
+
+Klatka : 46
+Offset : 849632
+Wysokosc klatki: 72
+Szerokosc klatki: 72
+Alokacja surface...
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+ok!
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+
+Kopiowanie na surface...
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 72
+	Wysokosc klatki: 72
+
+Klatka : 47
+Offset : 870376
+Wysokosc klatki: 73
+Szerokosc klatki: 65
+Alokacja surface...
+	Szerokosc klatki: 65
+	Wysokosc klatki: 73
+ok!
+	Szerokosc klatki: 65
+	Wysokosc klatki: 73
+
+Kopiowanie na surface...
+	Szerokosc klatki: 65
+	Wysokosc klatki: 73
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 65
+	Wysokosc klatki: 73
+
+Klatka : 48
+Offset : 889364
+Wysokosc klatki: 75
+Szerokosc klatki: 57
+Alokacja surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+ok!
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Kopiowanie na surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Klatka : 49
+Offset : 906472
+Wysokosc klatki: 75
+Szerokosc klatki: 57
+Alokacja surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+ok!
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Kopiowanie na surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Klatka : 50
+Offset : 923580
+Wysokosc klatki: 75
+Szerokosc klatki: 57
+Alokacja surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+ok!
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Kopiowanie na surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Klatka : 51
+Offset : 940688
+Wysokosc klatki: 75
+Szerokosc klatki: 57
+Alokacja surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+ok!
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Kopiowanie na surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Klatka : 52
+Offset : 957796
+Wysokosc klatki: 75
+Szerokosc klatki: 57
+Alokacja surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+ok!
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Kopiowanie na surface...
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 57
+	Wysokosc klatki: 75
+
+Klatka : 53
+Offset : 974904
+Wysokosc klatki: 41
+Szerokosc klatki: 41
+Alokacja surface...
+	Szerokosc klatki: 41
+	Wysokosc klatki: 41
+ok!
+	Szerokosc klatki: 41
+	Wysokosc klatki: 41
+
+Kopiowanie na surface...
+	Szerokosc klatki: 41
+	Wysokosc klatki: 41
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 41
+	Wysokosc klatki: 41
+
+Klatka : 54
+Offset : 981636
+Wysokosc klatki: 37
+Szerokosc klatki: 41
+Alokacja surface...
+	Szerokosc klatki: 41
+	Wysokosc klatki: 37
+ok!
+	Szerokosc klatki: 41
+	Wysokosc klatki: 37
+
+Kopiowanie na surface...
+	Szerokosc klatki: 41
+	Wysokosc klatki: 37
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 41
+	Wysokosc klatki: 37
+
+Klatka : 55
+Offset : 987712
+Wysokosc klatki: 33
+Szerokosc klatki: 47
+Alokacja surface...
+	Szerokosc klatki: 47
+	Wysokosc klatki: 33
+ok!
+	Szerokosc klatki: 47
+	Wysokosc klatki: 33
+
+Kopiowanie na surface...
+	Szerokosc klatki: 47
+	Wysokosc klatki: 33
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 47
+	Wysokosc klatki: 33
+
+Klatka : 56
+Offset : 993924
+Wysokosc klatki: 31
+Szerokosc klatki: 55
+Alokacja surface...
+	Szerokosc klatki: 55
+	Wysokosc klatki: 31
+ok!
+	Szerokosc klatki: 55
+	Wysokosc klatki: 31
+
+Kopiowanie na surface...
+	Szerokosc klatki: 55
+	Wysokosc klatki: 31
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 55
+	Wysokosc klatki: 31
+
+Klatka : 57
+Offset : 1000752
+Wysokosc klatki: 31
+Szerokosc klatki: 59
+Alokacja surface...
+	Szerokosc klatki: 59
+	Wysokosc klatki: 31
+ok!
+	Szerokosc klatki: 59
+	Wysokosc klatki: 31
+
+Kopiowanie na surface...
+	Szerokosc klatki: 59
+	Wysokosc klatki: 31
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 59
+	Wysokosc klatki: 31
+
+Klatka : 58
+Offset : 1008076
+Wysokosc klatki: 29
+Szerokosc klatki: 61
+Alokacja surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 29
+ok!
+	Szerokosc klatki: 61
+	Wysokosc klatki: 29
+
+Kopiowanie na surface...
+	Szerokosc klatki: 61
+	Wysokosc klatki: 29
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 61
+	Wysokosc klatki: 29
+
+Klatka : 59
+Offset : 1015160
+Wysokosc klatki: 32
+Szerokosc klatki: 54
+Alokacja surface...
+	Szerokosc klatki: 54
+	Wysokosc klatki: 32
+ok!
+	Szerokosc klatki: 54
+	Wysokosc klatki: 32
+
+Kopiowanie na surface...
+	Szerokosc klatki: 54
+	Wysokosc klatki: 32
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 54
+	Wysokosc klatki: 32
+
+Klatka : 60
+Offset : 1022080
+Wysokosc klatki: 33
+Szerokosc klatki: 47
+Alokacja surface...
+	Szerokosc klatki: 47
+	Wysokosc klatki: 33
+ok!
+	Szerokosc klatki: 47
+	Wysokosc klatki: 33
+
+Kopiowanie na surface...
+	Szerokosc klatki: 47
+	Wysokosc klatki: 33
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 47
+	Wysokosc klatki: 33
+
+Klatka : 61
+Offset : 1028292
+Wysokosc klatki: 43
+Szerokosc klatki: 49
+Alokacja surface...
+	Szerokosc klatki: 49
+	Wysokosc klatki: 43
+ok!
+	Szerokosc klatki: 49
+	Wysokosc klatki: 43
+
+Kopiowanie na surface...
+	Szerokosc klatki: 49
+	Wysokosc klatki: 43
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 49
+	Wysokosc klatki: 43
+
+Klatka : 62
+Offset : 1036728
+Wysokosc klatki: 43
+Szerokosc klatki: 43
+Alokacja surface...
+	Szerokosc klatki: 43
+	Wysokosc klatki: 43
+ok!
+	Szerokosc klatki: 43
+	Wysokosc klatki: 43
+
+Kopiowanie na surface...
+	Szerokosc klatki: 43
+	Wysokosc klatki: 43
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 43
+	Wysokosc klatki: 43
+
+Klatka : 63
+Offset : 1044132
+Wysokosc klatki: 43
+Szerokosc klatki: 44
+Alokacja surface...
+	Szerokosc klatki: 44
+	Wysokosc klatki: 43
+ok!
+	Szerokosc klatki: 44
+	Wysokosc klatki: 43
+
+Kopiowanie na surface...
+	Szerokosc klatki: 44
+	Wysokosc klatki: 43
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 44
+	Wysokosc klatki: 43
+
+Klatka : 64
+Offset : 1051708
+Wysokosc klatki: 82
+Szerokosc klatki: 90
+Alokacja surface...
+	Szerokosc klatki: 90
+	Wysokosc klatki: 82
+ok!
+	Szerokosc klatki: 90
+	Wysokosc klatki: 82
+
+Kopiowanie na surface...
+	Szerokosc klatki: 90
+	Wysokosc klatki: 82
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 90
+	Wysokosc klatki: 82
+
+Klatka : 65
+Offset : 1081236
+Wysokosc klatki: 52
+Szerokosc klatki: 48
+Alokacja surface...
+	Szerokosc klatki: 48
+	Wysokosc klatki: 52
+ok!
+	Szerokosc klatki: 48
+	Wysokosc klatki: 52
+
+Kopiowanie na surface...
+	Szerokosc klatki: 48
+	Wysokosc klatki: 52
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 48
+	Wysokosc klatki: 52
+
+Klatka : 66
+Offset : 1091228
+Wysokosc klatki: 72
+Szerokosc klatki: 85
+Alokacja surface...
+	Szerokosc klatki: 85
+	Wysokosc klatki: 72
+ok!
+	Szerokosc klatki: 85
+	Wysokosc klatki: 72
+
+Kopiowanie na surface...
+	Szerokosc klatki: 85
+	Wysokosc klatki: 72
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 85
+	Wysokosc klatki: 72
+
+Klatka : 67
+Offset : 1115716
+Wysokosc klatki: 84
+Szerokosc klatki: 112
+Alokacja surface...
+	Szerokosc klatki: 112
+	Wysokosc klatki: 84
+ok!
+	Szerokosc klatki: 112
+	Wysokosc klatki: 84
+
+Kopiowanie na surface...
+	Szerokosc klatki: 112
+	Wysokosc klatki: 84
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 112
+	Wysokosc klatki: 84
+
+Klatka : 68
+Offset : 1153356
+Wysokosc klatki: 57
+Szerokosc klatki: 68
+Alokacja surface...
+	Szerokosc klatki: 68
+	Wysokosc klatki: 57
+ok!
+	Szerokosc klatki: 68
+	Wysokosc klatki: 57
+
+Kopiowanie na surface...
+	Szerokosc klatki: 68
+	Wysokosc klatki: 57
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 68
+	Wysokosc klatki: 57
+
+Klatka : 69
+Offset : 1168868
+Wysokosc klatki: 95
+Szerokosc klatki: 113
+Alokacja surface...
+	Szerokosc klatki: 113
+	Wysokosc klatki: 95
+ok!
+	Szerokosc klatki: 113
+	Wysokosc klatki: 95
+
+Kopiowanie na surface...
+	Szerokosc klatki: 113
+	Wysokosc klatki: 95
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 113
+	Wysokosc klatki: 95
+
+Klatka : 70
+Offset : 1211816
+Wysokosc klatki: 97
+Szerokosc klatki: 108
+Alokacja surface...
+	Szerokosc klatki: 108
+	Wysokosc klatki: 97
+ok!
+	Szerokosc klatki: 108
+	Wysokosc klatki: 97
+
+Kopiowanie na surface...
+	Szerokosc klatki: 108
+	Wysokosc klatki: 97
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 108
+	Wysokosc klatki: 97
+
+Klatka : 71
+Offset : 1253728
+Wysokosc klatki: 138
+Szerokosc klatki: 140
+Alokacja surface...
+	Szerokosc klatki: 140
+	Wysokosc klatki: 138
+ok!
+	Szerokosc klatki: 140
+	Wysokosc klatki: 138
+
+Kopiowanie na surface...
+	Szerokosc klatki: 140
+	Wysokosc klatki: 138
+
+ok!
+
+[FOX]: ulOffset ADD
+	Szerokosc klatki: 140
+	Wysokosc klatki: 138
+
+Klatka : 0
+Szerokosc klatki: 61
+Wysokosc klatki: 70
+Klatka : 1
+Szerokosc klatki: 61
+Wysokosc klatki: 70
+Klatka : 2
+Szerokosc klatki: 61
+Wysokosc klatki: 70
+Klatka : 3
+Szerokosc klatki: 61
+Wysokosc klatki: 70
+Klatka : 4
+Szerokosc klatki: 61
+Wysokosc klatki: 70
+Klatka : 5
+Szerokosc klatki: 61
+Wysokosc klatki: 71
+Klatka : 6
+Szerokosc klatki: 61
+Wysokosc klatki: 72
+Klatka : 7
+Szerokosc klatki: 61
+Wysokosc klatki: 72
+Klatka : 8
+Szerokosc klatki: 63
+Wysokosc klatki: 74
+Klatka : 9
+Szerokosc klatki: 63
+Wysokosc klatki: 74
+Klatka : 10
+Szerokosc klatki: 63
+Wysokosc klatki: 74
+Klatka : 11
+Szerokosc klatki: 63
+Wysokosc klatki: 74
+Klatka : 12
+Szerokosc klatki: 63
+Wysokosc klatki: 74
+Klatka : 13
+Szerokosc klatki: 61
+Wysokosc klatki: 71
+Klatka : 14
+Szerokosc klatki: 61
+Wysokosc klatki: 72
+Klatka : 15
+Szerokosc klatki: 61
+Wysokosc klatki: 72
+Klatka : 16
+Szerokosc klatki: 63
+Wysokosc klatki: 74
+Klatka : 17
+Szerokosc klatki: 63
+Wysokosc klatki: 74
+Klatka : 18
+Szerokosc klatki: 63
+Wysokosc klatki: 74
+Klatka : 19
+Szerokosc klatki: 63
+Wysokosc klatki: 74
+Klatka : 20
+Szerokosc klatki: 63
+Wysokosc klatki: 74
+Klatka : 21
+Szerokosc klatki: 61
+Wysokosc klatki: 70
+Klatka : 22
+Szerokosc klatki: 61
+Wysokosc klatki: 70
+Klatka : 23
+Szerokosc klatki: 61
+Wysokosc klatki: 70
+Klatka : 24
+Szerokosc klatki: 62
+Wysokosc klatki: 69
+Klatka : 25
+Szerokosc klatki: 66
+Wysokosc klatki: 68
+Klatka : 26
+Szerokosc klatki: 73
+Wysokosc klatki: 67
+Klatka : 27
+Szerokosc klatki: 81
+Wysokosc klatki: 66
+Klatka : 28
+Szerokosc klatki: 79
+Wysokosc klatki: 66
+Klatka : 29
+Szerokosc klatki: 78
+Wysokosc klatki: 69
+Klatka : 30
+Szerokosc klatki: 72
+Wysokosc klatki: 72
+Klatka : 31
+Szerokosc klatki: 65
+Wysokosc klatki: 73
+Klatka : 32
+Szerokosc klatki: 57
+Wysokosc klatki: 75
+Klatka : 33
+Szerokosc klatki: 57
+Wysokosc klatki: 75
+Klatka : 34
+Szerokosc klatki: 57
+Wysokosc klatki: 75
+Klatka : 35
+Szerokosc klatki: 57
+Wysokosc klatki: 75
+Klatka : 36
+Szerokosc klatki: 57
+Wysokosc klatki: 75
+Klatka : 37
+Szerokosc klatki: 78
+Wysokosc klatki: 68
+Klatka : 38
+Szerokosc klatki: 72
+Wysokosc klatki: 70
+Klatka : 39
+Szerokosc klatki: 63
+Wysokosc klatki: 72
+Klatka : 40
+Szerokosc klatki: 59
+Wysokosc klatki: 73
+Klatka : 41
+Szerokosc klatki: 63
+Wysokosc klatki: 72
+Klatka : 42
+Szerokosc klatki: 69
+Wysokosc klatki: 71
+Klatka : 43
+Szerokosc klatki: 72
+Wysokosc klatki: 72
+Klatka : 44
+Szerokosc klatki: 79
+Wysokosc klatki: 66
+Klatka : 45
+Szerokosc klatki: 78
+Wysokosc klatki: 69
+Klatka : 46
+Szerokosc klatki: 72
+Wysokosc klatki: 72
+Klatka : 47
+Szerokosc klatki: 65
+Wysokosc klatki: 73
+Klatka : 48
+Szerokosc klatki: 57
+Wysokosc klatki: 75
+Klatka : 49
+Szerokosc klatki: 57
+Wysokosc klatki: 75
+Klatka : 50
+Szerokosc klatki: 57
+Wysokosc klatki: 75
+Klatka : 51
+Szerokosc klatki: 57
+Wysokosc klatki: 75
+Klatka : 52
+Szerokosc klatki: 57
+Wysokosc klatki: 75
+Klatka : 53
+Szerokosc klatki: 41
+Wysokosc klatki: 41
+Klatka : 54
+Szerokosc klatki: 41
+Wysokosc klatki: 37
+Klatka : 55
+Szerokosc klatki: 47
+Wysokosc klatki: 33
+Klatka : 56
+Szerokosc klatki: 55
+Wysokosc klatki: 31
+Klatka : 57
+Szerokosc klatki: 59
+Wysokosc klatki: 31
+Klatka : 58
+Szerokosc klatki: 61
+Wysokosc klatki: 29
+Klatka : 59
+Szerokosc klatki: 54
+Wysokosc klatki: 32
+Klatka : 60
+Szerokosc klatki: 47
+Wysokosc klatki: 33
+Klatka : 61
+Szerokosc klatki: 49
+Wysokosc klatki: 43
+Klatka : 62
+Szerokosc klatki: 43
+Wysokosc klatki: 43
+Klatka : 63
+Szerokosc klatki: 44
+Wysokosc klatki: 43
+Klatka : 64
+Szerokosc klatki: 90
+Wysokosc klatki: 82
+Klatka : 65
+Szerokosc klatki: 48
+Wysokosc klatki: 52
+Klatka : 66
+Szerokosc klatki: 85
+Wysokosc klatki: 72
+Klatka : 67
+Szerokosc klatki: 112
+Wysokosc klatki: 84
+Klatka : 68
+Szerokosc klatki: 68
+Wysokosc klatki: 57
+Klatka : 69
+Szerokosc klatki: 113
+Wysokosc klatki: 95
+Klatka : 70
+Szerokosc klatki: 108
+Wysokosc klatki: 97
+Klatka : 71
+Szerokosc klatki: 140
+Wysokosc klatki: 138
+[FOX]: ilosc zdarzen: 2
+[FOX]: alokacja pamieci na zdarzenia...ok!
+Offset : 1331020
+[FOX]: Nazwa zdarzenia #0:	1
+[FOX]: Offset : 1331276
+[FOX]: ilosc klatek : 101
+[FOX]: alokacja pamieci na wspolrzedne...ok!
+[FOX]: alokacja pamieci na liste klatek...ok!
+[FOX]: Offset : 1331280
+[FOX]: Klatka 0 X:0 Y:230 Nr:0
+[FOX]: Offset : 1331293
+[FOX]: Klatka 1 X:14 Y:225 Nr:1
+[FOX]: Offset : 1331306
+[FOX]: Klatka 2 X:26 Y:220 Nr:2
+[FOX]: Offset : 1331319
+[FOX]: Klatka 3 X:40 Y:215 Nr:3
+[FOX]: Offset : 1331332
+[FOX]: Klatka 4 X:52 Y:210 Nr:4
+[FOX]: Offset : 1331345
+[FOX]: Klatka 5 X:65 Y:205 Nr:5
+[FOX]: Offset : 1331358
+[FOX]: Klatka 6 X:78 Y:199 Nr:6
+[FOX]: Offset : 1331371
+[FOX]: Klatka 7 X:90 Y:194 Nr:7
+[FOX]: Offset : 1331384
+[FOX]: Klatka 8 X:101 Y:189 Nr:8
+[FOX]: Offset : 1331397
+[FOX]: Klatka 9 X:113 Y:185 Nr:9
+[FOX]: Offset : 1331410
+[FOX]: Klatka 10 X:125 Y:181 Nr:10
+[FOX]: Offset : 1331423
+[FOX]: Klatka 11 X:136 Y:177 Nr:11
+[FOX]: Offset : 1331436
+[FOX]: Klatka 12 X:147 Y:173 Nr:12
+[FOX]: Offset : 1331449
+[FOX]: Klatka 13 X:159 Y:172 Nr:13
+[FOX]: Offset : 1331462
+[FOX]: Klatka 14 X:170 Y:167 Nr:14
+[FOX]: Offset : 1331475
+[FOX]: Klatka 15 X:181 Y:163 Nr:15
+[FOX]: Offset : 1331488
+[FOX]: Klatka 16 X:191 Y:158 Nr:16
+[FOX]: Offset : 1331501
+[FOX]: Klatka 17 X:201 Y:155 Nr:17
+[FOX]: Offset : 1331514
+[FOX]: Klatka 18 X:211 Y:151 Nr:18
+[FOX]: Offset : 1331527
+[FOX]: Klatka 19 X:221 Y:148 Nr:19
+[FOX]: Offset : 1331540
+[FOX]: Klatka 20 X:231 Y:145 Nr:20
+[FOX]: Offset : 1331553
+[FOX]: Klatka 21 X:242 Y:146 Nr:21
+[FOX]: Offset : 1331566
+[FOX]: Klatka 22 X:251 Y:143 Nr:22
+[FOX]: Offset : 1331579
+[FOX]: Klatka 23 X:261 Y:140 Nr:23
+[FOX]: Offset : 1331592
+[FOX]: Klatka 24 X:271 Y:138 Nr:24
+[FOX]: Offset : 1331605
+[FOX]: Klatka 25 X:279 Y:138 Nr:25
+[FOX]: Offset : 1331618
+[FOX]: Klatka 26 X:288 Y:136 Nr:26
+[FOX]: Offset : 1331631
+[FOX]: Klatka 27 X:295 Y:135 Nr:27
+[FOX]: Offset : 1331644
+[FOX]: Klatka 28 X:302 Y:132 Nr:28
+[FOX]: Offset : 1331657
+[FOX]: Klatka 29 X:311 Y:127 Nr:29
+[FOX]: Offset : 1331670
+[FOX]: Klatka 30 X:320 Y:122 Nr:30
+[FOX]: Offset : 1331683
+[FOX]: Klatka 31 X:331 Y:119 Nr:31
+[FOX]: Offset : 1331696
+[FOX]: Klatka 32 X:342 Y:116 Nr:32
+[FOX]: Offset : 1331709
+[FOX]: Klatka 33 X:350 Y:114 Nr:33
+[FOX]: Offset : 1331722
+[FOX]: Klatka 34 X:358 Y:112 Nr:34
+[FOX]: Offset : 1331735
+[FOX]: Klatka 35 X:366 Y:110 Nr:35
+[FOX]: Offset : 1331748
+[FOX]: Klatka 36 X:373 Y:109 Nr:36
+[FOX]: Offset : 1331761
+[FOX]: Klatka 37 X:377 Y:113 Nr:37
+[FOX]: Offset : 1331774
+[FOX]: Klatka 38 X:386 Y:110 Nr:38
+[FOX]: Offset : 1331787
+[FOX]: Klatka 39 X:398 Y:106 Nr:39
+[FOX]: Offset : 1331800
+[FOX]: Klatka 40 X:405 Y:104 Nr:40
+[FOX]: Offset : 1331813
+[FOX]: Klatka 41 X:408 Y:104 Nr:41
+[FOX]: Offset : 1331826
+[FOX]: Klatka 42 X:409 Y:103 Nr:42
+[FOX]: Offset : 1331839
+[FOX]: Klatka 43 X:413 Y:101 Nr:43
+[FOX]: Offset : 1331852
+[FOX]: Klatka 44 X:423 Y:108 Nr:44
+[FOX]: Offset : 1331865
+[FOX]: Klatka 45 X:429 Y:104 Nr:45
+[FOX]: Offset : 1331878
+[FOX]: Klatka 46 X:437 Y:100 Nr:46
+[FOX]: Offset : 1331891
+[FOX]: Klatka 47 X:446 Y:99 Nr:47
+[FOX]: Offset : 1331904
+[FOX]: Klatka 48 X:456 Y:97 Nr:48
+[FOX]: Offset : 1331917
+[FOX]: Klatka 49 X:462 Y:97 Nr:49
+[FOX]: Offset : 1331930
+[FOX]: Klatka 50 X:468 Y:97 Nr:50
+[FOX]: Offset : 1331943
+[FOX]: Klatka 51 X:474 Y:97 Nr:51
+[FOX]: Offset : 1331956
+[FOX]: Klatka 52 X:480 Y:97 Nr:52
+[FOX]: Offset : 1331969
+[FOX]: Klatka 53 X:489 Y:130 Nr:53
+[FOX]: Offset : 1331982
+[FOX]: Klatka 54 X:495 Y:134 Nr:54
+[FOX]: Offset : 1331995
+[FOX]: Klatka 55 X:497 Y:139 Nr:55
+[FOX]: Offset : 1332008
+[FOX]: Klatka 56 X:499 Y:141 Nr:56
+[FOX]: Offset : 1332021
+[FOX]: Klatka 57 X:502 Y:143 Nr:57
+[FOX]: Offset : 1332034
+[FOX]: Klatka 58 X:507 Y:145 Nr:58
+[FOX]: Offset : 1332047
+[FOX]: Klatka 59 X:520 Y:144 Nr:59
+[FOX]: Offset : 1332060
+[FOX]: Klatka 60 X:533 Y:140 Nr:60
+[FOX]: Offset : 1332073
+[FOX]: Klatka 61 X:538 Y:126 Nr:61
+[FOX]: Offset : 1332086
+[FOX]: Klatka 62 X:549 Y:116 Nr:62
+[FOX]: Offset : 1332099
+[FOX]: Klatka 63 X:553 Y:120 Nr:63
+[FOX]: Offset : 1332112
+[FOX]: Klatka 64 X:536 Y:102 Nr:64
+[FOX]: Offset : 1332125
+[FOX]: Klatka 65 X:563 Y:125 Nr:65
+[FOX]: Offset : 1332138
+[FOX]: Klatka 66 X:545 Y:111 Nr:66
+[FOX]: Offset : 1332151
+[FOX]: Klatka 67 X:535 Y:107 Nr:67
+[FOX]: Offset : 1332164
+[FOX]: Klatka 68 X:568 Y:121 Nr:68
+[FOX]: Offset : 1332177
+[FOX]: Klatka 69 X:551 Y:104 Nr:69
+[FOX]: Offset : 1332190
+[FOX]: Klatka 70 X:560 Y:101 Nr:70
+[FOX]: Offset : 1332203
+[FOX]: Klatka 71 X:554 Y:75 Nr:71
+[FOX]: Offset : 1332216
+[FOX]: Klatka 72 X:586 Y:123 Nr:0
+[FOX]: Offset : 1332229
+[FOX]: Klatka 73 X:591 Y:125 Nr:1
+[FOX]: Offset : 1332242
+[FOX]: Klatka 74 X:596 Y:127 Nr:2
+[FOX]: Offset : 1332255
+[FOX]: Klatka 75 X:601 Y:130 Nr:3
+[FOX]: Offset : 1332268
+[FOX]: Klatka 76 X:606 Y:133 Nr:4
+[FOX]: Offset : 1332281
+[FOX]: Klatka 77 X:611 Y:134 Nr:5
+[FOX]: Offset : 1332294
+[FOX]: Klatka 78 X:617 Y:136 Nr:6
+[FOX]: Offset : 1332307
+[FOX]: Klatka 79 X:622 Y:138 Nr:7
+[FOX]: Offset : 1332320
+[FOX]: Klatka 80 X:626 Y:140 Nr:8
+[FOX]: Offset : 1332333
+[FOX]: Klatka 81 X:631 Y:143 Nr:9
+[FOX]: Offset : 1332346
+[FOX]: Klatka 82 X:636 Y:146 Nr:10
+[FOX]: Offset : 1332359
+[FOX]: Klatka 83 X:641 Y:150 Nr:11
+[FOX]: Offset : 1332372
+[FOX]: Klatka 84 X:647 Y:153 Nr:12
+[FOX]: Offset : 1332385
+[FOX]: Klatka 85 X:653 Y:160 Nr:13
+[FOX]: Offset : 1332398
+[FOX]: Klatka 86 X:658 Y:163 Nr:14
+[FOX]: Offset : 1332411
+[FOX]: Klatka 87 X:663 Y:165 Nr:15
+[FOX]: Offset : 1332424
+[FOX]: Klatka 88 X:668 Y:168 Nr:16
+[FOX]: Offset : 1332437
+[FOX]: Klatka 89 X:673 Y:172 Nr:17
+[FOX]: Offset : 1332450
+[FOX]: Klatka 90 X:679 Y:177 Nr:18
+[FOX]: Offset : 1332463
+[FOX]: Klatka 91 X:684 Y:181 Nr:19
+[FOX]: Offset : 1332476
+[FOX]: Klatka 92 X:690 Y:185 Nr:20
+[FOX]: Offset : 1332489
+[FOX]: Klatka 93 X:696 Y:194 Nr:21
+[FOX]: Offset : 1332502
+[FOX]: Klatka 94 X:702 Y:198 Nr:22
+[FOX]: Offset : 1332515
+[FOX]: Klatka 95 X:707 Y:203 Nr:23
+[FOX]: Offset : 1332528
+[FOX]: Klatka 96 X:714 Y:209 Nr:24
+[FOX]: Offset : 1332541
+[FOX]: Klatka 97 X:719 Y:216 Nr:25
+[FOX]: Offset : 1332554
+[FOX]: Klatka 98 X:725 Y:222 Nr:26
+[FOX]: Offset : 1332567
+[FOX]: Klatka 99 X:729 Y:228 Nr:27
+[FOX]: Offset : 1332580
+[FOX]: Klatka 100 X:737 Y:229 Nr:0
+Offset : 1332593
+[FOX]: Nazwa zdarzenia #1:	1
+[FOX]: Offset : 1332849
+[FOX]: ilosc klatek : 101
+[FOX]: alokacja pamieci na wspolrzedne...ok!
+[FOX]: alokacja pamieci na liste klatek...ok!
+[FOX]: Offset : 1332853
+[FOX]: Klatka 0 X:26 Y:69 Nr:0
+[FOX]: Offset : 1332866
+[FOX]: Klatka 1 X:26 Y:69 Nr:1
+[FOX]: Offset : 1332879
+[FOX]: Klatka 2 X:26 Y:69 Nr:2
+[FOX]: Offset : 1332892
+[FOX]: Klatka 3 X:26 Y:69 Nr:3
+[FOX]: Offset : 1332905
+[FOX]: Klatka 4 X:26 Y:69 Nr:4
+[FOX]: Offset : 1332918
+[FOX]: Klatka 5 X:26 Y:68 Nr:5
+[FOX]: Offset : 1332931
+[FOX]: Klatka 6 X:26 Y:67 Nr:6
+[FOX]: Offset : 1332944
+[FOX]: Klatka 7 X:26 Y:66 Nr:7
+[FOX]: Offset : 1332957
+[FOX]: Klatka 8 X:25 Y:65 Nr:8
+[FOX]: Offset : 1332970
+[FOX]: Klatka 9 X:25 Y:65 Nr:9
+[FOX]: Offset : 1332983
+[FOX]: Klatka 10 X:25 Y:65 Nr:10
+[FOX]: Offset : 1332996
+[FOX]: Klatka 11 X:25 Y:65 Nr:11
+[FOX]: Offset : 1333009
+[FOX]: Klatka 12 X:25 Y:65 Nr:12
+[FOX]: Offset : 1333022
+[FOX]: Klatka 13 X:26 Y:68 Nr:13
+[FOX]: Offset : 1333035
+[FOX]: Klatka 14 X:26 Y:67 Nr:14
+[FOX]: Offset : 1333048
+[FOX]: Klatka 15 X:26 Y:66 Nr:15
+[FOX]: Offset : 1333061
+[FOX]: Klatka 16 X:25 Y:65 Nr:16
+[FOX]: Offset : 1333074
+[FOX]: Klatka 17 X:25 Y:65 Nr:17
+[FOX]: Offset : 1333087
+[FOX]: Klatka 18 X:25 Y:65 Nr:18
+[FOX]: Offset : 1333100
+[FOX]: Klatka 19 X:25 Y:65 Nr:19
+[FOX]: Offset : 1333113
+[FOX]: Klatka 20 X:25 Y:65 Nr:20
+[FOX]: Offset : 1333126
+[FOX]: Klatka 21 X:26 Y:69 Nr:21
+[FOX]: Offset : 1333139
+[FOX]: Klatka 22 X:26 Y:69 Nr:22
+[FOX]: Offset : 1333152
+[FOX]: Klatka 23 X:26 Y:69 Nr:23
+[FOX]: Offset : 1333165
+[FOX]: Klatka 24 X:27 Y:70 Nr:24
+[FOX]: Offset : 1333178
+[FOX]: Klatka 25 X:26 Y:72 Nr:25
+[FOX]: Offset : 1333191
+[FOX]: Klatka 26 X:26 Y:73 Nr:26
+[FOX]: Offset : 1333204
+[FOX]: Klatka 27 X:24 Y:74 Nr:27
+[FOX]: Offset : 1333217
+[FOX]: Klatka 28 X:23 Y:74 Nr:28
+[FOX]: Offset : 1333230
+[FOX]: Klatka 29 X:23 Y:71 Nr:29
+[FOX]: Offset : 1333243
+[FOX]: Klatka 30 X:24 Y:68 Nr:30
+[FOX]: Offset : 1333256
+[FOX]: Klatka 31 X:27 Y:67 Nr:31
+[FOX]: Offset : 1333269
+[FOX]: Klatka 32 X:30 Y:66 Nr:32
+[FOX]: Offset : 1333282
+[FOX]: Klatka 33 X:30 Y:66 Nr:33
+[FOX]: Offset : 1333295
+[FOX]: Klatka 34 X:30 Y:66 Nr:34
+[FOX]: Offset : 1333308
+[FOX]: Klatka 35 X:30 Y:66 Nr:35
+[FOX]: Offset : 1333321
+[FOX]: Klatka 36 X:30 Y:66 Nr:36
+[FOX]: Offset : 1333334
+[FOX]: Klatka 37 X:26 Y:72 Nr:37
+[FOX]: Offset : 1333347
+[FOX]: Klatka 38 X:28 Y:70 Nr:38
+[FOX]: Offset : 1333360
+[FOX]: Klatka 39 X:33 Y:67 Nr:39
+[FOX]: Offset : 1333373
+[FOX]: Klatka 40 X:33 Y:67 Nr:40
+[FOX]: Offset : 1333386
+[FOX]: Klatka 41 X:29 Y:68 Nr:41
+[FOX]: Offset : 1333399
+[FOX]: Klatka 42 X:23 Y:68 Nr:42
+[FOX]: Offset : 1333412
+[FOX]: Klatka 43 X:20 Y:67 Nr:43
+[FOX]: Offset : 1333425
+[FOX]: Klatka 44 X:23 Y:74 Nr:44
+[FOX]: Offset : 1333438
+[FOX]: Klatka 45 X:23 Y:71 Nr:45
+[FOX]: Offset : 1333451
+[FOX]: Klatka 46 X:24 Y:68 Nr:46
+[FOX]: Offset : 1333464
+[FOX]: Klatka 47 X:27 Y:67 Nr:47
+[FOX]: Offset : 1333477
+[FOX]: Klatka 48 X:30 Y:66 Nr:48
+[FOX]: Offset : 1333490
+[FOX]: Klatka 49 X:30 Y:66 Nr:49
+[FOX]: Offset : 1333503
+[FOX]: Klatka 50 X:30 Y:66 Nr:50
+[FOX]: Offset : 1333516
+[FOX]: Klatka 51 X:30 Y:66 Nr:51
+[FOX]: Offset : 1333529
+[FOX]: Klatka 52 X:30 Y:66 Nr:52
+[FOX]: Offset : 1333542
+[FOX]: Klatka 53 X:33 Y:99 Nr:53
+[FOX]: Offset : 1333555
+[FOX]: Klatka 54 X:33 Y:103 Nr:54
+[FOX]: Offset : 1333568
+[FOX]: Klatka 55 X:29 Y:107 Nr:55
+[FOX]: Offset : 1333581
+[FOX]: Klatka 56 X:25 Y:109 Nr:56
+[FOX]: Offset : 1333594
+[FOX]: Klatka 57 X:23 Y:110 Nr:57
+[FOX]: Offset : 1333607
+[FOX]: Klatka 58 X:22 Y:112 Nr:58
+[FOX]: Offset : 1333620
+[FOX]: Klatka 59 X:30 Y:110 Nr:59
+[FOX]: Offset : 1333633
+[FOX]: Klatka 60 X:37 Y:105 Nr:60
+[FOX]: Offset : 1333646
+[FOX]: Klatka 61 X:37 Y:90 Nr:61
+[FOX]: Offset : 1333659
+[FOX]: Klatka 62 X:42 Y:79 Nr:62
+[FOX]: Offset : 1333672
+[FOX]: Klatka 63 X:41 Y:82 Nr:63
+[FOX]: Offset : 1333685
+[FOX]: Klatka 64 X:18 Y:62 Nr:64
+[FOX]: Offset : 1333698
+[FOX]: Klatka 65 X:40 Y:84 Nr:65
+[FOX]: Offset : 1333711
+[FOX]: Klatka 66 X:17 Y:69 Nr:66
+[FOX]: Offset : 1333724
+[FOX]: Klatka 67 X:1 Y:63 Nr:67
+[FOX]: Offset : 1333737
+[FOX]: Klatka 68 X:29 Y:75 Nr:68
+[FOX]: Offset : 1333750
+[FOX]: Klatka 69 X:7 Y:56 Nr:69
+[FOX]: Offset : 1333763
+[FOX]: Klatka 70 X:11 Y:51 Nr:70
+[FOX]: Offset : 1333776
+[FOX]: Klatka 71 X:0 Y:23 Nr:71
+[FOX]: Offset : 1333789
+[FOX]: Klatka 72 X:26 Y:69 Nr:0
+[FOX]: Offset : 1333802
+[FOX]: Klatka 73 X:26 Y:69 Nr:1
+[FOX]: Offset : 1333815
+[FOX]: Klatka 74 X:26 Y:69 Nr:2
+[FOX]: Offset : 1333828
+[FOX]: Klatka 75 X:26 Y:69 Nr:3
+[FOX]: Offset : 1333841
+[FOX]: Klatka 76 X:26 Y:69 Nr:4
+[FOX]: Offset : 1333854
+[FOX]: Klatka 77 X:26 Y:68 Nr:5
+[FOX]: Offset : 1333867
+[FOX]: Klatka 78 X:26 Y:67 Nr:6
+[FOX]: Offset : 1333880
+[FOX]: Klatka 79 X:26 Y:66 Nr:7
+[FOX]: Offset : 1333893
+[FOX]: Klatka 80 X:25 Y:65 Nr:8
+[FOX]: Offset : 1333906
+[FOX]: Klatka 81 X:25 Y:65 Nr:9
+[FOX]: Offset : 1333919
+[FOX]: Klatka 82 X:25 Y:65 Nr:10
+[FOX]: Offset : 1333932
+[FOX]: Klatka 83 X:25 Y:65 Nr:11
+[FOX]: Offset : 1333945
+[FOX]: Klatka 84 X:25 Y:65 Nr:12
+[FOX]: Offset : 1333958
+[FOX]: Klatka 85 X:26 Y:68 Nr:13
+[FOX]: Offset : 1333971
+[FOX]: Klatka 86 X:26 Y:67 Nr:14
+[FOX]: Offset : 1333984
+[FOX]: Klatka 87 X:26 Y:66 Nr:15
+[FOX]: Offset : 1333997
+[FOX]: Klatka 88 X:25 Y:65 Nr:16
+[FOX]: Offset : 1334010
+[FOX]: Klatka 89 X:25 Y:65 Nr:17
+[FOX]: Offset : 1334023
+[FOX]: Klatka 90 X:25 Y:65 Nr:18
+[FOX]: Offset : 1334036
+[FOX]: Klatka 91 X:25 Y:65 Nr:19
+[FOX]: Offset : 1334049
+[FOX]: Klatka 92 X:25 Y:65 Nr:20
+[FOX]: Offset : 1334062
+[FOX]: Klatka 93 X:26 Y:69 Nr:21
+[FOX]: Offset : 1334075
+[FOX]: Klatka 94 X:26 Y:69 Nr:22
+[FOX]: Offset : 1334088
+[FOX]: Klatka 95 X:26 Y:69 Nr:23
+[FOX]: Offset : 1334101
+[FOX]: Klatka 96 X:27 Y:70 Nr:24
+[FOX]: Offset : 1334114
+[FOX]: Klatka 97 X:26 Y:72 Nr:25
+[FOX]: Offset : 1334127
+[FOX]: Klatka 98 X:26 Y:73 Nr:26
+[FOX]: Offset : 1334140
+[FOX]: Klatka 99 X:24 Y:74 Nr:27
+[FOX]: Offset : 1334153
+[FOX]: Klatka 100 X:26 Y:69 Nr:0
+ok!
+ulFrame: 61
+frRectangle.x: 538
+frRectangle.y: 126
+frRectangle.h: 43
+frRectangle.w: 49
+ulFrame: 63
+frRectangle.x: 553
+frRectangle.y: 120
+frRectangle.h: 43
+frRectangle.w: 44
+ulFrame: 64
+frRectangle.x: 536
+frRectangle.y: 102
+frRectangle.h: 82
+frRectangle.w: 90
+ulFrame: 66
+frRectangle.x: 545
+frRectangle.y: 111
+frRectangle.h: 72
+frRectangle.w: 85
+ulFrame: 67
+frRectangle.x: 535
+frRectangle.y: 107
+frRectangle.h: 84
+frRectangle.w: 112
+ulFrame: 68
+frRectangle.x: 568
+frRectangle.y: 121
+frRectangle.h: 57
+frRectangle.w: 68
+ulFrame: 70
+frRectangle.x: 560
+frRectangle.y: 101
+frRectangle.h: 97
+frRectangle.w: 108
+ulFrame: 71
+frRectangle.x: 554
+frRectangle.y: 75
+frRectangle.h: 138
+frRectangle.w: 140
+ulFrame: 0
+frRectangle.x: 586
+frRectangle.y: 123
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 2
+frRectangle.x: 596
+frRectangle.y: 127
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 3
+frRectangle.x: 601
+frRectangle.y: 130
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 4
+frRectangle.x: 606
+frRectangle.y: 133
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 6
+frRectangle.x: 617
+frRectangle.y: 136
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 8
+frRectangle.x: 626
+frRectangle.y: 140
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 9
+frRectangle.x: 631
+frRectangle.y: 143
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 10
+frRectangle.x: 636
+frRectangle.y: 146
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 12
+frRectangle.x: 647
+frRectangle.y: 153
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 13
+frRectangle.x: 653
+frRectangle.y: 160
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 14
+frRectangle.x: 658
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 16
+frRectangle.x: 668
+frRectangle.y: 168
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 17
+frRectangle.x: 673
+frRectangle.y: 172
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 18
+frRectangle.x: 679
+frRectangle.y: 177
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 20
+frRectangle.x: 690
+frRectangle.y: 185
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 21
+frRectangle.x: 696
+frRectangle.y: 194
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 22
+frRectangle.x: 702
+frRectangle.y: 198
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 24
+frRectangle.x: 714
+frRectangle.y: 209
+frRectangle.h: 69
+frRectangle.w: 62
+ulFrame: 25
+frRectangle.x: 719
+frRectangle.y: 216
+frRectangle.h: 68
+frRectangle.w: 66
+ulFrame: 0
+frRectangle.x: 737
+frRectangle.y: 229
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 0
+frRectangle.x: 0
+frRectangle.y: 230
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 2
+frRectangle.x: 26
+frRectangle.y: 220
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 3
+frRectangle.x: 40
+frRectangle.y: 215
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 4
+frRectangle.x: 52
+frRectangle.y: 210
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 6
+frRectangle.x: 78
+frRectangle.y: 199
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 7
+frRectangle.x: 90
+frRectangle.y: 194
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 8
+frRectangle.x: 101
+frRectangle.y: 189
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 10
+frRectangle.x: 125
+frRectangle.y: 181
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 11
+frRectangle.x: 136
+frRectangle.y: 177
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 12
+frRectangle.x: 147
+frRectangle.y: 173
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 14
+frRectangle.x: 170
+frRectangle.y: 167
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 15
+frRectangle.x: 181
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 16
+frRectangle.x: 191
+frRectangle.y: 158
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 18
+frRectangle.x: 211
+frRectangle.y: 151
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 19
+frRectangle.x: 221
+frRectangle.y: 148
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 20
+frRectangle.x: 231
+frRectangle.y: 145
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 22
+frRectangle.x: 251
+frRectangle.y: 143
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 23
+frRectangle.x: 261
+frRectangle.y: 140
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 24
+frRectangle.x: 271
+frRectangle.y: 138
+frRectangle.h: 69
+frRectangle.w: 62
+ulFrame: 26
+frRectangle.x: 288
+frRectangle.y: 136
+frRectangle.h: 67
+frRectangle.w: 73
+ulFrame: 27
+frRectangle.x: 295
+frRectangle.y: 135
+frRectangle.h: 66
+frRectangle.w: 81
+ulFrame: 28
+frRectangle.x: 302
+frRectangle.y: 132
+frRectangle.h: 66
+frRectangle.w: 79
+ulFrame: 30
+frRectangle.x: 320
+frRectangle.y: 122
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 31
+frRectangle.x: 331
+frRectangle.y: 119
+frRectangle.h: 73
+frRectangle.w: 65
+ulFrame: 32
+frRectangle.x: 342
+frRectangle.y: 116
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 34
+frRectangle.x: 358
+frRectangle.y: 112
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 35
+frRectangle.x: 366
+frRectangle.y: 110
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 36
+frRectangle.x: 373
+frRectangle.y: 109
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 38
+frRectangle.x: 386
+frRectangle.y: 110
+frRectangle.h: 70
+frRectangle.w: 72
+ulFrame: 39
+frRectangle.x: 398
+frRectangle.y: 106
+frRectangle.h: 72
+frRectangle.w: 63
+ulFrame: 40
+frRectangle.x: 405
+frRectangle.y: 104
+frRectangle.h: 73
+frRectangle.w: 59
+ulFrame: 42
+frRectangle.x: 409
+frRectangle.y: 103
+frRectangle.h: 71
+frRectangle.w: 69
+ulFrame: 43
+frRectangle.x: 413
+frRectangle.y: 101
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 44
+frRectangle.x: 423
+frRectangle.y: 108
+frRectangle.h: 66
+frRectangle.w: 79
+ulFrame: 46
+frRectangle.x: 437
+frRectangle.y: 100
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 47
+frRectangle.x: 446
+frRectangle.y: 99
+frRectangle.h: 73
+frRectangle.w: 65
+ulFrame: 48
+frRectangle.x: 456
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 50
+frRectangle.x: 468
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 51
+frRectangle.x: 474
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 53
+frRectangle.x: 489
+frRectangle.y: 130
+frRectangle.h: 41
+frRectangle.w: 41
+ulFrame: 55
+frRectangle.x: 497
+frRectangle.y: 139
+frRectangle.h: 33
+frRectangle.w: 47
+ulFrame: 56
+frRectangle.x: 499
+frRectangle.y: 141
+frRectangle.h: 31
+frRectangle.w: 55
+ulFrame: 58
+frRectangle.x: 507
+frRectangle.y: 145
+frRectangle.h: 29
+frRectangle.w: 61
+ulFrame: 59
+frRectangle.x: 520
+frRectangle.y: 144
+frRectangle.h: 32
+frRectangle.w: 54
+ulFrame: 60
+frRectangle.x: 533
+frRectangle.y: 140
+frRectangle.h: 33
+frRectangle.w: 47
+ulFrame: 62
+frRectangle.x: 549
+frRectangle.y: 116
+frRectangle.h: 43
+frRectangle.w: 43
+ulFrame: 63
+frRectangle.x: 553
+frRectangle.y: 120
+frRectangle.h: 43
+frRectangle.w: 44
+ulFrame: 64
+frRectangle.x: 536
+frRectangle.y: 102
+frRectangle.h: 82
+frRectangle.w: 90
+ulFrame: 66
+frRectangle.x: 545
+frRectangle.y: 111
+frRectangle.h: 72
+frRectangle.w: 85
+ulFrame: 67
+frRectangle.x: 535
+frRectangle.y: 107
+frRectangle.h: 84
+frRectangle.w: 112
+ulFrame: 68
+frRectangle.x: 568
+frRectangle.y: 121
+frRectangle.h: 57
+frRectangle.w: 68
+ulFrame: 70
+frRectangle.x: 560
+frRectangle.y: 101
+frRectangle.h: 97
+frRectangle.w: 108
+ulFrame: 71
+frRectangle.x: 554
+frRectangle.y: 75
+frRectangle.h: 138
+frRectangle.w: 140
+ulFrame: 0
+frRectangle.x: 586
+frRectangle.y: 123
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 2
+frRectangle.x: 596
+frRectangle.y: 127
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 3
+frRectangle.x: 601
+frRectangle.y: 130
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 4
+frRectangle.x: 606
+frRectangle.y: 133
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 6
+frRectangle.x: 617
+frRectangle.y: 136
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 7
+frRectangle.x: 622
+frRectangle.y: 138
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 8
+frRectangle.x: 626
+frRectangle.y: 140
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 10
+frRectangle.x: 636
+frRectangle.y: 146
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 11
+frRectangle.x: 641
+frRectangle.y: 150
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 12
+frRectangle.x: 647
+frRectangle.y: 153
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 14
+frRectangle.x: 658
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 15
+frRectangle.x: 663
+frRectangle.y: 165
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 17
+frRectangle.x: 673
+frRectangle.y: 172
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 19
+frRectangle.x: 684
+frRectangle.y: 181
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 20
+frRectangle.x: 690
+frRectangle.y: 185
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 22
+frRectangle.x: 702
+frRectangle.y: 198
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 24
+frRectangle.x: 714
+frRectangle.y: 209
+frRectangle.h: 69
+frRectangle.w: 62
+ulFrame: 26
+frRectangle.x: 725
+frRectangle.y: 222
+frRectangle.h: 67
+frRectangle.w: 73
+ulFrame: 27
+frRectangle.x: 729
+frRectangle.y: 228
+frRectangle.h: 66
+frRectangle.w: 81
+ulFrame: 0
+frRectangle.x: 737
+frRectangle.y: 229
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 0
+frRectangle.x: 0
+frRectangle.y: 230
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 2
+frRectangle.x: 26
+frRectangle.y: 220
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 4
+frRectangle.x: 52
+frRectangle.y: 210
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 5
+frRectangle.x: 65
+frRectangle.y: 205
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 6
+frRectangle.x: 78
+frRectangle.y: 199
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 8
+frRectangle.x: 101
+frRectangle.y: 189
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 9
+frRectangle.x: 113
+frRectangle.y: 185
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 10
+frRectangle.x: 125
+frRectangle.y: 181
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 11
+frRectangle.x: 136
+frRectangle.y: 177
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 13
+frRectangle.x: 159
+frRectangle.y: 172
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 14
+frRectangle.x: 170
+frRectangle.y: 167
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 15
+frRectangle.x: 181
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 17
+frRectangle.x: 201
+frRectangle.y: 155
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 18
+frRectangle.x: 211
+frRectangle.y: 151
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 19
+frRectangle.x: 221
+frRectangle.y: 148
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 21
+frRectangle.x: 242
+frRectangle.y: 146
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 22
+frRectangle.x: 251
+frRectangle.y: 143
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 23
+frRectangle.x: 261
+frRectangle.y: 140
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 25
+frRectangle.x: 279
+frRectangle.y: 138
+frRectangle.h: 68
+frRectangle.w: 66
+ulFrame: 26
+frRectangle.x: 288
+frRectangle.y: 136
+frRectangle.h: 67
+frRectangle.w: 73
+ulFrame: 27
+frRectangle.x: 295
+frRectangle.y: 135
+frRectangle.h: 66
+frRectangle.w: 81
+ulFrame: 28
+frRectangle.x: 302
+frRectangle.y: 132
+frRectangle.h: 66
+frRectangle.w: 79
+ulFrame: 30
+frRectangle.x: 320
+frRectangle.y: 122
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 31
+frRectangle.x: 331
+frRectangle.y: 119
+frRectangle.h: 73
+frRectangle.w: 65
+ulFrame: 32
+frRectangle.x: 342
+frRectangle.y: 116
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 34
+frRectangle.x: 358
+frRectangle.y: 112
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 35
+frRectangle.x: 366
+frRectangle.y: 110
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 37
+frRectangle.x: 377
+frRectangle.y: 113
+frRectangle.h: 68
+frRectangle.w: 78
+ulFrame: 38
+frRectangle.x: 386
+frRectangle.y: 110
+frRectangle.h: 70
+frRectangle.w: 72
+ulFrame: 39
+frRectangle.x: 398
+frRectangle.y: 106
+frRectangle.h: 72
+frRectangle.w: 63
+ulFrame: 41
+frRectangle.x: 408
+frRectangle.y: 104
+frRectangle.h: 72
+frRectangle.w: 63
+ulFrame: 42
+frRectangle.x: 409
+frRectangle.y: 103
+frRectangle.h: 71
+frRectangle.w: 69
+ulFrame: 43
+frRectangle.x: 413
+frRectangle.y: 101
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 45
+frRectangle.x: 429
+frRectangle.y: 104
+frRectangle.h: 69
+frRectangle.w: 78
+ulFrame: 46
+frRectangle.x: 437
+frRectangle.y: 100
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 47
+frRectangle.x: 446
+frRectangle.y: 99
+frRectangle.h: 73
+frRectangle.w: 65
+ulFrame: 49
+frRectangle.x: 462
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 50
+frRectangle.x: 468
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 51
+frRectangle.x: 474
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 53
+frRectangle.x: 489
+frRectangle.y: 130
+frRectangle.h: 41
+frRectangle.w: 41
+ulFrame: 54
+frRectangle.x: 495
+frRectangle.y: 134
+frRectangle.h: 37
+frRectangle.w: 41
+ulFrame: 55
+frRectangle.x: 497
+frRectangle.y: 139
+frRectangle.h: 33
+frRectangle.w: 47
+ulFrame: 56
+frRectangle.x: 499
+frRectangle.y: 141
+frRectangle.h: 31
+frRectangle.w: 55
+ulFrame: 58
+frRectangle.x: 507
+frRectangle.y: 145
+frRectangle.h: 29
+frRectangle.w: 61
+ulFrame: 59
+frRectangle.x: 520
+frRectangle.y: 144
+frRectangle.h: 32
+frRectangle.w: 54
+ulFrame: 60
+frRectangle.x: 533
+frRectangle.y: 140
+frRectangle.h: 33
+frRectangle.w: 47
+ulFrame: 62
+frRectangle.x: 549
+frRectangle.y: 116
+frRectangle.h: 43
+frRectangle.w: 43
+ulFrame: 64
+frRectangle.x: 536
+frRectangle.y: 102
+frRectangle.h: 82
+frRectangle.w: 90
+ulFrame: 65
+frRectangle.x: 563
+frRectangle.y: 125
+frRectangle.h: 52
+frRectangle.w: 48
+ulFrame: 66
+frRectangle.x: 545
+frRectangle.y: 111
+frRectangle.h: 72
+frRectangle.w: 85
+ulFrame: 67
+frRectangle.x: 535
+frRectangle.y: 107
+frRectangle.h: 84
+frRectangle.w: 112
+ulFrame: 69
+frRectangle.x: 551
+frRectangle.y: 104
+frRectangle.h: 95
+frRectangle.w: 113
+ulFrame: 70
+frRectangle.x: 560
+frRectangle.y: 101
+frRectangle.h: 97
+frRectangle.w: 108
+ulFrame: 71
+frRectangle.x: 554
+frRectangle.y: 75
+frRectangle.h: 138
+frRectangle.w: 140
+ulFrame: 1
+frRectangle.x: 591
+frRectangle.y: 125
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 2
+frRectangle.x: 596
+frRectangle.y: 127
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 3
+frRectangle.x: 601
+frRectangle.y: 130
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 5
+frRectangle.x: 611
+frRectangle.y: 134
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 6
+frRectangle.x: 617
+frRectangle.y: 136
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 7
+frRectangle.x: 622
+frRectangle.y: 138
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 9
+frRectangle.x: 631
+frRectangle.y: 143
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 10
+frRectangle.x: 636
+frRectangle.y: 146
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 11
+frRectangle.x: 641
+frRectangle.y: 150
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 13
+frRectangle.x: 653
+frRectangle.y: 160
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 14
+frRectangle.x: 658
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 15
+frRectangle.x: 663
+frRectangle.y: 165
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 16
+frRectangle.x: 668
+frRectangle.y: 168
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 18
+frRectangle.x: 679
+frRectangle.y: 177
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 19
+frRectangle.x: 684
+frRectangle.y: 181
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 20
+frRectangle.x: 690
+frRectangle.y: 185
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 24
+frRectangle.x: 714
+frRectangle.y: 209
+frRectangle.h: 69
+frRectangle.w: 62
+ulFrame: 25
+frRectangle.x: 719
+frRectangle.y: 216
+frRectangle.h: 68
+frRectangle.w: 66
+ulFrame: 27
+frRectangle.x: 729
+frRectangle.y: 228
+frRectangle.h: 66
+frRectangle.w: 81
+ulFrame: 0
+frRectangle.x: 737
+frRectangle.y: 229
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 0
+frRectangle.x: 0
+frRectangle.y: 230
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 1
+frRectangle.x: 14
+frRectangle.y: 225
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 3
+frRectangle.x: 40
+frRectangle.y: 215
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 4
+frRectangle.x: 52
+frRectangle.y: 210
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 5
+frRectangle.x: 65
+frRectangle.y: 205
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 7
+frRectangle.x: 90
+frRectangle.y: 194
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 8
+frRectangle.x: 101
+frRectangle.y: 189
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 9
+frRectangle.x: 113
+frRectangle.y: 185
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 11
+frRectangle.x: 136
+frRectangle.y: 177
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 12
+frRectangle.x: 147
+frRectangle.y: 173
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 13
+frRectangle.x: 159
+frRectangle.y: 172
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 15
+frRectangle.x: 181
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 16
+frRectangle.x: 191
+frRectangle.y: 158
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 17
+frRectangle.x: 201
+frRectangle.y: 155
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 18
+frRectangle.x: 211
+frRectangle.y: 151
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 20
+frRectangle.x: 231
+frRectangle.y: 145
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 21
+frRectangle.x: 242
+frRectangle.y: 146
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 22
+frRectangle.x: 251
+frRectangle.y: 143
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 24
+frRectangle.x: 271
+frRectangle.y: 138
+frRectangle.h: 69
+frRectangle.w: 62
+ulFrame: 25
+frRectangle.x: 279
+frRectangle.y: 138
+frRectangle.h: 68
+frRectangle.w: 66
+ulFrame: 27
+frRectangle.x: 295
+frRectangle.y: 135
+frRectangle.h: 66
+frRectangle.w: 81
+ulFrame: 28
+frRectangle.x: 302
+frRectangle.y: 132
+frRectangle.h: 66
+frRectangle.w: 79
+ulFrame: 29
+frRectangle.x: 311
+frRectangle.y: 127
+frRectangle.h: 69
+frRectangle.w: 78
+ulFrame: 31
+frRectangle.x: 331
+frRectangle.y: 119
+frRectangle.h: 73
+frRectangle.w: 65
+ulFrame: 32
+frRectangle.x: 342
+frRectangle.y: 116
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 33
+frRectangle.x: 350
+frRectangle.y: 114
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 35
+frRectangle.x: 366
+frRectangle.y: 110
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 36
+frRectangle.x: 373
+frRectangle.y: 109
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 37
+frRectangle.x: 377
+frRectangle.y: 113
+frRectangle.h: 68
+frRectangle.w: 78
+ulFrame: 39
+frRectangle.x: 398
+frRectangle.y: 106
+frRectangle.h: 72
+frRectangle.w: 63
+ulFrame: 40
+frRectangle.x: 405
+frRectangle.y: 104
+frRectangle.h: 73
+frRectangle.w: 59
+ulFrame: 41
+frRectangle.x: 408
+frRectangle.y: 104
+frRectangle.h: 72
+frRectangle.w: 63
+ulFrame: 42
+frRectangle.x: 409
+frRectangle.y: 103
+frRectangle.h: 71
+frRectangle.w: 69
+ulFrame: 44
+frRectangle.x: 423
+frRectangle.y: 108
+frRectangle.h: 66
+frRectangle.w: 79
+ulFrame: 45
+frRectangle.x: 429
+frRectangle.y: 104
+frRectangle.h: 69
+frRectangle.w: 78
+ulFrame: 46
+frRectangle.x: 437
+frRectangle.y: 100
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 48
+frRectangle.x: 456
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 49
+frRectangle.x: 462
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 50
+frRectangle.x: 468
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 52
+frRectangle.x: 480
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 53
+frRectangle.x: 489
+frRectangle.y: 130
+frRectangle.h: 41
+frRectangle.w: 41
+ulFrame: 54
+frRectangle.x: 495
+frRectangle.y: 134
+frRectangle.h: 37
+frRectangle.w: 41
+ulFrame: 56
+frRectangle.x: 499
+frRectangle.y: 141
+frRectangle.h: 31
+frRectangle.w: 55
+ulFrame: 57
+frRectangle.x: 502
+frRectangle.y: 143
+frRectangle.h: 31
+frRectangle.w: 59
+ulFrame: 59
+frRectangle.x: 520
+frRectangle.y: 144
+frRectangle.h: 32
+frRectangle.w: 54
+ulFrame: 60
+frRectangle.x: 533
+frRectangle.y: 140
+frRectangle.h: 33
+frRectangle.w: 47
+ulFrame: 61
+frRectangle.x: 538
+frRectangle.y: 126
+frRectangle.h: 43
+frRectangle.w: 49
+ulFrame: 63
+frRectangle.x: 553
+frRectangle.y: 120
+frRectangle.h: 43
+frRectangle.w: 44
+ulFrame: 64
+frRectangle.x: 536
+frRectangle.y: 102
+frRectangle.h: 82
+frRectangle.w: 90
+ulFrame: 65
+frRectangle.x: 563
+frRectangle.y: 125
+frRectangle.h: 52
+frRectangle.w: 48
+ulFrame: 67
+frRectangle.x: 535
+frRectangle.y: 107
+frRectangle.h: 84
+frRectangle.w: 112
+ulFrame: 68
+frRectangle.x: 568
+frRectangle.y: 121
+frRectangle.h: 57
+frRectangle.w: 68
+ulFrame: 69
+frRectangle.x: 551
+frRectangle.y: 104
+frRectangle.h: 95
+frRectangle.w: 113
+ulFrame: 71
+frRectangle.x: 554
+frRectangle.y: 75
+frRectangle.h: 138
+frRectangle.w: 140
+ulFrame: 0
+frRectangle.x: 586
+frRectangle.y: 123
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 1
+frRectangle.x: 591
+frRectangle.y: 125
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 2
+frRectangle.x: 596
+frRectangle.y: 127
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 4
+frRectangle.x: 606
+frRectangle.y: 133
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 5
+frRectangle.x: 611
+frRectangle.y: 134
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 6
+frRectangle.x: 617
+frRectangle.y: 136
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 8
+frRectangle.x: 626
+frRectangle.y: 140
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 9
+frRectangle.x: 631
+frRectangle.y: 143
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 10
+frRectangle.x: 636
+frRectangle.y: 146
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 12
+frRectangle.x: 647
+frRectangle.y: 153
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 13
+frRectangle.x: 653
+frRectangle.y: 160
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 14
+frRectangle.x: 658
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 16
+frRectangle.x: 668
+frRectangle.y: 168
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 18
+frRectangle.x: 679
+frRectangle.y: 177
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 22
+frRectangle.x: 702
+frRectangle.y: 198
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 23
+frRectangle.x: 707
+frRectangle.y: 203
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 24
+frRectangle.x: 714
+frRectangle.y: 209
+frRectangle.h: 69
+frRectangle.w: 62
+ulFrame: 25
+frRectangle.x: 719
+frRectangle.y: 216
+frRectangle.h: 68
+frRectangle.w: 66
+ulFrame: 26
+frRectangle.x: 725
+frRectangle.y: 222
+frRectangle.h: 67
+frRectangle.w: 73
+ulFrame: 0
+frRectangle.x: 737
+frRectangle.y: 229
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 0
+frRectangle.x: 0
+frRectangle.y: 230
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 2
+frRectangle.x: 26
+frRectangle.y: 220
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 3
+frRectangle.x: 40
+frRectangle.y: 215
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 4
+frRectangle.x: 52
+frRectangle.y: 210
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 5
+frRectangle.x: 65
+frRectangle.y: 205
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 7
+frRectangle.x: 90
+frRectangle.y: 194
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 8
+frRectangle.x: 101
+frRectangle.y: 189
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 9
+frRectangle.x: 113
+frRectangle.y: 185
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 11
+frRectangle.x: 136
+frRectangle.y: 177
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 12
+frRectangle.x: 147
+frRectangle.y: 173
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 13
+frRectangle.x: 159
+frRectangle.y: 172
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 15
+frRectangle.x: 181
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 16
+frRectangle.x: 191
+frRectangle.y: 158
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 17
+frRectangle.x: 201
+frRectangle.y: 155
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 19
+frRectangle.x: 221
+frRectangle.y: 148
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 20
+frRectangle.x: 231
+frRectangle.y: 145
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 22
+frRectangle.x: 251
+frRectangle.y: 143
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 23
+frRectangle.x: 261
+frRectangle.y: 140
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 24
+frRectangle.x: 271
+frRectangle.y: 138
+frRectangle.h: 69
+frRectangle.w: 62
+ulFrame: 26
+frRectangle.x: 288
+frRectangle.y: 136
+frRectangle.h: 67
+frRectangle.w: 73
+ulFrame: 27
+frRectangle.x: 295
+frRectangle.y: 135
+frRectangle.h: 66
+frRectangle.w: 81
+ulFrame: 28
+frRectangle.x: 302
+frRectangle.y: 132
+frRectangle.h: 66
+frRectangle.w: 79
+ulFrame: 29
+frRectangle.x: 311
+frRectangle.y: 127
+frRectangle.h: 69
+frRectangle.w: 78
+ulFrame: 31
+frRectangle.x: 331
+frRectangle.y: 119
+frRectangle.h: 73
+frRectangle.w: 65
+ulFrame: 32
+frRectangle.x: 342
+frRectangle.y: 116
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 33
+frRectangle.x: 350
+frRectangle.y: 114
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 35
+frRectangle.x: 366
+frRectangle.y: 110
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 36
+frRectangle.x: 373
+frRectangle.y: 109
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 37
+frRectangle.x: 377
+frRectangle.y: 113
+frRectangle.h: 68
+frRectangle.w: 78
+ulFrame: 39
+frRectangle.x: 398
+frRectangle.y: 106
+frRectangle.h: 72
+frRectangle.w: 63
+ulFrame: 41
+frRectangle.x: 408
+frRectangle.y: 104
+frRectangle.h: 72
+frRectangle.w: 63
+ulFrame: 43
+frRectangle.x: 413
+frRectangle.y: 101
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 44
+frRectangle.x: 423
+frRectangle.y: 108
+frRectangle.h: 66
+frRectangle.w: 79
+ulFrame: 45
+frRectangle.x: 429
+frRectangle.y: 104
+frRectangle.h: 69
+frRectangle.w: 78
+ulFrame: 47
+frRectangle.x: 446
+frRectangle.y: 99
+frRectangle.h: 73
+frRectangle.w: 65
+ulFrame: 48
+frRectangle.x: 456
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 49
+frRectangle.x: 462
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 51
+frRectangle.x: 474
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 52
+frRectangle.x: 480
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 53
+frRectangle.x: 489
+frRectangle.y: 130
+frRectangle.h: 41
+frRectangle.w: 41
+ulFrame: 55
+frRectangle.x: 497
+frRectangle.y: 139
+frRectangle.h: 33
+frRectangle.w: 47
+ulFrame: 56
+frRectangle.x: 499
+frRectangle.y: 141
+frRectangle.h: 31
+frRectangle.w: 55
+ulFrame: 57
+frRectangle.x: 502
+frRectangle.y: 143
+frRectangle.h: 31
+frRectangle.w: 59
+ulFrame: 59
+frRectangle.x: 520
+frRectangle.y: 144
+frRectangle.h: 32
+frRectangle.w: 54
+ulFrame: 60
+frRectangle.x: 533
+frRectangle.y: 140
+frRectangle.h: 33
+frRectangle.w: 47
+ulFrame: 61
+frRectangle.x: 538
+frRectangle.y: 126
+frRectangle.h: 43
+frRectangle.w: 49
+ulFrame: 63
+frRectangle.x: 553
+frRectangle.y: 120
+frRectangle.h: 43
+frRectangle.w: 44
+ulFrame: 64
+frRectangle.x: 536
+frRectangle.y: 102
+frRectangle.h: 82
+frRectangle.w: 90
+ulFrame: 65
+frRectangle.x: 563
+frRectangle.y: 125
+frRectangle.h: 52
+frRectangle.w: 48
+ulFrame: 67
+frRectangle.x: 535
+frRectangle.y: 107
+frRectangle.h: 84
+frRectangle.w: 112
+ulFrame: 68
+frRectangle.x: 568
+frRectangle.y: 121
+frRectangle.h: 57
+frRectangle.w: 68
+ulFrame: 69
+frRectangle.x: 551
+frRectangle.y: 104
+frRectangle.h: 95
+frRectangle.w: 113
+ulFrame: 71
+frRectangle.x: 554
+frRectangle.y: 75
+frRectangle.h: 138
+frRectangle.w: 140
+ulFrame: 0
+frRectangle.x: 586
+frRectangle.y: 123
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 1
+frRectangle.x: 591
+frRectangle.y: 125
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 3
+frRectangle.x: 601
+frRectangle.y: 130
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 4
+frRectangle.x: 606
+frRectangle.y: 133
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 5
+frRectangle.x: 611
+frRectangle.y: 134
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 7
+frRectangle.x: 622
+frRectangle.y: 138
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 8
+frRectangle.x: 626
+frRectangle.y: 140
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 9
+frRectangle.x: 631
+frRectangle.y: 143
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 11
+frRectangle.x: 641
+frRectangle.y: 150
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 12
+frRectangle.x: 647
+frRectangle.y: 153
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 13
+frRectangle.x: 653
+frRectangle.y: 160
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 15
+frRectangle.x: 663
+frRectangle.y: 165
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 16
+frRectangle.x: 668
+frRectangle.y: 168
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 18
+frRectangle.x: 679
+frRectangle.y: 177
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 20
+frRectangle.x: 690
+frRectangle.y: 185
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 21
+frRectangle.x: 696
+frRectangle.y: 194
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 23
+frRectangle.x: 707
+frRectangle.y: 203
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 24
+frRectangle.x: 714
+frRectangle.y: 209
+frRectangle.h: 69
+frRectangle.w: 62
+ulFrame: 25
+frRectangle.x: 719
+frRectangle.y: 216
+frRectangle.h: 68
+frRectangle.w: 66
+ulFrame: 27
+frRectangle.x: 729
+frRectangle.y: 228
+frRectangle.h: 66
+frRectangle.w: 81
+ulFrame: 0
+frRectangle.x: 737
+frRectangle.y: 229
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 0
+frRectangle.x: 0
+frRectangle.y: 230
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 2
+frRectangle.x: 26
+frRectangle.y: 220
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 3
+frRectangle.x: 40
+frRectangle.y: 215
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 4
+frRectangle.x: 52
+frRectangle.y: 210
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 6
+frRectangle.x: 78
+frRectangle.y: 199
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 7
+frRectangle.x: 90
+frRectangle.y: 194
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 8
+frRectangle.x: 101
+frRectangle.y: 189
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 10
+frRectangle.x: 125
+frRectangle.y: 181
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 11
+frRectangle.x: 136
+frRectangle.y: 177
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 12
+frRectangle.x: 147
+frRectangle.y: 173
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 14
+frRectangle.x: 170
+frRectangle.y: 167
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 15
+frRectangle.x: 181
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 16
+frRectangle.x: 191
+frRectangle.y: 158
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 18
+frRectangle.x: 211
+frRectangle.y: 151
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 19
+frRectangle.x: 221
+frRectangle.y: 148
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 20
+frRectangle.x: 231
+frRectangle.y: 145
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 22
+frRectangle.x: 251
+frRectangle.y: 143
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 23
+frRectangle.x: 261
+frRectangle.y: 140
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 24
+frRectangle.x: 271
+frRectangle.y: 138
+frRectangle.h: 69
+frRectangle.w: 62
+ulFrame: 26
+frRectangle.x: 288
+frRectangle.y: 136
+frRectangle.h: 67
+frRectangle.w: 73
+ulFrame: 27
+frRectangle.x: 295
+frRectangle.y: 135
+frRectangle.h: 66
+frRectangle.w: 81
+ulFrame: 28
+frRectangle.x: 302
+frRectangle.y: 132
+frRectangle.h: 66
+frRectangle.w: 79
+ulFrame: 30
+frRectangle.x: 320
+frRectangle.y: 122
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 31
+frRectangle.x: 331
+frRectangle.y: 119
+frRectangle.h: 73
+frRectangle.w: 65
+ulFrame: 32
+frRectangle.x: 342
+frRectangle.y: 116
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 34
+frRectangle.x: 358
+frRectangle.y: 112
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 35
+frRectangle.x: 366
+frRectangle.y: 110
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 36
+frRectangle.x: 373
+frRectangle.y: 109
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 38
+frRectangle.x: 386
+frRectangle.y: 110
+frRectangle.h: 70
+frRectangle.w: 72
+ulFrame: 39
+frRectangle.x: 398
+frRectangle.y: 106
+frRectangle.h: 72
+frRectangle.w: 63
+ulFrame: 40
+frRectangle.x: 405
+frRectangle.y: 104
+frRectangle.h: 73
+frRectangle.w: 59
+ulFrame: 42
+frRectangle.x: 409
+frRectangle.y: 103
+frRectangle.h: 71
+frRectangle.w: 69
+ulFrame: 43
+frRectangle.x: 413
+frRectangle.y: 101
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 45
+frRectangle.x: 429
+frRectangle.y: 104
+frRectangle.h: 69
+frRectangle.w: 78
+ulFrame: 46
+frRectangle.x: 437
+frRectangle.y: 100
+frRectangle.h: 72
+frRectangle.w: 72
+ulFrame: 47
+frRectangle.x: 446
+frRectangle.y: 99
+frRectangle.h: 73
+frRectangle.w: 65
+ulFrame: 48
+frRectangle.x: 456
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 50
+frRectangle.x: 468
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 51
+frRectangle.x: 474
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 52
+frRectangle.x: 480
+frRectangle.y: 97
+frRectangle.h: 75
+frRectangle.w: 57
+ulFrame: 54
+frRectangle.x: 495
+frRectangle.y: 134
+frRectangle.h: 37
+frRectangle.w: 41
+ulFrame: 55
+frRectangle.x: 497
+frRectangle.y: 139
+frRectangle.h: 33
+frRectangle.w: 47
+ulFrame: 56
+frRectangle.x: 499
+frRectangle.y: 141
+frRectangle.h: 31
+frRectangle.w: 55
+ulFrame: 58
+frRectangle.x: 507
+frRectangle.y: 145
+frRectangle.h: 29
+frRectangle.w: 61
+ulFrame: 59
+frRectangle.x: 520
+frRectangle.y: 144
+frRectangle.h: 32
+frRectangle.w: 54
+ulFrame: 60
+frRectangle.x: 533
+frRectangle.y: 140
+frRectangle.h: 33
+frRectangle.w: 47
+ulFrame: 62
+frRectangle.x: 549
+frRectangle.y: 116
+frRectangle.h: 43
+frRectangle.w: 43
+ulFrame: 63
+frRectangle.x: 553
+frRectangle.y: 120
+frRectangle.h: 43
+frRectangle.w: 44
+ulFrame: 65
+frRectangle.x: 563
+frRectangle.y: 125
+frRectangle.h: 52
+frRectangle.w: 48
+ulFrame: 66
+frRectangle.x: 545
+frRectangle.y: 111
+frRectangle.h: 72
+frRectangle.w: 85
+ulFrame: 67
+frRectangle.x: 535
+frRectangle.y: 107
+frRectangle.h: 84
+frRectangle.w: 112
+ulFrame: 68
+frRectangle.x: 568
+frRectangle.y: 121
+frRectangle.h: 57
+frRectangle.w: 68
+ulFrame: 70
+frRectangle.x: 560
+frRectangle.y: 101
+frRectangle.h: 97
+frRectangle.w: 108
+ulFrame: 71
+frRectangle.x: 554
+frRectangle.y: 75
+frRectangle.h: 138
+frRectangle.w: 140
+ulFrame: 0
+frRectangle.x: 586
+frRectangle.y: 123
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 2
+frRectangle.x: 596
+frRectangle.y: 127
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 3
+frRectangle.x: 601
+frRectangle.y: 130
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 4
+frRectangle.x: 606
+frRectangle.y: 133
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 6
+frRectangle.x: 617
+frRectangle.y: 136
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 7
+frRectangle.x: 622
+frRectangle.y: 138
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 8
+frRectangle.x: 626
+frRectangle.y: 140
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 11
+frRectangle.x: 641
+frRectangle.y: 150
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 12
+frRectangle.x: 647
+frRectangle.y: 153
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 14
+frRectangle.x: 658
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 15
+frRectangle.x: 663
+frRectangle.y: 165
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 16
+frRectangle.x: 668
+frRectangle.y: 168
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 19
+frRectangle.x: 684
+frRectangle.y: 181
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 20
+frRectangle.x: 690
+frRectangle.y: 185
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 22
+frRectangle.x: 702
+frRectangle.y: 198
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 23
+frRectangle.x: 707
+frRectangle.y: 203
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 24
+frRectangle.x: 714
+frRectangle.y: 209
+frRectangle.h: 69
+frRectangle.w: 62
+ulFrame: 26
+frRectangle.x: 725
+frRectangle.y: 222
+frRectangle.h: 67
+frRectangle.w: 73
+ulFrame: 27
+frRectangle.x: 729
+frRectangle.y: 228
+frRectangle.h: 66
+frRectangle.w: 81
+ulFrame: 0
+frRectangle.x: 737
+frRectangle.y: 229
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 1
+frRectangle.x: 14
+frRectangle.y: 225
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 2
+frRectangle.x: 26
+frRectangle.y: 220
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 3
+frRectangle.x: 40
+frRectangle.y: 215
+frRectangle.h: 70
+frRectangle.w: 61
+ulFrame: 5
+frRectangle.x: 65
+frRectangle.y: 205
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 6
+frRectangle.x: 78
+frRectangle.y: 199
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 7
+frRectangle.x: 90
+frRectangle.y: 194
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 9
+frRectangle.x: 113
+frRectangle.y: 185
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 10
+frRectangle.x: 125
+frRectangle.y: 181
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 11
+frRectangle.x: 136
+frRectangle.y: 177
+frRectangle.h: 74
+frRectangle.w: 63
+ulFrame: 13
+frRectangle.x: 159
+frRectangle.y: 172
+frRectangle.h: 71
+frRectangle.w: 61
+ulFrame: 14
+frRectangle.x: 170
+frRectangle.y: 167
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 15
+frRectangle.x: 181
+frRectangle.y: 163
+frRectangle.h: 72
+frRectangle.w: 61
+ulFrame: 17
+frRectangle.x: 201
+frRectangle.y: 155
+frRectangle.h: 74
+frRectangle.w: 63

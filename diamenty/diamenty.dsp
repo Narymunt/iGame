@@ -93,35 +93,11 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\Diament.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Dynia.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\FGame.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Henryk.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\main.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\MurekB.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Trawa.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Zagroda.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -129,31 +105,7 @@ SOURCE=.\Zagroda.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=.\Diament.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Dynia.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\FGame.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Henryk.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\MurekB.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Trawa.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Zagroda.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"

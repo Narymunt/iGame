@@ -15,10 +15,6 @@ public:
 	Zagroda();
 	virtual ~Zagroda();
 
-	unsigned char offset_x;		// rzutowanie terenu globalnego
-	unsigned char offset_y;		// rzutowanie terenu globalnego
-
-	unsigned char teren_global[80*50];	// 5x5 ekranow
 	unsigned char teren[16*10];		// x * y
 
 };
