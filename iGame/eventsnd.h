@@ -22,14 +22,12 @@ class CEventSND
 
 	    void Add(char cWaveName[]);	// dodaj wave
 	    void Play();	// graj zdarzenie
-	    void PlayNo(int iNo);	// odegraj konkretny numer wave
-	    void PlayRandom(int iNo);	// to nie do konca locowe, bo podajemy zegar, on jest % przez liczbe dzwiekow
 
     private:
-	    unsigned int	m_iCount;	// ile dzwiekow zaladowanych?
+	    
 	    unsigned char	m_ucType;	// czy wave ma byc losowany
 	    char	*m_pNazwa;	// nazwa zdarzenia dzwiekowego
-	    Mix_Chunk	*m_pWave[16];	// tutaj dzwieki
+	    Mix_Chunk	m_pWave[16];	// tutaj dzwieki
 	    
 };
 

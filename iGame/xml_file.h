@@ -18,6 +18,10 @@ public:
 
 	int iCreateNodes();	// create xml nodes, return number of nodes
 
+	int iGetNodeCount();	// podaj ilosc wezlow
+	
+	char *cGetNodeName(int iNode);	// podaj nazwe wezla
+
 private:
 
 	FILE *m_pFile;			// parsowany plik

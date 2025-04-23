@@ -1,3 +1,5 @@
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
 #include "debug.h"		// obsluga bledow, zapisywanie do dziennika
 #include "sprite.h"		// obsluga grafiki
 #include "bitmap.h"		// statyczna bitmapa
@@ -5,6 +7,7 @@
 #include "ytable.h"		// tablica z przeliczeniami, zamiast y*640+x jest ytable[y]+x
 #include "sintable.h"		// tablice przeliczen
 #include "filesys.h"		// pliki formatu .exedat
+#include "eventsnd.h"		// zdarzenia dzwiekowe
 #include "banksfx.h"		// bank zdarzen dzwiekowych
 #include "event.h"		// zdarzenie
 #include "eventevt.h"		// zdarzenie animacyjne

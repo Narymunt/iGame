@@ -1,7 +1,10 @@
 // w banku sfx znajduja sie dzwieki, ktore sa 
 // - odtwarzane losowo 
 // - odtwarzane po kolei
-// - odtwarzane wg parametru
+
+// typ : 1 - po kolei, 2 losowo
+
+
 
 //#include "sound.h"
 
@@ -14,21 +17,28 @@ class CBankSFX
 {
 
     public:
-	    CBankSFX();
+	    CBankSFX(char XMLFilename[]);	// dane wczytane z pliku XML
 	    virtual ~CBankSFX();
+
+	    void Play(char cEvent[]);	// graj zdarzenie na podstawie nazwy
+	    void Play(int iEvent);	// graj zdarzenie o numerze
+	    
+
+    private:
 	    
 	    unsigned char	m_ucVersion;	// ktora wersja pliku
+	    unsigned char	m_ucType;	// czy wave ma byc losowany
 	    
-	    unsigned char	m_ucLosowanie;	// czy wave ma byc losowany
-	    unsigned char	m_ucPoKolei;	// czy odtwarzac wave'y z listy po kolei
+	    unsigned int	m_uiLiczbaWave;	// ile dzwiekow w tym banku
 	    
-	    unsigned int	m_uiLiczbaWabe;	// ile dzwiekow w tym banku
+	    char	**m_pNazwaPliku;	// nazwy plikow wave
+	    char	*m_pOpis;	// opis zdarzenia dzwiekowego
+
+	    Mix_Chunk	**m_pWave;	// tutaj dzwieki
 	    
-	    char	*m_pNazwaPliku;	// 256 bajtow
-	    char	*m_pOpis;	// opis dzwieku
+	    CXmlFile	*m_pXML;	// z tego pliku odczytujemy wszystkie parametry
 	    
-	    // CSound	*m_pWave;	// dzwiek ktory odtwarzamy
-	    
+	    char	m_cTempNode[1024];	// zakladam ze linia nie bedzie dluzsza niz 1024 znaki
 };
 
 #endif

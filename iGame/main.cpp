@@ -3,8 +3,6 @@
 #include <string.h>
 #include <math.h>
 #include <signal.h>
-#include <SDL/SDL.h>
-#include <SDL/SDL_mixer.h>
 
 #ifdef unix
 #include <unistd.h>
@@ -51,6 +49,7 @@ CBitmap *pBitmap;	// rysunek
 CBitmap	*pKon;	// kon
 CEventEVT *pKonEVT;
 CXmlFile *pXML;
+CEventSND *pSND;
 
 int 	iX, iY;
 double	dA, dB;
@@ -229,7 +228,6 @@ int main(int gArgc, char **gArgv)
 
 	pXML = new CXmlFile("spec/seq.xml");
 	pXML->iCreateNodes();
-	delete pXML;
     
 	pKonEVT = new CEventEVT("resource/evt/bobul.evt","resource/evt/bobul.evt");
 
@@ -259,5 +257,11 @@ int main(int gArgc, char **gArgv)
 	SDL_ShowCursor(SDL_ENABLE);
 	SDL_SetTimer(0,NULL);
 	printf("timer: %d\n", ulTimer);
+	printf("nodes: %d\n",pXML->iGetNodeCount());
+	for (int i=0; i<pXML->iGetNodeCount(); i++) printf("::name: %s\n",pXML->cGetNodeName(i));
+	delete pXML;
+    pSND = new CEventSND("grama sobie",1);
+    delete pSND;
+    
     return 0; // koniec programu
 }

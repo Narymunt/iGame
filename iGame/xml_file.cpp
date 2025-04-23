@@ -382,3 +382,13 @@ if (!SILENT)
 
 	return 0;
 }
+
+int CXmlFile::iGetNodeCount()
+{
+    return m_iNodeCount;
+}
+
+char *CXmlFile::cGetNodeName(int iNode)
+{
+    return m_pNodeList[iNode]->cGetNodeName();
+}

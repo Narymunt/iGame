@@ -9,13 +9,14 @@ iGame_lib = $(iGame)/sprite.o \
 $(iGame)/ytable.o \
 $(iGame)/bitmap.o \
 $(iGame)/bitmapmask.o \
+$(iGame)/eventsnd.o \
 $(iGame)/banksfx.o \
 $(iGame)/eventevt.o \
 $(iGame)/event.o \
 $(iGame)/pinch.o \
 $(iGame)/button_flat.o \
 $(iGame)/xml_node.o \
-$(iGame)/xml_file.o
+$(iGame)/xml_file.o 
 
 main.exe: $(iGame_lib)
 	g++ -O2 main.cpp -o main $(iGame_lib) -I$(inc) -I$(iGame) $(link) $(options)
@@ -37,8 +38,9 @@ event.o : button_flat.o
 	g++ -c event.cpp -o event.o -I$(inc) -L$(lib) $(options)
 button_flat.o : xml_node.o
 	g++ -c button_flat.cpp -o button_flat.o -I$(inc) -L$(lib) $(options)
-xml_node.o : 
+xml_node.o : eventsnd.o
 	g++ -c xml_node.cpp -o xml_node.o -I$(inc) -L$(lib) $(options)
-
+eventsnd.o : 
+	g++ -c eventsnd.cpp -o eventsnd.o -I$(inc) -L$(lib) $(options)
 
 
