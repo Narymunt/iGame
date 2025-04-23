@@ -14,5 +14,7 @@ ytable.o: banksfx.o
 	g++ -c ytable.cpp -o ytable.o -I$(inc) -L$(lib) $(options)
 banksfx.o: eventevt.o
 	g++ -c banksfx.cpp -o banksfx.o -I$(inc) -L$(lib) $(options)
-eventevt.o:
+eventevt.o: pinch.o
 	g++ -c eventevt.cpp -o eventevt.o -I$(inc) -L$(lib) $(options)
+pinch.o :
+	g++ -c pinch.cpp -o pinch.o -I$(inc) -L$(lib) $(options)

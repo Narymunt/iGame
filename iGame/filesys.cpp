@@ -1,79 +1,104 @@
-// FileSystem.cpp: implementation of the CFileSystem class.
-//
-//////////////////////////////////////////////////////////////////////
 
-#include <FileSystem.h>
+// filesystem inside one file
+// TODO : 
+// - check sum
+// - strcmp instead of search loop
+// - case check A^a and so on
+// - long filenames
+// - resources editor
+// - dynamic add^remove files from archives
+// USAGE :
+// create class with filename filesys_archive("data.mml");
+// filesys_load(&buffer,"file.bin");
 
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
 
-//=== tworzymy obiekt i od razu ustawiamy sciezki
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "iGame.h"
 
-CFileSystem::CFileSystem(char name[])
+//--- 
+
+Filesystem::Filesystem(char cArchiveName[])
 {
-	// wyzeruj wskazniki
-	
-	pDataBuffer=NULL;
-	pArchiveName=NULL;
-	
-	// wybierz
-		
-	Select(name);
-}
+  
+  cpArchiveNname = (char *) malloc(strlen(cArchiveName)+1);
 
-//=== usuwamy obiekt
-
-CFileSystem::~CFileSystem()
-{
-
-	if (pDataBuffer!=NULL) 
-	{
-		free(pDataBuffer);
-		pDataBuffer = NULL;
-	}
-
-	if (pArchiveName != NULL) 
-	{
-		free(pArchiveName);
-		pArchiveName = NULL;
-	}
+  strcpy(archive_name, name);	// hmm... to ciekawe, bo ze strcmp sa czasem problemy
 
 }
 
-//=== wstaw do bufora
-
-int CFileSystem::putc_buffer(int outc)
+Filesystem::~Filesystem()
 {
-  p_to_buffer[m_to_pointer++] = (unsigned char) outc;
+    free (cpArchiveName);
+}
+
+//--- search for filename inside archive
+
+long Filesystem::SearchFile(char cFilename[])
+{
+
+}
+
+//--- load file
+
+void Filesystem::LoadIn(unsigned char *uc_pBuffer)
+{
+  FILE* fptr;
+  fptr = fopen(archive_name, "rb");
+  fseek(fptr, -FFilesys_indexblock.lokation, SEEK_END);
+
+  switch (FFilesys_indexblock.compression)
+	{
+	case compr_lzari:
+	  lzari_decompress(fptr, uc_pBuffer, FFilesys_indexblock.length);
+	  break;
+	case compr_lzss:
+	  lzss_decompress(fptr, uc_pBuffer, FFilesys_indexblock.length);
+	  break;
+	case compr_none:
+	  fread(uc_pBuffer, FFilesys_indexblock.length, 1, fptr);
+	  break;
+	}
+  fclose(fptr);
+  return;
+}
+
+//--- load file from filesystem
+
+void Filesystem::Load(unsigned char *uc_pBuffer, char cFilename[])
+{
+
+
+}
+
+//--- insert char into buffer
+
+int putc_buffer(int outc)
+{
+  to_buffer[to_pointer++] = (unsigned char) outc;
   return(1);
 }
 
-//=== pobierz znak
+//--- get char from buffer
 
-int CFileSystem::getc_lz(void)
+int getc_lz(void)
 {
-  
-  if (m_from_pointer++ == m_from_max)	
-  {
-	  return(EOF);	// wskaznik rosnie
-  }
-
-  return(getc(p_lz_fptr));
+  if (from_pointer++ == from_max)
+    return(EOF);	// increased pointer
+  return(getc(lz_fptr));
 }
 
-//=== dekodowanie chunk lzss
+// dekoduj lzss - szybkie
+// dekodowanie chunk
 
-void CFileSystem::lzss_decode(void)
+void lzss_decode(void)
 {
 	int i, j, k, r, c;
 	unsigned int flags;
 
-	for (i = 0; i < N - F; i++) 
-		m_text_buf[i] = ' ';
-	
-	r = N - F;  
-	flags = 0;
+	for (i = 0; i < N - F; i++) text_buf[i] = ' ';
+	r = N - F;  flags = 0;
 	
 	for ( ; ; ) 
 	{
@@ -88,12 +113,10 @@ void CFileSystem::lzss_decode(void)
 		{
 			if ((c = getc_lz()) == EOF) break;
 			putc_buffer(c);  
-			m_text_buf[r++] = c;  
+			text_buf[r++] = c;  
 			r &= (N - 1);
 		} 
-		
 		else 
-		
 		{
 			if ((i = getc_lz()) == EOF) break;
 			if ((j = getc_lz()) == EOF) break;
@@ -102,335 +125,300 @@ void CFileSystem::lzss_decode(void)
 		
 			for (k = 0; k <= j; k++) 
 			{
-				c = m_text_buf[(i + k) & (N - 1)];
+				c = text_buf[(i + k) & (N - 1)];
 				putc_buffer(c);  
-				m_text_buf[r++] = c;  
+				text_buf[r++] = c;  
 				r &= (N - 1);
 			}
 		}
-	
-	}	// for
-
-}
-
-//=== dekompresja pliku
-
-void CFileSystem::lzss_decompress(FILE* fptr1, unsigned char* tbuffer, long comp_size)
-{
-  p_lz_fptr = fptr1;
-  m_from_pointer = 0;		// poczatek
-  m_from_max = comp_size;
-  m_to_pointer = 0;
-  p_to_buffer = tbuffer;
-  lzss_decode();
-}
-
-//=== ustawianie bitu
-
-void CFileSystem::PutBit(int bit)
-{
-	if (bit) m_PB_buffer |= m_PB_mask;
-
-	if ((m_PB_mask >>= 1) == 0) 
-	{
-		m_PB_buffer = 0;  
-		m_PB_mask = 128;  
-		m_codesize++;
 	}
 }
 
-//=== odswiez bufor z zapisem bitowym
+// dekompresuj
 
-void CFileSystem::FlushBitBuffer(void)
+void lzss_decompress(FILE* fptr1, unsigned char* tbuffer, long comp_size)
+{
+  lz_fptr = fptr1;
+  from_pointer = 0;		// poczatek
+  from_max = comp_size;
+  to_pointer = 0;
+  to_buffer = tbuffer;
+  lzss_decode();
+}
+
+// ustawianie bitu
+
+void PutBit(int bit)
+{
+	if (bit) PB_buffer |= PB_mask;
+
+	if ((PB_mask >>= 1) == 0) 
+	{
+		PB_buffer = 0;  PB_mask = 128;  codesize++;
+	}
+}
+
+// odswiez bufor z zapisem bitowym
+
+void FlushBitBuffer(void)
 {
 	int  i;
 	for (i = 0; i < 7; i++) PutBit(0);
 }
 
-//=== pobierz bit z bufora
+// pobierz bit z bufora
 
-int CFileSystem::GetBit(void)
+int GetBit(void)
 {
-	if ((m_GB_mask >>= 1) == 0) 
+	if ((GB_mask >>= 1) == 0) 
 	{
-		m_GB_buffer = getc_lz(); 
-		m_GB_mask = 128;
+		GB_buffer = getc_lz(); 
+		GB_mask = 128;
 	}
-	return ((m_GB_buffer & m_GB_mask) != 0);
+	return ((GB_buffer & GB_mask) != 0);
 }
 
-//=== zacznij budowac model
+// zacznij budowac 
 
-void CFileSystem::StartModel(void)
+void StartModel(void)
 {
 	int ch, sym, i;
 
-	m_sym_cum[N_CHAR] = 0;
+	sym_cum[N_CHAR] = 0;
 	
 	for (sym = N_CHAR; sym >= 1; sym--) 
 	{
 		ch = sym - 1;
-		
-		m_char_to_sym[ch] = sym;  
-		m_sym_to_char[sym] = ch;
-		
-		m_sym_freq[sym] = 1;
-		m_sym_cum[sym - 1] = m_sym_cum[sym] + m_sym_freq[sym];
+		char_to_sym[ch] = sym;  sym_to_char[sym] = ch;
+		sym_freq[sym] = 1;
+		sym_cum[sym - 1] = sym_cum[sym] + sym_freq[sym];
 	}
 	
-	m_sym_freq[0] = 0;
-	m_position_cum[N] = 0;
+	sym_freq[0] = 0;
+	position_cum[N] = 0;
 	
 	for (i = N; i >= 1; i--)
-		m_position_cum[i - 1] = m_position_cum[i] + 10000 / (i + 200);
+		position_cum[i - 1] = position_cum[i] + 10000 / (i + 200);
 }
 
-//=== aktualizuj model
+// aktualizuj
 
-void CFileSystem::UpdateModel(int sym)
+void UpdateModel(int sym)
 {
 	int i, c, ch_i, ch_sym;
 
-	if (m_sym_cum[0] >= MAX_CUM) 
+	if (sym_cum[0] >= MAX_CUM) 
 	{
 		c = 0;
 		
 		for (i = N_CHAR; i > 0; i--) 
 		{
-			m_sym_cum[i] = c;
-			c += (m_sym_freq[i] = (m_sym_freq[i] + 1) >> 1);
+			sym_cum[i] = c;
+			c += (sym_freq[i] = (sym_freq[i] + 1) >> 1);
 		}
-		m_sym_cum[0] = c;
+		sym_cum[0] = c;
 	}
 	
-	for (i = sym; m_sym_freq[i] == m_sym_freq[i - 1]; i--) ;
+	for (i = sym; sym_freq[i] == sym_freq[i - 1]; i--) ;
 	
 	if (i < sym) 
 	{
-		ch_i = m_sym_to_char[i];    
-		ch_sym = m_sym_to_char[sym];
+		ch_i = sym_to_char[i];    
+		ch_sym = sym_to_char[sym];
 		
-		m_sym_to_char[i] = ch_sym;  
-		m_sym_to_char[sym] = ch_i;
+		sym_to_char[i] = ch_sym;  
+		sym_to_char[sym] = ch_i;
 		
-		m_char_to_sym[ch_i] = sym;  
-		m_char_to_sym[ch_sym] = i;
+		char_to_sym[ch_i] = sym; 
+		char_to_sym[ch_sym] = i;
 	}
-	m_sym_freq[i]++;
-	while (--i >= 0) m_sym_cum[i]++;
+	sym_freq[i]++;
+	while (--i >= 0) sym_cum[i]++;
 }
 
-//=== sekwencja bitow na wyjscie
+// sekwencja bitow na wyjscie
 
-void CFileSystem::Output(int bit)
+static void Output(int bit)
 {
 	PutBit(bit);
-	for ( ; m_shifts > 0; m_shifts--) PutBit(! bit);
+	for ( ; shifts > 0; shifts--) PutBit(! bit);
 }
 
-//=== pozycja
+// pozycja
 
-void CFileSystem::EncodePosition(int position)
+void EncodePosition(int position)
 {
 	unsigned long int  range;
 
-	range = m_high - m_low;
-	
-	m_high = m_low + (range * m_position_cum[position]) / m_position_cum[0];
-	
-	m_low +=       (range * m_position_cum[position + 1]) / m_position_cum[0];
+	range = high - low;
+	high = low + (range * position_cum[position    ]) / position_cum[0];
+	low +=       (range * position_cum[position + 1]) / position_cum[0];
 	
 	for ( ; ; ) 
 	{
-		if (m_high <= Q2) Output(0);
+		if (high <= Q2) Output(0);
 		else 
-			if (m_low >= Q2) 
+			if (low >= Q2) 
 			{
-			Output(1);  
-			m_low -= Q2;  
-			m_high -= Q2;
+			Output(1);  low -= Q2;  high -= Q2;
 			} 
 			else 
-			if (m_low >= Q1 && m_high <= Q3) 
+			if (low >= Q1 && high <= Q3) 
 			{
-			m_shifts++;  
-			m_low -= Q1;  
-			m_high -= Q1;
+			shifts++;  low -= Q1;  high -= Q1;
 			} else break;
-		m_low += m_low;  
-		m_high += m_high;
+		low += low;  high += high;
 	}
 }
 
-//=== koniec 
+// koniec 
 
-void CFileSystem::EncodeEnd(void)
+void EncodeEnd(void)
 {
-	m_shifts++;
-	
-	if (m_low < Q1) Output(0);  
-	else Output(1);
+	shifts++;
+	if (low < Q1) Output(0);  else Output(1);
 	FlushBitBuffer();
 }
 
-//=== szukaj 
+// szukaj 
 
-int CFileSystem::BinarySearchSym(unsigned int x)
+int BinarySearchSym(unsigned int x)
 {
 	int i, j, k;
 
-	i = 1;  
-	j = N_CHAR;
+	i = 1;  j = N_CHAR;
 	
 	while (i < j) 
 	{
 		k = (i + j) / 2;
-		if (m_sym_cum[k] > x) i = k + 1;  else j = k;
+		if (sym_cum[k] > x) i = k + 1;  else j = k;
 	}
 	return i;
 }
 
-//=== szukaj pozycji
+// szukaj pozycji
 
-int CFileSystem::BinarySearchPos(unsigned int x)
+int BinarySearchPos(unsigned int x)
 {
 	int i, j, k;
-
 	i = 1;  j = N;
+	
 	while (i < j) 
 	{
 		k = (i + j) / 2;
-		if (m_position_cum[k] > x) i = k + 1;  else j = k;
+		if (position_cum[k] > x) i = k + 1;  else j = k;
 	}
 	return i - 1;
 }
 
-//=== zacznij dekodowanie
+// zacznij dekodowanie
 
-void CFileSystem::StartDecode(void)
+void StartDecode(void)
 {
 	int i;
-	
 	for (i = 0; i < M + 2; i++)
-		m_value = 2 * m_value + GetBit();
+		value = 2 * value + GetBit();
 }
 
-//=== dekoduj znak
+// dekoduj znak
 
-int CFileSystem::DecodeChar(void)
+int DecodeChar(void)
 {
-	int	 m_sym, ch;
+	int	 sym, ch;
 	unsigned long int  range;
 
-	range = m_high - m_low;
-	m_sym = BinarySearchSym((unsigned int)
-		(((m_value - m_low + 1) * m_sym_cum[0] - 1) / range));
+	range = high - low;
+	sym = BinarySearchSym((unsigned int)
+		(((value - low + 1) * sym_cum[0] - 1) / range));
 	
-	m_high = m_low + (range * m_sym_cum[m_sym - 1]) / m_sym_cum[0];
-	m_low += (range * m_sym_cum[m_sym]) / m_sym_cum[0];
+	high = low + (range * sym_cum[sym - 1]) / sym_cum[0];
+	low +=       (range * sym_cum[sym    ]) / sym_cum[0];
 	
 	for ( ; ; ) 
 	{
-		if (m_low >= Q2) 
+		if (low >= Q2)
 		{
-			m_value -= Q2;  
-			m_low -= Q2;  
-			m_high -= Q2;
-		} 
+			value -= Q2;  low -= Q2;  high -= Q2;
+		}
 		else 
-			if (m_low >= Q1 && m_high <= Q3) 
+			if (low >= Q1 && high <= Q3) 
 			{
-				m_value -= Q1;  
-				m_low -= Q1;  
-				m_high -= Q1;
-			} 
+			value -= Q1;  low -= Q1;  high -= Q1;
+			}
 			else 
-			if (m_high > Q2) break;
-		
-			m_low += m_low;  
-			m_high += m_high;
-			m_value = 2 * m_value + GetBit();
+			if (high > Q2) break;
+		low += low;  high += high;
+		value = 2 * value + GetBit();
 	}
-	ch = m_sym_to_char[m_sym];
-	UpdateModel(m_sym);
+	ch = sym_to_char[sym];
+	UpdateModel(sym);
 	return ch;
 }
 
-//=== dekoduj pozycje 
+// dekoduj pozycje 
 
-int CFileSystem::DecodePosition(void)
+int DecodePosition(void)
 {
 	int position;
 	unsigned long int  range;
 
-	range = m_high - m_low;
-	
+	range = high - low;
 	position = BinarySearchPos((unsigned int)
-		(((m_value - m_low + 1) * m_position_cum[0] - 1) / range));
-	
-	m_high = m_low + (range * m_position_cum[position]) / m_position_cum[0];
-	m_low += (range * m_position_cum[position + 1]) / m_position_cum[0];
+		(((value - low + 1) * position_cum[0] - 1) / range));
+	high = low + (range * position_cum[position    ]) / position_cum[0];
+	low +=       (range * position_cum[position + 1]) / position_cum[0];
 	
 	for ( ; ; ) 
 	{
-		if (m_low >= Q2) 
+		if (low >= Q2) 
 		{
-			m_value -= Q2;  
-			m_low -= Q2;  
-			m_high -= Q2;
+			value -= Q2;  low -= Q2;  high -= Q2;
 		} 
 		else 
-			if (m_low >= Q1 && m_high <= Q3) 
+			if (low >= Q1 && high <= Q3) 
 			{
-				m_value -= Q1;  
-				m_low -= Q1;  
-				m_high -= Q1;
+			value -= Q1;  low -= Q1;  high -= Q1;
 			} 
 			else 
 			
-			if (m_high > Q2) break;
-		m_low += m_low;  
-		m_high += m_high;
-		m_value = 2 * m_value + GetBit();
+			if (high > Q2) break;
+		low += low;  high += high;
+		value = 2 * value + GetBit();
 	}
 	return position;
 }
 
-//=== dekoduj arytmetycznie
+// dekoduj arytmetycznie
 
-void CFileSystem::lzari_Decode(void)
+void lzari_Decode(void)
 {
 	int  i, j, k, r, c;
 	unsigned long int  count, temp;
 
-	m_textsize = 0;
+	textsize = 0;
 	temp = getc_lz() << 24;
-	m_textsize |= temp;
+	textsize |= temp;
 	temp = getc_lz() << 16;
-	m_textsize |= temp;
+	textsize |= temp;
 	temp = getc_lz() << 8;
-	m_textsize |= temp;
+	textsize |= temp;
 	temp = getc_lz();
-	m_textsize |= temp;
+	textsize |= temp;
 
-	if (m_textsize == 0) return;
+	if (textsize == 0) return;
+	StartDecode();  StartModel();
 	
-	StartDecode();  
-	StartModel();
-	
-	for (i = 0; i < N - F2; i++) m_text_buf[i] = ' ';
+	for (i = 0; i < N - F2; i++) text_buf[i] = ' ';
 	r = N - F2;
 	
-	for (count = 0; count < m_textsize; ) 
+	for (count = 0; count < textsize; ) 
 	{
 		c = DecodeChar();
 		
 		if (c < 256) 
 		{
-			putc_buffer(c);  
-			m_text_buf[r++] = c;
-			r &= (N - 1);  
-			count++;
+			putc_buffer(c);  text_buf[r++] = c;
+			r &= (N - 1);  count++;
 		} 
 		else 
 		{
@@ -439,341 +427,89 @@ void CFileSystem::lzari_Decode(void)
 			
 			for (k = 0; k < j; k++) 
 			{
-				c = m_text_buf[(i + k) & (N - 1)];
-				putc_buffer(c);  
-				m_text_buf[r++] = c;
-				r &= (N - 1);  
-				count++;
+				c = text_buf[(i + k) & (N - 1)];
+				putc_buffer(c);  text_buf[r++] = c;
+				r &= (N - 1);  count++;
 			}
 		}
 	}
 }
 
-//=== dekompresuj 
+// dekompresuj 
 
-void CFileSystem::lzari_decompress(FILE* fptr1, unsigned char* tbuffer, long comp_size)
+void lzari_decompress(FILE* fptr1, unsigned char* tbuffer, long comp_size)
 {
-  p_lz_fptr = fptr1;
-  
-  m_textsize = 0;
-  m_codesize = 0;
-  m_from_pointer = 0;
-  m_to_pointer = 0;
-  
-  m_PB_buffer = 0;
-  m_PB_mask = 128;
-  m_GB_buffer = 0;
-  m_GB_mask = 0;
-  
-  m_low = 0;
-  m_high = Q4;
-  m_value = 0;
-  m_shifts = 0;
-  
-  m_from_max = comp_size;
-  p_to_buffer = tbuffer;
+  lz_fptr = fptr1;
+  textsize = 0;
+  codesize = 0;
+  from_pointer = 0;
+  to_pointer = 0;
+  PB_buffer = 0;
+  PB_mask = 128;
+  GB_buffer = 0;
+  GB_mask = 0;
+  low = 0;
+  high = Q4;
+  value = 0;
+  shifts = 0;
+  from_max = comp_size;
+  to_buffer = tbuffer;
   lzari_Decode();
   return;
 }
 
-//=== wybierz plik z ktorego bedziemy wczytywac
+// szukaj pliku w spakowanym
 
-void CFileSystem::Select(char name[])
-{
-
-	if (pArchiveName != NULL) 
-	{
-		free(pArchiveName);
-	}
-
-	pArchiveName = (char *) malloc(strlen(name)+1);
-
-	strcpy(pArchiveName, name);	// hmm... to ciekawe, bo ze strcmp sa czasem problemy
-}
-
-//=== szukaj pliku w spakowanym
-
-long CFileSystem::Search(char name[])
+long FFilesys_search(char name[])
 {
   FILE* fptr;
   long i, seeklong;
+//  int j,ok;
 
-  fptr = fopen(pArchiveName, "rb"); // bez sprawdzania czy plik istnieje, wiec moga byc bugi
-  seeklong = sizeof(filesys_header);
+  fptr = fopen(archive_name, "rb"); // bez sprawdzania czy plik istnieje, wiec moga byc bugi
+  seeklong = sizeof(FFilesys_header);
   fseek(fptr, -seeklong, SEEK_END);
-  fread(&filesys_header, sizeof(filesys_header), 1, fptr);
+  fread(&FFilesys_header, sizeof(FFilesys_header), 1, fptr);
   
   seeklong-=2;
   
-  for (i = 0; i < filesys_header.number_files; i++)
+  for (i = 0; i < FFilesys_header.number_files; i++)
 	{
 	
-	seeklong += sizeof(filesys_indexblock)-5;	// pomylka w offsetach ? 
+	seeklong += sizeof(FFilesys_indexblock)-5;	// pomylka w offsetach ? 
 	
 	fseek(fptr, -seeklong, SEEK_END);
 	
-	fread(&filesys_indexblock.name, 13, 1, fptr);
-	fread(&filesys_indexblock.lokation,1,sizeof(filesys_indexblock.lokation),fptr);
-	fread(&filesys_indexblock.length,1,sizeof(filesys_indexblock.length),fptr);
-	fread(&filesys_indexblock.original_length,1,sizeof(filesys_indexblock.original_length),fptr);
-	fread(&filesys_indexblock.compression,1,sizeof(filesys_indexblock.compression),fptr);
+	fread(&FFilesys_indexblock.name, 13, 1, fptr);
+	fread(&FFilesys_indexblock.lokation,1,sizeof(FFilesys_indexblock.lokation),fptr);
+	fread(&FFilesys_indexblock.length,1,sizeof(FFilesys_indexblock.length),fptr);
+	fread(&FFilesys_indexblock.original_length,1,sizeof(FFilesys_indexblock.original_length),fptr);
+	fread(&FFilesys_indexblock.compression,1,sizeof(FFilesys_indexblock.compression),fptr);
 
-	if ((int)strcmp(filesys_indexblock.name, name) == 0)
+	if ((int)strcmp(FFilesys_indexblock.name, name) == 0)
 	  break;
 	}
   fclose(fptr);
-  return(filesys_indexblock.original_length);
+  return(FFilesys_indexblock.original_length);
 }
 
-//=== podaj lokalizacje w archiwum
-
-long CFileSystem::GetLokation(char name[])
-{
-  FILE*		fptr;
-  long		i, seeklong;
-  char		Zname[13];
-  long		Zlokation;
-  long		Zlength;
-  long		Zoriginal_length;
-  short		Zcompression;
+// wczytanie pliku
 
 
-  fptr = fopen(pArchiveName, "rb"); // bez sprawdzania czy plik istnieje, wiec moga byc bugi
-  seeklong = sizeof(filesys_header);
-  fseek(fptr, -seeklong, SEEK_END);
-  fread(&filesys_header, sizeof(filesys_header), 1, fptr);
+// wczytuj, zwracaj 0 jezeli blad jezeli nie, to 1
 
-  seeklong-=2;
-
-  for (i = 0; i < filesys_header.number_files; i++)
-	{
-
-	seeklong += sizeof(filesys_indexblock)-5;	// pomylka w offsetach ?
-
-	fseek(fptr, -seeklong, SEEK_END);
-
-    fread(&Zname,13,1,fptr);
-    fread(&Zlokation,1,sizeof(long),fptr);
-    fread(&Zlength,1,sizeof(long),fptr);
-    fread(&Zoriginal_length,1,sizeof(long),fptr);
-    fread(&Zcompression, 1,sizeof(short),fptr);
-
-    if ((int)strcmp(Zname,name)==0)
-	  break;
-	}
-  fclose(fptr);
-
-  return Zlokation;	// zwroc lokalizacje pliku w archiwum
-}
-
-//=== podaj orginalna wartosc
-
-long CFileSystem::GetOriginalLength(char name[])
-{
-  FILE		*fptr;
-  long		i, seeklong;
-  char		Zname[13];
-  long		Zlokation;
-  long		Zlength;
-  long		Zoriginal_length;
-  short		Zcompression;
-
-  fptr = fopen(pArchiveName, "rb"); // bez sprawdzania czy plik istnieje, wiec moga byc bugi
-  seeklong = sizeof(filesys_header);
-  fseek(fptr, -seeklong, SEEK_END);
-  fread(&filesys_header, sizeof(filesys_header), 1, fptr);
-
-  seeklong-=2;
-
-  for (i = 0; i < filesys_header.number_files; i++)
-	{
-
-	seeklong += sizeof(filesys_indexblock)-5;	// pomylka w offsetach ?
-
-	fseek(fptr, -seeklong, SEEK_END);
-
-    fread(&Zname,13,1,fptr);
-    fread(&Zlokation,1,sizeof(long),fptr);
-    fread(&Zlength,1,sizeof(long),fptr);
-    fread(&Zoriginal_length,1,sizeof(long),fptr);
-    fread(&Zcompression, 1,sizeof(short),fptr);
-
-    if ((int)strcmp(Zname,name)==0)
-	  break;
-	}
-  fclose(fptr);
-
-  return Zoriginal_length;		// zwroc orginalna dlugosc 
-
-}
-
-//=== zwraca ile zajmuje spakowany plik
-
-long CFileSystem::GetLength(char name[])
-{
-  FILE		*fptr;
-  long		i, seeklong;
-  char		Zname[13];
-  long		Zlokation;
-  long		Zlength;
-  long		Zoriginal_length;
-  short		Zcompression;
-
-
-  fptr = fopen(pArchiveName, "rb"); // bez sprawdzania czy plik istnieje, wiec moga byc bugi
-  seeklong = sizeof(filesys_header);
-  fseek(fptr, -seeklong, SEEK_END);
-  fread(&filesys_header, sizeof(filesys_header), 1, fptr);
-
-  seeklong-=2;
-
-  for (i = 0; i < filesys_header.number_files; i++)
-	{
-
-	seeklong += sizeof(filesys_indexblock)-5;	// pomylka w offsetach ?
-
-	fseek(fptr, -seeklong, SEEK_END);
-
-    fread(&Zname,13,1,fptr);
-    fread(&Zlokation,1,sizeof(long),fptr);
-    fread(&Zlength,1,sizeof(long),fptr);
-    fread(&Zoriginal_length,1,sizeof(long),fptr);
-    fread(&Zcompression, 1,sizeof(short),fptr);
-
-    if ((int)strcmp(Zname,name)==0)
-	  break;
-	}
-  fclose(fptr);
-
-  return Zlength;		// zwraca dlugosc
-
-}
-
-//=== zwraca rodzaj kompresji
-
-short CFileSystem::GetCompressionMethod(char name[])
-{
-  FILE			*fptr;
-  long			i, seeklong;
-  char			Zname[13];
-  long			Zlokation;
-  long			Zlength;
-  long			Zoriginal_length;
-  short			Zcompression;
-
-
-  fptr = fopen(pArchiveName, "rb"); // bez sprawdzania czy plik istnieje, wiec moga byc bugi
-  seeklong = sizeof(filesys_header);
-  fseek(fptr, -seeklong, SEEK_END);
-  fread(&filesys_header, sizeof(filesys_header), 1, fptr);
-
-  seeklong-=2;
-
-  for (i = 0; i < filesys_header.number_files; i++)
-	{
-
-	seeklong += sizeof(filesys_indexblock)-5;	// pomylka w offsetach ?
-
-	fseek(fptr, -seeklong, SEEK_END);
-
-    fread(&Zname,13,1,fptr);
-    fread(&Zlokation,1,sizeof(long),fptr);
-    fread(&Zlength,1,sizeof(long),fptr);
-    fread(&Zoriginal_length,1,sizeof(long),fptr);
-    fread(&Zcompression, 1,sizeof(short),fptr);
-
-    if ((int)strcmp(Zname,name)==0)
-	  break;
-	}
-  fclose(fptr);
-
-  return Zcompression;		// zwroc metode kompresji
-}
-
-//=== zwraca wskaznik do lancucha z nazwa
-
-char *CFileSystem::pGetFileName(long index)
-{
-  FILE* fptr;
-  long i, seeklong;
-
-  char Zname[13];
-  long Zlokation;
-  long Zlength;
-  long Zoriginal_length;
-  short Zcompression;
-
-
-  fptr = fopen(pArchiveName, "rb"); // bez sprawdzania czy plik istnieje, wiec moga byc bugi
-  seeklong = sizeof(filesys_header);
-  fseek(fptr, -seeklong, SEEK_END);
-  fread(&filesys_header, sizeof(filesys_header), 1, fptr);
-
-  seeklong-=2;
-
-  for (i = 0; i < index ; i++)
-  {
-
-	seeklong += sizeof(filesys_indexblock)-5;	// pomylka w offsetach ?
-
-	fseek(fptr, -seeklong, SEEK_END);
-
-    fread(&Zname,13,1,fptr);
-    fread(&Zlokation,1,sizeof(long),fptr);
-    fread(&Zlength,1,sizeof(long),fptr);
-    fread(&Zoriginal_length,1,sizeof(long),fptr);
-    fread(&Zcompression, 1,sizeof(short),fptr);
-
-  }
-  fclose(fptr);
-#pragma warning (disable: 4172)
-  return (char*)Zname;	// zwraca wskaznik do lancucha z nazwa
-
-}
-
-
-//=== wczytanie 
-
-void CFileSystem::LoadIn(unsigned char* tbuffer)
-{
-  FILE* fptr;
-  fptr = fopen(pArchiveName, "rb");
-  fseek(fptr, -filesys_indexblock.lokation, SEEK_END);
-
-  switch (filesys_indexblock.compression)
-	{
-	case compr_lzari:
-	  lzari_decompress(fptr, tbuffer, filesys_indexblock.length);
-	  break;
-	case compr_lzss:
-	  lzss_decompress(fptr, tbuffer, filesys_indexblock.length);
-	  break;
-	case compr_none:
-	  fread(tbuffer, filesys_indexblock.length, 1, fptr);
-	  break;
-	}
-  fclose(fptr);
-  return;
-}
-
-// wczytuj, zwracaj 0 jezeli blad jezeli nie, to dlugosc pliku
-
-long CFileSystem::Load(char filename[])
+int FFilesys_load(unsigned char *buffer,char filename[])
 {
 	long datalen;	// jak dlugi jest rozkompresowany rekord
 
-	datalen = Search(filename);
+	datalen = FFilesys_search(filename);
 
 	if (datalen==0) return 0; // nie znalazl, albo plik 0 dlugosci, a takich nie ma
 
-	if (pDataBuffer!=NULL)
-	{
-		free(pDataBuffer);
-	}
+	FFilesys_load_in(buffer);
 
-	pDataBuffer = (unsigned char*) malloc(datalen);
-
-	LoadIn(pDataBuffer);
-
-	return datalen;
+	return 1;
 }
+
+// end
+
