@@ -18,5 +18,7 @@ eventevt.o: pinch.o
 	g++ -c eventevt.cpp -o eventevt.o -I$(inc) -L$(lib) $(options)
 pinch.o : event.o
 	g++ -c pinch.cpp -o pinch.o -I$(inc) -L$(lib) $(options)
-event.o : 
+event.o : button_flat.o
 	g++ -c event.cpp -o event.o -I$(inc) -L$(lib) $(options)
+button_flat.o : 
+	g++ -c button_flat.cpp -o button_flat.o -I$(inc) -L$(lib) $(options)

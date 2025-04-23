@@ -1,0 +1,15 @@
+iGame = ../iGame
+iGame_lib = $(iGame)/sprite.o \
+$(iGame)/ytable.o \
+$(iGame)/bitmap.o \
+$(iGame)/bitmapmask.o 
+
+inc_sdl = /Library/Frameworks/SDL.framework/Headers
+inc_mixer = /Library/Frameworks/SDL_mixer.framework/Headers
+inc_dir = /usr/local/include
+link = -framework SDL -framework SDL_mixer -framework Cocoa
+
+main.exe:
+	g++ -O2 main.cpp -o main.exe SDLMain.m $(iGame_lib) \
+	-I$(inc_dir) -I$(iGame) \
+	-I$(inc_sdl) -I$(inc_mixer) $(link) 
