@@ -77,6 +77,7 @@ CEventEVT::CEventEVT(char cFile[], char cEventName[])
 	
 	memcpy(m_pEvent[h1]->pGetNazwaZdarzenia(),&pBuforEVT[iOffset],256); // pobierz nazwe
 	
+	
 	iOffset+=256;	// zwieksz offset
 	
 	// ustaw liczbe klatek
@@ -86,6 +87,9 @@ CEventEVT::CEventEVT(char cFile[], char cEventName[])
 	     (pBuforEVT[iOffset+2]<<16)+
 	     (pBuforEVT[iOffset+1]<<8)+
 	     (pBuforEVT[iOffset+0])));
+
+	printf("EVT: zdarzenie %d - %s klatek %d \n",h1,m_pEvent[h1]->pGetNazwaZdarzenia(),m_pEvent[h1]->GetLiczbaKlatek());
+
 	     
 	iOffset+=4;
 	

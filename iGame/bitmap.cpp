@@ -60,6 +60,7 @@ CBitmap::CBitmap(unsigned long size, char filename[])
 	m_pBitmapDataB[b1]=mTemp[51+(size*3)-b2];
 	m_pBitmapDataG[b1]=mTemp[52+(size*3)-b2];
 	m_pBitmapDataR[b1]=mTemp[53+(size*3)-b2];
+	m_pBitmapDataA[b1]=255;	// przy okazji ustawiamy alfa na zawsze widoczna
     }
 }
 
@@ -95,6 +96,7 @@ CBitmap::CBitmap(long lX, long lY, char filename[])
 	m_pBitmapDataB[b1]=mTemp[51+(size*3)-b2];
 	m_pBitmapDataG[b1]=mTemp[52+(size*3)-b2];
 	m_pBitmapDataR[b1]=mTemp[53+(size*3)-b2];
+	m_pBitmapDataA[b1]=255;	// przy okazji ustawiamy alfa na zawsze widoczna
     }
 }
 
@@ -226,7 +228,7 @@ int CBitmap::Render(int iX, int iY, unsigned char *pBuffer)
 		for (int h2=0;h2<m_ulSizeX; h2++)
 		{
 			if ( ((iX+h2)<800) && ((iX+h2)>0) &&
-			     ((iY+h1)<600) && ((iY+h1)>0) )
+			     ((iY+h1)<600) && ((iY+h1)>0) && (m_pBitmapDataA[(m_ulSizeX*h1)+h2]>127))
 			{
 			lAdres=((800*(iY+h1))+iX+h2)*4;
 			pBuffer[lAdres] = m_pBitmapDataR[(m_ulSizeX*h1)+h2];
