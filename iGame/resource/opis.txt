@@ -1,9 +1,0 @@
-evt - pliki .evt razem z bitmapami
-gui - elementy do interfejsu graficznego - ramki, przyciski etc
-img - statyczne obrazy np. tla
-movie - pliki ze skryptami filmow
-music - muzyka w grze
-scene - pliki ze skryptami scenek
-seq - pliki ze skryptami sekwencji animacji
-wav - dzwieki
-

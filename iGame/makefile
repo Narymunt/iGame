@@ -14,7 +14,8 @@ $(iGame)/eventevt.o \
 $(iGame)/event.o \
 $(iGame)/pinch.o \
 $(iGame)/button_flat.o \
-$(iGame)/xml_node.o
+$(iGame)/xml_node.o \
+$(iGame)/xml_file.o
 
 main.exe: $(iGame_lib)
 	g++ -O2 main.cpp -o main $(iGame_lib) -I$(inc) -I$(iGame) $(link) $(options)

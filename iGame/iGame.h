@@ -11,7 +11,7 @@
 #include "pinch.h"		// tunele x/y
 #include "button_flat.h"	// plaski obszar do naciskania przycisku
 #include "xml_node.h"		// wezel do parsowania plikow xml
-
+#include "xml_file.h"		// parsowanie pliku xml
 //#include <nn_matrix.h>	// operacja na macierzach
 
 

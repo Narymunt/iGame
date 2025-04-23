@@ -5,13 +5,12 @@
 
 CXmlFile::CXmlFile(char filename[])
 {
-
+	m_pFileBuffer = NULL;	// zerowanie wskaznika
 	m_iFileSize = 0;	// rozmiar pliku, zwroci tez 0 jezeli jest zablokowany
-//	m_pFileBuffer = NULL;	// zerowanie wskaznika
-//	m_pFile = NULL;	// handler dla pliku
-
+	m_pFile = NULL;	// handler dla pliku
 	
 	m_pFile = fopen(filename,"rb");	// otwarcie pliku
+	
 	
 	if (m_pFile == NULL)
 	{
@@ -20,12 +19,11 @@ CXmlFile::CXmlFile(char filename[])
 	else
 	{
 		m_iFileSize = iGetFileSize(); // zapamietaj rozmiar pliku
-		printf("XML: name: %s size: %d\n",filename,m_iFileSize);
-		m_pFileBuffer = new char[1+m_iFileSize];
+		m_pFileBuffer = new char[1+iGetFileSize()];
+		printf("XML: name: %s size: %s\n",filename,m_iFileSize);
 		fread(m_pFileBuffer,1,m_iFileSize,m_pFile); // wczytanie calego pliku do bufora
 		fclose(m_pFile);
 	}
-
 }
 
 // destruktor czysci bufor
@@ -295,11 +293,10 @@ int CXmlFile::iCreateNodes()
 
 			m_iNodeLevel++;
 			m_pNodeList[m_iNodeCount-1]->iSetNodeLevel(m_iNodeLevel);
-/*
+
 			printf("+");
 			for (int k=0; k<m_iNodeLevel; k++) printf("-");
 			printf("%d <%s>\n",m_iNodeCount,pTagName);
-*/
 		}
 
 		// tagi zamykajace 
@@ -307,10 +304,10 @@ int CXmlFile::iCreateNodes()
 		if ((m_pFileBuffer[i]=='/' && m_pFileBuffer[i+1]=='>')||
 		    (m_pFileBuffer[i]=='<' && m_pFileBuffer[i+1]=='/')) 
 		{
-/*			printf("+");
+			printf("+");
 			for (int k=0; k<m_iNodeLevel; k++) printf("-");
 			printf("%d </%s>\n",m_iNodeCount,pTagName);
-*/			m_iNodeLevel--;	// odejmij poziom galezi
+			m_iNodeLevel--;	// odejmij poziom galezi
 		}
 		i++;
 	}
@@ -381,14 +378,4 @@ if (!SILENT)
 	cTempNode3 = new char[1+iMax];
 
 	return 0;
-}
-
-int CXmlFile::iGetNodeCount()
-{
-    return m_iNodeCount;
-}
-
-char *CXmlFile::cGetNodeName(int iNode)
-{
-    return m_pNodeList[iNode]->cGetNodeName();
 }
