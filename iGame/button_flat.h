@@ -14,7 +14,7 @@ class CButtonFlat
 	CButtonFlat(int x, int y, char filename[], int xscreen, int yscreen);
 	virtual ~CButtonFlat();
 
-//	int		Render(int mousex, int mousey, unsigned char *pBuffer);
+	int		Render(int mousex, int mousey, bool bleft, bool bright, unsigned char *pBuffer);
 	int		Render1280(int mousex, int mousey, bool bleft, bool bright, unsigned char *pBuffer);
 	
     protected:

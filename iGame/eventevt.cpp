@@ -210,6 +210,15 @@ void CEventEVT::Put(unsigned int uiNrKlatki, char cNazwa[], unsigned char *pBuff
 
 void CEventEVT::Put(int iXScreen, int iYScreen, unsigned int uiNrKlatki, unsigned int uiNrEventu, unsigned char *pBuffer)
 {
+    // jezeli klatka nie miesci sie w przedziale eventu to wyswietl ostatnia
+    
+    if (uiNrKlatki>=m_pEvent[uiNrEventu]->GetLiczbaKlatek())
+	uiNrKlatki = m_pEvent[uiNrEventu]->GetLiczbaKlatek()-1;
+	
+    m_pEventFrames[m_pEvent[uiNrEventu]->GetNrKlatki(uiNrKlatki)]->Render(
+	iXScreen+m_pEvent[uiNrEventu]->GetPositionX((unsigned long)uiNrKlatki),
+	iYScreen+m_pEvent[uiNrEventu]->GetPositionY((unsigned long)uiNrKlatki),
+	pBuffer);
 
 }
 

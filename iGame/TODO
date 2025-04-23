@@ -1,3 +1,5 @@
+- infozip
+- filesystem nie linkowany jeszcze
 - blur moze byc jako aktualny kolor/2 + nowy/2
 
 void bumpit_tb(int mx,int my){
