@@ -122,7 +122,9 @@ CEventEVT::CEventEVT(char cFile[], char cEventName[])
 	    iOffset+=12;	// zwieksz offset
 	    
 	    m_pEvent[h1]->SetPlayWaveInfo(h2,pBuforEVT[iOffset]); // ustaw znacznik
-	    
+
+	    if (m_pEvent[h1]->GetPlayWaveInfo(h2)) printf("EVT: znaleziono wave w klatce %d\n");
+	    	    
 	    iOffset++;
 
 	    // jezeli sa dzwieki dla tej klatki to zaladuj nazwy plikow
