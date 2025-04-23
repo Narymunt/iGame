@@ -6,7 +6,7 @@
 #ifndef _GHOSTYTABLE_
 #define _GHOSTYTABLE_
 
-//#include <windows.h>
+#include <windows.h>
 
 // xsize * y
 

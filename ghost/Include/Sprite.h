@@ -33,11 +33,6 @@ public:
 	//-=- modulacja -=-
 
 	virtual void		SetModulate(unsigned char alpha, unsigned char r, unsigned char g, unsigned char b);
-	
-	virtual unsigned char ucGetModulateA(void);
-	virtual unsigned char ucGetModulateR(void);
-	virtual unsigned char ucGetModulateG(void);
-	virtual unsigned char ucGetModulateB(void);
 
 	//-=- obrót -=-
 
@@ -85,36 +80,14 @@ public:
 
 	//=== do blokowania i rysowania bezposrednio na texturze
 
-	virtual void		Lock(void);
-	virtual void		Unlock(void);
-
-	//=== parametry textury
-
-	virtual void		InitDesc(void);
-
-	virtual int			iGetXSize(void);
-	virtual int			iGetYSize(void);
-
-	//=== rysowanie na zablokowanej texturze
-
-	virtual void		Paint(int iX, int iY, int iA, int iR, int iG, int iB);
-	virtual void		PaintAdd(int iX, int iY, int iA, int iR, int iG, int iB);
-
-	virtual unsigned char ucGetA(int iX, int iY);	// podaj alfe w tych wspolrzednych
-	virtual unsigned char ucGetR(int iX, int iY);	// podaj red w tych wspolrzednych
-	virtual unsigned char ucGetG(int iX, int iY);	// podaj green w tych wspolrzednych
-	virtual unsigned char ucGetB(int iX, int iY);	// podaj blue w tych wspolrzednych
+	LPD3DXSPRITE		m_pSprite;
+	
+	LPDIRECT3DTEXTURE8	m_pTexture;
 
 private:
-
-	LPD3DXSPRITE		m_pSprite;
-	LPDIRECT3DTEXTURE8	m_pTexture;
-	D3DLOCKED_RECT		LockedRect;	// do blokowania textury
-	IDirect3DSurface8	*m_pSurface;
-	D3DSURFACE_DESC		m_pDesc;
-	DWORD				*m_pTextureBuffer;
-
+	
 	bool				m_bVisible;			// czy widoczny, czy ma byc renderowany
+
 	
 	D3DXVECTOR2			m_RotCenter;		// w pixelach
 	D3DXVECTOR2			m_Translation;		// przesuniecie we float 
@@ -125,14 +98,6 @@ private:
 	D3DCOLOR			m_ModulateColor;	// color 
 
 	bool				m_bInitialized;
-	
-	int					m_iXSize;
-	int					m_iYSize;
-
-	unsigned char		m_ucModulateA;
-	unsigned char		m_ucModulateR;
-	unsigned char		m_ucModulateG;
-	unsigned char		m_ucModulateB;
 
 };
 

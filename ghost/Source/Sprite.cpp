@@ -26,12 +26,7 @@ CSprite::CSprite(unsigned char alpha, unsigned char r, unsigned char g, unsigned
 	m_Scaling.x = 1.0f;
 	m_Scaling.y = 1.0f;
 	
-	m_ucModulateA = alpha;
-	m_ucModulateR = r;
-	m_ucModulateG = g;
-	m_ucModulateB = b;
-
-	m_ModulateColor = D3DCOLOR_ARGB(m_ucModulateA, m_ucModulateR, m_ucModulateG, m_ucModulateB);	// lub RGBA
+	m_ModulateColor = D3DCOLOR_ARGB(alpha,r,g,b);	// lub RGBA
 	
 	m_Rotation = 0.0f;
 
@@ -120,8 +115,6 @@ HRESULT CSprite::Render()
 	if (m_bVisible == false) return S_OK;	// po prostu nie rysuje niewidocznego
 
 	HRESULT hr = 0;
-
-	m_ModulateColor = D3DCOLOR_ARGB(m_ucModulateA, m_ucModulateR, m_ucModulateG, m_ucModulateB);	// lub RGBA
 
 	m_pSprite->Begin();
 
@@ -300,131 +293,7 @@ bool CSprite::GetState(void)
 
 void CSprite::SetModulate(unsigned char alpha, unsigned char r, unsigned char g, unsigned char b)
 {
-	m_ucModulateA = alpha; 
-	m_ucModulateR = r;
-	m_ucModulateG = g;
-	m_ucModulateB = b;
-	//	m_ModulateColor = D3DCOLOR_ARGB(alpha,r,g,b);	// lub RGBA
+	m_ModulateColor = D3DCOLOR_ARGB(alpha,r,g,b);	// lub RGBA
 }
 
-//=== blokowanie textury 
-
-void CSprite::Lock(void)
-{
-	m_pTexture->LockRect(0,&LockedRect,NULL,0);
-	
-	m_pTextureBuffer = (DWORD *)LockedRect.pBits;
-}
-
-//=== odblokowanie textury
-
-void CSprite::Unlock(void)
-{
-	m_pTexture->UnlockRect(0);
-}
-
-//=== rysowanie na zablokowanej texturze
-
-void CSprite::Paint(int iX, int iY, int iA, int iR, int iG, int iB)
-{
-	long offset = iX + iY * (LockedRect.Pitch>>2);
-	m_pTextureBuffer[offset] = D3DCOLOR_ARGB(iA,iR,iG,iB);
-}
-
-void CSprite::PaintAdd(int iX, int iY, int iA, int iR, int iG, int iB)
-{
-	long offset = iX + iY * (LockedRect.Pitch>>2);
-	unsigned char r,g,b;
-	unsigned long color;
-
-	color = m_pTextureBuffer[offset];
-	r= (unsigned char)color>>8;
-	g= (unsigned char)color>>16;
-	b= (unsigned char)color>>24;
-
-	iR+=r; iG+=g; iB+=b; 
-
-	if (iR>255) iR=255;
-	if (iG>255) iG=255;
-	if (iB>255) iB=255;
-
-	m_pTextureBuffer[offset] = D3DCOLOR_ARGB(iA,iR,iG,iB);
-}
-
-
-//=== pobieranie skladowych na zablokowanej texturze
-
-unsigned char CSprite::ucGetA(int iX, int iY)
-{
-	long offset = iX + iY * (LockedRect.Pitch>>2);
-	long color;
-	color = m_pTextureBuffer[offset];
-	return (unsigned char)color;
-}
-
-unsigned char CSprite::ucGetR(int iX, int iY)
-{
-	long offset = iX + iY * (LockedRect.Pitch>>2);
-	long color;
-	color = m_pTextureBuffer[offset];
-	return (unsigned char)color>>8;
-}
-
-unsigned char CSprite::ucGetG(int iX, int iY)
-{
-	long offset = iX + iY * (LockedRect.Pitch>>2);
-	long color;
-	color = m_pTextureBuffer[offset];
-	return (unsigned char)color>>16;
-}
-
-unsigned char CSprite::ucGetB(int iX, int iY)
-{
-	long offset = iX + iY * (LockedRect.Pitch>>2);
-	long color;
-	color = m_pTextureBuffer[offset];
-	return (unsigned char)color>>24;
-}
-
-void CSprite::InitDesc(void)
-{
-	if (m_pTexture!=NULL)
-	{
-		m_pTexture->GetSurfaceLevel(0,&m_pSurface);
-		m_pSurface->GetDesc(&m_pDesc);
-		m_iXSize = m_pDesc.Width;
-		m_iYSize = m_pDesc.Height;
-	}
-}
-
-
-int CSprite::iGetYSize(void)
-{
-	return m_iYSize;
-}
-
-int CSprite::iGetXSize(void)
-{
-	return m_iXSize;
-}
-
-unsigned char CSprite::ucGetModulateA(void)
-{
-	return m_ucModulateA;
-}
-
-unsigned char CSprite::ucGetModulateR(void)
-{
-	return m_ucModulateR;
-}
-
-unsigned char CSprite::ucGetModulateG(void)
-{
-	return m_ucModulateG;
-}
-
-unsigned char CSprite::ucGetModulateB(void)
-{
-	return m_ucModulateB;
-}
 // end
