@@ -44,7 +44,7 @@ CEVTSound::~CEVTSound()
 
 }
 
-CEVTSound::Play(CAudio *pAudio)
+void CEVTSound::Play(CAudio *pAudio)
 {
 	DWORD g_Time = timeGetTime();
 

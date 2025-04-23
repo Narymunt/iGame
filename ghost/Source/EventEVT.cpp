@@ -133,7 +133,7 @@ CEventEVT::CEventEVT(char m_SourceFOX[], char m_cEventName[], IDirect3DDevice8 *
 
 	znakA=znakB=znakC='0';		// wyzeruj
 
-	for (h1=0; h1<m_uiIloscKlatek; h1++)
+	for (int h1=0; h1<m_uiIloscKlatek; h1++)
 	{
 		pEventFrames[h1] = new CSprite(255,255,255,255);
 	
@@ -175,7 +175,7 @@ CEventEVT::~CEventEVT()
 //		delete pEvent[h1];
 	}
 
-	for (h1=0; h1<m_uiIloscKlatek; h1++)
+	for (int h1=0; h1<m_uiIloscKlatek; h1++)
 	{
 //		delete pEventFrames[h1];
 	}

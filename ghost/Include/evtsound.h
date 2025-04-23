@@ -22,7 +22,7 @@ class __declspec(dllexport) CEVTSound
 public:
 	CEVTSound(char cFilename[]);
 	virtual ~CEVTSound();
-	virtual Play(CAudio *pAudio);				// odtwarza zdarzenie dzwiekowe
+	virtual void Play(CAudio *pAudio);				// odtwarza zdarzenie dzwiekowe
 
 private:
 	unsigned char	m_ucType;		// 0 losowo, 1 po kolei
