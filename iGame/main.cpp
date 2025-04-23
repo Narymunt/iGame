@@ -233,12 +233,16 @@ int main(int gArgc, char **gArgv)
 
 	wave = Mix_LoadWAV("resource/wav/wrozka.wav");
 
+    pSND = new CEventSND("grama_sobie",1);
+    pSND->Add("resource/wav/s01.wav");
+    pSND->Add("resource/wav/s02.wav");
+    pSND->Add("resource/wav/s03.wav");
     
     while ((Mix_PlayingMusic() || Mix_PausedMusic()) && sdlkeys[SDLK_ESCAPE]!=SDL_PRESSED)
     {
 
-	if (sdlkeys[SDLK_a]==SDL_PRESSED)  Mix_PlayChannel(-1,wave,0);
-	if (sdlkeys[SDLK_b]==SDL_PRESSED)  Mix_PlayChannel(-1,wave,0);
+	if (sdlkeys[SDLK_a]==SDL_PRESSED)  pSND->PlayNo(1);
+	if (sdlkeys[SDLK_b]==SDL_PRESSED)  pSND->PlayRandom(ulTimer);
 
 	pBitmap->Render(0,0,pBackBuffer);
 	pKonEVT->Put((unsigned int)(ulTimer/3)%18,(unsigned int)2,pBackBuffer);
@@ -249,6 +253,7 @@ int main(int gArgc, char **gArgv)
 	printf("timer: %d\n", ulTimer);
 
     }
+    delete pSND;
     
     delete pBitmap;
 	delete pKonEVT;
@@ -260,8 +265,6 @@ int main(int gArgc, char **gArgv)
 	printf("nodes: %d\n",pXML->iGetNodeCount());
 	for (int i=0; i<pXML->iGetNodeCount(); i++) printf("::name: %s\n",pXML->cGetNodeName(i));
 	delete pXML;
-    pSND = new CEventSND("grama sobie",1);
-    delete pSND;
     
     return 0; // koniec programu
 }
