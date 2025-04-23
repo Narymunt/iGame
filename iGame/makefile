@@ -1,9 +1,23 @@
-# this will create library
+# iGame main make
 
 inc = /usr/local/include
 lib = /usr/local/lib
+link = -lSDL -lSDL_mixer
 options = -pthread
+iGame = /opt/prj/iGame
+iGame_lib = $(iGame)/sprite.o \
+$(iGame)/ytable.o \
+$(iGame)/bitmap.o \
+$(iGame)/bitmapmask.o \
+$(iGame)/banksfx.o \
+$(iGame)/eventevt.o \
+$(iGame)/event.o \
+$(iGame)/pinch.o \
+$(iGame)/button_flat.o \
+$(iGame)/xml_node.o
 
+main.exe: $(iGame_lib)
+	g++ -O2 main.cpp -o main $(iGame_lib) -I$(inc) -I$(iGame) $(link) $(options)
 sprite.o: bitmap.o
 	g++ -c sprite.cpp -o sprite.o -I$(inc) -L$(lib) $(options)
 bitmap.o: bitmapmask.o
@@ -24,3 +38,6 @@ button_flat.o : xml_node.o
 	g++ -c button_flat.cpp -o button_flat.o -I$(inc) -L$(lib) $(options)
 xml_node.o : 
 	g++ -c xml_node.cpp -o xml_node.o -I$(inc) -L$(lib) $(options)
+
+
+

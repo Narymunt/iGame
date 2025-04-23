@@ -3,6 +3,8 @@
 #include <string.h>
 #include <math.h>
 #include <signal.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
 
 #ifdef unix
 #include <unistd.h>
@@ -48,8 +50,6 @@ enum APP_STAT
 CBitmap *pBitmap;	// rysunek
 CBitmap	*pKon;	// kon
 CEventEVT *pKonEVT;
-CXmlFile *pXML;
-CEventSND *pSND;
 
 int 	iX, iY;
 double	dA, dB;
@@ -137,7 +137,7 @@ int AppRender(int iTimer)
 
 int main(int gArgc, char **gArgv)
 {
-	int 	iMouseX, iMouseY;
+
 	int	audio_rate=22050;
 	Uint16	audio_format=AUDIO_S16;
 	int	audio_channels=2;
@@ -149,7 +149,7 @@ int main(int gArgc, char **gArgv)
 
 	eAppState = START;
 
-	bFullscreen = true;
+	bFullscreen = false;
 	iXSize = 800;
 	iYSize = 600;
 	iBpp = 32;
@@ -219,33 +219,26 @@ int main(int gArgc, char **gArgv)
     
 //	SDL_EventState(SDL_ACTIVEEVENT, SDL_IGNORE);
 //	SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
-//	SDL_ShowCursor(SDL_DISABLE); // blokada standardowego kursora myszy
+	SDL_ShowCursor(SDL_DISABLE); // blokada standardowego kursora myszy
 	SDL_PumpEvents();
 
 	pBitmap = new CBitmap(800,600,"resource/img/pic.bmp");
 	/* Play and then exit */
 	Mix_FadeInMusic(music,looping,2000);
 
-	pXML = new CXmlFile("spec/seq.xml");
-	pXML->iCreateNodes();
     
 	pKonEVT = new CEventEVT("resource/evt/bobul.evt","resource/evt/bobul.evt");
 
 	wave = Mix_LoadWAV("resource/wav/wrozka.wav");
-
-    pSND = new CEventSND("grama_sobie",1);
-    pSND->Add("resource/wav/s01.wav");
-    pSND->Add("resource/wav/s02.wav");
-    pSND->Add("resource/wav/s03.wav");
     
     while ((Mix_PlayingMusic() || Mix_PausedMusic()) && sdlkeys[SDLK_ESCAPE]!=SDL_PRESSED)
     {
-	SDL_GetMouseState(&iMouseX, &iMouseY);
-	if (sdlkeys[SDLK_a]==SDL_PRESSED)  pSND->PlayNo(1);
-	if (sdlkeys[SDLK_b]==SDL_PRESSED)  pSND->PlayRandom(ulTimer);
+
+	if (sdlkeys[SDLK_a]==SDL_PRESSED)  Mix_PlayChannel(-1,wave,0);
+	if (sdlkeys[SDLK_b]==SDL_PRESSED)  Mix_PlayChannel(-1,wave,0);
 
 	pBitmap->Render(0,0,pBackBuffer);
-	pKonEVT->Put(iMouseX, iMouseY,(unsigned int)(ulTimer/3)%18,(unsigned int)1,pBackBuffer);
+	pKonEVT->Put((unsigned int)(ulTimer/3)%18,(unsigned int)2,pBackBuffer);
 	AppRender(0);
 	SDL_PumpEvents();
 	sdlkeys=(char*)SDL_GetKeyState(NULL);
@@ -253,7 +246,6 @@ int main(int gArgc, char **gArgv)
 	printf("timer: %d\n", ulTimer);
 
     }
-    delete pSND;
     
     delete pBitmap;
 	delete pKonEVT;
@@ -262,9 +254,5 @@ int main(int gArgc, char **gArgv)
 	SDL_ShowCursor(SDL_ENABLE);
 	SDL_SetTimer(0,NULL);
 	printf("timer: %d\n", ulTimer);
-	printf("nodes: %d\n",pXML->iGetNodeCount());
-	for (int i=0; i<pXML->iGetNodeCount(); i++) printf("::name: %s\n",pXML->cGetNodeName(i));
-	delete pXML;
-    
     return 0; // koniec programu
 }
