@@ -137,7 +137,7 @@ int AppRender(int iTimer)
 
 int main(int gArgc, char **gArgv)
 {
-
+	int 	iMouseX, iMouseY;
 	int	audio_rate=22050;
 	Uint16	audio_format=AUDIO_S16;
 	int	audio_channels=2;
@@ -219,7 +219,7 @@ int main(int gArgc, char **gArgv)
     
 //	SDL_EventState(SDL_ACTIVEEVENT, SDL_IGNORE);
 //	SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
-	SDL_ShowCursor(SDL_DISABLE); // blokada standardowego kursora myszy
+//	SDL_ShowCursor(SDL_DISABLE); // blokada standardowego kursora myszy
 	SDL_PumpEvents();
 
 	pBitmap = new CBitmap(800,600,"resource/img/pic.bmp");
@@ -240,12 +240,12 @@ int main(int gArgc, char **gArgv)
     
     while ((Mix_PlayingMusic() || Mix_PausedMusic()) && sdlkeys[SDLK_ESCAPE]!=SDL_PRESSED)
     {
-
+	SDL_GetMouseState(&iMouseX, &iMouseY);
 	if (sdlkeys[SDLK_a]==SDL_PRESSED)  pSND->PlayNo(1);
 	if (sdlkeys[SDLK_b]==SDL_PRESSED)  pSND->PlayRandom(ulTimer);
 
 	pBitmap->Render(0,0,pBackBuffer);
-	pKonEVT->Put((unsigned int)(ulTimer/3)%18,(unsigned int)2,pBackBuffer);
+	pKonEVT->Put(iMouseX, iMouseY,(unsigned int)(ulTimer/3)%18,(unsigned int)2,pBackBuffer);
 	AppRender(0);
 	SDL_PumpEvents();
 	sdlkeys=(char*)SDL_GetKeyState(NULL);
