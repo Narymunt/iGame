@@ -1,6 +1,92 @@
-- bitmapmask / automatycznie rozpoznawaj nazwe pliku
-- bank sfx / cala obsluga do zrobienia
-- debug do pliku i wszystkie komentarze
-- kolorowy print na konsole
-- weryfikacja plikow przed uruchomieniem
+- infozip
+- filesystem nie linkowany jeszcze
+- blur moze byc jako aktualny kolor/2 + nowy/2
+
+void bumpit_tb(int mx,int my){
+   int nx,ny,coul1,coul2,lx,ly;
+   di=321;
+   ly=my;
+   lx=mx;
+   j=0;
+   for (i=1;i<64000-321-320-320-320;i++){
+       nx=bump[di+1]-bump[di-1];
+       ny=bump[di+320]-bump[di-320];
+       coul1=127-(nx+lx);
+       coul2=127-(ny+ly);
+       if (coul1<0) coul1=0; if (coul1>255) coul1=255;
+       if (coul2<0) coul2=0; if (coul2>255) coul2=255;
+       bufr[di]=specular[(coul2<<8)+coul1]>>2;
+       di++;
+       lx--;
+       j++;
+       if (j==318){
+           lx=mx;
+           di+=2;
+           ly--;
+           j=0;
+       }
+   }
+}
+
+- duzy pixel w roznych wariacjach, rowniez jako bitmapy
+
+void bigpixel(int x, int y, char c)
+{
+int a1,a2;
+
+    for (a1=0;a1<4;a1++)
+    {
+     for (a2=0;a2<4;a2++)
+     {
+     vaddr00[(320*(y+a1))+a2+x]=c;
+     }
+    }
+}
+
+- zagadkowe troche
+
+void blurscreen(void)
+{
+        bufer=vaddr00;
+        char            *row1, *row2, *row3;
+        int             x, y, colour;
+
+        for(y=1; y<199; y++) {
+                row1 = bufer + (320*(y - 1));
+                row2 = bufer + (320*y);
+                row3 = bufer + (320*(y+1));
+                *row1++ = 0;
+                *row2++ = 0;
+                *row3++ = 0;
+
+                for(x=1; x<319; x++) {
+                        colour = (*row1 +
+                                  *row3 +
+                                  *(row2 - 1) +
+                                  *(row2 + 1)) / 4;
+                        colour -= 2;
+                        if(colour < 0)  colour = 0;
+
+                        *row2 = colour;
+                        row1++;
+                        row2++;
+                        row3++;
+                }
+
+                *row1++ = 0;
+                *row2++ = 0;
+                *row3++ = 0;
+        }
+}
+
+
+long lFileSize(FILE *stream)
+{
+    long curpos, length;
+    curpos = ftell(stream);
+    fseek(stream, 0L, SEEK_END);
+    length=ftell(stream);
+    fseek(stream, curpos, SEEK_SET);
+    return length;
+}
 
