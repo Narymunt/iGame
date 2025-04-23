@@ -16,5 +16,7 @@ banksfx.o: eventevt.o
 	g++ -c banksfx.cpp -o banksfx.o -I$(inc) -L$(lib) $(options)
 eventevt.o: pinch.o
 	g++ -c eventevt.cpp -o eventevt.o -I$(inc) -L$(lib) $(options)
-pinch.o :
+pinch.o : event.o
 	g++ -c pinch.cpp -o pinch.o -I$(inc) -L$(lib) $(options)
+event.o : 
+	g++ -c event.cpp -o event.o -I$(inc) -L$(lib) $(options)
