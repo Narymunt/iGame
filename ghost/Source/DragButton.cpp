@@ -22,39 +22,64 @@ CDragButton::CDragButton(char cFileSystem[], char clicked_name[],
 	pTempFilesystem = new CFileSystem(cFileSystem);
 
 	pTempFilesystem->Load(clicked_name);
-	
-	m_pClicked = new CSprite(255,255,255,255);
+
+	m_pClicked = NULL;
+	m_pOnDragButton = NULL;
+
+/*	m_pClicked = new CSprite(255,255,255,255);
 	m_pClicked->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
 		pTempFilesystem->Search(clicked_name),pDevice,
 		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 		0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 		D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
-
+*/
 	pTempFilesystem->Load(onDragButton_name);
 	
 	m_pOnDragButton = new CSprite(255,255,255,255);
-	m_pOnDragButton->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
-		pTempFilesystem->Search(onDragButton_name),pDevice,
+	m_pOnDragButton->InitializeTGAinMemory((unsigned int*)pTempFilesystem->pDataBuffer,
+		pTempFilesystem->Search(onDragButton_name),pDevice);
+/*	,
 		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 		0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 		D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
+*/
+	m_pOnDragButton->InitDesc();
+	m_iOnDragButtonSizeX = m_pOnDragButton->iGetXSize();
+	m_iOnDragButtonSizeY = m_pOnDragButton->iGetYSize();
+	
 
 	pTempFilesystem->Load(m_pImage_name);
 
 	m_pImage = new CSprite(255,255,255,255);
-	m_pImage->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
-		pTempFilesystem->Search(m_pImage_name),pDevice,
-		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
+	m_pImage->InitializeTGAinMemory((unsigned int*)pTempFilesystem->pDataBuffer,
+		pTempFilesystem->Search(m_pImage_name),pDevice);
+/*		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 		0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 		D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
+*/
+	m_pImage->InitDesc();
+	m_iImageSizeX = m_pImage->iGetXSize();
+	m_iImageSizeY = m_pImage->iGetYSize();
 
-	pTempFilesystem->Load(onmove_name);
+	strcpy(m_cOnMoveFilename,onmove_name);
 
+/*	pTempFilesystem->Load(onmove_name);
+		m_pOnMove = new CSprite(255,255,255,255);
+		m_pOnMove->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
+			pTempFilesystem->Search(m_cOnMoveFilename),m_pDevice,
+			D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
+			0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
+			D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
+		m_pOnMove->InitDesc();
+		m_iOnMoveSizeX = m_pOnMove->iGetXSize();
+		m_iOnMoveSizeY = m_pOnMove->iGetYSize();
+*/
 	m_pOnMove = NULL;
 	strcpy(m_cOnMoveFilename,onmove_name);
 
 	m_pDropped = NULL;
-
+	m_iDroppedSizeX = 0;
+	m_iDroppedSizeY = 0;
 
 	// bez hotx i hoty
 
@@ -82,32 +107,43 @@ CDragButton::CDragButton(char cFileSystem[], char clicked_name[],
 
 	pTempFilesystem->Load(clicked_name);
 	
-	m_pClicked = new CSprite(255,255,255,255);
+/*	m_pClicked = new CSprite(255,255,255,255);
 	m_pClicked->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
 		pTempFilesystem->Search(clicked_name),pDevice,
 		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 		0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 		D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
+*/
 
 	pTempFilesystem->Load(onDragButton_name);
 	
 	m_pOnDragButton = new CSprite(255,255,255,255);
-	m_pOnDragButton->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
-		pTempFilesystem->Search(onDragButton_name),pDevice,
-		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
+	m_pOnDragButton->InitializeTGAinMemory((unsigned int*)pTempFilesystem->pDataBuffer,
+		pTempFilesystem->Search(onDragButton_name),pDevice);
+/*		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 		0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 		D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
+*/
+	m_pOnDragButton->InitDesc();
+	m_iOnDragButtonSizeX = m_pOnDragButton->iGetXSize();
+	m_iOnDragButtonSizeY = m_pOnDragButton->iGetYSize();
 
 	pTempFilesystem->Load(m_pImage_name);
 
 	m_pImage = new CSprite(255,255,255,255);
-	m_pImage->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
-		pTempFilesystem->Search(m_pImage_name),pDevice,
-		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
+	m_pImage->InitializeTGAinMemory((unsigned int*)pTempFilesystem->pDataBuffer,
+		pTempFilesystem->Search(m_pImage_name),pDevice);
+/*		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 		0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 		D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
+*/
+	m_pImage->InitDesc();
+	m_iImageSizeX = m_pImage->iGetXSize();
+	m_iImageSizeY = m_pImage->iGetYSize();
 
 	m_pOnMove = NULL;
+	m_iOnMoveSizeX = 0;
+	m_iOnMoveSizeY = 0;
 	strcpy(m_cOnMoveFilename,onmove_name);
 
 	m_pDropped = NULL;
@@ -116,11 +152,16 @@ CDragButton::CDragButton(char cFileSystem[], char clicked_name[],
 	pTempFilesystem->Load(dropped_name);
 
 	m_pDropped = new CSprite(255,255,255,255);
-	m_pDropped->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
-		pTempFilesystem->Search(dropped_name),pDevice,
-		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
+	m_pDropped->InitializeTGAinMemory((unsigned int*)pTempFilesystem->pDataBuffer,
+		pTempFilesystem->Search(dropped_name),pDevice);
+/*		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 		0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 		D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
+*/
+
+	m_pDropped->InitDesc();
+	m_iDroppedSizeX = m_pDropped->iGetXSize();
+	m_iDroppedSizeY = m_pDropped->iGetYSize();
 
 	// bez hotx i hoty
 
@@ -180,11 +221,17 @@ int CDragButton::Draw(float mousex, float mousey, bool left, bool center, bool r
 		pTempFilesystem->Load(m_cOnMoveFilename);
 
 		m_pOnMove = new CSprite(255,255,255,255);
-		m_pOnMove->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
-			pTempFilesystem->Search(m_cOnMoveFilename),m_pDevice,
-			D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
+		m_pOnMove->InitializeTGAinMemory((unsigned int*)pTempFilesystem->pDataBuffer,
+			pTempFilesystem->Search(m_cOnMoveFilename),m_pDevice);
+/*			D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 			0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 			D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
+*/
+		m_pOnMove->InitDesc();
+		m_iOnMoveSizeX = m_pOnMove->iGetXSize();
+		m_iOnMoveSizeY = m_pOnMove->iGetYSize();
+		m_lXAdd = -m_iOnMoveSizeX/2;
+		m_lYAdd = -m_iOnMoveSizeY/2;
 	}
 
 	if (m_cState==3)
@@ -218,30 +265,30 @@ if (m_cState<3) // obiekt nie jest przeciagany
 		if (right)
 		{
 			m_cState = 2;
-			m_pClicked->SetTranslation((float)m_lXDefault,(float)m_lYDefault);
-			m_pClicked->Render();	// przycisk wcisniety prawym klawiszem
+			m_pImage->SetTranslation((float)m_lXDefault,(float)m_lYDefault);
+			m_pImage->Render();	// przycisk wcisniety prawym klawiszem
 			return 4;
 		}
 
 		if (center)
 		{
 			m_cState = 2; // kursor myszy nad obiektem, przycisk wcisniety
-			m_pClicked->SetTranslation((float)m_lXDefault,(float)m_lYDefault);
-			m_pClicked->Render();
+			m_pImage->SetTranslation((float)m_lXDefault,(float)m_lYDefault);
+			m_pImage->Render();
 			return 3;
 		}
 		
 		if (left)
 		{
 			m_cState=2; // kursor myszy nad obiektem, przycisk wcisniety
-			m_pClicked->SetTranslation((float)m_lXDefault,(float)m_lYDefault);
-			m_pClicked->Render();
+			m_pImage->SetTranslation((float)m_lXDefault,(float)m_lYDefault);
+			m_pImage->Render();
 			return 2;
 		}
 
 		m_cState=1; // kursor myszy nad obiektem
-		m_pOnDragButton->SetTranslation((float)m_lXDefault,(float)m_lYDefault);
-		m_pOnDragButton->Render();
+		m_pImage->SetTranslation((float)m_lXDefault,(float)m_lYDefault);
+		m_pImage->Render();
 		return 1;
 	}
 
@@ -294,9 +341,9 @@ long CDragButton::lGetCurrentPositionY(void)
 
 void CDragButton::SetPosition(long lX, long lY)
 {
-	m_pClicked->SetTranslation((float)lX,(float)lY);
+//	m_pClicked->SetTranslation((float)lX,(float)lY);
 	m_pImage->SetTranslation((float)lX,(float)lY);
-	m_pOnDragButton->SetTranslation((float)lX,(float)lY);
+//	m_pOnDragButton->SetTranslation((float)lX,(float)lY);
 }
 
 //=== ustawia wspolrzedne w obrebie ktorych przycisk jest aktywny
@@ -308,9 +355,9 @@ void CDragButton::SetHotCoords(long lXStart, long lYStart, long lXEnd, long lYEn
 	m_lXEnd = lXEnd;
 	m_lYEnd = lYEnd;
 
-	m_pClicked->SetTranslation((float)lXStart,(float)lYStart);
+//	m_pClicked->SetTranslation((float)lXStart,(float)lYStart);
 	m_pImage->SetTranslation((float)lXStart,(float)lYStart);
-	m_pOnDragButton->SetTranslation((float)lXStart,(float)lYStart);
+//	m_pOnDragButton->SetTranslation((float)lXStart,(float)lYStart);
 
 }
 
@@ -497,5 +544,55 @@ void CDragButton::AddScaleY(float fValueY)
 	m_pOnMove->AddScaleY(fValueY);
 }
 
+
+int CDragButton::iGetClickedSizeX(void)
+{
+	return m_iClickedSizeX;
+}
+
+int CDragButton::iGetClickedSizeY(void)
+{
+	return m_iClickedSizeY;
+}
+
+int CDragButton::iGetDroppedSizeX(void)
+{
+	return m_iDroppedSizeX;
+}
+
+int CDragButton::iGetDroppedSizeY(void)
+{
+	return m_iDroppedSizeY;
+}
+
+int CDragButton::iGetImageSizeX(void)
+{
+	return m_iImageSizeX;
+}
+
+int CDragButton::iGetImageSizeY(void)
+{
+	return m_iImageSizeY;
+}
+
+int CDragButton::iGetOnDragButtonSizeX(void)
+{
+	return m_iOnDragButtonSizeX;
+}
+
+int CDragButton::iGetOnDragButtonSizeY(void)
+{
+	return m_iOnDragButtonSizeY;
+}
+
+int CDragButton::iGetOnMoveSizeX(void)
+{
+	return m_iOnMoveSizeX;
+}
+
+int CDragButton::iGetOnMoveSizeY(void)
+{
+	return m_iOnMoveSizeY;
+}
 
 //=== end ===

@@ -24,10 +24,18 @@ public:
 
 	virtual void Render(void);		// tylko zwykly wskaznik, bez animacji
 
+	// tu renderujemy kursor specjalny
+
+	virtual void Render(int iNumer);	// numer kursora
+
 	// zarzadzanie wygladem kursorow 
 
 	virtual void Initialize(IDirect3DDevice8 *pDevice,char cDataFile[]);
 	virtual void DeInitialize(void);
+
+	// dodawanie wlasnych kursorow
+
+	virtual void AddCustomPoint(IDirect3DDevice8 *pDevice, int iIndex, char cName[], char cDataFile[]);
 
 	// ustaw stan przyciskow
 
@@ -103,6 +111,7 @@ private:
 	CSprite		*m_pOnObjectPoint;	// znajduje sie nad obiektem
 	CSprite		*m_pOnClickPoint;		// nacisniecie przycisku
 
+	CSprite		*m_pCustomPoint[16];	// tutaj dodajemy nasze wlasne kursory
 
 };
 

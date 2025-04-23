@@ -140,25 +140,25 @@ CDrag3Button::~CDrag3Button()
 {
 	if (m_pClicked!=NULL)
 	{
-//		delete (m_pClicked);
+		delete (m_pClicked);
 		m_pClicked = NULL;
 	}
 
 	if (m_pImage!=NULL) 
 	{
-//		delete (m_pImage);
+		delete (m_pImage);
 		m_pImage = NULL;
 	}
 
 	if (m_pOnDrag3Button!=NULL) 
 	{
-//		delete (m_pOnDrag3Button);
+		delete (m_pOnDrag3Button);
 		m_pOnDrag3Button = NULL;
 	}
 
 	if (m_pOnMove!=NULL)
 	{
-//		delete (m_pOnMove);
+		delete (m_pOnMove);
 		m_pOnMove = NULL;
 	}
 

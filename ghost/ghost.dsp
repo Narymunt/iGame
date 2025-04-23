@@ -84,7 +84,7 @@ LINK32=link.exe
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib d3d8.lib d3dx8d.lib strmiids.lib dxguid.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
 # Begin Special Build Tool
 SOURCE="$(InputPath)"
-PostBuild_Cmds=copy         debug\ghost.dll         c:\windows\        	copy         debug\ghost.lib         c:\windows\ 
+PostBuild_Cmds=copy           debug\ghost.dll           c:\windows\          	copy           debug\ghost.lib           c:\windows\ 
 # End Special Build Tool
 
 !ENDIF 
@@ -103,6 +103,10 @@ SOURCE=.\Source\Audio.cpp
 # Begin Source File
 
 SOURCE=.\Source\Button.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Drag3Button.cpp
 # End Source File
 # Begin Source File
 
@@ -166,6 +170,10 @@ SOURCE=.\Source\Sprite.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\Source\Suwak.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\Source\YTable.cpp
 # End Source File
 # End Group
@@ -179,6 +187,10 @@ SOURCE=.\Include\Audio.h
 # Begin Source File
 
 SOURCE=.\Include\Button.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Drag3Button.h
 # End Source File
 # Begin Source File
 
@@ -239,6 +251,10 @@ SOURCE=.\Include\Sound.h
 # Begin Source File
 
 SOURCE=.\Include\Sprite.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Suwak.h
 # End Source File
 # Begin Source File
 

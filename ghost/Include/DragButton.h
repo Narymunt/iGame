@@ -107,6 +107,21 @@ public:
 	virtual void		AddScaleX(float fValueX);
 	virtual void		AddScaleY(float fValueY);
 
+	virtual int			iGetClickedSizeX(void);
+	virtual int			iGetClickedSizeY(void);
+	
+	virtual int			iGetOnDragButtonSizeX(void);
+	virtual int			iGetOnDragButtonSizeY(void);
+	
+	virtual int			iGetImageSizeX(void);
+	virtual int			iGetImageSizeY(void);
+	
+	virtual int			iGetOnMoveSizeX(void);
+	virtual int			iGetOnMoveSizeY(void);
+
+	virtual int			iGetDroppedSizeX(void);
+	virtual int			iGetDroppedSizeY(void);
+
 
 private:
 	
@@ -160,18 +175,38 @@ private:
 	long		m_lYEnd;
 
 	CSprite		*m_pClicked;		// nacisniety
+
+	int			m_iClickedSizeX;
+	int			m_iClickedSizeY;
+
 	CSprite		*m_pOnDragButton;		// mysz nad nim
+	
+	int			m_iOnDragButtonSizeX;
+	int			m_iOnDragButtonSizeY;
+	
 	CSprite		*m_pImage;		// zwyczajny
 	
+	int			m_iImageSizeX;
+	int			m_iImageSizeY;
+
 	CSprite		*m_pOnMove;		// przesuwany myszka
+	
+	int			m_iOnMoveSizeX;
+	int			m_iOnMoveSizeY;
+
 	char		m_cOnMoveFilename[256];
 
 	CSprite		*m_pDropped;	// upuszczony przycisk moze np. miec wiekszy rozmiar
+
+	int			m_iDroppedSizeX;
+	int			m_iDroppedSizeY;
+
 	char		m_cDroppedFilename[256];	// doczytujemy w trakcie dzialania
 
 
 	bool		m_bFE;			// first enter
 	bool		m_bPressed;		// czy nacisniety ?
+
 
 };
 

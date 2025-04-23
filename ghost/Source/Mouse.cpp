@@ -12,7 +12,9 @@
 
 CMouse::CMouse()
 {
-	
+
+	for (int i=0; i<16; i++) m_pCustomPoint[i]=NULL;
+
 	// przyciski nie wcisniete
 
 	m_bLeftButton = false;
@@ -45,6 +47,16 @@ CMouse::CMouse()
 CMouse::~CMouse()
 {
 	
+	for (int i=0; i<16; i++)
+	{
+		if (m_pCustomPoint[i]!=NULL)
+		{
+			delete m_pCustomPoint[i];
+			m_pCustomPoint[i]=NULL;
+		}
+	}
+
+
 	if (m_pMouseFile!=NULL)		// zwolnij system plikow od myszki
 	{
 		delete m_pMouseFile;
@@ -260,6 +272,14 @@ void CMouse::Initialize(IDirect3DDevice8 *pDevice,char cDataFile[])
 
 void CMouse::DeInitialize(void)
 {
+	for (int i=0; i<16; i++)
+	{
+		if (m_pCustomPoint[i]!=NULL)
+		{
+			delete m_pCustomPoint[i];
+			m_pCustomPoint[i]=NULL;
+		}
+	}
 	
 	if (m_pMouseFile!=NULL)		// zwolnij system plikow od myszki
 	{
@@ -309,6 +329,14 @@ void CMouse::Render(void)
 	}
 }
 
+// renderuje podany przez nas wskaznik
+
+void CMouse::Render(int iNumer)
+{
+	m_pCustomPoint[iNumer]->SetTranslation(m_fMouseX, m_fMouseY);
+	m_pCustomPoint[iNumer]->Render();
+}
+
 //=== ustawia stan myszy, na jego podstawie rysujemy odpowiedni wskaznik
 
 void CMouse::SetState(char cState)
@@ -320,5 +348,23 @@ char CMouse::GetState(void)
 {
 	return m_cState;
 }
+
+// dodaj wlasny kursor
+
+void CMouse::AddCustomPoint(IDirect3DDevice8 *pDevice, int iIndex, char cName[], char cDataFile[])
+{
+	m_pMouseFile = new CFileSystem(cDataFile);	// otworz system plikow
+
+	m_pMouseFile->Load(cName);	// wczytaj pierwszy obrazek
+
+	m_pCustomPoint[iIndex] = new CSprite(255,255,255,255);	// alfa z tga
+	m_pCustomPoint[iIndex]->InitializeTGAinMemory((unsigned int*)m_pMouseFile->pDataBuffer,
+		m_pMouseFile->Search(cName),pDevice);
+
+	delete m_pMouseFile;
+	m_pMouseFile =NULL;
+}
+
+
 
 // end

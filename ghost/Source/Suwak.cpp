@@ -45,7 +45,7 @@ CSuwak::~CSuwak()
 {
 	if (m_pImage!=NULL)
 	{
-//		delete (m_pImage);
+		delete (m_pImage);
 		m_pImage = NULL;
 	}
 

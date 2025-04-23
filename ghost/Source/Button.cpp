@@ -21,30 +21,30 @@ CButton::CButton(char cFileSystem[], char clicked_name[],
 	pTempFilesystem->Load(clicked_name);
 	
 	m_pClicked = new CSprite(255,255,255,255);
-	m_pClicked->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
-		pTempFilesystem->Search(clicked_name),pDevice,
-		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
+	m_pClicked->InitializeTGAinMemory((unsigned int*)pTempFilesystem->pDataBuffer,
+		pTempFilesystem->Search(clicked_name),pDevice);
+/*		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 		0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 		D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
-
+*/
 	pTempFilesystem->Load(onbutton_name);
 	
 	m_pOnButton = new CSprite(255,255,255,255);
-	m_pOnButton->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
-		pTempFilesystem->Search(onbutton_name),pDevice,
-		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
+	m_pOnButton->InitializeTGAinMemory((unsigned int*)pTempFilesystem->pDataBuffer,
+		pTempFilesystem->Search(onbutton_name),pDevice);
+/*		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 		0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 		D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
-
+*/
 	pTempFilesystem->Load(m_pImage_name);
 
 	m_pImage = new CSprite(255,255,255,255);
-	m_pImage->InitializeTGAinMemoryEx((unsigned int*)pTempFilesystem->pDataBuffer,
-		pTempFilesystem->Search(m_pImage_name),pDevice,
-		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
+	m_pImage->InitializeTGAinMemory((unsigned int*)pTempFilesystem->pDataBuffer,
+		pTempFilesystem->Search(m_pImage_name),pDevice);
+/*		D3DX_DEFAULT,D3DX_DEFAULT,D3DX_DEFAULT,
 		0,D3DFMT_UNKNOWN,D3DPOOL_DEFAULT,
 		D3DX_FILTER_NONE,D3DX_FILTER_NONE,0,NULL,NULL);
-
+*/
 	// bez hotx i hoty
 
 	m_lXStart = 0;
