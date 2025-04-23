@@ -11,13 +11,25 @@ Build Log
 </h3>
 </pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
 Command Lines
-</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "d:\eProjects\ghost\Debug\RSP000005.rsp" with contents
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "d:\eProjects\ghost\Debug\RSP000001.rsp" with contents
 [
 /Od /I "D:\eProjects\ghost\Include" /I "C:\DX8SDK\include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_USRDLL" /D "GHOST_EXPORTS" /D "_WINDLL" /D "_MBCS" /FD /EHsc /RTC1 /MDd /Fp".\Debug/ghost.pch" /Fo".\Debug/" /Fd".\Debug/" /FR".\Debug/" /W3 /c /ZI /TP
-.\Source\ZipDragButton.cpp
+.\Source\ZipButton.cpp
 ]
-Creating command line "cl.exe @d:\eProjects\ghost\Debug\RSP000005.rsp /nologo"
-Creating temporary file "d:\eProjects\ghost\Debug\RSP000006.rsp" with contents
+Creating command line "cl.exe @d:\eProjects\ghost\Debug\RSP000001.rsp /nologo"
+Creating temporary file "d:\eProjects\ghost\Debug\RSP000002.rsp" with contents
+[
+/Od /I "D:\eProjects\ghost\Include" /I "C:\DX8SDK\include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "GHOST_EXPORTS" /FD /EHsc /RTC1 /MDd /Fp".\Debug/ghost.pch" /Fo".\Debug/" /Fd".\Debug/" /FR".\Debug/" /W3 /c /ZI /TP
+.\Source\Suwak.cpp
+.\Source\Mouse.cpp
+.\Source\EVTSound.cpp
+.\Source\EventEVT.cpp
+.\Source\DragButton.cpp
+.\Source\Drag3Button.cpp
+.\Source\Button.cpp
+]
+Creating command line "cl.exe @d:\eProjects\ghost\Debug\RSP000002.rsp /nologo"
+Creating temporary file "d:\eProjects\ghost\Debug\RSP000003.rsp" with contents
 [
 /OUT:".\Debug/ghost.dll" /INCREMENTAL:NO /NOLOGO /DLL /DEBUG /PDB:".\Debug/ghost.pdb" /IMPLIB:".\Debug/ghost.lib" /MACHINE:X86 odbc32.lib odbccp32.lib winmm.lib d3d8.lib d3dx8d.lib strmiids.lib dxguid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
 .\Debug\Audio.obj
@@ -46,8 +58,8 @@ Creating temporary file "d:\eProjects\ghost\Debug\RSP000006.rsp" with contents
 .\Debug\ZipDragButton.obj
 .\Debug\ZipSprite.obj
 ]
-Creating command line "link.exe @d:\eProjects\ghost\Debug\RSP000006.rsp"
-Creating temporary file "d:\eProjects\ghost\Debug\BAT000007.bat" with contents
+Creating command line "link.exe @d:\eProjects\ghost\Debug\RSP000003.rsp"
+Creating temporary file "d:\eProjects\ghost\Debug\BAT000004.bat" with contents
 [
 @echo off
 copy           debug\ghost.dll           c:\windows\
@@ -60,11 +72,20 @@ echo Project : error PRJ0019: A tool returned an error code from "Performing Pos
 exit 1
 :VCEnd
 ]
-Creating command line "d:\eProjects\ghost\Debug\BAT000007.bat"
+Creating command line "d:\eProjects\ghost\Debug\BAT000004.bat"
 </pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
 Output Window
 </font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Compiling...
-ZipDragButton.cpp
+ZipButton.cpp
+Compiling...
+Suwak.cpp
+Mouse.cpp
+EVTSound.cpp
+EventEVT.cpp
+DragButton.cpp
+Drag3Button.cpp
+Button.cpp
+Generating Code...
 Linking...
 LINK : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
    Creating library .\Debug/ghost.lib and object .\Debug/ghost.exp

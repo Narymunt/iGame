@@ -162,7 +162,7 @@ CEventEVT::CEventEVT(char m_SourceFOX[], char m_cEventName[], IDirect3DDevice8 *
 
 	}
 
-	delete pFOXFile;
+//	delete pFOXFile;
 }	
 
 //=== destruktor, usun obiekty 
@@ -172,12 +172,12 @@ CEventEVT::~CEventEVT()
 
 	for (unsigned int h1=0; h1<m_uiIloscZdarzen; h1++)
 	{
-		delete pEvent[h1];
+//		delete pEvent[h1];
 	}
 
 	for (h1=0; h1<m_uiIloscKlatek; h1++)
 	{
-		delete pEventFrames[h1];
+//		delete pEventFrames[h1];
 	}
 }
 

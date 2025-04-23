@@ -51,7 +51,7 @@ CMouse::~CMouse()
 	{
 		if (m_pCustomPoint[i]!=NULL)
 		{
-			delete m_pCustomPoint[i];
+//			delete m_pCustomPoint[i];
 			m_pCustomPoint[i]=NULL;
 		}
 	}
@@ -59,25 +59,25 @@ CMouse::~CMouse()
 
 	if (m_pMouseFile!=NULL)		// zwolnij system plikow od myszki
 	{
-		delete m_pMouseFile;
+//		delete m_pMouseFile;
 		m_pMouseFile = NULL;
 	}
 
 	if (m_pNormalPoint != NULL)	// zwolnij wskaznik normalnego punktu
 	{
-		delete m_pNormalPoint;
+//		delete m_pNormalPoint;
 		m_pNormalPoint = NULL;
 	}
 
 	if (m_pOnClickPoint != NULL) // zwolnij wskaznik punktu na kliknieciu
 	{
-		delete m_pOnClickPoint;
+//		delete m_pOnClickPoint;
 		m_pOnClickPoint = NULL;
 	}
 
 	if (m_pOnObjectPoint != NULL) // zwolnij wskaznik punktu nad obiektem
 	{
-		delete m_pOnObjectPoint;
+//		delete m_pOnObjectPoint;
 		m_pOnObjectPoint = NULL;
 	}
 
@@ -263,8 +263,8 @@ void CMouse::Initialize(IDirect3DDevice8 *pDevice,char cDataFile[])
 
 	// filesystem juz jest niepotrzebny
 
-	delete m_pMouseFile;
-	m_pMouseFile = NULL;
+//	delete m_pMouseFile;
+//	m_pMouseFile = NULL;
 
 }
 
@@ -276,32 +276,32 @@ void CMouse::DeInitialize(void)
 	{
 		if (m_pCustomPoint[i]!=NULL)
 		{
-			delete m_pCustomPoint[i];
+//			delete m_pCustomPoint[i];
 			m_pCustomPoint[i]=NULL;
 		}
 	}
 	
 	if (m_pMouseFile!=NULL)		// zwolnij system plikow od myszki
 	{
-		delete m_pMouseFile;
+//		delete m_pMouseFile;
 		m_pMouseFile = NULL;
 	}
 
 	if (m_pNormalPoint != NULL)	// zwolnij wskaznik normalnego punktu
 	{
-		delete m_pNormalPoint;
+//		delete m_pNormalPoint;
 		m_pNormalPoint = NULL;
 	}
 
 	if (m_pOnClickPoint != NULL) // zwolnij wskaznik punktu na kliknieciu
 	{
-		delete m_pOnClickPoint;
+//		delete m_pOnClickPoint;
 		m_pOnClickPoint = NULL;
 	}
 
 	if (m_pOnObjectPoint != NULL) // zwolnij wskaznik punktu nad obiektem
 	{
-		delete m_pOnObjectPoint;
+//		delete m_pOnObjectPoint;
 		m_pOnObjectPoint = NULL;
 	}
 }
@@ -361,8 +361,8 @@ void CMouse::AddCustomPoint(IDirect3DDevice8 *pDevice, int iIndex, char cName[],
 	m_pCustomPoint[iIndex]->InitializeTGAinMemory((unsigned int*)m_pMouseFile->pDataBuffer,
 		m_pMouseFile->Search(cName),pDevice);
 
-	delete m_pMouseFile;
-	m_pMouseFile =NULL;
+//	delete m_pMouseFile;
+//	m_pMouseFile =NULL;
 }
 
 

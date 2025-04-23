@@ -62,19 +62,19 @@ CButton::~CButton()
 {
 	if (m_pClicked!=NULL)
 	{
-		delete (m_pClicked);
+//		delete (m_pClicked);
 		m_pClicked = NULL;
 	}
 
 	if (m_pImage!=NULL) 
 	{
-		delete (m_pImage);
+//		delete (m_pImage);
 		m_pImage = NULL;
 	}
 
 	if (m_pOnButton!=NULL) 
 	{
-		delete (m_pOnButton);
+//		delete (m_pOnButton);
 		m_pOnButton = NULL;
 	}
 }

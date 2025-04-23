@@ -32,14 +32,14 @@ CEVTSound::~CEVTSound()
 
 	for (unsigned int h1=0; h1<m_uiCount; h1++)
 	{
-		if (m_pSoundList[h1]!=NULL) 
-			delete m_pSoundList[h1];
+//		if (m_pSoundList[h1]!=NULL) 
+//			delete m_pSoundList[h1];
 	}
 
 	if (m_pSoundList!=NULL)
 	{
-		delete[] m_pSoundList;
-		m_pSoundList = NULL;
+//		delete[] m_pSoundList;
+//		m_pSoundList = NULL;
 	}
 
 }

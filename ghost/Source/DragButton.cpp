@@ -181,25 +181,25 @@ CDragButton::~CDragButton()
 {
 	if (m_pClicked!=NULL)
 	{
-		delete (m_pClicked);
+//		delete (m_pClicked);
 		m_pClicked = NULL;
 	}
 
 	if (m_pImage!=NULL) 
 	{
-		delete (m_pImage);
+//		delete (m_pImage);
 		m_pImage = NULL;
 	}
 
 	if (m_pOnDragButton!=NULL) 
 	{
-		delete (m_pOnDragButton);
+//		delete (m_pOnDragButton);
 		m_pOnDragButton = NULL;
 	}
 
 	if (m_pOnMove!=NULL)
 	{
-		delete (m_pOnMove);
+//		delete (m_pOnMove);
 		m_pOnMove = NULL;
 	}
 
