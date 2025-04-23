@@ -12,12 +12,15 @@ class CPinch
 
     public:
 	CPinch(unsigned int uiXSize, unsigned int uiYSize, char cXTable[], char cYTable[], char cTexture[]);
+	CPinch(unsigned int uiXSize, unsigned int uiYSize, char cXTable[], char cYTable[], char cTexture[],bool bNIC);
 	~CPinch();
 	
 	virtual void IncX(char ucVal);	// zwieksza wskazniki a nie rozmiary
 	virtual void IncY(char ucVal);
 	
 	virtual void Render(unsigned char *pBuffer);
+	virtual void RenderBlur(unsigned char *pBuffer);
+	virtual void Render(int iXSize, int iYSize, unsigned char *pBuffer);
 	
     protected:
     
@@ -26,6 +29,9 @@ class CPinch
 	
 	unsigned char	*m_pXTable;	// dane do pincha
 	unsigned char 	*m_pYTable;
+
+	CBitmap		*m_pXMap;	// tworzenie z .bmp wspolrzednych
+	CBitmap		*m_pYMap;	
 
 	CBitmap		*m_pTexture;	// textura zawsze 256x256
 
