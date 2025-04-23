@@ -50,6 +50,7 @@ enum APP_STAT
 CBitmap *pBitmap;	// rysunek
 CBitmap	*pKon;	// kon
 CEventEVT *pKonEVT;
+CXmlFile *pXML;
 
 int 	iX, iY;
 double	dA, dB;
@@ -226,10 +227,14 @@ int main(int gArgc, char **gArgv)
 	/* Play and then exit */
 	Mix_FadeInMusic(music,looping,2000);
 
+	pXML = new CXmlFile("spec/seq.xml");
+	pXML->iCreateNodes();
+	delete pXML;
     
 	pKonEVT = new CEventEVT("resource/evt/bobul.evt","resource/evt/bobul.evt");
 
 	wave = Mix_LoadWAV("resource/wav/wrozka.wav");
+
     
     while ((Mix_PlayingMusic() || Mix_PausedMusic()) && sdlkeys[SDLK_ESCAPE]!=SDL_PRESSED)
     {

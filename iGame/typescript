@@ -1,8 +1,993 @@
-Script started on Mon 04 Jun 2007 11:50:55 PM CEST
-root@jarek:/opt/prj/iGame# make
-g++ -c screen.cpp -o screen.o -I/usr/local/include -L/usr/local/lib -lSDL -pthread
-screen.cpp: In constructor `CScreen::CScreen(int, int, int, bool)':
-screen.cpp:15: error: `bFullscreen' was not declared in this scope
-make: *** [screen.o] Error 1
-root@jarek:/opt/prj/iGame# exit
-Script done on Mon 04 Jun 2007 11:51:00 PM CEST
+Script started on Wed 25 Jul 2007 10:45:36 PM CEST
+abash-3.1# a ./main
+Opened audio at 22050 Hz 16 bit stereo, 4096 bytes audio buffer
+[CBitmap]: resource/img/pic.bmp x: 800 y: 600 size: 480000
+XML: name: spec/seq.xml size: 888
+XML: start offset 0 , end offset 36
+CXmlNode: [new]: xml version="1.0" encoding="UTF-8"
+XML: 14 nodes
+CXmlNode: [new]: sequence
+CXmlNode: [new]: name="wyskok" type="SIMPLE" file="bobul.evt" event="skacze" sound="benc.snd" event="spadlem"
+CXmlNode: [new]: name="radosc" type="RANDOM" file="bobul.evt" sound="radosc.snd"
+CXmlNode: [new]: name="dobrze" type="PLAY"
+CXmlNode: [new]: file="bobul.evt" event="sprawdzam" sound="sprawdzam.snd"
+CXmlNode: [new]: file="bobul.evt" event="doskonale" sound="doskonale.snd"
+CXmlNode: [new]: name="zle" type="PLAY"
+CXmlNode: [new]: file="wilk.evt" event="sprawdzam" sound="sprawdzam.snd"
+CXmlNode: [new]: file="wilk.evt" event="zle" sound="zle.snd"
+CXmlNode: [new]: file="wilk.evt" event="sproboj_jeszcze_raz" sound="jeszczeraz.snd"
+CXmlNode: [new]: name="intro" type="SPEAK"
+CXmlNode: [new]: start="bobul.evt" event="wlatuje" sound="benc.snd"
+CXmlNode: [new]: start="bobul.evt" event="mumla_morda" sound="wprowadzenie.snd"
+CXmlNode: [new]: start="bobul.evt" event="wypad" sound="szast_prast.snd"
+XML: max node size 92
+EVT: resource/evt/bobul.evt size 45934
+EVT: wersja 129
+EVT: ilosc klatek 62
+EVT: ilosc zdarzen 5
+EVT: zaalokowano tablice bitmap
+EVT: zaalokowano zdarzenia 5
+EVT: zdarzenie 0 - start klatek 19 
+EVT: zdarzenie 1 - gada1 klatek 13 
+EVT: zdarzenie 2 - gada2 klatek 18 
+EVT: zdarzenie 3 - gada3 klatek 16 
+EVT: zdarzenie 4 - koniec klatek 19 
+EVT: wczytuje 62 klatki...
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.000
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.001
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.002
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.003
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.004
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 256
+TGA: rozmiar Y 256
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.005
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.006
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.007
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.008
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.009
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.010
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.011
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.012
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.013
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.014
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.015
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.016
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.017
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.018
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.019
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.020
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.021
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.022
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.023
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.024
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.025
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.026
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.027
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.028
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.029
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.030
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.031
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.032
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.033
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.034
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.035
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.036
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.037
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.038
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.039
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.040
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.041
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.042
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.043
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.044
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.045
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 64
+TGA: rozmiar Y 64
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.046
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.047
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.048
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.049
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.050
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.051
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.052
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.053
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.054
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.055
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.056
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.057
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.058
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.059
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.060
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+#
+CBitmap: nowy obraz TGA resource/evt/bobul.061
+TGA: identyfikator 0
+TGA: paleta 0
+TGA: typ 2
+TGA: poczatek palety 0
+TGA: dlugosc palety 0
+TGA: rodzaj palety 0 bpp
+TGA: poczatek X 0
+TGA: poczatek Y 0
+TGA: rozmiar X 128
+TGA: rozmiar Y 128
+TGA: 32 bpp
+TGA: opis 0
+TGA: wczytano dane
+timer: 56
+timer: 59
+timer: 61
+timer: 64
+timer: 66
+timer: 69
+timer: 71
+timer: 74
+timer: 76
+timer: 79
+timer: 81
+timer: 84
+timer: 86
+timer: 89
+timer: 91
+timer: 94
+timer: 96
+timer: 99
+timer: 101
+timer: 103
+timer: 106
+timer: 109
+timer: 111
+timer: 114
+timer: 114
+bash-3.1# exit
+
+Script done on Wed 25 Jul 2007 10:45:48 PM CEST

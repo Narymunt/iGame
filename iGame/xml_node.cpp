@@ -10,7 +10,7 @@ CXmlNode::CXmlNode(char cNodeName[])
 	m_iNodeSize = (int)strlen(cNodeName);
 	m_pNodeName = new char[1+m_iNodeSize]; 
 	strcpy(m_pNodeName,cNodeName);
-	printf("CXmlNode: new %s\n",cNodeName);
+	printf("CXmlNode: [new]: %s\n",cNodeName);
 }
 
 // destruktor zwalnia tablice z nazwa wezla
