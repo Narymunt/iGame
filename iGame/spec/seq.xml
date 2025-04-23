@@ -19,8 +19,8 @@
 
     <name="intro" type="SPEAK">
 	<start="bobul.evt" event="wlatuje" sound="benc.snd"/>
-	<loop="bobul.evt" event="mumla_morda" sound="wprowadzenie.snd"/>
-	<end="bobul.evt" event="wypad" sound="szast_prast.snd"/>
+	<start="bobul.evt" event="mumla_morda" sound="wprowadzenie.snd"/>
+	<start="bobul.evt" event="wypad" sound="szast_prast.snd"/>
     </name>
 
 </sequence>

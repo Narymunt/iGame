@@ -20,5 +20,7 @@ pinch.o : event.o
 	g++ -c pinch.cpp -o pinch.o -I$(inc) -L$(lib) $(options)
 event.o : button_flat.o
 	g++ -c event.cpp -o event.o -I$(inc) -L$(lib) $(options)
-button_flat.o : 
+button_flat.o : xml_node.o
 	g++ -c button_flat.cpp -o button_flat.o -I$(inc) -L$(lib) $(options)
+xml_node.o : 
+	g++ -c xml_node.cpp -o xml_node.o -I$(inc) -L$(lib) $(options)
